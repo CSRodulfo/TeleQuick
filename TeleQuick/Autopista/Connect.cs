@@ -35,9 +35,9 @@ namespace TeleQuick.Autopista
             return _instance;
         }
 
-        public async Task<WebPage> GetWebPage(string MainForm, Dictionary<string, string> dictionary)
+        public async Task<WebPage> LoginWebPage(string MainForm, Dictionary<string, string> dictionary)
         {
-            PageWebForm form = _instance.webPage.FindFormById(MainForm);
+            PageWebForm form = webPage.FindFormById(MainForm);
 
             foreach (var item in dictionary)
             {
