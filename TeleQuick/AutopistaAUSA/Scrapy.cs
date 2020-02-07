@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TeleQuick.Autopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
@@ -31,10 +32,18 @@ namespace TeleQuick.AutopistaAUSA
                     ScrappDetail(query);
                 }
 
-                foreach (HtmlNode cell2 in a)
-                {
-                    var b = cell2.InnerText.Trim();
-                }
+                HeaderResponse header = new HeaderResponse();
+                header.A = a[0].InnerText.Trim();
+                header.B = a[1].InnerText.Trim();
+                header.C = a[2].InnerText.Trim();
+                header.D = a[3].InnerText.Trim();
+                header.E = a[4].InnerText.Trim();
+                header.F = a[5].InnerText.Trim();
+                header.G = a[6].InnerText.Trim();
+                header.H = a[7].InnerText.Trim();
+                header.I = a[8].InnerText.Trim();
+                header.J = a[9].InnerText.Trim();
+
             }
         }
 

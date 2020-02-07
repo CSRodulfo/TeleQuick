@@ -44,7 +44,7 @@ namespace TeleQuick.AutopistaAUSA
         public async Task Scrapp()
         {
             await Connect();
-            WebPage form = await connect.GetWebPage(Uri, MainForm, dictionary);
+            WebPage form = await connect.GetWebPage(MainForm, dictionary);
 
             Scrapy scrapy = new Scrapy(form);
 
