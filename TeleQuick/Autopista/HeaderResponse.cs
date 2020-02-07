@@ -6,6 +6,10 @@ namespace TeleQuick.Autopista
 {
     public class HeaderResponse
     {
+        public HeaderResponse()
+        {
+            Details = new List<DetailResponse>();
+        }
         public string Campo0 { get; set; }
         public string Campo1 { get; set; }
         public string Campo2 { get; set; }
@@ -44,5 +48,7 @@ namespace TeleQuick.Autopista
         public string Campo35 { get; set; }
         public string Campo36 { get; set; }
         public string Campo37 { get; set; }
+
+        public List<DetailResponse> Details;
     }
 }

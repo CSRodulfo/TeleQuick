@@ -66,23 +66,10 @@ namespace TeleQuick.AutopistaAUSA
                 header.Campo33 = a[33].InnerText.Trim();
                 header.Campo34 = a[34].InnerText.Trim();
                 header.Campo35 = a[35].InnerText.Trim();
-                header.Campo36 = a[36].InnerText.Trim();
 
                 list.Add(header);
             }
             return list;
-        }
-
-        public async Task ScrappDetail(string url)
-        {
-            //WebPage homePage = connect.GetWebPage(Uri2 + url);
-
-
-            //File.WriteAllBytes(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf", homePage.RawResponse.Body);
-
-            //ObtenerDatosDescargados(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf");
-
-
         }
     }
 }

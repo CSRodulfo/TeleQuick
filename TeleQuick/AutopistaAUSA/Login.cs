@@ -51,63 +51,18 @@ namespace TeleQuick.AutopistaAUSA
             List<HeaderResponse> headers = await scrapy.ScrappHeader();
             foreach (var item in headers)
             {
-                await ProcessDetail(item.C);
+                await ProcessDetail(item);
             }
         }
-        public async Task ProcessDetail(string url)
+        public async Task ProcessDetail(HeaderResponse header)
         {
-            WebPage homePage = await connect.GetWebPage(Uri2 + url);
 
-            File.WriteAllBytes(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf", homePage.RawResponse.Body);
+            WebPage homePage = await connect.GetWebPage(Uri2 + header.Campo2);
 
-            ObtenerDatosDescargados(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf");
-        }
+            ScrapyDetail scrapy = new ScrapyDetail(homePage);
 
-        private void ObtenerDatosDescargados(string PdffileName)
-        {
-            bool finBusqueda = false;
-            int ultPos = 0;
-            string linea = String.Empty;
-            String[] _array = PDFFile.ReadPdfFile(PdffileName).Split('\n');
-            if (_array.Length <= 14)
-            {
-                return;
-            }
-            linea = _array[14];
-            List<String> detalleItem = new List<string>();
-            string _strDom = _array[12];
-            int posD = _strDom.IndexOf("Dominio:") + 8;
-            int posT = _strDom.IndexOf("TAG");
-            _strDom = _strDom.Substring(posD, posT - posD).Trim();
-            while (!finBusqueda)
-            {
-                int pos = linea.IndexOf(',', ultPos);
-                if (pos > 0)
-                {
-                    detalleItem.Add(linea.Substring(ultPos, (pos + 3 - ultPos)));
-                    ultPos = pos + 3;
-                }
-                if (pos == -1 || ultPos >= linea.Length || linea.IndexOf("*") < 5)
-                {
-                    finBusqueda = true;
-                }
-            }
-            //foreach (string it in detalleItem)
-            //{
-            //    ItemDetalle id = new ItemDetalle();
-            //    int lastSpace = it.LastIndexOf(' ');
-            //    id.Importe = float.Parse(it.Substring(lastSpace, it.Length - lastSpace).Trim().Replace(",", "."));
-            //    string[] detArray = it.Substring(0, lastSpace).Trim().Split(' ');
-            //    id.Fecha = detArray[0];
-            //    id.Hora = detArray[1];
-            //    id.Categoria = int.Parse(detArray[2]);
-            //    id.Via = detArray[3];
-            //    id.Dominio = _strDom;
-            //    for (int i = 4; i < detArray.Length; i++)
-            //    {
-            //        id.Nombre_Estacion += detArray[i] + " ";
-            //    }
-            //}
+            header.Details.AddRange(await scrapy.ScrappDetail());
+
         }
     }
 }
