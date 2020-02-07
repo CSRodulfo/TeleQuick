@@ -35,27 +35,23 @@ namespace TeleQuick.AutopistaAUSA
             dictionary.Add("sCallerURL", "");
         }
 
-        private async Task Connect()
-        {
-            connect = await Autopista.Connect.Instance(Uri);
-        }
 
-        Connect connect;
         public async Task Scrapp()
         {
-            await Connect();
+            Connect connect = new Connect(Uri);
             WebPage form = await connect.LoginWebPage(MainForm, dictionary);
 
             Scrapy scrapy = new Scrapy(form);
 
             scrapy.ScrappHeader();
-
+            GetDetail("dsds");
 
         }
 
         public async Task GetDetail(string url)
         {
-            WebPage homePage = connect.GetWebPage(Uri2 + url);
+            Connect connect = new Connect(Uri);
+            WebPage homePage = await connect.GetWebPage(Uri2 + url);
 
 
             File.WriteAllBytes(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf", homePage.RawResponse.Body);
