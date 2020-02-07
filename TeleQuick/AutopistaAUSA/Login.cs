@@ -8,16 +8,19 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using TeleQuick.Autopista;
+using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class Login
+    public class Login : IConnection
     {
         private const string MainForm = "MAINFORM";
         private const string Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0";
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
+        private Dictionary<string, string> dictionary;
 
-        Dictionary<string, string> dictionary;
+        Connect connect;
+
         public Login()
         {
             dictionary = new Dictionary<string, string>();
@@ -33,32 +36,31 @@ namespace TeleQuick.AutopistaAUSA
             dictionary.Add("_CBIO", "0");
             dictionary.Add("_BAN", "0");
             dictionary.Add("sCallerURL", "");
+
+            connect = new Connect();
         }
-
-
-        public async Task Scrapp()
+        public async Task ConnectLogin()
         {
-            Connect connect = new Connect(Uri);
-            WebPage form = await connect.LoginWebPage(MainForm, dictionary);
-
-            Scrapy scrapy = new Scrapy(form);
-
-            scrapy.ScrappHeader();
-            GetDetail("dsds");
-
+            WebPage mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
+            await this.ProcessHeader(mainPage);
         }
-
-        public async Task GetDetail(string url)
+        public async Task ProcessHeader(WebPage mainPage)
         {
-            Connect connect = new Connect(Uri);
+            Scrapy scrapy = new Scrapy(mainPage);
+
+            List<HeaderResponse> headers = await scrapy.ScrappHeader();
+            foreach (var item in headers)
+            {
+                await ProcessDetail(item.C);
+            }
+        }
+        public async Task ProcessDetail(string url)
+        {
             WebPage homePage = await connect.GetWebPage(Uri2 + url);
-
 
             File.WriteAllBytes(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf", homePage.RawResponse.Body);
 
             ObtenerDatosDescargados(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf");
-
-
         }
 
         private void ObtenerDatosDescargados(string PdffileName)

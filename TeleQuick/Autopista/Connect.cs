@@ -9,18 +9,17 @@ namespace TeleQuick.Autopista
     public class Connect
     {
         private ScrapingBrowser browser;
-        private WebPage webPage;
-        public Connect(string Uri)
+        public Connect()
         {
             browser = new ScrapingBrowser();
             //set UseDefaultCookiesParser as false if a website returns invalid cookies format
             browser.UseDefaultCookiesParser = false;
-
-            webPage = browser.NavigateToPage(new Uri(Uri));
         }
 
-        public async Task<WebPage> LoginWebPage(string MainForm, Dictionary<string, string> dictionary)
+        public async Task<WebPage> LoginWebPage(string Uri, string MainForm, Dictionary<string, string> dictionary)
         {
+            var webPage = await GetWebPage(Uri);
+
             PageWebForm form = webPage.FindFormById(MainForm);
 
             foreach (var item in dictionary)
@@ -35,7 +34,7 @@ namespace TeleQuick.Autopista
 
         public async Task<WebPage> GetWebPage(string Uri)
         {
-            return browser.NavigateToPage(new Uri("Uri"));
+            return browser.NavigateToPage(new Uri(Uri));
         }
     }
 }

@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Autopista\TeleQuick.Autopista.csproj" />
+    <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.IAutopista.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleQuick", "TeleQuick\TeleQuick\TeleQuick.csproj", "{5E6E5CE1-9CBC-4AEB-8972-A17D49533DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick", "TeleQuick\TeleQuick\TeleQuick.csproj", "{5E6E5CE1-9CBC-4AEB-8972-A17D49533DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "TeleQuick\DAL\DAL.csproj", "{FE70EE1F-F0CD-44CC-B44C-002EFCD78CB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "TeleQuick\DAL\DAL.csproj", "{FE70EE1F-F0CD-44CC-B44C-002EFCD78CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleQuick.WebApi", "TeleQuickApi\TeleQuick.WebApi.csproj", "{2D391D1D-48E5-47DC-BC1A-9065E3BE2E9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.WebApi", "TeleQuickApi\TeleQuick.WebApi.csproj", "{2D391D1D-48E5-47DC-BC1A-9065E3BE2E9F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Autopista", "Autopista\TeleQuick.Autopista.csproj", "{0CDEC8FF-C43C-4049-B99F-3193A5BE759F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.AutopistaAUSA", "AutopistaAUSA\TeleQuick.AutopistaAUSA.csproj", "{343FA9A9-62D0-4F0D-B5D4-B9B42900E06B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleQuick.IAutopista", "TeleQuick.IAutopista\TeleQuick.IAutopista.csproj", "{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{343FA9A9-62D0-4F0D-B5D4-B9B42900E06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{343FA9A9-62D0-4F0D-B5D4-B9B42900E06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{343FA9A9-62D0-4F0D-B5D4-B9B42900E06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

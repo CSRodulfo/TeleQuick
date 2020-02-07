@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TeleQuick.Autopista
+namespace TeleQuick.IAutopista
 {
-    public class Pages
+    public interface IScrapy
     {
+
     }
 }
