@@ -20,12 +20,10 @@ namespace TeleQuick.AutopistaAUSA
 
         public async Task<List<DetailResponse>> ScrappDetail()
         {
-            File.WriteAllBytes(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf", form.RawResponse.Body);
-
-            return await Task.Run(() => ObtenerDatosDescargados(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\pepe.pdf"));
+            return await Task.Run(() => ObtenerDatosDescargados(form.RawResponse.Body));
         }
 
-        private async Task<List<DetailResponse>> ObtenerDatosDescargados(string PdffileName)
+        private async Task<List<DetailResponse>> ObtenerDatosDescargados(byte[] PdffileName)
         {
             bool finBusqueda = false;
             int ultPos = 0;
@@ -41,6 +39,7 @@ namespace TeleQuick.AutopistaAUSA
             int posD = _strDom.IndexOf("Dominio:") + 8;
             int posT = _strDom.IndexOf("TAG");
             _strDom = _strDom.Substring(posD, posT - posD).Trim();
+
             while (!finBusqueda)
             {
                 int pos = linea.IndexOf(',', ultPos);
@@ -74,7 +73,7 @@ namespace TeleQuick.AutopistaAUSA
                 list.Add(id);
             }
 
-            return list;
+            return  list;
         }
     }
 }

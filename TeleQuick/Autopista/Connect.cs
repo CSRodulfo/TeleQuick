@@ -34,7 +34,7 @@ namespace TeleQuick.Autopista
 
         public async Task<WebPage> GetWebPage(string Uri)
         {
-            return browser.NavigateToPage(new Uri(Uri));
+            return await browser.NavigateToPageAsync(new Uri(Uri));
         }
     }
 }
