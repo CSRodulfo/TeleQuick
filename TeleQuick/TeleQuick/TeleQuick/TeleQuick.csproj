@@ -63,6 +63,12 @@
     <None Remove="Logs\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\components\controls\todo-demo.component.html" />
+    <None Remove="ClientApp\src\app\components\controls\todo-demo.component.scss" />
+    <None Remove="ClientApp\src\app\components\controls\todo-demo.component.ts" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
