@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AUSATestWeb", "AUSATestWeb\AUSATestWeb.csproj", "{4AA96613-E07D-4B45-ACF4-B09961F6D309}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AUSATestWeb", "AUSATestWeb\AUSATestWeb.csproj", "{4AA96613-E07D-4B45-ACF4-B09961F6D309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutopistaAUSA", "AutopistaAUSA\AutopistaAUSA.csproj", "{1B8F769D-21BC-4F91-83D2-875CA488428A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autopista", "Autopista\Autopista.csproj", "{50D2DEF2-AA4B-42B7-A4B3-6999A1A77D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4AA96613-E07D-4B45-ACF4-B09961F6D309}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AA96613-E07D-4B45-ACF4-B09961F6D309}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AA96613-E07D-4B45-ACF4-B09961F6D309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8F769D-21BC-4F91-83D2-875CA488428A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8F769D-21BC-4F91-83D2-875CA488428A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8F769D-21BC-4F91-83D2-875CA488428A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8F769D-21BC-4F91-83D2-875CA488428A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D2DEF2-AA4B-42B7-A4B3-6999A1A77D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D2DEF2-AA4B-42B7-A4B3-6999A1A77D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D2DEF2-AA4B-42B7-A4B3-6999A1A77D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D2DEF2-AA4B-42B7-A4B3-6999A1A77D85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

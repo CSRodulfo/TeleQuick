@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace AUSATestWeb.Controllers
+namespace TeleQuick.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,13 +24,9 @@ namespace AUSATestWeb.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> GetAsync()
+        public IEnumerable<WeatherForecast> Get()
         {
-            Scrapper scrapper = new Scrapper();
-
-            scrapper.Start();
-
-             var rng = new Random();
+            var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
