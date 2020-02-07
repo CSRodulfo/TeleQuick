@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using DAL.Models.Interfaces;
+using DAL.Models.Business;
 
 namespace DAL
 {
@@ -25,7 +26,7 @@ namespace DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-
+        public DbSet<UserAccount> UserAccounts { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         { }
@@ -69,6 +70,9 @@ namespace DAL
             builder.Entity<OrderDetail>().ToTable($"App{nameof(this.OrderDetails)}");
             builder.Entity<OrderDetail>().Property(p => p.UnitPrice).HasColumnType(priceDecimalType);
             builder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType(priceDecimalType);
+
+            builder.Entity<UserAccount>().ToTable($"App{nameof(this.UserAccounts)}");
+            builder.Entity<UserAccount>().Property(c => c.Name).HasMaxLength(100);
         }
 
 

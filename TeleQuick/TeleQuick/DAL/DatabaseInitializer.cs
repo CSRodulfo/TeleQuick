@@ -68,7 +68,6 @@ namespace DAL
                 {
                     Name = "Ebenezer Monney",
                     Email = "contact@ebenmonney.com",
-                    Gender = Gender.Male,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow
                 };
@@ -80,7 +79,6 @@ namespace DAL
                     PhoneNumber = "+81123456789",
                     Address = "Some fictional Address, Street 123, Konoha",
                     City = "Konoha",
-                    Gender = Gender.Male,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow
                 };
@@ -93,7 +91,6 @@ namespace DAL
                     Address = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
                     Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet",
                     City = "Lorem Ipsum",
-                    Gender = Gender.Male,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow
                 };
@@ -106,7 +103,6 @@ namespace DAL
                     Address = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
                     Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet",
                     City = "Lorem Ipsum",
-                    Gender = Gender.Male,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow
                 };
@@ -155,7 +151,6 @@ namespace DAL
                 {
                     Discount = 500,
                     Cashier = await _context.Users.FirstAsync(),
-                    Customer = cust_1,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow,
                     OrderDetails = new List<OrderDetail>()
@@ -168,7 +163,6 @@ namespace DAL
                 Order ordr_2 = new Order
                 {
                     Cashier = await _context.Users.FirstAsync(),
-                    Customer = cust_2,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow,
                     OrderDetails = new List<OrderDetail>()
