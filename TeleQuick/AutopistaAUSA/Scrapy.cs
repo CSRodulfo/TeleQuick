@@ -21,7 +21,7 @@ namespace TeleQuick.AutopistaAUSA
         public async Task<List<HeaderResponse>> ScrappHeader()
         {
             List<HeaderResponse> list = new List<HeaderResponse>();
-            HtmlNodeCollection coll = form.Html.SelectNodes("//table[@id='GRID1']/tr");
+            HtmlNodeCollection coll = await Task.Run(() => form.Html.SelectNodes("//table[@id='GRID1']/tr"));
             coll.RemoveAt(0);
 
             foreach (HtmlNode cell in coll)

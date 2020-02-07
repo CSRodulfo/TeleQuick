@@ -48,7 +48,7 @@ namespace TeleQuick.AutopistaAUSA
         {
             Scrapy scrapy = new Scrapy(mainPage);
 
-            List<HeaderResponse> headers = await scrapy.ScrappHeader();
+            List<HeaderResponse> headers = await  scrapy.ScrappHeader();
             foreach (var item in headers)
             {
                 await ProcessDetail(item);

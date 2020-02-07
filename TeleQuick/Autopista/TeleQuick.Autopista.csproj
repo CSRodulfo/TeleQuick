@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="iTextSharp" Version="5.5.13.1" />
+    <PackageReference Include="itext7" Version="7.1.9" />
     <PackageReference Include="ScrapySharp" Version="3.0.0" />
   </ItemGroup>
 

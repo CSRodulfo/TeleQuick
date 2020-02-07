@@ -1,27 +1,27 @@
-﻿using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
+﻿using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
+using iText.Kernel.Pdf.Canvas.Parser.Listener;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace TeleQuick.Autopista
 {
-   public static class PDFFile
+    public static class PDFFile
     {
         public static string ReadPdfFile(byte[] bytes)
         {
-            PdfReader reader2 = new PdfReader(bytes);
+            PdfReader reader = new PdfReader( new MemoryStream(bytes));
+            PdfDocument document = new PdfDocument(reader);
             string strText = string.Empty;
 
-            for (int page = 1; page <= reader2.NumberOfPages; page++)
+            for (int page = 1; page <= document.GetNumberOfPages(); page++)
             {
-                ITextExtractionStrategy its = new iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy();
-                PdfReader reader = new PdfReader(bytes);
-                String s = PdfTextExtractor.GetTextFromPage(reader, page, its);
+                ITextExtractionStrategy its = new SimpleTextExtractionStrategy();
+                String s = PdfTextExtractor.GetTextFromPage(document.GetPage(page), its);
 
                 s = Encoding.UTF8.GetString(ASCIIEncoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(s)));
                 strText = strText + s;
-                reader.Close();
             }
             return strText;
         }
