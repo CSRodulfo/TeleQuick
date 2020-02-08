@@ -1,15 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="ScrapySharp" Version="3.0.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Autopista\TeleQuick.Autopista.csproj" />
+    <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.IAutopista.csproj" />
   </ItemGroup>
 
 </Project>
