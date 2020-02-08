@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TeleQuick.AutopistaAUSA;
+using TeleQuick.AutopistaAUSOL;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.WebApi.Controllers
@@ -29,7 +29,7 @@ namespace TeleQuick.WebApi.Controllers
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
             //IConnection connect = new 
-            Login AUSA = new Login();
+            IConnection AUSA = new Login();
 
             await AUSA.ConnectLogin();
 
