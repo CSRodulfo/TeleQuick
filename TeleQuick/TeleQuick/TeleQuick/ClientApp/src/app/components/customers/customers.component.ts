@@ -13,7 +13,6 @@ import { AppTranslationService } from '../../services/app-translation.service';
 import { LocalStoreManager } from '../../services/local-store-manager.service';
 import { Utilities } from '../../services/utilities';
 
-
 @Component({
     selector: 'customers',
     templateUrl: './customers.component.html',

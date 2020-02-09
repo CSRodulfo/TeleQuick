@@ -14,12 +14,38 @@
               </div>
             </div>
         </div>
+
+        <ngx-datatable class="material colored-header sm table-hover"
+          [loadingIndicator]="loadingIndicator"
+          [rows]="rows"
+          [rowHeight]="35"
+          [headerHeight]="35"
+          [footerHeight]="35"
+          [columns]="columns"
+          [columnMode]="'force'">
+        </ngx-datatable>
+
+        <ng-template #statusHeaderTemplate>
+          <i class="fa fa-check-square-o"></i>
+        </ng-template>
+
+        <ng-template #nameTemplate let-row="row" let-value="value">
+          <span *ngIf="!editing[row.$$index + '-name']" class="inline-label" [class.completed]="row.completed" attr.title="Double click to edit - {{value}}" (dblclick)="editing[row.$$index + '-name'] = true">
+            {{value}}
+          </span>
+          <input *ngIf="editing[row.$$index + '-name']" class="inline-editor"  type="text" [value]="value" />
+        </ng-template>
+
+        <ng-template #descriptionTemplate let-row="row" let-value="value">
+          <span *ngIf="!editing[row.$$index + '-description']" class="inline-label" [class.completed]="row.completed" attr.title="Double click to edit - {{value}}" (dblclick)="editing[row.$$index + '-description'] = true">
+            {{value}}
+          </span>
+          <input *ngIf="editing[row.$$index + '-description']" class="inline-editor" type="text" [value]="value" />
+        </ng-template>
+
         <!--The content below is only a placeholder and can be replaced.-->  
 <div style="text-align:center">  
-    <h1 style="margin-top:10px;">  
-      Welcome to Angular<b style="color:crimson">8</b> with ASP.NET Core  
-    </h1>  
-    <img width="200" alt="Angular Logo" src="../assets/angular-asp-core.png">  
+
     <div class="card" style="margin-left:50px; margin-right:50px; margin-bottom:50px;">  
       <div class="card-header" style="font-weight:bold; font-size:x-large;">  
         C# Corner Latest Posts from RSS Feeds  
