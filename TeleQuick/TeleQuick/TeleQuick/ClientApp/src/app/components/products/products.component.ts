@@ -32,8 +32,6 @@ export class ProductsComponent implements OnInit {
   loadingIndicator = true;
   formResetToggle = true;
 
-
-
   onSearchChanged(value: string) {
       this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.name, r.description) || value == 'important' && r.important || value == 'not important' && !r.important);
     };
@@ -41,37 +39,24 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.loadingIndicator = true;
 
+    this.rows = [
+      { name: 'Create visual studio extension', description: 'Create a visual studio VSIX extension package that will add this project as an aspnet-core project template' },
+      { name: 'Do a quick how-to writeup', description: '' },
+      { name: 'Create aspnet-core/Angular8 tutorials based on this project', description: 'Create tutorials (blog/video/youtube) on how to build applications (full stack)' },
+    ];
 
-      //this.refreshDataIndexes(data);
-      this.rows = [
-        { name: 'Create visual studio extension', description: 'Create a visual studio VSIX extension package that will add this project as an aspnet-core project template' },
-        { name: 'Do a quick how-to writeup', description: '' },
-        { name: 'Create aspnet-core/Angular8 tutorials based on this project', description: 'Create tutorials (blog/video/youtube) on how to build applications (full stack)' },
-      ];
-      //this.rowsCache = [...data];
-      this.isDataLoaded = true;
+    this.isDataLoaded = true;
 
-      setTimeout(() => { this.loadingIndicator = false; }, 1500);
+    setTimeout(() => { this.loadingIndicator = false; }, 1500);
     
-      
     this.columns = [
       { prop: 'name', name: 'Tareas', cellTemplate: this.nameTemplate, width: 200 },
-      { prop: 'description', name: 'Descripcion', cellTemplate: this.descriptionTemplate, width: 500 },
+      { prop: 'description', name: 'Descripcion', cellTemplate: this.descriptionTemplate, width: 500, resizeable: false},
+      { prop: 'tools', name: '', width: 80, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false }
+
     ];
   }
-
-  
-  refreshDataIndexes(data) {
-    let index = 0;
-
-    for (const i of data) {
-      i.$$index = index++;
-    }
-  }
     
-    @ViewChild('statusTemplate', { static: true })
-    statusTemplate: TemplateRef<any>;
-  
     @ViewChild('nameTemplate', { static: true })
     nameTemplate: TemplateRef<any>;
   
@@ -80,5 +65,4 @@ export class ProductsComponent implements OnInit {
   
     @ViewChild('actionsTemplate', { static: true })
     actionsTemplate: TemplateRef<any>;
-  
 }
