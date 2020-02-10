@@ -20,9 +20,14 @@ namespace TeleQuick.Controllers
         //}
         // GET: api/BaseData
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Test> list = new List<Test>();
+            list.Add(new Test() { Name = "Create visual studio extension", Description = "Create a visual studio VSIX extension package that wi" });
+            list.Add(new Test() { Name = "Do a quick how-to writeup", Description = "Lola" });
+            list.Add(new Test() { Name = "Create aspnet-core/Angular8 tutorials based on this project", Description = "Create tutorials (blog/video/youtube) " });
+
+            return Ok(list);
         }
 
         // GET: api/BaseData/5
@@ -50,4 +55,12 @@ namespace TeleQuick.Controllers
         {
         }
     }
+}
+
+public class Test
+{
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+
 }

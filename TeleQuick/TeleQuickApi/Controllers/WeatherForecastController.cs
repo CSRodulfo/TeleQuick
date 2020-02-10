@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TeleQuick.AutopistaAUSOL;
+using TeleQuick.AutopistaAUSA;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.WebApi.Controllers
@@ -29,9 +30,13 @@ namespace TeleQuick.WebApi.Controllers
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
             //IConnection connect = new 
-            IConnection AUSA = new Login();
+            IConnection AUSA = new AutopistaAUSA.Login();
 
             await AUSA.ConnectLogin();
+
+            IConnection AUSOL = new AutopistaAUSOL.Login();
+
+            await AUSOL.ConnectLogin();
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
