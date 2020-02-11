@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Business
+namespace IDataAccess
 {
     public class Class1
     {

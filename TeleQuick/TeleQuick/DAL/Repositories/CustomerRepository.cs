@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Business;
-using DAL.Repositories.Interfaces;
+using IDataAccess.Repositories;
 
-namespace DAL.Repositories
+namespace DataAccess.Repositories
 {
     public class CustomerRepository : Repository<Customer>, ICustomerRepository
     {

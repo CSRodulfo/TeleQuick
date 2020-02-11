@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace IService
+namespace IDataAccess
 {
     public interface ICustomerService
     {

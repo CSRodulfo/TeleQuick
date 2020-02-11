@@ -12,19 +12,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Core;
-using DAL.Core.Interfaces;
+using DataAccess.Core;
+using IDataAccess;
+using IDataAccess.Repositories;
+using DataAcces.Core;
 
-namespace DAL
+namespace DataAccess
 {
-    public interface IDatabaseInitializer
-    {
-        Task SeedAsync();
-    }
-
-
-
-
     public class DatabaseInitializer : IDatabaseInitializer
     {
         private readonly ApplicationDbContext _context;

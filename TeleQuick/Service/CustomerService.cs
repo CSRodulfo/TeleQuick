@@ -1,6 +1,7 @@
 using AutoMapper;
 using Business;
-using DAL;
+using DataAccess;
+using IDataAccess;
 using IService;
 using System;
 using System.Collections.Generic;

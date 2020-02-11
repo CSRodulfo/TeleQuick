@@ -15,7 +15,7 @@ using System.Threading;
 using Business.Interfaces;
 using Business.Business;
 
-namespace DAL
+namespace DataAccess
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

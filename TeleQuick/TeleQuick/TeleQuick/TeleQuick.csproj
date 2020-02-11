@@ -41,10 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Boostrapper\Boostrapper.csproj" />
     <ProjectReference Include="..\..\Business\Business.csproj" />
     <ProjectReference Include="..\..\IService\IService.csproj" />
-    <ProjectReference Include="..\..\Service\Service.csproj" />
-    <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +67,25 @@
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="ClientApp\dist\**" />
     <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200207181319_PrubaCustomer.cs" />
+    <Compile Remove="Migrations\20200207181319_PrubaCustomer.Designer.cs" />
+    <Compile Remove="Migrations\20200207181509_PruebComr.cs" />
+    <Compile Remove="Migrations\20200207181509_PruebComr.Designer.cs" />
+    <Compile Remove="Migrations\20200207182423_Gender.cs" />
+    <Compile Remove="Migrations\20200207182423_Gender.Designer.cs" />
+    <Compile Remove="Migrations\20200207185012_UserAccount.cs" />
+    <Compile Remove="Migrations\20200207185012_UserAccount.Designer.cs" />
+    <Compile Remove="Migrations\20200207185424_UserAccout.cs" />
+    <Compile Remove="Migrations\20200207185424_UserAccout.Designer.cs" />
+    <Compile Remove="Migrations\20200207190321_lng.cs" />
+    <Compile Remove="Migrations\20200207190321_lng.Designer.cs" />
+    <Compile Remove="Migrations\20200207191932_dataannotation.cs" />
+    <Compile Remove="Migrations\20200207191932_dataannotation.Designer.cs" />
+    <Compile Remove="Migrations\20200208020900_Datos.cs" />
+    <Compile Remove="Migrations\20200208020900_Datos.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

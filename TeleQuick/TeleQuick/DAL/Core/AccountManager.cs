@@ -3,7 +3,6 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Core.Interfaces;
 using Business;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,8 +13,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using IDataAccess;
+using DataAccess;
 
-namespace DAL.Core
+namespace DataAcces.Core
 {
     public class AccountManager : IAccountManager
     {
@@ -36,9 +37,6 @@ namespace DAL.Core
             _roleManager = roleManager;
 
         }
-
-
-
 
         public async Task<ApplicationUser> GetUserByIdAsync(string userId)
         {

@@ -8,12 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DAL;
 using TeleQuick.ViewModels;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using TeleQuick.Helpers;
-using IService;
+using IDataAccess;
 
 namespace TeleQuick.Controllers
 {
@@ -26,12 +25,12 @@ namespace TeleQuick.Controllers
         private readonly IEmailSender _emailSender;
 
 
-        public CustomerController(IMapper mapper, ICustomerService customer, ILogger<CustomerController> logger, IEmailSender emailSender)
+        public CustomerController(IMapper mapper, ICustomerService customer, ILogger<CustomerController> logger)//, IEmailSender emailSender)
         {
             _mapper = mapper;
             _customer = customer;
             _logger = logger;
-            _emailSender = emailSender;
+           // _emailSender = emailSender;
         }
 
 
@@ -54,21 +53,21 @@ namespace TeleQuick.Controllers
 
 
 
-        [HttpGet("email")]
-        public async Task<string> Email()
-        {
-            string recepientName = "QickApp Tester"; //         <===== Put the recepient's name here
-            string recepientEmail = "test@ebenmonney.com"; //   <===== Put the recepient's email here
+        //[HttpGet("email")]
+        //public async Task<string> Email()
+        //{
+        //    string recepientName = "QickApp Tester"; //         <===== Put the recepient's name here
+        //    string recepientEmail = "test@ebenmonney.com"; //   <===== Put the recepient's email here
 
-            string message = EmailTemplates.GetTestEmail(recepientName, DateTime.UtcNow);
+        //    string message = EmailTemplates.GetTestEmail(recepientName, DateTime.UtcNow);
 
-            (bool success, string errorMsg) = await _emailSender.SendEmailAsync(recepientName, recepientEmail, "Test Email from TeleQuick", message);
+        //    (bool success, string errorMsg) = await _emailSender.SendEmailAsync(recepientName, recepientEmail, "Test Email from TeleQuick", message);
 
-            if (success)
-                return "Success";
+        //    if (success)
+        //        return "Success";
 
-            return "Error: " + errorMsg;
-        }
+        //    return "Error: " + errorMsg;
+        //}
 
 
 

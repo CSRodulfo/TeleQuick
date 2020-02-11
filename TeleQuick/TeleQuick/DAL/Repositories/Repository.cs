@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Repositories.Interfaces;
+using IDataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Repositories
+namespace DataAccess.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

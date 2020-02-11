@@ -3,9 +3,11 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Core;
+using DataAccess.Core;
+using DataAcces.Core;
 using System;
 using System.Linq;
+using Business;
 
 namespace TeleQuick.ViewModels
 {

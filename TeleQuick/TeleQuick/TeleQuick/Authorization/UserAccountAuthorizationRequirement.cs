@@ -3,13 +3,14 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Core;
 using Microsoft.AspNetCore.Authorization;
 using TeleQuick.Helpers;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Business;
+using DataAccess.Core;
 
 namespace TeleQuick.Authorization
 {

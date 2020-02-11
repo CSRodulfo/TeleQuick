@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DAL.Repositories.Interfaces
+namespace IDataAccess.Repositories
 {
     public interface IProductRepository : IRepository<Product>
     {

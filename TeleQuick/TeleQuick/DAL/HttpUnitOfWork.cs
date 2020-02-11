@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Core;
+using Business;
+using DataAccess.Core;
 using Microsoft.AspNetCore.Http;
 
-namespace DAL
+namespace DataAccess
 {
     public class HttpUnitOfWork : UnitOfWork
     {

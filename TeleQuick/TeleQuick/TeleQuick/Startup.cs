@@ -4,9 +4,6 @@
 // =============================
 
 using AutoMapper;
-using DAL;
-using DAL.Core;
-using DAL.Core.Interfaces;
 using Business;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -24,9 +21,8 @@ using TeleQuick.Authorization;
 using TeleQuick.Helpers;
 using System;
 using System.Collections.Generic;
-using AppPermissions = DAL.Core.ApplicationPermissions;
-using IService;
-using Service;
+using AppPermissions = Business.ApplicationPermissions;
+using DataAccess;
 
 namespace TeleQuick
 {
@@ -35,17 +31,20 @@ namespace TeleQuick
         private IWebHostEnvironment _env { get; }
         public IConfiguration Configuration { get; }
 
-
+        private readonly Boostrapper.Startup boostrapperStartup;
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
             Configuration = configuration;
+            this.boostrapperStartup = new Boostrapper.Startup(configuration);
         }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            this.boostrapperStartup.ConfigureServices(services);
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("TeleQuick")));
 
@@ -150,24 +149,12 @@ namespace TeleQuick
             // Configurations
             services.Configure<AppSettings>(Configuration);
 
-
-            // Business Services
-            services.AddScoped<IEmailSender, EmailSender>();
-
-
-            // Repositories
-            services.AddScoped<IUnitOfWork, HttpUnitOfWork>();
-            services.AddScoped<IAccountManager, AccountManager>();
-            services.AddScoped<ICustomerService, CustomerService>();
-
             // Auth Handlers
             services.AddSingleton<IAuthorizationHandler, ViewUserAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, ManageUserAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, ViewRoleAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, AssignRolesAuthorizationHandler>();
 
-            // DB Creation and Seeding
-            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
         }
 
 

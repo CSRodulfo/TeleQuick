@@ -13,12 +13,11 @@ using Microsoft.Extensions.Logging;
 using TeleQuick.ViewModels;
 using AutoMapper;
 using Business;
-using DAL.Core.Interfaces;
 using TeleQuick.Authorization;
 using TeleQuick.Helpers;
 using Microsoft.AspNetCore.JsonPatch;
-using DAL.Core;
 using IdentityServer4.AccessTokenValidation;
+using IService;
 
 namespace TeleQuick.Controllers
 {

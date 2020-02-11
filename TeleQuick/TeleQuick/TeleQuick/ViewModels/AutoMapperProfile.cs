@@ -4,7 +4,7 @@
 // =============================
 
 using AutoMapper;
-using DAL.Core;
+using DataAccess.Core;
 using Business;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAcces.Core;
 
 namespace TeleQuick.ViewModels
 {

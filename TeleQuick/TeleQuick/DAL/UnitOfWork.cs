@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Repositories;
-using DAL.Repositories.Interfaces;
+using DataAccess.Repositories;
+using IDataAccess.Repositories;
 
-namespace DAL
+namespace DataAccess
 {
     public class UnitOfWork : IUnitOfWork
     {

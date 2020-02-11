@@ -5,7 +5,7 @@
 
 using System;
 
-namespace DAL.Core
+namespace DataAccess.Core
 {
     public enum Gender
     {

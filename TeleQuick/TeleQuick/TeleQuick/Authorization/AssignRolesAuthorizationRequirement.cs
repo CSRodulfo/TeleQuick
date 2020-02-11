@@ -3,7 +3,8 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Core;
+using Business;
+using DataAccess.Core;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Linq;
@@ -16,8 +17,6 @@ namespace TeleQuick.Authorization
     {
 
     }
-
-
 
     public class AssignRolesAuthorizationHandler : AuthorizationHandler<AssignRolesAuthorizationRequirement, (string[] newRoles, string[] currentRoles)>
     {

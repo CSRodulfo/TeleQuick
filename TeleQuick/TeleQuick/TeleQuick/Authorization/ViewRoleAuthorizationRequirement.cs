@@ -3,7 +3,8 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Core;
+using Business;
+using DataAccess.Core;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using System.Text;

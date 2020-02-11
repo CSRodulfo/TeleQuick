@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using DAL.Repositories.Interfaces;
+using IDataAccess.Repositories;
 
-namespace DAL.Repositories
+namespace DataAccess.Repositories
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {
