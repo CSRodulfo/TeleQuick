@@ -16,7 +16,7 @@ export class AppTranslationService {
   languageChanged$ = this.onLanguageChanged.asObservable();
 
   constructor(private translate: TranslateService) {
-    this.addLanguages(['en', 'fr', 'de', 'pt', 'ar', 'ko']);
+    this.addLanguages(['en', 'fr', 'de', 'pt', 'ar', 'ko', 'es']);
     this.setDefaultLanguage('en');
   }
 
@@ -47,7 +47,7 @@ export class AppTranslationService {
   useBrowserLanguage(): string | void {
     const browserLang = this.getBrowserLanguage();
 
-    if (browserLang.match(/en|fr|de|pt|ar|ko/)) {
+    if (browserLang.match(/en|fr|de|pt|ar|ko|es/)) {
       this.changeLanguage(browserLang);
       return browserLang;
     }
@@ -104,6 +104,8 @@ export class TranslateLanguageLoader implements TranslateLoader {
         return of(require('../assets/locale/ar.json'));
       case 'ko':
         return of(require('../assets/locale/ko.json'));
+      case 'es':
+          return of(require('../assets/locale/es.json'));
       default:
     }
   }

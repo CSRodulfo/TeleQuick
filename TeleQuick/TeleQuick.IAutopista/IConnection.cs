@@ -1,15 +1,14 @@
 ﻿using ScrapySharp.Network;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Autopista;
 
 namespace TeleQuick.IAutopista
 {
-    public interface IConnection
+    public interface IHighwayProcessable
     {
         Task ConnectLogin();
-        Task ProcessHeader(WebPage mainPage);
-
-        Task ProcessDetail(HeaderResponse header);
+        Task<List<HeaderResponse>> Process();
     }
 }

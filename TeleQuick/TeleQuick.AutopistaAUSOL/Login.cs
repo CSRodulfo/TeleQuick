@@ -8,7 +8,7 @@ using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
 {
-    public class Login : IConnection
+    public class Login : IHighwayProcessable
     {
         private const string MainForm = "form1";
         private const string Uri = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/Login.aspx";
@@ -16,6 +16,7 @@ namespace TeleQuick.AutopistaAUSOL
         private Dictionary<string, string> dictionary;
 
         Connect connect;
+        WebPage mainPage;
 
         public Login()
         {
@@ -34,8 +35,21 @@ namespace TeleQuick.AutopistaAUSOL
 
         public async Task ConnectLogin()
         {
-            WebPage mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
-            await this.ProcessHeader(mainPage);
+            mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
+            await Task.FromResult(0);
+        }
+
+        public async Task<List<HeaderResponse>> Process()
+        {
+            Scrapy scrapy = new Scrapy(mainPage);
+
+            List<HeaderResponse> headers = await scrapy.ScrappHeader();
+            foreach (var item in headers)
+            {
+                await ProcessDetail(item);
+            }
+
+            return headers;
         }
 
         public Task ProcessDetail(HeaderResponse header)

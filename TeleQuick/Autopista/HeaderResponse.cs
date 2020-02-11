@@ -49,6 +49,6 @@ namespace TeleQuick.Autopista
         public string Campo36 { get; set; }
         public string Campo37 { get; set; }
 
-        public List<DetailResponse> Details;
+        public List<DetailResponse> Details { get; set; }
     }
 }

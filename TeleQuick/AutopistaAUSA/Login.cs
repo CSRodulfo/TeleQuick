@@ -12,7 +12,7 @@ using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class Login : IConnection
+    public class Login : IHighwayProcessable
     {
         private const string MainForm = "MAINFORM";
         private const string Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0";
@@ -20,6 +20,7 @@ namespace TeleQuick.AutopistaAUSA
         private Dictionary<string, string> dictionary;
 
         Connect connect;
+        WebPage mainPage;
 
         public Login()
         {
@@ -41,20 +42,27 @@ namespace TeleQuick.AutopistaAUSA
         }
         public async Task ConnectLogin()
         {
-            WebPage mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
-            await this.ProcessHeader(mainPage);
+            mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
+            await Task.FromResult(0);
         }
-        public async Task ProcessHeader(WebPage mainPage)
+        public async Task<List<HeaderResponse>> Process()
+        {
+            return await this.ProcessHeader(this.mainPage);
+        }
+
+        private async Task<List<HeaderResponse>> ProcessHeader(WebPage mainPage)
         {
             Scrapy scrapy = new Scrapy(mainPage);
 
-            List<HeaderResponse> headers = await  scrapy.ScrappHeader();
+            List<HeaderResponse> headers = await scrapy.ScrappHeader();
             foreach (var item in headers)
             {
                 await ProcessDetail(item);
             }
+
+            return headers;
         }
-        public async Task ProcessDetail(HeaderResponse header)
+        private async Task ProcessDetail(HeaderResponse header)
         {
 
             WebPage homePage = await connect.GetWebPage(Uri2 + header.Campo2);

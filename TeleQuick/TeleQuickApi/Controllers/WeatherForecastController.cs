@@ -7,11 +7,12 @@ using Microsoft.Extensions.Logging;
 using TeleQuick.AutopistaAUSOL;
 using TeleQuick.AutopistaAUSA;
 using TeleQuick.IAutopista;
+using TeleQuick.Autopista;
 
 namespace TeleQuick.WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -26,26 +27,26 @@ namespace TeleQuick.WebApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        [HttpGet("GetAUSA")]
+        public async Task<List<HeaderResponse>> Get()
         {
-            //IConnection connect = new 
-            IConnection AUSA = new AutopistaAUSA.Login();
-
+            IAutopista.IHighwayProcessable AUSA = new AutopistaAUSA.Login();
             await AUSA.ConnectLogin();
 
-            IConnection AUSOL = new AutopistaAUSOL.Login();
+            var data = AUSA.Process();
 
+            return await data;
+        }
+
+        [HttpGet("GetAUSOL")]
+        public async Task<List<HeaderResponse>> GetAUSOL()
+        {
+            IAutopista.IHighwayProcessable AUSOL = new AutopistaAUSOL.Login();
             await AUSOL.ConnectLogin();
 
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var data = AUSOL.Process();
+
+            return await data;
         }
     }
 }
