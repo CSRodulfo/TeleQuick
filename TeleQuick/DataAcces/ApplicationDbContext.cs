@@ -71,7 +71,7 @@ namespace DataAccess
             builder.Entity<OrderDetail>().Property(p => p.UnitPrice).HasColumnType(priceDecimalType);
             builder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType(priceDecimalType);
 
-            builder.Entity<UserAccount>().ToTable($"App{nameof(this.UserAccounts)}");
+            builder.Entity<UserAccount>().ToTable($"{nameof(this.UserAccounts)}");
 
         }
 
