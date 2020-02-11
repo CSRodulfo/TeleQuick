@@ -29,9 +29,9 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSA")]
         public async Task<List<HeaderResponse>> Get()
         {
-            var a = await _connection.LoginWebPage(new AutopistaAUSA.Login());
+            var AUSALogin = await _connection.LoginWebPage(new AutopistaAUSA.Login());
 
-            Scrapy scrapy = new Scrapy(_connection, a);
+            Scrapy scrapy = new Scrapy(_connection, AUSALogin);
 
             return await scrapy.Process();
         }
@@ -39,9 +39,9 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSOL")]
         public async Task<List<HeaderResponse>> GetAUSOL()
         {
-            var a = await _connection.LoginWebPage(new AutopistaAUSOL.Login());
+            var AUSOLLogin = await _connection.LoginWebPage(new AutopistaAUSOL.Login());
 
-            Scrapy scrapy = new Scrapy(_connection, a);
+            Scrapy scrapy = new Scrapy(_connection, AUSOLLogin);
 
             return await scrapy.Process(); 
         }
