@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TeleQuick.Core.AutopistaModel\TeleQuick.Core.AutopistaModel.csproj" />
+    <ProjectReference Include="..\TeleQuick.Core.AutopistaModel\TeleQuick.Core.Autopista.Model.csproj" />
     <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.Core.IAutopista.csproj" />
   </ItemGroup>
 

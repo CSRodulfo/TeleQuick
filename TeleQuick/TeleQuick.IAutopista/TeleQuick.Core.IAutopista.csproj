@@ -8,4 +8,8 @@
     <PackageReference Include="ScrapySharp" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeleQuick.Core.AutopistaModel\TeleQuick.Core.Autopista.Model.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,9 +1,16 @@
-https://aubasa.com.ar/ (25 de mayo)
+﻿Modelo A
+https://www.sixon.com.ar/Fael/servlet/hlogin?2  (camino buen ayre) CEAMSE
+https://cliente.ausa.com.ar/fael/servlet/hlogin?6 (AUSA Viejo) AUSA
+https://www.sixon.com.ar/Fael/servlet/hlogin?1 (25 de mayo) AUBASA
 
-https://www.ausol.com.ar:91/WebPages/EstadoCuenta/Login.aspx (Panamericana)
+Medelo B
+https://www.ausol.com.ar:91/WebPages/Home.aspx (Panamericana)  AUSOL
 
-https://ausur.mifactura.com.ar/Default.aspx  (richierie)
+Medelo C
+https://clientes.ausa.com.ar/   AUSA
 
-http://www.auoeste.com.ar/sitio/micro_ciac/logautogestion.asp  (acceso oeste)
+Medelo D
+https://ausur.mifactura.com.ar/Default.aspx  (richierie) AUSUR
 
-https://www.sixon.com.ar/Fael/servlet/hlogin?2  (camino buen ayre)
+Medelo E
+http://www.auoeste.com.ar/sitio/micro_ciac/logautogestion.asp  (acceso oeste) AUOESTE

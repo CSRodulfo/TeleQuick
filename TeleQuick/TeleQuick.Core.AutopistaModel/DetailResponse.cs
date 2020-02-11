@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TeleQuick.Core.AutopistaModel
+namespace TeleQuick.Core.Autopista.Model
 {
     public class DetailResponse
     {

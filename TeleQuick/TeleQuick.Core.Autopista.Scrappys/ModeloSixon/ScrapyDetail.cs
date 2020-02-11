@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeleQuick.Core.AutopistaModel;
+using TeleQuick.Core.Autopista.Model;
 
 namespace TeleQuick.AutopistaAUSA
 {

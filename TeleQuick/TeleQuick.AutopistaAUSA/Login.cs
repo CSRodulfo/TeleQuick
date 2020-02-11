@@ -1,7 +1,7 @@
 ﻿using ScrapySharp.Network;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeleQuick.Core.AutopistaModel;
+using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 

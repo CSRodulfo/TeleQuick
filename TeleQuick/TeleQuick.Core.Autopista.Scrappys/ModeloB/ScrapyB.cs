@@ -1,31 +1,27 @@
 ﻿using HtmlAgilityPack;
 using ScrapySharp.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TeleQuick.Core.AutopistaModel;
+using TeleQuick.Core.Autopista.Model;
 using TeleQuick.IAutopista;
 
-namespace TeleQuick.AutopistaAUSA
+namespace TeleQuick.AutopistaAUSOL
 {
-    public class Scrapy
+    public class ScrapyB : IScrapy
     {
         IConnection _connection;
         WebPage _mainWebPage;
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
 
-        public Scrapy(IConnection connection, WebPage mainWebPage)
+        public ScrapyB(IConnection connection, WebPage mainWebPage)
         {
             _connection = connection;
             _mainWebPage = mainWebPage;
         }
 
         public async Task<List<HeaderResponse>> Process()
-        {
-            return await this.ProcessHeader(_mainWebPage);
-        }
-
-        private async Task<List<HeaderResponse>> ProcessHeader(WebPage mainPage)
         {
             List<HeaderResponse> headers = await this.ScrappHeader();
             foreach (var item in headers)
@@ -35,25 +31,22 @@ namespace TeleQuick.AutopistaAUSA
 
             return headers;
         }
-        private async Task ProcessDetail(HeaderResponse header)
+
+        public Task ProcessDetail(HeaderResponse header)
         {
-
-            WebPage homePage = await _connection.GetWebPage(Uri2 + header.Campo2);
-
-            ScrapyDetail scrapy = new ScrapyDetail(homePage);
-
-            header.Details.AddRange(await scrapy.ScrappDetail());
-
+            throw new NotImplementedException();
         }
 
         public async Task<List<HeaderResponse>> ScrappHeader()
         {
             List<HeaderResponse> list = new List<HeaderResponse>();
-            HtmlNodeCollection coll = await Task.Run(() => _mainWebPage.Html.SelectNodes("//table[@id='GRID1']/tr"));
-            coll.RemoveAt(0);
+            HtmlNodeCollection coll = await Task.Run(() => _mainWebPage.Html.SelectNodes("//*[@id='MainContent_ChildContent_gdvCuentas_hlnkDescripcion_0']"));
 
             foreach (HtmlNode cell in coll)
             {
+
+                var b = cell.Attributes["href"].Value;
+
                 var a = cell.ChildNodes.Where(n => n.Name == "td").ToList();
 
                 HeaderResponse header = new HeaderResponse();
@@ -99,5 +92,7 @@ namespace TeleQuick.AutopistaAUSA
             }
             return list;
         }
+
+
     }
 }

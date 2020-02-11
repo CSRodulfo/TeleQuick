@@ -3,7 +3,8 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.AutopistaAUSA;
-using TeleQuick.Core.AutopistaModel;
+using TeleQuick.AutopistaAUSOL;
+using TeleQuick.Core.Autopista.Model;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.WebApi.Controllers
@@ -31,7 +32,7 @@ namespace TeleQuick.WebApi.Controllers
         {
             var AUSALogin = await _connection.LoginWebPage(new AutopistaAUSA.Login());
 
-            Scrapy scrapy = new Scrapy(_connection, AUSALogin);
+            IScrapy scrapy = new ScrapySixon(_connection, AUSALogin);
 
             return await scrapy.Process();
         }
@@ -41,7 +42,7 @@ namespace TeleQuick.WebApi.Controllers
         {
             var AUSOLLogin = await _connection.LoginWebPage(new AutopistaAUSOL.Login());
 
-            Scrapy scrapy = new Scrapy(_connection, AUSOLLogin);
+            IScrapy scrapy = new ScrapyB(_connection, AUSOLLogin);
 
             return await scrapy.Process(); 
         }

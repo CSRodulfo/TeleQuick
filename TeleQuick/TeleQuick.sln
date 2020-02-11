@@ -36,7 +36,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Negocio", "Negocio", "{E3CB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{771D2D8F-A70F-4B88-B19E-6A90CCAB3CC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleQuick.Core.AutopistaModel", "TeleQuick.Core.AutopistaModel\TeleQuick.Core.AutopistaModel.csproj", "{9DD29905-C7D7-4433-A171-98C7D4A3A94C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Core.Autopista.Model", "TeleQuick.Core.AutopistaModel\TeleQuick.Core.Autopista.Model.csproj", "{9DD29905-C7D7-4433-A171-98C7D4A3A94C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleQuick.Core.Autopista.Scrappys", "TeleQuick.Core.Autopista.Scrappys\TeleQuick.Core.Autopista.Scrappys.csproj", "{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +98,10 @@ Global
 		{9DD29905-C7D7-4433-A171-98C7D4A3A94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD29905-C7D7-4433-A171-98C7D4A3A94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DD29905-C7D7-4433-A171-98C7D4A3A94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
