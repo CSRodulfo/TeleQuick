@@ -4,20 +4,19 @@ using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.IAutopista;
 
 namespace TeleQuick.Autopista
 {
-    public class Connect
+    public class Connection : IConnection
     {
         private ScrapingBrowser browser;
-        public Connect()
+        public Connection()
         {
             browser = new ScrapingBrowser();
-            //set UseDefaultCookiesParser as false if a website returns invalid cookies format
             browser.UseDefaultCookiesParser = false;
             browser.AllowAutoRedirect = true;
             browser.AllowMetaRedirect = true;
-
         }
 
         public async Task<WebPage> LoginWebPage(string Uri, string MainForm, Dictionary<string, string> dictionary)
@@ -36,6 +35,11 @@ namespace TeleQuick.Autopista
         public async Task<WebPage> GetWebPage(string Uri)
         {
             return await browser.NavigateToPageAsync(new Uri(Uri));
+        }
+
+        public ScrapingBrowser GetBrowser()
+        {
+            return browser;
         }
     }
 }

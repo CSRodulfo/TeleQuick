@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeleQuick.Autopista;
 
 namespace TeleQuick.IAutopista
 {
-    public interface IHighwayProcessable
+    public interface IConnection
     {
-        Task ConnectLogin();
-        Task<List<HeaderResponse>> Process();
+        ScrapingBrowser GetBrowser();
+        Task<WebPage> LoginWebPage(string Uri, string MainForm, Dictionary<string, string> dictionary);
+        Task<WebPage> GetWebPage(string Uri);
     }
 }

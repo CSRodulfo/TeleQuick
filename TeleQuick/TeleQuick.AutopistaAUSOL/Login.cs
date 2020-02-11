@@ -8,17 +8,17 @@ using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
 {
-    public class Login : IHighwayProcessable
+    public class Login 
     {
         private const string MainForm = "form1";
         private const string Uri = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/Login.aspx";
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
         private Dictionary<string, string> dictionary;
 
-        Connect connect;
+        IConnection connect;
         WebPage mainPage;
 
-        public Login()
+        public Login(IConnection connection)
         {
             dictionary = new Dictionary<string, string>();
 
@@ -30,7 +30,7 @@ namespace TeleQuick.AutopistaAUSOL
             dictionary.Add("ctl00$ctl00$MainContent$ChildContent$txtClienteAusolClave", "Sr4!D!33A3j2NdA");
             dictionary.Add("ctl00$ctl00$MainContent$ChildContent$btnIngresar", "INGRESAR");
 
-            connect = new Connect();
+            connect = connection;
         }
 
         public async Task ConnectLogin()

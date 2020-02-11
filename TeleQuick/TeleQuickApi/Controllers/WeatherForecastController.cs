@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Autopista;
+using TeleQuick.IAutopista;
 
 namespace TeleQuick.WebApi.Controllers
 {
@@ -17,31 +18,33 @@ namespace TeleQuick.WebApi.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        IConnection _connection; 
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConnection connection)
         {
             _logger = logger;
+            _connection = connection;
         }
 
         [HttpGet("GetAUSA")]
         public async Task<List<HeaderResponse>> Get()
         {
-            IAutopista.IHighwayProcessable AUSA = new AutopistaAUSA.Login();
-            await AUSA.ConnectLogin();
+            
+            _connection.GetBrowser();
 
-            var data = AUSA.Process();
+            //var data = AUSA.Process();
 
-            return await data;
+            return null;
         }
 
         [HttpGet("GetAUSOL")]
         public async Task<List<HeaderResponse>> GetAUSOL()
         {
-            IAutopista.IHighwayProcessable AUSOL = new AutopistaAUSOL.Login();
-            await AUSOL.ConnectLogin();
+            _connection.GetBrowser();
 
-            var data = AUSOL.Process();
 
-            return await data;
+            //var data = AUSOL.Process();
+
+            return  null;
         }
     }
 }

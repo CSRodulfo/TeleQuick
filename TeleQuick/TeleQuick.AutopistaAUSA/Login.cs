@@ -12,17 +12,16 @@ using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class Login : IHighwayProcessable
+    public class Login 
     {
         private const string MainForm = "MAINFORM";
         private const string Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0";
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
         private Dictionary<string, string> dictionary;
 
-        Connect connect;
+        IConnection connect;
         WebPage mainPage;
-
-        public Login()
+        public Login(IConnection connection)
         {
             dictionary = new Dictionary<string, string>();
 
@@ -38,7 +37,7 @@ namespace TeleQuick.AutopistaAUSA
             dictionary.Add("_BAN", "0");
             dictionary.Add("sCallerURL", "");
 
-            connect = new Connect();
+            connect = connection;
         }
         public async Task ConnectLogin()
         {
