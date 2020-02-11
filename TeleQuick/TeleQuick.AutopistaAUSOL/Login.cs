@@ -35,8 +35,16 @@ namespace TeleQuick.AutopistaAUSOL
 
         public async Task ConnectLogin()
         {
-            mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
-            await Task.FromResult(0);
+            try
+            {
+                mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
+                await Task.FromResult(0);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
 
         public async Task<List<HeaderResponse>> Process()

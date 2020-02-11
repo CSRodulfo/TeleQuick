@@ -21,23 +21,13 @@ namespace TeleQuick.AutopistaAUSOL
         public async Task<List<HeaderResponse>> ScrappHeader()
         {
             List<HeaderResponse> list = new List<HeaderResponse>();
-            HtmlNodeCollection coll = await Task.Run(() => form.Html.SelectNodes("//table[@id='GRID1']/tr"));
-
-            //var nodes = form.Html.se("div.content"); //all div elements with css class ‘content’
-
-            form.Html.Descendants("a").Select(x => x.Attributes["id"].Name = "lnkMisCuentas");
-            var link = form.Html
-                              .Descendants("a")
-                              .First(x => x.Attributes["class"] != null
-                                       && x.Attributes["class"].Value == "undMe");
-
-            string hrefValue = link.Attributes["href"].Value;
-            long playerId = Convert.ToInt64(hrefValue.Split('=')[1]);
-
-            coll.RemoveAt(0);
+            HtmlNodeCollection coll = await Task.Run(() => form.Html.SelectNodes("//*[@id='MainContent_ChildContent_gdvCuentas_hlnkDescripcion_0']"));
 
             foreach (HtmlNode cell in coll)
             {
+
+                var b = cell.Attributes["href"].Value;
+
                 var a = cell.ChildNodes.Where(n => n.Name == "td").ToList();
 
                 HeaderResponse header = new HeaderResponse();
