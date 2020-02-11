@@ -1,11 +1,10 @@
 ﻿using DataAcces.Core;
 using DataAccess;
 using IDataAccess;
-using IDataAccess.Repositories;
+using IDataAccess.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service;
-using System;
 
 namespace Boostrapper
 {

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autopista\TeleQuick.Autopista.csproj" />
+    <ProjectReference Include="..\TeleQuick.Autopista\TeleQuick.Autopista.csproj" />
   </ItemGroup>
 
 </Project>

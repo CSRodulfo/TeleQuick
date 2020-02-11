@@ -13,8 +13,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using IDataAccess;
 using DataAccess;
+using IDataAccess.Core;
 
 namespace DataAcces.Core
 {

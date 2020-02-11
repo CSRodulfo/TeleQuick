@@ -3,21 +3,21 @@
 // www.ebenmonney.com/templates
 // =============================
 
+using AutoMapper;
+using Business;
+using IDataAccess.Core;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Logging;
-using TeleQuick.ViewModels;
-using AutoMapper;
-using Business;
 using TeleQuick.Authorization;
 using TeleQuick.Helpers;
-using Microsoft.AspNetCore.JsonPatch;
-using IdentityServer4.AccessTokenValidation;
-using IDataAccess;
+using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers
 {

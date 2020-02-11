@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TeleQuick.AutopistaAUSOL;
-using TeleQuick.AutopistaAUSA;
-using TeleQuick.IAutopista;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using TeleQuick.Autopista;
 
 namespace TeleQuick.WebApi.Controllers

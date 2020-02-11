@@ -4,18 +4,13 @@
 // =============================
 
 using Business;
-using Microsoft.AspNetCore.Identity;
+using IDataAccess;
+using IDataAccess.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Core;
-using IDataAccess;
-using IDataAccess.Repositories;
-using DataAcces.Core;
 
 namespace DataAccess
 {
