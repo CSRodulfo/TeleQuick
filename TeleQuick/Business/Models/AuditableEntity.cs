@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-using DAL.Models.Interfaces;
+using Business.Interfaces;
 
-namespace DAL.Models
+namespace Business
 {
     public class AuditableEntity : IAuditableEntity
     {

@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using DAL.Models.Interfaces;
+using Business.Interfaces;
 
-namespace DAL.Models
+namespace Business
 {
     public class ApplicationUser : IdentityUser, IAuditableEntity
     {

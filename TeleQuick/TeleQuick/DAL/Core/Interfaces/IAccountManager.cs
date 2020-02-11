@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Models;
+using Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL.Models.Business
+namespace Business.Business
 {
     public class TicketHeader
     {

@@ -19,7 +19,7 @@ namespace TeleQuick.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DAL.Models.ApplicationRole", b =>
+            modelBuilder.Entity("Business.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -61,7 +61,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("DAL.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Business.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -150,7 +150,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("DAL.Models.Business.UserAccount", b =>
+            modelBuilder.Entity("Business.Business.UserAccount", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,7 +191,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppUserAccounts");
                 });
 
-            modelBuilder.Entity("DAL.Models.Customer", b =>
+            modelBuilder.Entity("Business.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -246,7 +246,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppCustomers");
                 });
 
-            modelBuilder.Entity("DAL.Models.Order", b =>
+            modelBuilder.Entity("Business.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -293,7 +293,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppOrders");
                 });
 
-            modelBuilder.Entity("DAL.Models.OrderDetail", b =>
+            modelBuilder.Entity("Business.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -338,7 +338,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppOrderDetails");
                 });
 
-            modelBuilder.Entity("DAL.Models.Product", b =>
+            modelBuilder.Entity("Business.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -411,7 +411,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppProducts");
                 });
 
-            modelBuilder.Entity("DAL.Models.ProductCategory", b =>
+            modelBuilder.Entity("Business.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -559,36 +559,36 @@ namespace TeleQuick.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DAL.Models.Order", b =>
+            modelBuilder.Entity("Business.Order", b =>
                 {
-                    b.HasOne("DAL.Models.ApplicationUser", "Cashier")
+                    b.HasOne("Business.ApplicationUser", "Cashier")
                         .WithMany("Orders")
                         .HasForeignKey("CashierId");
                 });
 
-            modelBuilder.Entity("DAL.Models.OrderDetail", b =>
+            modelBuilder.Entity("Business.OrderDetail", b =>
                 {
-                    b.HasOne("DAL.Models.Order", "Order")
+                    b.HasOne("Business.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Models.Product", "Product")
+                    b.HasOne("Business.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DAL.Models.Product", b =>
+            modelBuilder.Entity("Business.Product", b =>
                 {
-                    b.HasOne("DAL.Models.Product", "Parent")
+                    b.HasOne("Business.Product", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("DAL.Models.ProductCategory", "ProductCategory")
+                    b.HasOne("Business.ProductCategory", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -597,7 +597,7 @@ namespace TeleQuick.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("DAL.Models.ApplicationRole", null)
+                    b.HasOne("Business.ApplicationRole", null)
                         .WithMany("Claims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -606,7 +606,7 @@ namespace TeleQuick.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("DAL.Models.ApplicationUser", null)
+                    b.HasOne("Business.ApplicationUser", null)
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -615,7 +615,7 @@ namespace TeleQuick.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("DAL.Models.ApplicationUser", null)
+                    b.HasOne("Business.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -624,13 +624,13 @@ namespace TeleQuick.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("DAL.Models.ApplicationRole", null)
+                    b.HasOne("Business.ApplicationRole", null)
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Models.ApplicationUser", null)
+                    b.HasOne("Business.ApplicationUser", null)
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -639,7 +639,7 @@ namespace TeleQuick.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("DAL.Models.ApplicationUser", null)
+                    b.HasOne("Business.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

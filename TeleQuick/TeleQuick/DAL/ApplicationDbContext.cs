@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Models;
+using Business;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,8 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using DAL.Models.Interfaces;
-using DAL.Models.Business;
+using Business.Interfaces;
+using Business.Business;
 
 namespace DAL
 {

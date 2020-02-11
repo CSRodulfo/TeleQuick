@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using TeleQuick.ViewModels;
 using AutoMapper;
-using DAL.Models;
+using Business;
 using DAL.Core.Interfaces;
 using TeleQuick.Authorization;
 using TeleQuick.Helpers;

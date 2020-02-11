@@ -3,14 +3,14 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DAL.Models.Interfaces;
+using Business.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DAL.Models
+namespace Business
 {
     public class ApplicationRole : IdentityRole, IAuditableEntity
     {

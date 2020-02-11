@@ -5,7 +5,7 @@
 
 using AutoMapper;
 using DAL.Core;
-using DAL.Models;
+using Business;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DAL.Models.Business
+namespace Business.Business
 {
     public class TruckCar : AuditableEntity
     {

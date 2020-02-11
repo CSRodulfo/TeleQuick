@@ -7,7 +7,7 @@ using AutoMapper;
 using DAL;
 using DAL.Core;
 using DAL.Core.Interfaces;
-using DAL.Models;
+using Business;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +25,8 @@ using TeleQuick.Helpers;
 using System;
 using System.Collections.Generic;
 using AppPermissions = DAL.Core.ApplicationPermissions;
+using IService;
+using Service;
 
 namespace TeleQuick
 {
@@ -156,6 +158,7 @@ namespace TeleQuick
             // Repositories
             services.AddScoped<IUnitOfWork, HttpUnitOfWork>();
             services.AddScoped<IAccountManager, AccountManager>();
+            services.AddScoped<ICustomerService, CustomerService>();
 
             // Auth Handlers
             services.AddSingleton<IAuthorizationHandler, ViewUserAuthorizationHandler>();

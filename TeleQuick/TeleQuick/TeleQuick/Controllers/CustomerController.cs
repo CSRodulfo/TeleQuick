@@ -13,6 +13,7 @@ using TeleQuick.ViewModels;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using TeleQuick.Helpers;
+using IService;
 
 namespace TeleQuick.Controllers
 {
@@ -20,15 +21,15 @@ namespace TeleQuick.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICustomerService _customer;
         private readonly ILogger _logger;
         private readonly IEmailSender _emailSender;
 
 
-        public CustomerController(IMapper mapper, IUnitOfWork unitOfWork, ILogger<CustomerController> logger, IEmailSender emailSender)
+        public CustomerController(IMapper mapper, ICustomerService customer, ILogger<CustomerController> logger, IEmailSender emailSender)
         {
             _mapper = mapper;
-            _unitOfWork = unitOfWork;
+            _customer = customer;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -39,7 +40,7 @@ namespace TeleQuick.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var allCustomers = _unitOfWork.Customers.GetAllCustomersData();
+            var allCustomers = _customer.Get();
             return Ok(_mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
         }
 
