@@ -29,13 +29,11 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSA")]
         public async Task<List<HeaderResponse>> Get()
         {
+            var a = await _connection.LoginWebPage(new AutopistaAUSA.Login());
 
-            var b = await _connection.LoginWebPage(new AutopistaAUSA.Login());
-            //_connection.
+            Scrapy scrapy = new Scrapy(_connection, a);
 
-            //var data = AUSA.Process();
-
-            return null;
+            return await scrapy.Process();
         }
 
         [HttpGet("GetAUSOL")]
@@ -45,7 +43,7 @@ namespace TeleQuick.WebApi.Controllers
 
             Scrapy scrapy = new Scrapy(_connection, a);
 
-            return  null;
+            return await scrapy.Process(); 
         }
     }
 }

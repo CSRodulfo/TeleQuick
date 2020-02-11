@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace TeleQuick.Autopista
+namespace TeleQuick.Core.AutopistaModel
 {
     public static class PDFFile
     {

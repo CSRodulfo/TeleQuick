@@ -13,18 +13,13 @@ namespace TeleQuick.AutopistaAUSOL
         private const string MainForm = "form1";
         private const string Uri = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/Login.aspx";
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
-        private Dictionary<string, string> dictionary;
-
-        IConnection connect;
-        WebPage mainPage;
-
         public Login()
         {
         }
 
         public Dictionary<string, string> GetDictionary()
         {
-           var dictionary = new Dictionary<string, string>();
+            var dictionary = new Dictionary<string, string>();
 
             dictionary.Add("__EVENTTARGET", "");
             dictionary.Add("__EVENTARGUMENT", "");
@@ -47,6 +42,6 @@ namespace TeleQuick.AutopistaAUSOL
             return Uri;
         }
 
-     
+
     }
 }

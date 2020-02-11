@@ -25,7 +25,7 @@ namespace TeleQuick.AutopistaAUSA
             bool finBusqueda = false;
             int ultPos = 0;
             string linea = String.Empty;
-            String[] _array = null;// PDFFile.ReadPdfFile(PdffileName).Split('\n');
+            String[] _array = PDFFile.ReadPdfFile(PdffileName).Split('\n');
             if (_array.Length <= 14)
             {
                // return Task;

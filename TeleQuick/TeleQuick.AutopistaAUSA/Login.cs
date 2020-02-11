@@ -7,17 +7,14 @@ using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class Login  : ILogin
+    public class Login : ILogin
     {
         private const string MainForm = "MAINFORM";
         private const string Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0";
-        private Dictionary<string, string> dictionary;
 
-        IConnection connect;
-        WebPage mainPage;
         public Login()
         {
-            
+
         }
         public Dictionary<string, string> GetDictionary()
         {
