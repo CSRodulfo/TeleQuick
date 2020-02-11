@@ -40,6 +40,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Core.Autopista.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleQuick.Core.Autopista.Scrappys", "TeleQuick.Core.Autopista.Scrappys\TeleQuick.Core.Autopista.Scrappys.csproj", "{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,12 @@ Global
 		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A2A7269-5DC8-49ED-BB13-064B3FD794F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CA4D3C-07B6-4D00-AFF5-220B3BC58A6D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
