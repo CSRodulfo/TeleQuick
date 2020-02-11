@@ -1,23 +1,46 @@
 ﻿using HtmlAgilityPack;
 using ScrapySharp.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Core.AutopistaModel;
+using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
 {
     public class Scrapy
     {
-        WebPage form;
-        public Scrapy(WebPage Form)
+        IConnection _connection;
+        WebPage _mainWebPage;
+        private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
+
+        public Scrapy(IConnection connection, WebPage mainWebPage)
         {
-            form = Form;
+            _connection = connection;
+            _mainWebPage = mainWebPage;
         }
+
+        public async Task<List<HeaderResponse>> Process()
+        {
+            List<HeaderResponse> headers = await this.ScrappHeader();
+            foreach (var item in headers)
+            {
+                await ProcessDetail(item);
+            }
+
+            return headers;
+        }
+
+        public Task ProcessDetail(HeaderResponse header)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<HeaderResponse>> ScrappHeader()
         {
             List<HeaderResponse> list = new List<HeaderResponse>();
-            HtmlNodeCollection coll = await Task.Run(() => form.Html.SelectNodes("//*[@id='MainContent_ChildContent_gdvCuentas_hlnkDescripcion_0']"));
+            HtmlNodeCollection coll = await Task.Run(() => _mainWebPage.Html.SelectNodes("//*[@id='MainContent_ChildContent_gdvCuentas_hlnkDescripcion_0']"));
 
             foreach (HtmlNode cell in coll)
             {
@@ -69,5 +92,7 @@ namespace TeleQuick.AutopistaAUSOL
             }
             return list;
         }
+
+
     }
 }

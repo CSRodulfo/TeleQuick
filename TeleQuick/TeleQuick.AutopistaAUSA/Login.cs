@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Core.AutopistaModel;
+using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class Login 
+    public class Login  : ILogin
     {
         private const string MainForm = "MAINFORM";
         private const string Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0";
-        private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/";
         private Dictionary<string, string> dictionary;
 
         IConnection connect;
         WebPage mainPage;
-        public Login(IConnection connection)
+        public Login()
         {
-            connect = connection;
+            
         }
-        public async Task ConnectLogin()
+        public Dictionary<string, string> GetDictionary()
         {
-            dictionary = new Dictionary<string, string>();
+            var dictionary = new Dictionary<string, string>();
 
             dictionary.Add("_EventName", "EENTER.");
             dictionary.Add("_EventGridId", "");
@@ -35,35 +35,17 @@ namespace TeleQuick.AutopistaAUSA
             dictionary.Add("_BAN", "0");
             dictionary.Add("sCallerURL", "");
 
-            mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
-            await Task.FromResult(0);
-        }
-        public async Task<List<HeaderResponse>> Process()
-        {
-            return await this.ProcessHeader(this.mainPage);
+            return dictionary;
         }
 
-        private async Task<List<HeaderResponse>> ProcessHeader(WebPage mainPage)
+        public string GetMainForm()
         {
-            Scrapy scrapy = new Scrapy(mainPage);
-
-            List<HeaderResponse> headers = await scrapy.ScrappHeader();
-            foreach (var item in headers)
-            {
-                await ProcessDetail(item);
-            }
-
-            return headers;
+            return MainForm;
         }
-        private async Task ProcessDetail(HeaderResponse header)
+
+        public string GetUri()
         {
-
-            WebPage homePage = await connect.GetWebPage(Uri2 + header.Campo2);
-
-            ScrapyDetail scrapy = new ScrapyDetail(homePage);
-
-            header.Details.AddRange(await scrapy.ScrappDetail());
-
+            return Uri;
         }
     }
 }

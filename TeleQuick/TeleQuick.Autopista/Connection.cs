@@ -4,6 +4,7 @@ using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.Autopista
@@ -19,17 +20,17 @@ namespace TeleQuick.Autopista
             browser.AllowMetaRedirect = true;
         }
 
-        public async Task<WebPage> LoginWebPage(string Uri, string MainForm, Dictionary<string, string> dictionary)
+        public async Task<WebPage> LoginWebPage(ILogin login)
         {
-            var webPage = await GetWebPage(Uri);
+            var webPage = await GetWebPage(login.GetUri());
 
-            PageWebForm form = webPage.FindFormById(MainForm);
+            PageWebForm form = webPage.FindFormById(login.GetMainForm());
 
-            foreach (var item in dictionary)
+            foreach (var item in login.GetDictionary())
             {
                 form[item.Key] = item.Value;
             }
-            return form.Submit(new Uri(Uri));
+            return form.Submit(new Uri(login.GetUri()));
         }
 
         public async Task<WebPage> GetWebPage(string Uri)
@@ -37,9 +38,9 @@ namespace TeleQuick.Autopista
             return await browser.NavigateToPageAsync(new Uri(Uri));
         }
 
-        public ScrapingBrowser GetBrowser()
-        {
-            return browser;
-        }
+        //public ScrapingBrowser GetBrowser()
+        //{
+        //    return browser;
+        //}
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.AutopistaAUSA;
 using TeleQuick.Core.AutopistaModel;
 using TeleQuick.IAutopista;
 
@@ -28,8 +29,9 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSA")]
         public async Task<List<HeaderResponse>> Get()
         {
-            
-            _connection.GetBrowser();
+
+            var b = await _connection.LoginWebPage(new AutopistaAUSA.Login());
+            //_connection.
 
             //var data = AUSA.Process();
 
@@ -39,10 +41,9 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSOL")]
         public async Task<List<HeaderResponse>> GetAUSOL()
         {
-            _connection.GetBrowser();
+            var a = await _connection.LoginWebPage(new AutopistaAUSOL.Login());
 
-
-            //var data = AUSOL.Process();
+            Scrapy scrapy = new Scrapy(_connection, a);
 
             return  null;
         }
