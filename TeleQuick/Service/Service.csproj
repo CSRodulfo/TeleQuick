@@ -9,7 +9,6 @@
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\IDataAccess\IDataAccess.csproj" />
     <ProjectReference Include="..\IService\IService.csproj" />
-    <ProjectReference Include="..\TeleQuick\DAL\DataAcces.csproj" />
   </ItemGroup>
 
 </Project>

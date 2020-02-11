@@ -1,13 +1,7 @@
-﻿using HtmlAgilityPack;
-using ScrapySharp.Html.Forms;
-using ScrapySharp.Network;
-using System;
+﻿using ScrapySharp.Network;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using TeleQuick.Autopista;
+using TeleQuick.Core.AutopistaModel;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
@@ -23,6 +17,10 @@ namespace TeleQuick.AutopistaAUSA
         WebPage mainPage;
         public Login(IConnection connection)
         {
+            connect = connection;
+        }
+        public async Task ConnectLogin()
+        {
             dictionary = new Dictionary<string, string>();
 
             dictionary.Add("_EventName", "EENTER.");
@@ -37,10 +35,6 @@ namespace TeleQuick.AutopistaAUSA
             dictionary.Add("_BAN", "0");
             dictionary.Add("sCallerURL", "");
 
-            connect = connection;
-        }
-        public async Task ConnectLogin()
-        {
             mainPage = await connect.LoginWebPage(Uri, MainForm, dictionary);
             await Task.FromResult(0);
         }

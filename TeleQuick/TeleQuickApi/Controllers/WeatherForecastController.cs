@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeleQuick.Autopista;
+using TeleQuick.Core.AutopistaModel;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.WebApi.Controllers

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TeleQuick.Autopista
+namespace TeleQuick.Core.AutopistaModel
 {
     public class HeaderResponse
     {

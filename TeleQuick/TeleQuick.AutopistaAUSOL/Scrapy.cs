@@ -1,13 +1,9 @@
 ﻿using HtmlAgilityPack;
 using ScrapySharp.Network;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using TeleQuick.Autopista;
+using TeleQuick.Core.AutopistaModel;
 
 namespace TeleQuick.AutopistaAUSOL
 {
