@@ -17,7 +17,7 @@ using TeleQuick.Authorization;
 using TeleQuick.Helpers;
 using Microsoft.AspNetCore.JsonPatch;
 using IdentityServer4.AccessTokenValidation;
-using IService;
+using IDataAccess;
 
 namespace TeleQuick.Controllers
 {

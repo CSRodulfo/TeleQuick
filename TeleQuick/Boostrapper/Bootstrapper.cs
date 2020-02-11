@@ -25,6 +25,7 @@ namespace Boostrapper
             //services.AddScoped<IEmailSender, EmailSender>();
 
             // Repositories
+            services.AddHttpContextAccessor();
             services.AddScoped<IUnitOfWork, HttpUnitOfWork>();
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<ICustomerService, CustomerService>();
