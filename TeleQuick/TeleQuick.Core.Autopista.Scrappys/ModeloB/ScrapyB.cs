@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
+using TeleQuick.Core.Autopista.Scrappys.ModeloB;
 using TeleQuick.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
@@ -49,10 +50,8 @@ namespace TeleQuick.AutopistaAUSOL
                 WebPage page2 = await _connection.GetWebPage(link2);
 
                 HtmlNodeCollection coll2 = page2.Html.SelectNodes("//table[@id='MainContent_ChildContent_dgrvFacturas']/tr");
-
-                //var d = coll3.Attributes["href"].Value;
-
                 coll2.RemoveAt(0);
+
                 foreach (HtmlNode cell2 in coll2)
                 {
                     list.Add(await ProcessHeader(cell2));
@@ -64,18 +63,28 @@ namespace TeleQuick.AutopistaAUSOL
 
         private async Task<HeaderResponse> ProcessHeader(HtmlNode node)
         {
-            HtmlNode[] nodeArray = node.ChildNodes.Where(n => n.Name == "td" ).ToArray();
+            HtmlNode[] nodeArray = node.ChildNodes.Where(n => n.Name == "td").ToArray();
 
             HeaderResponse header = await Task.Run(() => GenerateHeader(nodeArray));
 
-            await Task.Run(() => ProcessDetail(header));
+            await Task.Run(() => ProcessDetail(header, node));
 
             return header;
         }
 
-        public Task ProcessDetail(HeaderResponse header)
+        public async Task ProcessDetail(HeaderResponse header, HtmlNode node)
         {
-            throw new NotImplementedException();
+            var cell = node.ChildNodes.Descendants().First(n => n.Name == "a");
+
+            string link1 = String.Concat(Uri2, cell.Attributes["href"].DeEntitizeValue);
+
+            WebPage page1 = await _connection.GetWebPage(link1);
+
+            HtmlNodeCollection node2 = page1.Html.SelectNodes("//*[@id='MainContent_ChildContent_dgrvPasadas']/tr");
+
+            ScrapyBDetail scrapy = new ScrapyBDetail(node2);
+
+            header.Details.AddRange(await scrapy.ScrappDetail());
         }
 
         private HeaderResponse GenerateHeader(HtmlNode[] a)
