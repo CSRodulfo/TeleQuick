@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Business.Business
+namespace Business.Models.Business
 {
-    public class TagRfid : AuditableEntity
+    public class Concessionary
     {
         public int Id { get; set; }
 
         [Required]
-        [StringLength(111)]
-        public string Name { get; set; }
-
-        [Required]
         [StringLength(30)]
-        public int NumberTAG { get; set; }
+        public string Name { get; set; }
     }
 }

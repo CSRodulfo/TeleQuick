@@ -10,13 +10,13 @@ namespace Business.Business
         public int Id { get; set; }
 
         [Required]
-        [StringLength(111)]
+        [StringLength(50)]
         public string Name { get; set; }
         [Required]
-        [StringLength(111)]
+        [StringLength(50)]
         public string Email { get; set; }
         [Required]
-        [StringLength(111)]
+        [StringLength(50)]
         public string PhoneNumber { get; set; }
     }
 }

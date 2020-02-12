@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Business.Interfaces;
 using Business.Business;
+using Business.Models.Business;
 
 namespace DataAccess
 {
@@ -27,6 +28,13 @@ namespace DataAccess
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
         public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<TagRfid> TagRfids { get; set; }
+        public DbSet<InvoiceHeader> InvoiceHeaders { get; set; }
+        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<Concessionary> Concessionaries { get; set; }
+
+
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         { }
@@ -72,18 +80,17 @@ namespace DataAccess
             builder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType(priceDecimalType);
 
             builder.Entity<UserAccount>().ToTable($"{nameof(this.UserAccounts)}");
-
+            builder.Entity<Vehicle>().ToTable($"{nameof(this.Vehicles)}");
+            builder.Entity<TagRfid>().ToTable($"{nameof(this.TagRfids)}");
+            builder.Entity<InvoiceHeader>().ToTable($"{nameof(this.InvoiceHeaders)}");
+            builder.Entity<InvoiceDetail>().ToTable($"{nameof(this.InvoiceDetails)}");
+            builder.Entity<Concessionary>().ToTable($"{nameof(this.Concessionaries)}");
         }
-
-
-
-
         public override int SaveChanges()
         {
             UpdateAuditEntities();
             return base.SaveChanges();
         }
-
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {

@@ -4,14 +4,16 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace TeleQuick.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200212000837_Modelo")]
+    partial class Modelo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,8 +159,8 @@ namespace TeleQuick.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CAE")
-                        .HasColumnType("int");
+                    b.Property<string>("CAE")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CurrentAccount")
                         .HasColumnType("int");
@@ -169,38 +171,31 @@ namespace TeleQuick.Migrations
                     b.Property<DateTime>("Hours")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("IIBB")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("IIBB")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("IVAIns")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("IVAIns")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("IVARG3337")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("IVARG3337")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("IVARni")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("IVARni")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PointOfSale")
-                        .HasColumnType("int");
+                    b.Property<float>("PointOfSale")
+                        .HasColumnType("real");
 
-                    b.Property<decimal>("Subtotal")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Subtotal")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("VehicleId")
-                        .HasColumnType("int");
+                    b.Property<string>("Total")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Voucher")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("VehicleId");
 
                     b.ToTable("InvoiceHeaders");
                 });
@@ -413,29 +408,21 @@ namespace TeleQuick.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hour")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("InvoiceHeaderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("TollStation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)")
-                        .HasMaxLength(5);
+                    b.Property<float>("Total")
+                        .HasColumnType("real");
 
                     b.Property<string>("Way")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("InvoiceHeaderId");
 
                     b.ToTable("InvoiceDetails");
                 });
@@ -753,25 +740,11 @@ namespace TeleQuick.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Business.Business.InvoiceHeader", b =>
-                {
-                    b.HasOne("Business.Business.Vehicle", null)
-                        .WithMany("InvoiceHeaders")
-                        .HasForeignKey("VehicleId");
-                });
-
             modelBuilder.Entity("Business.Business.TagRfid", b =>
                 {
                     b.HasOne("Business.Business.Vehicle", null)
                         .WithMany("TAGs")
                         .HasForeignKey("VehicleId");
-                });
-
-            modelBuilder.Entity("Business.Models.Business.InvoiceDetail", b =>
-                {
-                    b.HasOne("Business.Business.InvoiceHeader", null)
-                        .WithMany("InvoiceDetails")
-                        .HasForeignKey("InvoiceHeaderId");
                 });
 
             modelBuilder.Entity("Business.Order", b =>
