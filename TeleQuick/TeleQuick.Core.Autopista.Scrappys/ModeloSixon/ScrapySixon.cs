@@ -23,18 +23,18 @@ namespace TeleQuick.AutopistaAUSA
 
         public async Task<List<HeaderResponse>> Process()
         {
-            return await this.ScrappHeader(_mainWebPage);
+            return await this.ScrappHeader();
         }
 
-        private async Task<List<HeaderResponse>> ScrappHeader(WebPage mainPage)
+        private async Task<List<HeaderResponse>> ScrappHeader()
         {
-            return await this.ProcessHeader();
+            return await this.ProcessMainPage();
         }
 
-        private async Task<List<HeaderResponse>> ProcessHeader()
+        private async Task<List<HeaderResponse>> ProcessMainPage()
         {
             List<HeaderResponse> list = new List<HeaderResponse>();
-            HtmlNodeCollection coll = await Task.Run(() => _mainWebPage.Html.SelectNodes("//table[@id='GRID1']/tr"));
+            HtmlNodeCollection coll = _mainWebPage.Html.SelectNodes("//table[@id='GRID1']/tr");
             coll.RemoveAt(0);
 
             foreach (HtmlNode cell in coll)
