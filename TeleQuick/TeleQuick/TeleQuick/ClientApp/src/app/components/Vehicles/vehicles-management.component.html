@@ -30,18 +30,6 @@
       <strong>{{value}}</strong>
     </ng-template>
 
-    <ng-template #userNameTemplate let-row="row" let-value="value">
-      <span [class.locked-out]="row.isLockedOut" [class.user-disabled]="!row.isEnabled">
-        <i *ngIf="row.isLockedOut" class="fa fa-exclamation-triangle"> </i>
-        <i *ngIf="!row.isEnabled" class="fa fa-exclamation"> </i>
-        {{value}}
-      </span>
-    </ng-template>
-
-    <ng-template #rolesTemplate let-row="row" let-value="value" let-i="index">
-      <span class="user-role badge badge-pill badge-secondary" *ngFor="let role of value">{{role}}</span>
-    </ng-template>
-
     <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
       <div *ngIf="canManageVehicles">
         <a class="btn btn-link btn-sm" href="javascript:;" (click)="editUser(row)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{'vehicles.management.Edit' | translate}}</a>|

@@ -15,8 +15,6 @@ import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
 import { Permission } from '../../models/permission.model';
 import { UserEdit } from '../../models/user-edit.model';
-//import { UserInfoComponent } from './user-info.component';
-
 
 @Component({
     selector: 'vehicles-management',
@@ -37,17 +35,11 @@ export class VehiclesManagementComponent implements OnInit {
     @ViewChild('indexTemplate', { static: true })
     indexTemplate: TemplateRef<any>;
 
-    @ViewChild('rolesTemplate', { static: true })
-    rolesTemplate: TemplateRef<any>;
-
     @ViewChild('actionsTemplate', { static: true })
     actionsTemplate: TemplateRef<any>;
 
     @ViewChild('editorModal', { static: true })
     editorModal: ModalDirective;
-
-    // @ViewChild('userEditor', { static: true })
-    // userEditor: UserInfoComponent;
 
     constructor(private alertService: AlertService, private translationService: AppTranslationService, private accountService: AccountService,
         private businessService: BusinessService) {
@@ -205,16 +197,6 @@ export class VehiclesManagementComponent implements OnInit {
     //                  MessageSeverity.error, error);
     //          });
     //  }
-
-
-
-    get canAssignRoles() {
-        return this.accountService.userHasPermission(Permission.assignRolesPermission);
-    }
-
-    get canViewRoles() {
-        return this.accountService.userHasPermission(Permission.viewRolesPermission);
-    }
 
      get canManageVehicles() {
          return true;
