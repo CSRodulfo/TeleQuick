@@ -196,7 +196,9 @@
             "Make": "Make",
             "Model": "Model",
             "Year": "Year",
-            "RegistrationNumber": "Registration Number"
+            "RegistrationNumber": "Registration Number",
+            "New": "New Vehicle",
+            "Edit": "Edit"
         },
         "editor": {
             "NewTask": "New Vehicle",

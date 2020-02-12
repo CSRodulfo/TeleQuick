@@ -37,9 +37,6 @@ export class VehiclesManagementComponent implements OnInit {
     @ViewChild('indexTemplate', { static: true })
     indexTemplate: TemplateRef<any>;
 
-    @ViewChild('userNameTemplate', { static: true })
-    userNameTemplate: TemplateRef<any>;
-
     @ViewChild('rolesTemplate', { static: true })
     rolesTemplate: TemplateRef<any>;
 
@@ -49,13 +46,12 @@ export class VehiclesManagementComponent implements OnInit {
     @ViewChild('editorModal', { static: true })
     editorModal: ModalDirective;
 
-   // @ViewChild('userEditor', { static: true })
-   // userEditor: UserInfoComponent;
+    // @ViewChild('userEditor', { static: true })
+    // userEditor: UserInfoComponent;
 
     constructor(private alertService: AlertService, private translationService: AppTranslationService, private accountService: AccountService,
         private businessService: BusinessService) {
     }
-
 
     ngOnInit() {
 
@@ -64,89 +60,89 @@ export class VehiclesManagementComponent implements OnInit {
         this.columns = [
             { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
             { prop: 'make', name: gT('vehicles.management.Make'), width: 50 },
-            { prop: 'model', name: gT('vehicles.management.Model'), width: 90 },
+            { prop: 'model', name: gT('vehicles.management.Model'), width: 90, },
             { prop: 'year', name: gT('vehicles.management.Year'), width: 120 },
             { prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 140 },
         ];
 
-       // if (this.canManageVehicles) {
-            this.columns.push({ name: '', width: 160, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
+        // if (this.canManageVehicles) {
+        this.columns.push({ name: '', width: 160, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
         //}
 
         this.loadData();
     }
 
 
- //ngAfterViewInit() {
+    //ngAfterViewInit() {
 
- //    this.userEditor.changesSavedCallback = () => {
- //        this.addNewUserToList();
- //        this.editorModal.hide();
- //    };
+    //    this.userEditor.changesSavedCallback = () => {
+    //        this.addNewUserToList();
+    //        this.editorModal.hide();
+    //    };
 
- //    this.userEditor.changesCancelledCallback = () => {
- //        this.editedUser = null;
- //        this.sourceUser = null;
- //        this.editorModal.hide();
- //    };
- //}
-
-
-  //addNewUserToList() {
-  //    if (this.sourceUser) {
-  //        Object.assign(this.sourceUser, this.editedUser);
-
-  //        let sourceIndex = this.rowsCache.indexOf(this.sourceUser, 0);
-  //        if (sourceIndex > -1) {
-  //            Utilities.moveArrayItem(this.rowsCache, sourceIndex, 0);
-  //        }
-
-  //        sourceIndex = this.rows.indexOf(this.sourceUser, 0);
-  //        if (sourceIndex > -1) {
-  //            Utilities.moveArrayItem(this.rows, sourceIndex, 0);
-  //        }
-
-  //        this.editedUser = null;
-  //        this.sourceUser = null;
-  //    } else {
-  //        const user = new User();
-  //        Object.assign(user, this.editedUser);
-  //        this.editedUser = null;
-
-  //        let maxIndex = 0;
-  //        for (const u of this.rowsCache) {
-  //            if ((u as any).index > maxIndex) {
-  //                maxIndex = (u as any).index;
-  //            }
-  //        }
-
-  //        (user as any).index = maxIndex + 1;
-
-  //        this.rowsCache.splice(0, 0, user);
-  //        this.rows.splice(0, 0, user);
-  //        this.rows = [...this.rows];
-  //    }
-  //}
+    //    this.userEditor.changesCancelledCallback = () => {
+    //        this.editedUser = null;
+    //        this.sourceUser = null;
+    //        this.editorModal.hide();
+    //    };
+    //}
 
 
-  loadData() {
-      this.alertService.startLoadingMessage();
-      this.loadingIndicator = true;
+    //addNewUserToList() {
+    //    if (this.sourceUser) {
+    //        Object.assign(this.sourceUser, this.editedUser);
 
-       this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results), error => this.onDataLoadFailed(error));
-  }
+    //        let sourceIndex = this.rowsCache.indexOf(this.sourceUser, 0);
+    //        if (sourceIndex > -1) {
+    //            Utilities.moveArrayItem(this.rowsCache, sourceIndex, 0);
+    //        }
 
-  onDataLoadSuccessful(vehicles: Vehicle[]) {
-      this.alertService.stopLoadingMessage();
-      this.loadingIndicator = false;
+    //        sourceIndex = this.rows.indexOf(this.sourceUser, 0);
+    //        if (sourceIndex > -1) {
+    //            Utilities.moveArrayItem(this.rows, sourceIndex, 0);
+    //        }
 
-      vehicles.forEach((user, index, vehicles) => {
-          (user as any).index = index + 1;
-      });
+    //        this.editedUser = null;
+    //        this.sourceUser = null;
+    //    } else {
+    //        const user = new User();
+    //        Object.assign(user, this.editedUser);
+    //        this.editedUser = null;
 
-      this.rowsCache = [...vehicles];
-      this.rows = vehicles;
-  }
+    //        let maxIndex = 0;
+    //        for (const u of this.rowsCache) {
+    //            if ((u as any).index > maxIndex) {
+    //                maxIndex = (u as any).index;
+    //            }
+    //        }
+
+    //        (user as any).index = maxIndex + 1;
+
+    //        this.rowsCache.splice(0, 0, user);
+    //        this.rows.splice(0, 0, user);
+    //        this.rows = [...this.rows];
+    //    }
+    //}
+
+
+    loadData() {
+        this.alertService.startLoadingMessage();
+        this.loadingIndicator = true;
+
+        this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results), error => this.onDataLoadFailed(error));
+    }
+
+    onDataLoadSuccessful(vehicles: Vehicle[]) {
+        this.alertService.stopLoadingMessage();
+        this.loadingIndicator = false;
+
+        vehicles.forEach((user, index, vehicles) => {
+            (user as any).index = index + 1;
+        });
+
+        this.rowsCache = [...vehicles];
+        this.rows = vehicles;
+    }
 
     onDataLoadFailed(error: any) {
         this.alertService.stopLoadingMessage();
@@ -161,54 +157,54 @@ export class VehiclesManagementComponent implements OnInit {
         this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.make, r.model, r.year, r.registrationNumber));
     }
 
- //  onEditorModalHidden() {
- //      this.editingUserName = null;
- //      this.userEditor.resetForm(true);
- //  }
+    //  onEditorModalHidden() {
+    //      this.editingUserName = null;
+    //      this.userEditor.resetForm(true);
+    //  }
 
 
- //  newUser() {
- //      this.editingUserName = null;
- //      this.sourceUser = null;
- //      this.editedUser = this.userEditor.newUser(this.allRoles);
- //      this.editorModal.show();
- //  }
+    //  newUser() {
+    //      this.editingUserName = null;
+    //      this.sourceUser = null;
+    //      this.editedUser = this.userEditor.newUser(this.allRoles);
+    //      this.editorModal.show();
+    //  }
 
 
- //  editUser(row: UserEdit) {
- //      this.editingUserName = { name: row.userName };
- //      this.sourceUser = row;
- //      this.editedUser = this.userEditor.editUser(row, this.allRoles);
- //      this.editorModal.show();
- //  }
+    //  editUser(row: UserEdit) {
+    //      this.editingUserName = { name: row.userName };
+    //      this.sourceUser = row;
+    //      this.editedUser = this.userEditor.editUser(row, this.allRoles);
+    //      this.editorModal.show();
+    //  }
 
 
- //  deleteUser(row: UserEdit) {
- //      this.alertService.showDialog('Are you sure you want to delete \"' + row.userName + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
- //  }
+    //  deleteUser(row: UserEdit) {
+    //      this.alertService.showDialog('Are you sure you want to delete \"' + row.userName + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+    //  }
 
 
- //  deleteUserHelper(row: UserEdit) {
+    //  deleteUserHelper(row: UserEdit) {
 
- //      this.alertService.startLoadingMessage('Deleting...');
- //      this.loadingIndicator = true;
+    //      this.alertService.startLoadingMessage('Deleting...');
+    //      this.loadingIndicator = true;
 
- //      this.accountService.deleteUser(row)
- //          .subscribe(results => {
- //              this.alertService.stopLoadingMessage();
- //              this.loadingIndicator = false;
+    //      this.accountService.deleteUser(row)
+    //          .subscribe(results => {
+    //              this.alertService.stopLoadingMessage();
+    //              this.loadingIndicator = false;
 
- //              this.rowsCache = this.rowsCache.filter(item => item !== row);
- //              this.rows = this.rows.filter(item => item !== row);
- //          },
- //          error => {
- //              this.alertService.stopLoadingMessage();
- //              this.loadingIndicator = false;
+    //              this.rowsCache = this.rowsCache.filter(item => item !== row);
+    //              this.rows = this.rows.filter(item => item !== row);
+    //          },
+    //          error => {
+    //              this.alertService.stopLoadingMessage();
+    //              this.loadingIndicator = false;
 
- //              this.alertService.showStickyMessage('Delete Error', `An error occured whilst deleting the user.\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
- //                  MessageSeverity.error, error);
- //          });
- //  }
+    //              this.alertService.showStickyMessage('Delete Error', `An error occured whilst deleting the user.\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
+    //                  MessageSeverity.error, error);
+    //          });
+    //  }
 
 
 
@@ -220,7 +216,7 @@ export class VehiclesManagementComponent implements OnInit {
         return this.accountService.userHasPermission(Permission.viewRolesPermission);
     }
 
-   // get canManageVehicles() {
-   //     return this.accountService.userHasPermission(Permission.manageVehiclesPermission);
-   // }
+     get canManageVehicles() {
+         return true;
+     }
 }
