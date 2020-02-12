@@ -33,7 +33,6 @@ export class BusinessService {
   }
 
   getVehicles(page?: number, pageSize?: number) {
-
     return this.businessEndpoint.getVehicleEndpoint<Vehicle[]>(page, pageSize);
   }
 

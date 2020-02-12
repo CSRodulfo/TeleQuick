@@ -8,12 +8,13 @@ using Business.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace IDataAccess.Repositories
 {
     public interface IVehicleRepository : IRepository<Vehicle>
     {
-        IEnumerable<Vehicle> GetTopActiveVehicles(int count);
-        IEnumerable<Vehicle> GetAllVehiclesData();
+        Task<IEnumerable<Vehicle>> GetTopActiveVehicles(int count);
+        Task<IEnumerable<Vehicle>> GetAllVehiclesData();
     }
 }

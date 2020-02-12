@@ -23,17 +23,17 @@ namespace DataAcces.Business
         { }
 
 
-        public IEnumerable<Vehicle> GetTopActiveVehicles(int count)
+        public async Task<IEnumerable<Vehicle>> GetTopActiveVehicles(int count)
         {
             throw new NotImplementedException();
         }
 
 
-        public IEnumerable<Vehicle> GetAllVehiclesData()
+        public async Task<IEnumerable<Vehicle>> GetAllVehiclesData()
         {
-            return _appContext.Vehicles
+            return await _appContext.Vehicles
                 .OrderBy(c => c.Year)
-                .ToList();
+                .ToListAsync();
         }
 
 

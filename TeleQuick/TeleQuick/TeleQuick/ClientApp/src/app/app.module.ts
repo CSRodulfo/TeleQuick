@@ -51,6 +51,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { VehiclesManagementComponent } from './components/vehicles/vehicles-management.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -96,6 +97,7 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     CustomersComponent,
     ProductsComponent,
     OrdersComponent,
+    VehiclesManagementComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
     RolesManagementComponent, RoleEditorComponent,

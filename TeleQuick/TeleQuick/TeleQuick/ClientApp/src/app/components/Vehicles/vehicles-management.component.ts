@@ -3,6 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
+import { fadeInOut } from '../../services/animations';
 import { Component, OnInit, AfterViewInit, TemplateRef, ViewChild, Input } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
@@ -20,8 +21,10 @@ import { UserEdit } from '../../models/user-edit.model';
 @Component({
     selector: 'vehicles-management',
     templateUrl: './vehicles-management.component.html',
-    styleUrls: ['./vehicles-management.component.scss']
+    styleUrls: ['./vehicles-management.component.scss'],
+    animations: [fadeInOut]
 })
+
 export class VehiclesManagementComponent implements OnInit {
     columns: any[] = [];
     rows: Vehicle[] = [];
@@ -60,10 +63,10 @@ export class VehiclesManagementComponent implements OnInit {
 
         this.columns = [
             { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-            { prop: 'make', name: gT('vehicles.management.Title'), width: 50 },
-            { prop: 'model', name: gT('vehicles.management.UserName'), width: 90, cellTemplate: this.userNameTemplate },
-            { prop: 'year', name: gT('vehicles.management.FullName'), width: 120 },
-            { prop: 'registrationNumber', name: gT('vehicles.management.Email'), width: 140 },
+            { prop: 'make', name: gT('vehicles.management.Make'), width: 50 },
+            { prop: 'model', name: gT('vehicles.management.Model'), width: 90 },
+            { prop: 'year', name: gT('vehicles.management.Year'), width: 120 },
+            { prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 140 },
         ];
 
        // if (this.canManageVehicles) {

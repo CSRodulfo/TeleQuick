@@ -5,10 +5,10 @@
   "author": {
     "name": "Ebenezer Monney",
     "email": "info@ebenmonney.com",
-    "url": "https://www.ebenmonney.com/about"
+    "url": "https://www.csrodulfo.com.ar/about"
   },
   "license": "MIT",
-  "homepage": "https://www.ebenmonney.com/quickapp",
+  "homepage": "https://www.csrodulfo.com.ar/quickapp",
   "repository": "https://github.com/emonney/quickapp.git",
   "scripts": {
     "ng": "ng",

@@ -9,6 +9,7 @@
         "Customers": "Customers",
         "Products": "Products",
         "Orders": "Orders",
+        "Vehicle": "Vehicle",
         "About": "About",
         "Logout": "Logout"
     },
@@ -17,6 +18,7 @@
         "Customers": "Customers",
         "Products": "Products",
         "Orders": "Orders",
+        "Vehicles": "Vehicles",
         "NotFound": "Not-Found",
         "About": "About",
         "Settings": "Settings"
@@ -180,6 +182,24 @@
         },
         "editor": {
             "NewTask": "New Task",
+            "Name": "Name",
+            "TaskNameRequired": "Task name is required",
+            "Description": "Description",
+            "Important": "Mark as important",
+            "AddTask": "Add Task"
+        }
+    },
+
+    "vehicles": {
+        "management": {
+            "Search": "Search for vehicle...",
+            "Make": "Make",
+            "Model": "Model",
+            "Year": "Year",
+            "RegistrationNumber": "Registration Number"
+        },
+        "editor": {
+            "NewTask": "New Vehicle",
             "Name": "Name",
             "TaskNameRequired": "Task name is required",
             "Description": "Description",

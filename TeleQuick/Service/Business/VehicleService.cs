@@ -4,10 +4,11 @@ using IService.Business;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Service.Business
 {
-    public class VehicleService :   IVehicleService
+    public class VehicleService : IVehicleService
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -16,10 +17,10 @@ namespace Service.Business
             _unitOfWork = unitOfWork;
         }
         // GET: api/values
-        public IEnumerable<Vehicle> Get()
+        public async Task<IEnumerable<Vehicle>> Get()
         {
             var allCustomers = _unitOfWork.Vehicles.GetAllVehiclesData();
-            return allCustomers;
+            return await allCustomers;
         }
     }
 }

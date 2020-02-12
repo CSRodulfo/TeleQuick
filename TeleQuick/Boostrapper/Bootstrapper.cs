@@ -2,9 +2,11 @@
 using DataAccess;
 using IDataAccess;
 using IDataAccess.Core;
+using IService.Business;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service;
+using Service.Business;
 
 namespace Boostrapper
 {
@@ -27,6 +29,7 @@ namespace Boostrapper
             services.AddScoped<IUnitOfWork, HttpUnitOfWork>();
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IVehicleService, VehicleService>();
 
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();

@@ -9,6 +9,7 @@
         "Customers": "Clientes",
         "Products": "Products",
         "Orders": "Ordenes",
+        "Vehicle": "Vehiculos",
         "About": "Acerca de",
         "Logout": "Cerrar sesión"
     },
@@ -16,7 +17,8 @@
         "Dashboard": "Tablero",
         "Customers": "Clientes",
         "Products": "Productos",
-        "Orders": "Otros",
+        "Orders": "Ordenes",
+        "Vehicles": "Vehiculos",
         "NotFound": "No Encontrado",
         "About": "Acerca de",
         "Settings": "Configuraciones"
@@ -185,6 +187,24 @@
             "Description": "Descripción",
             "Important": "Marcar como importante",
             "AddTask": "Agregar tarea"
+        }
+    },
+
+    "vehicles": {
+        "management": {
+            "Search": "Buscar por vehiculo...",
+            "Make": "Marca",
+            "Model": "Modelo",
+            "Year": "Ano",
+            "RegistrationNumber": "Dominio"
+        },
+        "editor": {
+            "NewTask": "New Vehicle",
+            "Name": "Name",
+            "TaskNameRequired": "Task name is required",
+            "Description": "Description",
+            "Important": "Mark as important",
+            "AddTask": "Add Task"
         }
     }
 }
