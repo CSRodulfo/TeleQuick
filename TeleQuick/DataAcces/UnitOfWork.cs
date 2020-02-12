@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAcces.Business;
 using DataAccess.Repositories;
 using IDataAccess;
 using IDataAccess.Repositories;
@@ -21,6 +22,7 @@ namespace DataAccess
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
+        IVehicleRepository _vehicles;
 
 
 
@@ -68,6 +70,16 @@ namespace DataAccess
             }
         }
 
+        public IVehicleRepository Vehicles
+        {
+            get
+            {
+                if (_vehicles == null)
+                    _vehicles = new VehicleRepository(_context);
+
+                return _vehicles;
+            }
+        }
 
 
 

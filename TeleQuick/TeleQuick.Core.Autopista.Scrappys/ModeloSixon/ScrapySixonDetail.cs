@@ -54,16 +54,16 @@ namespace TeleQuick.AutopistaAUSA
             {
                 DetailResponse id = new DetailResponse();
                 int lastSpace = it.LastIndexOf(' ');
-                id.Importe = float.Parse(it.Substring(lastSpace, it.Length - lastSpace).Trim().Replace(",", "."));
+                id.Campo4 = it.Substring(lastSpace, it.Length - lastSpace).Trim().Replace(",", ".");
                 string[] detArray = it.Substring(0, lastSpace).Trim().Split(' ');
-                id.Fecha = detArray[0];
-                id.Hora = detArray[1];
-                id.Categoria = int.Parse(detArray[2]);
-                id.Via = detArray[3];
-                id.Dominio = _strDom;
+                id.Campo0 = detArray[0];
+                id.Campo1 = detArray[1];
+                id.Campo2 = detArray[2];
+                id.Campo3 = detArray[3];
+                id.Campo4 = _strDom;
                 for (int i = 4; i < detArray.Length; i++)
                 {
-                    id.Nombre_Estacion += detArray[i] + " ";
+                    id.Campo5 += detArray[i] + " ";
                 }
 
                 list.Add(id);

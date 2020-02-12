@@ -17,7 +17,7 @@ namespace IDataAccess
         ICustomerRepository Customers { get; }
         IProductRepository Products { get; }
         IOrdersRepository Orders { get; }
-
+        IVehicleRepository Vehicles{ get; }
 
         int SaveChanges();
     }

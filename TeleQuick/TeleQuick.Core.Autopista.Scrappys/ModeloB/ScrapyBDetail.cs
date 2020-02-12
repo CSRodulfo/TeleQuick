@@ -40,14 +40,15 @@ namespace TeleQuick.Core.Autopista.Scrappys.ModeloB
                     continue;
                 }
 
-                detail.Via = cabecera;
-                detail.Dominio = nodeArray[3].InnerText.Trim();
-                detail.Nombre_Estacion = nodeArray[2].InnerText.Trim();
+                detail.Campo0 = cabecera;
+                detail.Campo1 = nodeArray[0].InnerText.Trim();
+                detail.Campo2 = nodeArray[1].InnerText.Trim();
+                detail.Campo3 = nodeArray[2].InnerText.Trim();
+                detail.Campo4 = nodeArray[3].InnerText.Trim();
 
                 list.Add(detail);
 
             }
-
 
             return list; //await Task.Run(() => );
         }

@@ -11,6 +11,7 @@ import { BusinessEndpoint } from './business-endpoint.service';
 import { AuthService } from './auth.service';
 import { User } from '../models/user.model';
 import { Test } from '../models/test.model';
+import { Vehicle } from '../models/vehicle.model';
 import { Permission, PermissionNames, PermissionValues } from '../models/permission.model';
 
 
@@ -31,9 +32,16 @@ export class BusinessService {
     return this.businessEndpoint.getTest<Test>();
   }
 
-  getUsers(page?: number, pageSize?: number) {
+  getVehicles(page?: number, pageSize?: number) {
 
-    return this.businessEndpoint.getUsersEndpoint<User[]>(page, pageSize);
+    return this.businessEndpoint.getVehicleEndpoint<Vehicle[]>(page, pageSize);
   }
+
+ // getUsersAndRoles(page?: number, pageSize?: number) {
+//
+ //   return forkJoin(
+ //     this.accountEndpoint.getUsersEndpoint<User[]>(page, pageSize),
+ //     this.accountEndpoint.getRolesEndpoint<Role[]>());
+ // }
 
 }

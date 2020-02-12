@@ -6,12 +6,12 @@ namespace TeleQuick.Core.Autopista.Model
 {
     public class DetailResponse
     {
-        public string Fecha { get; set; }
-        public string Hora { get; set; }
-        public string Nombre_Estacion { get; set; }
-        public float Importe { get; set; }
-        public int Categoria { get; set; }
-        public string Via { get; set; }
-        public string Dominio { get; set; }
+        public string Campo0 { get; set; }
+        public string Campo1 { get; set; }
+        public string Campo2 { get; set; }
+        public string Campo3 { get; set; }
+        public string Campo4 { get; set; }
+        public string Campo5 { get; set; }
+        public string Campo6 { get; set; }
     }
 }
