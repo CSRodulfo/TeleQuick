@@ -43,11 +43,6 @@ namespace TeleQuick.Core.Autopista.Model
         public string Campo30 { get; set; }
         public string Campo31 { get; set; }
         public string Campo32 { get; set; }
-        public string Campo33 { get; set; }
-        public string Campo34 { get; set; }
-        public string Campo35 { get; set; }
-        public string Campo36 { get; set; }
-        public string Campo37 { get; set; }
 
         public List<DetailResponse> Details { get; set; }
     }

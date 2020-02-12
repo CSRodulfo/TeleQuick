@@ -6,11 +6,10 @@ using TeleQuick.Core.Autopista.Model;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class ScrapyDetail
+    public class ScrapySixonDetail
     {
-
         WebPage form;
-        public ScrapyDetail(WebPage Form)
+        public ScrapySixonDetail(WebPage Form)
         {
             form = Form;
         }
@@ -28,7 +27,7 @@ namespace TeleQuick.AutopistaAUSA
             String[] _array = PDFFile.ReadPdfFile(PdffileName).Split('\n');
             if (_array.Length <= 14)
             {
-               // return Task;
+                // return Task;
             }
             linea = _array[14];
             List<String> detalleItem = new List<string>();
@@ -70,7 +69,7 @@ namespace TeleQuick.AutopistaAUSA
                 list.Add(id);
             }
 
-            return  list;
+            return list;
         }
     }
 }
