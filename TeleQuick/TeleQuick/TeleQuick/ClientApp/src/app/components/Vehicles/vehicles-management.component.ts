@@ -66,16 +66,16 @@ export class VehiclesManagementComponent implements OnInit {
 
     ngAfterViewInit() {
 
-        this.userEditor.changesSavedCallback = () => {
-            this.addNewUserToList();
-            this.editorModal.hide();
-        };
-
-        this.userEditor.changesCancelledCallback = () => {
-            this.editedUser = null;
-            this.sourceUser = null;
-            this.editorModal.hide();
-        };
+       // this.userEditor.changesSavedCallback = () => {
+       //     this.addNewUserToList();
+       //     this.editorModal.hide();
+       // };
+//
+       // this.userEditor.changesCancelledCallback = () => {
+       //     this.editedUser = null;
+       //     this.sourceUser = null;
+       //     this.editorModal.hide();
+       // };
     }
 
 
@@ -157,7 +157,7 @@ export class VehiclesManagementComponent implements OnInit {
       newUser() {
           this.editingUserName = null;
           this.sourceUser = null;
-          this.editedUser = this.userEditor.newUser(this.allRoles);
+          //this.editedUser = this.userEditor.newUser(this.allRoles);
           this.editorModal.show();
       }
 
