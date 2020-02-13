@@ -30,6 +30,7 @@ export class VehicleEditComponent implements OnInit {
   public changesSavedCallback: () => void;
   public changesFailedCallback: () => void;
   public changesCancelledCallback: () => void;
+  public closeCallback: () => void;
 
   @Input()
   isViewOnly: boolean;
