@@ -7,9 +7,7 @@
 </div>
 <div class="modal-body">
     <form name="vehicleCreateForm" #f="ngForm" novalidate
-        (ngSubmit)="f.form.valid ? save() :
-                        (!vehicleModel.valid && showErrorAlert('Task name is required', 'Please enter a name for the task'));">
-
+    (ngSubmit)="onSubmit(f)">
         <div class="form-group row has-feedback-icon">
             <label class="col-form-label col-md-3" for="vehicleMake">Marca:</label>
             <div class="col-md-9">
@@ -17,7 +15,6 @@
                     class="form-control"
                     [ngClass]="{'is-valid': f.submitted && vehicleMake.valid, 'is-invalid' : f.submitted && !vehicleMake.valid}"
                     [(ngModel)]="entityVehicle.make" #vehicleMake="ngModel" required />
-
             </div>
         </div>
 

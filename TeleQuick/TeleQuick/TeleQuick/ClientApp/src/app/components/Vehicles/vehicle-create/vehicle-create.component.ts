@@ -12,6 +12,7 @@ import { User } from '../../../models/user.model';
 import { UserEdit } from '../../../models/user-edit.model';
 import { Vehicle } from '../../../models/vehicle.model';
 import { Permission } from '../../../models/permission.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'vehicle-create',
@@ -55,6 +56,19 @@ export class VehicleCreateComponent implements OnInit {
     if (this.closeCallback) {
       this.closeCallback();
     }
+  }
+
+  onSubmit(f: NgForm) {
+
+    if (f.form.valid) {
+      this.save();
+    } else {
+      this.showErrorAlert('Error de validación', 'Por favor complete todos los campos');
+    }
+    console.log(f.value);  // { first: '', last: '' }
+    console.log(f.valid);  // false
+
+    this.entityVehicle;
   }
 
 }
