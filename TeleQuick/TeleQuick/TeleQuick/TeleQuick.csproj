@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
@@ -52,11 +52,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="ClientApp\dist\**" />
+    <Compile Remove="ClientApp\**" />
     <Compile Remove="Logs\**" />
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
-    <Content Remove="ClientApp\dist\**" />
+    <Content Remove="ClientApp\**" />
     <Content Remove="Logs\**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
@@ -68,9 +68,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\**" />
     <EmbeddedResource Remove="Logs\**" />
-    <None Remove="ClientApp\dist\**" />
+    <None Remove="ClientApp\**" />
     <None Remove="Logs\**" />
   </ItemGroup>
 
@@ -91,12 +91,6 @@
     <Compile Remove="Migrations\20200207191932_dataannotation.Designer.cs" />
     <Compile Remove="Migrations\20200208020900_Datos.cs" />
     <Compile Remove="Migrations\20200208020900_Datos.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\src\app\components\controls\todo-demo.component.html" />
-    <None Remove="ClientApp\src\app\components\controls\todo-demo.component.scss" />
-    <None Remove="ClientApp\src\app\components\controls\todo-demo.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -126,4 +120,20 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2019</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
 </Project>

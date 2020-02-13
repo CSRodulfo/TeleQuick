@@ -12,6 +12,7 @@ import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
+import { VehicleEditComponent } from './vehicle-edit.component';
 import { Permission } from '../../models/permission.model';
 import { UserEdit } from '../../models/user-edit.model';
 
@@ -40,7 +41,10 @@ export class VehiclesManagementComponent implements OnInit {
     @ViewChild('editorModal', { static: true })
     editorModal: ModalDirective;
 
-    constructor(private alertService: AlertService, private translationService: AppTranslationService, 
+    @ViewChild('vehicleEditor', { static: true })
+    vehicleEditor: VehicleEditComponent;
+
+    constructor(private alertService: AlertService, private translationService: AppTranslationService,
         private businessService: BusinessService) {
     }
 
@@ -66,16 +70,17 @@ export class VehiclesManagementComponent implements OnInit {
 
     ngAfterViewInit() {
 
-       // this.userEditor.changesSavedCallback = () => {
-       //     this.addNewUserToList();
-       //     this.editorModal.hide();
-       // };
-//
-       // this.userEditor.changesCancelledCallback = () => {
-       //     this.editedUser = null;
-       //     this.sourceUser = null;
-       //     this.editorModal.hide();
-       // };
+        this.vehicleEditor.changesSavedCallback = () => {
+            this.loadData();
+            this.editorModal.hide();
+        };
+
+        this.vehicleEditor.changesCancelledCallback = () => {
+            this.loadData();
+            this.editedUser = null;
+            this.sourceUser = null;
+            this.editorModal.hide();
+        };
     }
 
 
@@ -148,17 +153,16 @@ export class VehiclesManagementComponent implements OnInit {
         this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.make, r.model, r.year, r.registrationNumber));
     }
 
-    //  onEditorModalHidden() {
-    //      this.editingUserName = null;
-    //      this.userEditor.resetForm(true);
-    //  }
+    newUser() {
+        this.editingUserName = null;
+        this.sourceUser = null;
+        //this.editedUser = this.userEditor.newUser(this.allRoles);
+        this.editorModal.show();
+    }
 
-
-      newUser() {
-          this.editingUserName = null;
-          this.sourceUser = null;
-          //this.editedUser = this.userEditor.newUser(this.allRoles);
-          this.editorModal.show();
+    onEditorModalHidden() {
+        //this.editingUserName = null;
+        //this.userEditor.resetForm(true);
       }
 
 
@@ -197,7 +201,7 @@ export class VehiclesManagementComponent implements OnInit {
     //          });
     //  }
 
-     get canManageVehicles() {
-         return true;
-     }
+    get canManageVehicles() {
+        return true;
+    }
 }
