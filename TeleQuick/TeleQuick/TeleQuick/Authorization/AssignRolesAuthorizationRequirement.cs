@@ -43,10 +43,10 @@ namespace TeleQuick.Authorization
         private bool GetIsRolesChanged(string[] newRoles, string[] currentRoles)
         {
             if (newRoles == null)
-                newRoles = new string[] { };
+                newRoles = Array.Empty<string>();
 
             if (currentRoles == null)
-                currentRoles = new string[] { };
+                currentRoles = Array.Empty<string>();
 
 
             bool roleAdded = newRoles.Except(currentRoles).Any();
@@ -59,10 +59,10 @@ namespace TeleQuick.Authorization
         private bool GetIsUserInAllAddedRoles(ClaimsPrincipal contextUser, string[] newRoles, string[] currentRoles)
         {
             if (newRoles == null)
-                newRoles = new string[] { };
+                newRoles = Array.Empty<string>();
 
             if (currentRoles == null)
-                currentRoles = new string[] { };
+                currentRoles = Array.Empty<string>();
 
 
             var addedRoles = newRoles.Except(currentRoles);

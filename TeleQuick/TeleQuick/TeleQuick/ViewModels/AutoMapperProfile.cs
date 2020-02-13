@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAcces.Core;
+using Business.Business;
 
 namespace TeleQuick.ViewModels
 {
@@ -60,6 +61,9 @@ namespace TeleQuick.ViewModels
                 .ReverseMap();
 
             CreateMap<Order, OrderViewModel>()
+                .ReverseMap();
+
+            CreateMap<Vehicle, VehicleViewModel>()
                 .ReverseMap();
         }
     }

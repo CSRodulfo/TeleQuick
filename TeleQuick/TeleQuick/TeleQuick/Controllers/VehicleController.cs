@@ -8,6 +8,7 @@ using IService.Business;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers
 {
@@ -31,9 +32,7 @@ namespace TeleQuick.Controllers
         public async Task<IActionResult> Get()
         {
             var allCustomers = await _vehicle.Get();
-            //return Ok(_mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
-            return Ok(allCustomers);
+            return Ok(_mapper.Map<IEnumerable<VehicleViewModel>>(allCustomers));
         }
-
     }
 }
