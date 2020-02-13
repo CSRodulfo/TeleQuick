@@ -13,6 +13,7 @@ using AutoMapper;
 using Microsoft.Extensions.Logging;
 using TeleQuick.Helpers;
 using IDataAccess;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TeleQuick.Controllers
 {
@@ -80,11 +81,7 @@ namespace TeleQuick.Controllers
 
 
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+
 
 
 

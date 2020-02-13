@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { EndpointBase } from './endpoint-base.service';
 import { ConfigurationService } from './configuration.service';
+import { Vehicle } from '../models/vehicle.model';
 
 
 @Injectable()
@@ -18,11 +19,12 @@ export class BusinessEndpoint extends EndpointBase {
 
   private readonly _usersUrl: string = '/api/BaseData';
   private readonly _userByUserNameUrl: string = '/api/account/users/username';
-  private readonly _vehicles: string = '/api/Vehicle';
+  private readonly _vehicles: string = '/api/Vehicle/Vehicle';
 
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
   get vehicles() { return this.configurations.baseUrl + this._vehicles; }
+  
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
@@ -55,6 +57,13 @@ export class BusinessEndpoint extends EndpointBase {
       catchError(error => {
         return this.handleError(error, () => this.getUsersEndpoint(page, pageSize));
       }));
+  }
+
+  postVehicleEndpoint<T>(vehicle : Vehicle): Observable<T> {
+      return this.http.post<T>(this.vehicles, vehicle, this.requestHeaders).pipe<T>(
+        catchError(error => {
+          return this.handleError(error, () => this.postVehicleEndpoint(vehicle));
+        }));
   }
 
 }

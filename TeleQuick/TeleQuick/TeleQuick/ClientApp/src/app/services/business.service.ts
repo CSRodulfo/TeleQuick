@@ -36,6 +36,10 @@ export class BusinessService {
     return this.businessEndpoint.getVehicleEndpoint<Vehicle[]>(page, pageSize);
   }
 
+  postVehicle(vehicle : Vehicle){
+    return this.businessEndpoint.postVehicleEndpoint<Vehicle[]>(vehicle);
+  }
+
  // getUsersAndRoles(page?: number, pageSize?: number) {
 //
  //   return forkJoin(
