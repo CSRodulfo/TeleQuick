@@ -26,9 +26,9 @@ export class VehicleCreateComponent implements OnInit {
   public formResetToggle = true;
   public modalHide = false;
 
-  public changesSavedCallback2: () => void;
-  public changesFailedCallback2: () => void;
-  public changesCancelledCallback2: () => void;
+  public changesSavedCallback: () => void;
+  public changesFailedCallback: () => void;
+  public changesCancelledCallback: () => void;
   public closeCallback: () => void;
 
   @Input()
@@ -48,9 +48,15 @@ export class VehicleCreateComponent implements OnInit {
   showErrorAlert(caption: string, message: string) {
     this.alertService.showMessage(caption, message, MessageSeverity.error);
   }
+  
+  save(){
 
-  save() {
-    this.closeCallback()
+  }
+
+  closeModel() {
+    if (this.closeCallback) {
+      this.closeCallback();
+    }
   }
 
 }

@@ -57,4 +57,10 @@ export class VehicleEditComponent implements OnInit {
     //this.editingUserName = null;
     //this.userEditor.resetForm(true);
   }
+
+  closeModel() {
+    if (this.closeCallback) {
+      this.closeCallback();
+    }
+  }
 }

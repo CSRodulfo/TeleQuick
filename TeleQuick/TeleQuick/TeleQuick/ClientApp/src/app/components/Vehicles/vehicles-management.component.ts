@@ -90,20 +90,23 @@ export class VehiclesManagementComponent implements OnInit {
             this.editorModal.hide();
         };
 
-        this.vehicleCreate.changesSavedCallback2 = () => {
+        this.vehicleCreate.changesSavedCallback = () => {
             this.loadData();
             this.createModal.hide();
         };
 
-        this.vehicleCreate.changesCancelledCallback2 = () => {
+        this.vehicleCreate.changesCancelledCallback = () => {
             this.createModal.hide();
-            this.loadData();
             this.editedUser = null;
             this.sourceUser = null;
         };
 
         this.vehicleCreate.closeCallback = () => {
             this.createModal.hide();
+        }
+
+        this.vehicleEditor.closeCallback = () => {
+            this.editorModal.hide();
         }
     }
 
@@ -202,16 +205,6 @@ export class VehiclesManagementComponent implements OnInit {
         //this.editedUser = this.vehicleEditor.editUser(row, this.allRoles);
         this.editorModal.show();
     }
-
-    toggle() {
-        if (this.vehicleCreate.modalHide) {
-            this.createModal.hide();
-        } else {
-            this.createModal.show();
-        }
-    }
-
-
 
     //  deleteUser(row: UserEdit) {
     //      this.alertService.showDialog('Are you sure you want to delete \"' + row.userName + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
