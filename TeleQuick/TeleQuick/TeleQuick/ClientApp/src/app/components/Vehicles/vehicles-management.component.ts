@@ -12,7 +12,7 @@ import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
-import { VehicleEditComponent } from './vehicle-edit.component';
+import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { Permission } from '../../models/permission.model';
 import { UserEdit } from '../../models/user-edit.model';
 

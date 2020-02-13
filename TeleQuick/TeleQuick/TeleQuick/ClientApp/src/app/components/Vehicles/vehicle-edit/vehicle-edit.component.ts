@@ -5,13 +5,13 @@
 
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
-import { AlertService, MessageSeverity } from '../../services/alert.service';
-import { AccountService } from '../../services/account.service';
-import { Utilities } from '../../services/utilities';
-import { User } from '../../models/user.model';
-import { UserEdit } from '../../models/user-edit.model';
-import { Role } from '../../models/role.model';
-import { Permission } from '../../models/permission.model';
+import { AlertService, MessageSeverity } from '../../../services/alert.service';
+import { AccountService } from '../../../services/account.service';
+import { Utilities } from '../../../services/utilities';
+import { User } from '../../../models/user.model';
+import { UserEdit } from '../../../models/user-edit.model';
+import { Role } from '../../../models/role.model';
+import { Permission } from '../../../models/permission.model';
 
 
 @Component({
