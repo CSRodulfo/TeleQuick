@@ -10,7 +10,7 @@ import { AccountService } from '../../../services/account.service';
 import { Utilities } from '../../../services/utilities';
 import { User } from '../../../models/user.model';
 import { UserEdit } from '../../../models/user-edit.model';
-import { Role } from '../../../models/role.model';
+import { Vehicle } from '../../../models/vehicle.model';
 import { Permission } from '../../../models/permission.model';
 
 @Component({
@@ -22,9 +22,7 @@ export class VehicleCreateComponent implements OnInit {
 
   public isEditMode = false;
   public isNewUser = false;
-  public taskEdit: any = {};
-  public formResetToggle = true;
-  public modalHide = false;
+  public entityVehicle = new Vehicle();
 
   public changesSavedCallback: () => void;
   public changesFailedCallback: () => void;
@@ -48,8 +46,8 @@ export class VehicleCreateComponent implements OnInit {
   showErrorAlert(caption: string, message: string) {
     this.alertService.showMessage(caption, message, MessageSeverity.error);
   }
-  
-  save(){
+
+  save() {
 
   }
 
