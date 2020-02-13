@@ -13,8 +13,10 @@ import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
+import { VehicleCreateComponent } from './vehicle-create/vehicle-create.component';
 import { Permission } from '../../models/permission.model';
 import { UserEdit } from '../../models/user-edit.model';
+import { FakeMissingTranslationHandler } from '@ngx-translate/core';
 
 @Component({
     selector: 'vehicles-management',
@@ -41,8 +43,14 @@ export class VehiclesManagementComponent implements OnInit {
     @ViewChild('editorModal', { static: true })
     editorModal: ModalDirective;
 
+    @ViewChild('createModal', { static: true })
+    createModal: ModalDirective;
+
     @ViewChild('vehicleEditor', { static: true })
     vehicleEditor: VehicleEditComponent;
+
+    @ViewChild('vehicleCreate', { static: true })
+    vehicleCreate: VehicleCreateComponent;
 
     constructor(private alertService: AlertService, private translationService: AppTranslationService,
         private businessService: BusinessService) {
@@ -69,7 +77,7 @@ export class VehiclesManagementComponent implements OnInit {
 
 
     ngAfterViewInit() {
-
+ 
         this.vehicleEditor.changesSavedCallback = () => {
             this.loadData();
             this.editorModal.hide();
@@ -81,6 +89,22 @@ export class VehiclesManagementComponent implements OnInit {
             this.sourceUser = null;
             this.editorModal.hide();
         };
+
+        this.vehicleCreate.changesSavedCallback2 = () => {
+            this.loadData();
+            this.createModal.hide();
+        };
+
+        this.vehicleCreate.changesCancelledCallback2 = () => {
+            this.createModal.hide();
+            this.loadData();
+            this.editedUser = null;
+            this.sourceUser = null;
+        };
+
+        this.vehicleCreate.closeCallback = () => {
+            this.createModal.hide();
+        }
     }
 
 
@@ -157,21 +181,36 @@ export class VehiclesManagementComponent implements OnInit {
         this.editingUserName = null;
         this.sourceUser = null;
         //this.editedUser = this.userEditor.newUser(this.allRoles);
-        this.editorModal.show();
+        this.createModal.show();
     }
 
     onEditorModalHidden() {
         //this.editingUserName = null;
         //this.userEditor.resetForm(true);
-      }
+    }
 
 
-    //  editUser(row: UserEdit) {
-    //      this.editingUserName = { name: row.userName };
-    //      this.sourceUser = row;
-    //      this.editedUser = this.userEditor.editUser(row, this.allRoles);
-    //      this.editorModal.show();
-    //  }
+    onCreateModalHidden() {
+        //this.editingUserName = null;
+        //this.userEditor.resetForm(true);
+    }
+
+
+    editUser(row: UserEdit) {
+        this.editingUserName = { name: row.userName };
+        this.sourceUser = row;
+        //this.editedUser = this.vehicleEditor.editUser(row, this.allRoles);
+        this.editorModal.show();
+    }
+
+    toggle() {
+        if (this.vehicleCreate.modalHide) {
+            this.createModal.hide();
+        } else {
+            this.createModal.show();
+        }
+    }
+
 
 
     //  deleteUser(row: UserEdit) {

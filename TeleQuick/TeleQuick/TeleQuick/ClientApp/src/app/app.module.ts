@@ -53,6 +53,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-management.component';
 import { VehicleEditComponent } from './components/Vehicles/vehicle-edit/vehicle-edit.component';
+import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/vehicle-create.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -67,7 +68,7 @@ import { UserPreferencesComponent } from './components/controls/user-preferences
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
-import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/vehicle-create.component';
+
 
 
 @NgModule({
@@ -100,7 +101,7 @@ import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/veh
     CustomersComponent,
     ProductsComponent,
     OrdersComponent,
-    VehiclesManagementComponent, VehicleEditComponent,
+    VehiclesManagementComponent, VehicleEditComponent,  VehicleCreateComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
     CustomerCreateComponent,

@@ -56,5 +56,13 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" bsModal #createModal="bs-modal" (onHidden)="onCreateModalHidden()"
+      [config]="{backdrop: 'static'}" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <vehicle-create #vehicleCreate [isGeneralEditor]="true"></vehicle-create>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
