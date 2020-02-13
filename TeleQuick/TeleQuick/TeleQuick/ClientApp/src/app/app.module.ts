@@ -61,6 +61,7 @@ import { StatisticsDemoComponent } from './components/controls/statistics-demo.c
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
+import { CustomerCreateComponent } from './components/customers/customer-create.component';
 import { UserPreferencesComponent } from './components/controls/user-preferences.component';
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
@@ -100,6 +101,7 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     VehiclesManagementComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
+    CustomerCreateComponent,
     RolesManagementComponent, RoleEditorComponent,
     AboutComponent,
     NotFoundComponent,

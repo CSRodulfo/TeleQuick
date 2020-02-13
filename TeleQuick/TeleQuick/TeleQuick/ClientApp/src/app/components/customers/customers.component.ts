@@ -12,6 +12,7 @@ import { AlertService, MessageSeverity, DialogType } from '../../services/alert.
 import { AppTranslationService } from '../../services/app-translation.service';
 import { LocalStoreManager } from '../../services/local-store-manager.service';
 import { Utilities } from '../../services/utilities';
+import { CustomerCreateComponent } from './customer-create.component';
 
 @Component({
     selector: 'customers',
@@ -22,7 +23,6 @@ import { Utilities } from '../../services/utilities';
 
 export class CustomersComponent implements OnInit, OnDestroy {
   public static readonly DBKeyTodoDemo = 'todo-demo.todo_list';
-
   rows = [];
   rowsCache = [];
   columns = [];
@@ -30,10 +30,12 @@ export class CustomersComponent implements OnInit, OnDestroy {
   taskEdit: any = {};
   isDataLoaded = false;
   loadingIndicator = true;
-  formResetToggle = true;
+ 
   _currentUserId: string;
   _hideCompletedTasks = false;
 
+  @ViewChild('customerCreate', { static: true })
+  customerCreateComponent: CustomerCreateComponent;
 
   get currentUserId() {
     if (this.authService.currentUser) {
@@ -165,10 +167,10 @@ export class CustomersComponent implements OnInit, OnDestroy {
 
 
   addTask() {
-    this.formResetToggle = false;
+    this.customerCreateComponent.formResetToggle = false;
 
     setTimeout(() => {
-      this.formResetToggle = true;
+      this.customerCreateComponent.formResetToggle = true;
 
       this.taskEdit = {};
       this.editorModal.show();

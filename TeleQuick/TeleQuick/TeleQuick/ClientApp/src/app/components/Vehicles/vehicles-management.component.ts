@@ -9,7 +9,6 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { AppTranslationService } from '../../services/app-translation.service';
-import { AccountService } from '../../services/account.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
@@ -27,8 +26,8 @@ export class VehiclesManagementComponent implements OnInit {
     columns: any[] = [];
     rows: Vehicle[] = [];
     rowsCache: Vehicle[] = [];
-    //editedUser: UserEdit;
-    //sourceUser: UserEdit;
+    editedUser: UserEdit;
+    sourceUser: UserEdit;
     editingUserName: { name: string };
     loadingIndicator: boolean;
 
@@ -41,7 +40,7 @@ export class VehiclesManagementComponent implements OnInit {
     @ViewChild('editorModal', { static: true })
     editorModal: ModalDirective;
 
-    constructor(private alertService: AlertService, private translationService: AppTranslationService, private accountService: AccountService,
+    constructor(private alertService: AlertService, private translationService: AppTranslationService, 
         private businessService: BusinessService) {
     }
 
@@ -65,19 +64,19 @@ export class VehiclesManagementComponent implements OnInit {
     }
 
 
-    //ngAfterViewInit() {
+    ngAfterViewInit() {
 
-    //    this.userEditor.changesSavedCallback = () => {
-    //        this.addNewUserToList();
-    //        this.editorModal.hide();
-    //    };
+        this.userEditor.changesSavedCallback = () => {
+            this.addNewUserToList();
+            this.editorModal.hide();
+        };
 
-    //    this.userEditor.changesCancelledCallback = () => {
-    //        this.editedUser = null;
-    //        this.sourceUser = null;
-    //        this.editorModal.hide();
-    //    };
-    //}
+        this.userEditor.changesCancelledCallback = () => {
+            this.editedUser = null;
+            this.sourceUser = null;
+            this.editorModal.hide();
+        };
+    }
 
 
     //addNewUserToList() {
@@ -155,12 +154,12 @@ export class VehiclesManagementComponent implements OnInit {
     //  }
 
 
-    //  newUser() {
-    //      this.editingUserName = null;
-    //      this.sourceUser = null;
-    //      this.editedUser = this.userEditor.newUser(this.allRoles);
-    //      this.editorModal.show();
-    //  }
+      newUser() {
+          this.editingUserName = null;
+          this.sourceUser = null;
+          this.editedUser = this.userEditor.newUser(this.allRoles);
+          this.editorModal.show();
+      }
 
 
     //  editUser(row: UserEdit) {
