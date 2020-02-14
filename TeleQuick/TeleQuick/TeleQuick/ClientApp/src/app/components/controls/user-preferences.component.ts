@@ -70,11 +70,11 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
                 this.alertService.showMessage('Defaults loaded!', '', MessageSeverity.info);
 
             },
-            error => {
-                this.alertService.stopLoadingMessage();
-                this.alertService.showStickyMessage('Load Error', `Unable to retrieve user preferences from the server.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
-                    MessageSeverity.error, error);
-            });
+                error => {
+                    this.alertService.stopLoadingMessage();
+                    this.alertService.showStickyMessage('Load Error', `Unable to retrieve user preferences from the server.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
+                        MessageSeverity.error, error);
+                });
     }
 
     setAsDefault() {
@@ -92,11 +92,11 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
                 this.alertService.showMessage('New Defaults', 'Account defaults updated successfully', MessageSeverity.success);
 
             },
-            error => {
-                this.alertService.stopLoadingMessage();
-                this.alertService.showStickyMessage('Save Error', `An error occured whilst saving configuration defaults.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
-                    MessageSeverity.error, error);
-            });
+                error => {
+                    this.alertService.stopLoadingMessage();
+                    this.alertService.showStickyMessage('Save Error', `An error occured whilst saving configuration defaults.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
+                        MessageSeverity.error, error);
+                });
     }
 
 
@@ -117,11 +117,11 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
                 this.alertService.showMessage('Defaults Reset', 'Account defaults reset completed successfully', MessageSeverity.success);
 
             },
-            error => {
-                this.alertService.stopLoadingMessage();
-                this.alertService.showStickyMessage('Save Error', `An error occured whilst resetting configuration defaults.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
-                    MessageSeverity.error, error);
-            });
+                error => {
+                    this.alertService.stopLoadingMessage();
+                    this.alertService.showStickyMessage('Save Error', `An error occured whilst resetting configuration defaults.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
+                        MessageSeverity.error, error);
+                });
     }
 
 
@@ -134,6 +134,10 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
     }
 
     get canViewOrders() {
-        return true; // eg. viewOrdersPermission
+        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewProductsPermission
+    }
+
+    get canViewVehicles() {
+        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewProductsPermission
     }
 }

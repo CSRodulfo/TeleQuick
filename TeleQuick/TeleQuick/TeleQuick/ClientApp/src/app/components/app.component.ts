@@ -351,6 +351,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   get canViewOrders() {
-    return true; // eg. viewOrdersPermission
+    return this.accountService.userHasPermission(Permission.manageUsersPermission); // eg. viewProductsPermission
+  }
+
+  get canViewVehicles() {
+    return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewProductsPermission
   }
 }

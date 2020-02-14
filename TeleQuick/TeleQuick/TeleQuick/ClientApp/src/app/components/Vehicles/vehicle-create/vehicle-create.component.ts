@@ -8,8 +8,6 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { AlertService, MessageSeverity } from '../../../services/alert.service';
 import { AccountService } from '../../../services/account.service';
 import { Utilities } from '../../../services/utilities';
-import { User } from '../../../models/user.model';
-import { UserEdit } from '../../../models/user-edit.model';
 import { Vehicle } from '../../../models/vehicle.model';
 import { NgForm } from '@angular/forms';
 import { BusinessService } from '../../../services/business.service';
@@ -19,6 +17,7 @@ import { BusinessService } from '../../../services/business.service';
   templateUrl: './vehicle-create.component.html',
   styleUrls: ['./vehicle-create.component.scss']
 })
+
 export class VehicleCreateComponent implements OnInit {
 
   public isEditMode = false;
@@ -30,18 +29,28 @@ export class VehicleCreateComponent implements OnInit {
   public changesCancelledCallback: () => void;
   public closeCallback: () => void;
 
-  @Input()
-  isViewOnly: boolean;
+  @ViewChild('f', { static: false })
+  private form: NgForm
 
-  @Input()
-  isGeneralEditor = false;
-
-  constructor(private alertService: AlertService, private businessService: BusinessService){
+  constructor(private alertService: AlertService, private businessService: BusinessService) {
   }
 
   ngOnInit() {
 
 
+  }
+
+  onSubmit() {
+
+    if (this.form.valid) {
+      this.save();
+    } else {
+      this.showErrorAlert('Error de validación', 'Por favor complete todos los campos');
+    }
+    console.log(this.form.value);  // { first: '', last: '' }
+    console.log(this.form.valid);  // false
+
+    this.entityVehicle;
   }
 
   showErrorAlert(caption: string, message: string) {
@@ -50,24 +59,21 @@ export class VehicleCreateComponent implements OnInit {
 
 
   save() {
-
     this.alertService.startLoadingMessage('Grabando cambios ...');
-
     this.businessService.postVehicle(this.entityVehicle).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
   }
 
   private saveSuccessHelper() {
- 
     this.alertService.stopLoadingMessage();
     this.alertService.showMessage('Creado', `El Vehiculo fue creado exitosamente`, MessageSeverity.success);
+    this.form.reset();
+    
+    this.closeCallback();
   }
 
   private saveFailedHelper(error: any) {
-
     this.alertService.stopLoadingMessage();
-
-    this.alertService.showStickyMessage('Error al crear:', `Ha Acurrido un \r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
-                      MessageSeverity.error, error);
+    this.alertService.showStickyMessage('Error al crear:', `Ha Acurrido un \r\nError: "${Utilities.getHttpResponseMessages(error)}"`, MessageSeverity.error, error);
 
     if (this.changesFailedCallback) {
       this.changesFailedCallback();
@@ -79,18 +85,4 @@ export class VehicleCreateComponent implements OnInit {
       this.closeCallback();
     }
   }
-
-  onSubmit(f: NgForm) {
-
-    if (f.form.valid) {
-      this.save();
-    } else {
-      this.showErrorAlert('Error de validación', 'Por favor complete todos los campos');
-    }
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
-
-    this.entityVehicle;
-  }
-
 }

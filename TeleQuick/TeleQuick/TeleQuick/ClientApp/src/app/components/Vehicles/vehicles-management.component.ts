@@ -75,7 +75,6 @@ export class VehiclesManagementComponent implements OnInit {
         this.loadData();
     }
 
-
     ngAfterViewInit() {
  
         this.vehicleEditor.changesSavedCallback = () => {
@@ -152,7 +151,8 @@ export class VehiclesManagementComponent implements OnInit {
         this.alertService.startLoadingMessage();
         this.loadingIndicator = true;
 
-        this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results), error => this.onDataLoadFailed(error));
+        this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results),
+            error => this.onDataLoadFailed(error));
     }
 
     onDataLoadSuccessful(vehicles: Vehicle[]) {
