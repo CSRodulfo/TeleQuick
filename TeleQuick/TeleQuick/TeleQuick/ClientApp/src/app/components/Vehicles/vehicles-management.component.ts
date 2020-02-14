@@ -14,9 +14,8 @@ import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleCreateComponent } from './vehicle-create/vehicle-create.component';
-import { Permission } from '../../models/permission.model';
-import { UserEdit } from '../../models/user-edit.model';
 import { FakeMissingTranslationHandler } from '@ngx-translate/core';
+import {GlobalResources} from '../../services/globalResources'
 
 @Component({
     selector: 'vehicles-management',
@@ -50,7 +49,7 @@ export class VehiclesManagementComponent implements OnInit {
     vehicleCreate: VehicleCreateComponent;
 
     constructor(private alertService: AlertService, private translationService: AppTranslationService,
-        private businessService: BusinessService) {
+        private businessService: BusinessService, private globalResource: GlobalResources) {
     }
 
     ngOnInit() {
@@ -92,44 +91,6 @@ export class VehiclesManagementComponent implements OnInit {
             this.createModal.hide();
         };
     }
-
-
-    //addNewUserToList() {
-    //    if (this.sourceUser) {
-    //        Object.assign(this.sourceUser, this.editedUser);
-
-    //        let sourceIndex = this.rowsCache.indexOf(this.sourceUser, 0);
-    //        if (sourceIndex > -1) {
-    //            Utilities.moveArrayItem(this.rowsCache, sourceIndex, 0);
-    //        }
-
-    //        sourceIndex = this.rows.indexOf(this.sourceUser, 0);
-    //        if (sourceIndex > -1) {
-    //            Utilities.moveArrayItem(this.rows, sourceIndex, 0);
-    //        }
-
-    //        this.editedUser = null;
-    //        this.sourceUser = null;
-    //    } else {
-    //        const user = new User();
-    //        Object.assign(user, this.editedUser);
-    //        this.editedUser = null;
-
-    //        let maxIndex = 0;
-    //        for (const u of this.rowsCache) {
-    //            if ((u as any).index > maxIndex) {
-    //                maxIndex = (u as any).index;
-    //            }
-    //        }
-
-    //        (user as any).index = maxIndex + 1;
-
-    //        this.rowsCache.splice(0, 0, user);
-    //        this.rows.splice(0, 0, user);
-    //        this.rows = [...this.rows];
-    //    }
-    //}
-
 
     loadData() {
         this.alertService.startLoadingMessage();
@@ -174,12 +135,12 @@ export class VehiclesManagementComponent implements OnInit {
     }
 
     deleteVehicle(row: Vehicle) {
-        this.alertService.showDialog('Are you sure you want to delete \"' + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+        
+        this.alertService.showDialog(this.globalResource.error + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
     }
 
-
     deleteUserHelper(row: Vehicle) {
-        this.alertService.startLoadingMessage('Deleting...');
+        this.alertService.startLoadingMessage('Eliminando...');
         this.loadingIndicator = true;
         this.businessService.deleteVehicle(row)
             .subscribe(
@@ -193,7 +154,7 @@ export class VehiclesManagementComponent implements OnInit {
                 error => {
                     this.alertService.stopLoadingMessage();
                     this.loadingIndicator = false;
-                    this.alertService.showStickyMessage('Delete Error', `An error occured whilst deleting the user.\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
+                    this.alertService.showStickyMessage('Error al eliminar', `Ha ocurrido un error al elimiar el vehiculo\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
                         MessageSeverity.error, error);
                 });
     }

@@ -35,6 +35,7 @@ import { AccountService } from './services/account.service';
 import { AccountEndpoint } from './services/account-endpoint.service';
 import { BusinessService } from './services/business.service';
 import { BusinessEndpoint } from './services/business-endpoint.service';
+import { GlobalResources } from './services/globalResources';
 
 import { EqualValidator } from './directives/equal-validator.directive';
 import { LastElementDirective } from './directives/last-element.directive';
@@ -135,7 +136,8 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     AccountEndpoint,
     BusinessEndpoint,
     BusinessService,
-    LocalStoreManager
+    LocalStoreManager,
+    GlobalResources
   ],
   bootstrap: [AppComponent]
 })

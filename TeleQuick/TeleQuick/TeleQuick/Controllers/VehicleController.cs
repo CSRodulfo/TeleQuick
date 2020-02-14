@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using IDataAccess;
+using IdentityServer4.AccessTokenValidation;
 using IService.Business;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ using TeleQuick.ViewModels;
 namespace TeleQuick.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme)]
     public class VehicleController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -30,8 +31,8 @@ namespace TeleQuick.Controllers
 
         // GET: api/values
         [HttpGet("Vehicle")]
-        //[Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-       // [ProducesResponseType(200, Type = typeof(List<RoleViewModel>))]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(200, Type = typeof(List<VehicleViewModel>))]
         public async Task<IActionResult> Get()
         {
             var allCustomers = await _vehicle.Get();
@@ -40,8 +41,8 @@ namespace TeleQuick.Controllers
 
         // POST api/values
         [HttpPost("Vehicle")]
-        //[Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-      //  [ProducesResponseType(201, Type = typeof(UserViewModel))]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(201, Type = typeof(UserViewModel))]
         [ProducesResponseType(400)]
         [ProducesResponseType(403)]
         public async Task<IActionResult> CreateVehicle([FromBody] VehicleViewModel vehicle)
@@ -51,7 +52,7 @@ namespace TeleQuick.Controllers
 
 
         [HttpPut("Vehicle/{id}")]
-        //[Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [Authorize(Authorization.Policies.ManageAllRolesPolicy)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -61,7 +62,7 @@ namespace TeleQuick.Controllers
         }
 
         [HttpDelete("Vehicle/{id}")]
-        //[Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [Authorize(Authorization.Policies.ManageAllRolesPolicy)]
         [ProducesResponseType(200, Type = typeof(RoleViewModel))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

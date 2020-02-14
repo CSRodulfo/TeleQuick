@@ -105,7 +105,7 @@ export class TranslateLanguageLoader implements TranslateLoader {
       case 'ko':
         return of(require('../assets/locale/ko.json'));
       case 'es':
-          return of(require('../assets/locale/es.json'));
+        return of(require('../assets/locale/es.json'));
       default:
     }
   }
