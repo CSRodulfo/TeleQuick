@@ -29,9 +29,6 @@ export class VehiclesManagementComponent implements OnInit {
     columns: any[] = [];
     rows: Vehicle[] = [];
     rowsCache: Vehicle[] = [];
-    editedUser: UserEdit;
-    sourceUser: UserEdit;
-    editingUserName: { name: string };
     loadingIndicator: boolean;
 
     @ViewChild('indexTemplate', { static: true })
@@ -76,16 +73,13 @@ export class VehiclesManagementComponent implements OnInit {
     }
 
     ngAfterViewInit() {
- 
+
         this.vehicleEditor.changesSavedCallback = () => {
             this.loadData();
             this.editorModal.hide();
         };
 
         this.vehicleEditor.changesCancelledCallback = () => {
-            this.loadData();
-            this.editedUser = null;
-            this.sourceUser = null;
             this.editorModal.hide();
         };
 
@@ -96,17 +90,7 @@ export class VehiclesManagementComponent implements OnInit {
 
         this.vehicleCreate.changesCancelledCallback = () => {
             this.createModal.hide();
-            this.editedUser = null;
-            this.sourceUser = null;
         };
-
-        this.vehicleCreate.closeCallback = () => {
-            this.createModal.hide();
-        }
-
-        this.vehicleEditor.closeCallback = () => {
-            this.editorModal.hide();
-        }
     }
 
 
@@ -171,7 +155,7 @@ export class VehiclesManagementComponent implements OnInit {
         this.alertService.stopLoadingMessage();
         this.loadingIndicator = false;
 
-        this.alertService.showStickyMessage('Load Error', `Unable to retrieve vehicles from the server.\r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
+        this.alertService.showStickyMessage('Error cargando', `No se puedo recibir informacion \r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
             MessageSeverity.error, error);
     }
 
@@ -180,60 +164,41 @@ export class VehiclesManagementComponent implements OnInit {
         this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.make, r.model, r.year, r.registrationNumber));
     }
 
-    newUser() {
-        this.editingUserName = null;
-        this.sourceUser = null;
-        //this.editedUser = this.userEditor.newUser(this.allRoles);
+    createVehicle() {
         this.createModal.show();
     }
 
-    onEditorModalHidden() {
-        //this.editingUserName = null;
-        //this.userEditor.resetForm(true);
-    }
-
-
-    onCreateModalHidden() {
-        //this.editingUserName = null;
-        //this.userEditor.resetForm(true);
-    }
-
-
-    editUser(row: UserEdit) {
-        this.editingUserName = { name: row.userName };
-        this.sourceUser = row;
-        //this.editedUser = this.vehicleEditor.editUser(row, this.allRoles);
+    editVehicle(row: Vehicle) {
+        Object.assign(this.vehicleEditor.entityVehicle, row);
         this.editorModal.show();
     }
 
-    //  deleteUser(row: UserEdit) {
-    //      this.alertService.showDialog('Are you sure you want to delete \"' + row.userName + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
-    //  }
+    deleteVehicle(row: Vehicle) {
+        this.alertService.showDialog('Are you sure you want to delete \"' + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+    }
 
 
-    //  deleteUserHelper(row: UserEdit) {
+    deleteUserHelper(row: Vehicle) {
+        this.alertService.startLoadingMessage('Deleting...');
+        this.loadingIndicator = true;
+        this.businessService.deleteVehicle(row)
+            .subscribe(
+                results => {
+                    this.alertService.stopLoadingMessage();
+                    this.loadingIndicator = false;
+                    //this.rowsCache = this.rowsCache.filter(item => item !== row);
+                    //this.rows = this.rows.filter(item => item !== row);
+                    this.loadData();
+                },
+                error => {
+                    this.alertService.stopLoadingMessage();
+                    this.loadingIndicator = false;
+                    this.alertService.showStickyMessage('Delete Error', `An error occured whilst deleting the user.\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
+                        MessageSeverity.error, error);
+                });
+    }
 
-    //      this.alertService.startLoadingMessage('Deleting...');
-    //      this.loadingIndicator = true;
-
-    //      this.accountService.deleteUser(row)
-    //          .subscribe(results => {
-    //              this.alertService.stopLoadingMessage();
-    //              this.loadingIndicator = false;
-
-    //              this.rowsCache = this.rowsCache.filter(item => item !== row);
-    //              this.rows = this.rows.filter(item => item !== row);
-    //          },
-    //          error => {
-    //              this.alertService.stopLoadingMessage();
-    //              this.loadingIndicator = false;
-
-    //              this.alertService.showStickyMessage('Delete Error', `An error occured whilst deleting the user.\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
-    //                  MessageSeverity.error, error);
-    //          });
-    //  }
-
-    get canManageVehicles() {
+    canManageVehicles() {
         return true;
     }
 }

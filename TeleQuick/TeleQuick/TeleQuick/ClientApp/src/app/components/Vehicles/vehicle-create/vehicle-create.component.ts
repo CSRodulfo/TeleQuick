@@ -20,14 +20,11 @@ import { BusinessService } from '../../../services/business.service';
 
 export class VehicleCreateComponent implements OnInit {
 
-  public isEditMode = false;
-  public isNewUser = false;
   public entityVehicle = new Vehicle();
 
   public changesSavedCallback: () => void;
   public changesFailedCallback: () => void;
   public changesCancelledCallback: () => void;
-  public closeCallback: () => void;
 
   @ViewChild('f', { static: false })
   private form: NgForm
@@ -37,7 +34,6 @@ export class VehicleCreateComponent implements OnInit {
 
   ngOnInit() {
 
-
   }
 
   onSubmit() {
@@ -45,18 +41,9 @@ export class VehicleCreateComponent implements OnInit {
     if (this.form.valid) {
       this.save();
     } else {
-      this.showErrorAlert('Error de validación', 'Por favor complete todos los campos');
+      this.alertService.showMessage('Error de validación', 'Por favor complete todos los campos',MessageSeverity.error);
     }
-    console.log(this.form.value);  // { first: '', last: '' }
-    console.log(this.form.valid);  // false
-
-    this.entityVehicle;
   }
-
-  showErrorAlert(caption: string, message: string) {
-    this.alertService.showMessage(caption, message, MessageSeverity.error);
-  }
-
 
   save() {
     this.alertService.startLoadingMessage('Grabando cambios ...');
@@ -66,9 +53,12 @@ export class VehicleCreateComponent implements OnInit {
   private saveSuccessHelper() {
     this.alertService.stopLoadingMessage();
     this.alertService.showMessage('Creado', `El Vehiculo fue creado exitosamente`, MessageSeverity.success);
-    this.form.reset();
+
+    this.form.resetForm();
     
-    this.closeCallback();
+    if (this.changesSavedCallback) {
+      this.changesSavedCallback();
+    }
   }
 
   private saveFailedHelper(error: any) {
@@ -81,8 +71,9 @@ export class VehicleCreateComponent implements OnInit {
   }
 
   closeModel() {
-    if (this.closeCallback) {
-      this.closeCallback();
+    this.form.resetForm();
+    if (this.changesCancelledCallback) {
+      this.changesCancelledCallback();
     }
   }
 }

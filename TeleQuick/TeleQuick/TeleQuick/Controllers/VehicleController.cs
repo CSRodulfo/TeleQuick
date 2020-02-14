@@ -48,5 +48,26 @@ namespace TeleQuick.Controllers
         {
             return Ok();
         }
+
+
+        [HttpPut("Vehicle/{id}")]
+        //[Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> UpdateVehicle(string id, [FromBody] VehicleViewModel role)
+        {
+            return Ok();
+        }
+
+        [HttpDelete("Vehicle/{id}")]
+        //[Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [ProducesResponseType(200, Type = typeof(RoleViewModel))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> DeleteVehicle(string id)
+        {
+            return Ok();
+        }
     }
 }

@@ -8,10 +8,9 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { AlertService, MessageSeverity } from '../../../services/alert.service';
 import { AccountService } from '../../../services/account.service';
 import { Utilities } from '../../../services/utilities';
-import { User } from '../../../models/user.model';
-import { UserEdit } from '../../../models/user-edit.model';
-import { Role } from '../../../models/role.model';
-import { Permission } from '../../../models/permission.model';
+import { Vehicle } from '../../../models/vehicle.model';
+import { NgForm } from '@angular/forms';
+import { BusinessService } from '../../../services/business.service';
 
 
 @Component({
@@ -22,45 +21,60 @@ import { Permission } from '../../../models/permission.model';
 
 export class VehicleEditComponent implements OnInit {
 
-  public isEditMode = false;
-  public isNewUser = false;
-  public taskEdit: any = {};
-  public formResetToggle = true;
+  public entityVehicle = new Vehicle();
 
   public changesSavedCallback: () => void;
   public changesFailedCallback: () => void;
   public changesCancelledCallback: () => void;
-  public closeCallback: () => void;
 
-  @Input()
-  isViewOnly: boolean;
+  @ViewChild('f', { static: false })
+  private form: NgForm
 
-  @Input()
-  isGeneralEditor = false;
-
-  constructor(private alertService: AlertService) {
+  constructor(private alertService: AlertService, private businessService: BusinessService) {
   }
 
   ngOnInit() {
 
-  }
-
-  showErrorAlert(caption: string, message: string) {
-    this.alertService.showMessage(caption, message, MessageSeverity.error);
-  }
-
-  save() {
 
   }
 
-  onEditorModalHidden() {
-    //this.editingUserName = null;
-    //this.userEditor.resetForm(true);
+  onSubmit() {
+
+    if (this.form.valid) {
+      this.Update();
+    } else {
+      this.alertService.showMessage('Error de validación', 'Por favor complete todos los campos', MessageSeverity.error);
+    }
+  }
+
+  Update() {
+    this.alertService.startLoadingMessage('Grabando cambios ...');
+    this.businessService.putVehicle(this.entityVehicle).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
+  }
+
+  private saveSuccessHelper() {
+    this.alertService.stopLoadingMessage();
+    this.alertService.showMessage('Actualizar', `El Vehiculo fue actualizado exitosamente`, MessageSeverity.success);
+
+    this.form.resetForm();
+
+    if (this.changesSavedCallback) {
+      this.changesSavedCallback();
+    }
+  }
+
+  private saveFailedHelper(error: any) {
+    this.alertService.stopLoadingMessage();
+    this.alertService.showStickyMessage('Error al crear:', `Ha Acurrido un \r\nError: "${Utilities.getHttpResponseMessages(error)}"`, MessageSeverity.error, error);
+
+    if (this.changesFailedCallback) {
+      this.changesFailedCallback();
+    }
   }
 
   closeModel() {
-    if (this.closeCallback) {
-      this.closeCallback();
+    if (this.changesCancelledCallback) {
+      this.changesCancelledCallback();
     }
   }
 }

@@ -24,12 +24,11 @@ export class BusinessEndpoint extends EndpointBase {
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
   get vehicles() { return this.configurations.baseUrl + this._vehicles; }
-  
+
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
   }
-
 
   getTest<T>(): Observable<T> {
     const endpointUrl = `${this.usersUrl}`;
@@ -39,7 +38,6 @@ export class BusinessEndpoint extends EndpointBase {
         return this.handleError(error, () => this.getTest());
       }));
   }
-
 
   getUsersEndpoint<T>(page?: number, pageSize?: number): Observable<T> {
     const endpointUrl = page && pageSize ? `${this.usersUrl}/${page}/${pageSize}` : this.usersUrl;
@@ -59,11 +57,28 @@ export class BusinessEndpoint extends EndpointBase {
       }));
   }
 
-  postVehicleEndpoint<T>(vehicle : Vehicle): Observable<T> {
-      return this.http.post<T>(this.vehicles, vehicle, this.requestHeaders).pipe<T>(
-        catchError(error => {
-          return this.handleError(error, () => this.postVehicleEndpoint(vehicle));
-        }));
+  postVehicleEndpoint<T>(vehicle: Vehicle): Observable<T> {
+    return this.http.post<T>(this.vehicles, vehicle, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.postVehicleEndpoint(vehicle));
+      }));
   }
 
+  putVehicleEndpoint<T>(vehicle: Vehicle, vehicleId?: number): Observable<T> {
+    const endpointUrl = vehicleId ? `${this.vehicles}/${vehicleId}` : this.vehicles;
+
+    return this.http.put<T>(endpointUrl, JSON.stringify(vehicle), this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.putVehicleEndpoint(vehicle, vehicleId));
+      }));
+  }
+
+  deleteVehicleEndpoint<T>(vehicleId?: number): Observable<T> {
+    const endpointUrl = vehicleId ? `${this.vehicles}/${vehicleId}` : this.vehicles;
+
+    return this.http.delete<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.deleteVehicleEndpoint(vehicleId));
+      }));
+  }
 }

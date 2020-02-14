@@ -6,14 +6,15 @@
     <div class="row control-box">
       <div class="col-lg-8">
         <div class="form-group search-box">
-          <search-box (searchChange)="onSearchChanged($event)" placeholder="{{'vehicles.management.Search' | translate}}">>
+          <search-box (searchChange)="onSearchChanged($event)"
+            placeholder="{{'vehicles.management.Search' | translate}}">>
           </search-box>
         </div>
       </div>
       <div class="col-lg-4 pr-lg-5">
         <ul class="nav flex-column flex-lg-row justify-content-end">
           <li *ngIf="canManageVehicles" class="nav-item toolbaritem">
-            <a class="nav-link" href="javascript:;" (click)="newUser()">
+            <a class="nav-link" href="javascript:;" (click)="createVehicle()">
               <i class="fa fa-plus-circle"></i> {{'vehicles.management.New' | translate}}
             </a>
           </li>
@@ -32,21 +33,21 @@
 
     <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
       <div *ngIf="canManageVehicles">
-        <a class="btn btn-link btn-sm" href="javascript:;" (click)="editUser(row)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{'vehicles.management.Edit' | translate}}</a>|
-        <a class="btn btn-link btn-sm" href="javascript:;" (click)="deleteUser(row)"><i class="fa fa-trash-o" aria-hidden="true"></i> {{'users.management.Delete' | translate}}</a>
+        <a class="btn btn-link btn-sm" href="javascript:;" (click)="editVehicle(row)"><i class="fa fa-pencil-square-o"
+            aria-hidden="true"></i> {{'vehicles.management.Edit' | translate}}</a>|
+        <a class="btn btn-link btn-sm" href="javascript:;" (click)="deleteVehicle(row)"><i class="fa fa-trash-o"
+            aria-hidden="true"></i> {{'users.management.Delete' | translate}}</a>
       </div>
     </ng-template>
-    
-    <div class="modal fade" bsModal #editorModal="bs-modal" (onHidden)="onEditorModalHidden()"
-      [config]="{backdrop: 'static'}" tabindex="-1">
+
+    <div class="modal fade" bsModal #editorModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <vehicle-edit #vehicleEditor [isGeneralEditor]="true"></vehicle-edit>
+          <vehicle-edit #vehicleEditor> </vehicle-edit>
         </div>
       </div>
     </div>
-    <div class="modal fade" bsModal #createModal="bs-modal" (onHidden)="onCreateModalHidden()"
-      [config]="{backdrop: 'static'}" tabindex="-1">
+    <div class="modal fade" bsModal #createModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <vehicle-create #vehicleCreate></vehicle-create>

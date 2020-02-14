@@ -40,6 +40,14 @@ export class BusinessService {
     return this.businessEndpoint.postVehicleEndpoint<Vehicle[]>(vehicle);
   }
 
+  putVehicle(vehicle : Vehicle){
+    return this.businessEndpoint.putVehicleEndpoint<Vehicle[]>(vehicle, vehicle.id);
+  }
+
+  deleteVehicle(vehicle : Vehicle){
+    return this.businessEndpoint.deleteVehicleEndpoint<Vehicle[]>(vehicle.id);
+  }
+
  // getUsersAndRoles(page?: number, pageSize?: number) {
 //
  //   return forkJoin(
