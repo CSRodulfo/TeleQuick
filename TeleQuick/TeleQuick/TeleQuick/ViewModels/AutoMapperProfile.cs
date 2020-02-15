@@ -64,7 +64,9 @@ namespace TeleQuick.ViewModels
                 .ReverseMap();
 
             CreateMap<Vehicle, VehicleViewModel>()
+                .ForMember(d => d.TAGNumber, map => map.MapFrom(s => s.TAGs.FirstOrDefault().TAGNumber))
                 .ReverseMap();
+
         }
     }
 }

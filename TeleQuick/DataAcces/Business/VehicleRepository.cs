@@ -32,6 +32,7 @@ namespace DataAcces.Business
         public async Task<IEnumerable<Vehicle>> GetAllVehiclesData()
         {
             return await _appContext.Vehicles
+                .Include(x => x.TAGs)
                 .OrderBy(c => c.Year)
                 .ToListAsync();
         }

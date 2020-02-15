@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Business.Business
+namespace Business.Models.Business
 {
-    public class UserAccount : AuditableEntity
+    public class AccountSession : AuditableEntity
     {
         public int Id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        public string LoginUser { get; set; }
+
         [Required]
         [StringLength(50)]
-        public string Email { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string PhoneNumber { get; set; }
+        public string LoginUserPassword { get; set; }
+
+        public Concessionary Concessionary { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace TeleQuick.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200215165013_Session")]
+    partial class Session
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,7 +190,7 @@ namespace TeleQuick.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccountUsers");
+                    b.ToTable("UserAccounts");
                 });
 
             modelBuilder.Entity("Business.Business.InvoiceHeader", b =>
@@ -426,7 +428,7 @@ namespace TeleQuick.Migrations
 
                     b.HasIndex("ConcessionaryId");
 
-                    b.ToTable("AccountSessions");
+                    b.ToTable("AccountSession");
                 });
 
             modelBuilder.Entity("Business.Models.Business.Concessionary", b =>

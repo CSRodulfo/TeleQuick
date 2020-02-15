@@ -15,5 +15,7 @@ namespace TeleQuick.ViewModels
 
         public int Year { get; set; }
         public string RegistrationNumber { get; set; }
+
+        public int TAGNumber { get; set; }
     }
 }

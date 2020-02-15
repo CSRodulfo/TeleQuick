@@ -48,6 +48,16 @@
             </div>
         </div>
 
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="vehicleTAG">Numero de TAG:</label>
+            <div class="col-md-9">
+                <input type="number" id="vehicleTAG" name="vehicleTAG" placeholder="Numero de TAG"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleTAG.valid, 'is-invalid' : f.submitted && !vehicleTAG.valid}"
+                    [(ngModel)]="entityVehicle.tagNumber" #vehicleYear="ngModel" required />
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <hr class="edit-last-separator-hr" />

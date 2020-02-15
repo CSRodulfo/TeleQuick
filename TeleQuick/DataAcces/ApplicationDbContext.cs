@@ -27,13 +27,16 @@ namespace DataAccess
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-        public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<AccountUser> AccountUsers { get; set; }
+        public DbSet<AccountSession> AccountSessions { get; set; }
+        public DbSet<Concessionary> Concessionaries { get; set; }
+
+
+
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<TagRfid> TagRfids { get; set; }
         public DbSet<InvoiceHeader> InvoiceHeaders { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
-        public DbSet<Concessionary> Concessionaries { get; set; }
-
 
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -79,7 +82,8 @@ namespace DataAccess
             builder.Entity<OrderDetail>().Property(p => p.UnitPrice).HasColumnType(priceDecimalType);
             builder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType(priceDecimalType);
 
-            builder.Entity<UserAccount>().ToTable($"{nameof(this.UserAccounts)}");
+            builder.Entity<AccountUser>().ToTable($"{nameof(this.AccountUsers)}");
+            builder.Entity<AccountSession>().ToTable($"{nameof(this.AccountSessions)}");
             builder.Entity<Vehicle>().ToTable($"{nameof(this.Vehicles)}");
             builder.Entity<TagRfid>().ToTable($"{nameof(this.TagRfids)}");
             builder.Entity<InvoiceHeader>().ToTable($"{nameof(this.InvoiceHeaders)}");

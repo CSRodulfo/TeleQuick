@@ -12,5 +12,9 @@ namespace Business.Models.Business
         [Required]
         [StringLength(30)]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(200)]
+        public string Detail { get; set; }
     }
 }
