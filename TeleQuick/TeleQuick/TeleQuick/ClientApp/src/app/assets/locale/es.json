@@ -196,10 +196,13 @@
             "Make": "Marca",
             "Model": "Modelo",
             "Year": "Ano",
-            "RegistrationNumber": "Dominio"
+            "RegistrationNumber": "Dominio",
+            "New": "Nuevo Vehiculo",
+            "Edit": "Editar",
+            "Delete": "Eliminar"
         },
         "editor": {
-            "NewTask": "New Vehicle",
+            "NewTask": "Nuevo Vehiculo",
             "Name": "Name",
             "TaskNameRequired": "Task name is required",
             "Description": "Description",

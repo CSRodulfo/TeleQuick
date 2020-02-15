@@ -58,14 +58,14 @@ export class VehiclesManagementComponent implements OnInit {
 
         this.columns = [
             { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-            { prop: 'make', name: gT('vehicles.management.Make'), width: 50 },
-            { prop: 'model', name: gT('vehicles.management.Model'), width: 90, },
-            { prop: 'year', name: gT('vehicles.management.Year'), width: 120 },
-            { prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 140 },
+            { prop: 'make', name: gT('vehicles.management.Make'), width: 100 },
+            { prop: 'model', name: gT('vehicles.management.Model'), width: 100 },
+            { prop: 'year', name: gT('vehicles.management.Year'), width: 80 },
+            { prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 80 },
         ];
 
         // if (this.canManageVehicles) {
-        this.columns.push({ name: '', width: 160, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
+        this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
         //}
 
         this.loadData();

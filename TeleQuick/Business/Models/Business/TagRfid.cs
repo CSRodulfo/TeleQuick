@@ -10,11 +10,10 @@ namespace Business.Business
         public int Id { get; set; }
 
         [Required]
-        [StringLength(111)]
-        public string Name { get; set; }
+        [StringLength(30)]
+        public int TAGNumber { get; set; }
 
         [Required]
-        [StringLength(30)]
-        public int NumberTAG { get; set; }
+        public bool TAGEneable { get; set; }
     }
 }

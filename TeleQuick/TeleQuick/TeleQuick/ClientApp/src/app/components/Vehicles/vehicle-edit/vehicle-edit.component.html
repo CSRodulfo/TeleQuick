@@ -9,42 +9,42 @@
 <div class="modal-body">
     <form name="vehicleCreateForm" #f="ngForm" novalidate (ngSubmit)="onSubmit()">
         <div class="form-group row has-feedback-icon">
-            <label class="col-form-label col-md-3" for="vehicleMake">Marca:</label>
+            <label class="col-form-label col-md-3" for="vehicleMakeEdit">Marca:</label>
             <div class="col-md-9">
-                <input autofocus type="text" id="vehicleMake" name="vehicleMake" placeholder="Ingrese la Marca"
+                <input autofocus type="text" id="vehicleMakeEdit" name="vehicleMakeEdit" placeholder="Ingrese la Marca"
                     class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && vehicleMake.valid, 'is-invalid' : f.submitted && !vehicleMake.valid}"
-                    [(ngModel)]="entityVehicle.make" #vehicleMake="ngModel" required />
+                    [ngClass]="{'is-valid': f.submitted && vehicleMakeEdit.valid, 'is-invalid' : f.submitted && !vehicleMakeEdit.valid}"
+                    [(ngModel)]="entityVehicle.make" #vehicleMakeEdit="ngModel" required />
             </div>
         </div>
 
         <div class="form-group row description-form-group">
-            <label class="col-form-label col-md-3" for="vehicleModel">Modelo:</label>
+            <label class="col-form-label col-md-3" for="vehicleModelEdit">Modelo:</label>
             <div class="col-md-9">
-                <input type="text" id="vehicleModel" name="vehicleModel" placeholder="Ingrese el Modelo"
+                <input type="text" id="vehicleModelEdit" name="vehicleModelEdit" placeholder="Ingrese el Modelo"
                     class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && vehicleModel.valid, 'is-invalid' : f.submitted && !vehicleModel.valid}"
-                    [(ngModel)]="entityVehicle.model" #vehicleModel="ngModel" required />
+                    [ngClass]="{'is-valid': f.submitted && vehicleModelEdit.valid, 'is-invalid' : f.submitted && !vehicleModelEdit.valid}"
+                    [(ngModel)]="entityVehicle.model" #vehicleModelEdit="ngModel" required />
             </div>
         </div>
 
         <div class="form-group row description-form-group">
-            <label class="col-form-label col-md-3" for="vehicleYear">Año:</label>
+            <label class="col-form-label col-md-3" for="vehicleYearEdit">Año:</label>
             <div class="col-md-9">
-                <input type="number" id="vehicleYear" name="vehicleYear" placeholder="Ingrese el Año"
+                <input type="number" id="vehicleYearEdit" name="vehicleYearEdit" placeholder="Ingrese el Año"
                     class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && vehicleYear.valid, 'is-invalid' : f.submitted && !vehicleYear.valid}"
-                    [(ngModel)]="entityVehicle.year" #vehicleYear="ngModel" required />
+                    [ngClass]="{'is-valid': f.submitted && vehicleYearEdit.valid, 'is-invalid' : f.submitted && !vehicleYearEdit.valid}"
+                    [(ngModel)]="entityVehicle.year" #vehicleYearEdit="ngModel" required />
             </div>
         </div>
 
         <div class="form-group row description-form-group">
-            <label class="col-form-label col-md-3" for="vehicleRegistrationNumber">Dominio:</label>
+            <label class="col-form-label col-md-3" for="vehicleRegistrationNumberEdit">Dominio:</label>
             <div class="col-md-9">
-                <input type="text" id="vehicleRegistrationNumber" name="vehicleRegistrationNumber"
+                <input type="text" id="vehicleRegistrationNumberEdit" name="vehicleRegistrationNumberEdit"
                     placeholder="Ingrese el Dominio" class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && vehicleRegistrationNumber.valid, 'is-invalid' : f.submitted && !vehicleRegistrationNumber.valid}"
-                    [(ngModel)]="entityVehicle.registrationNumber" #vehicleRegistrationNumber="ngModel" required />
+                    [ngClass]="{'is-valid': f.submitted && vehicleRegistrationNumberEdit.valid, 'is-invalid' : f.submitted && !vehicleRegistrationNumberEdit.valid}"
+                    [(ngModel)]="entityVehicle.registrationNumber" #vehicleRegistrationNumberEdit="ngModel" required />
             </div>
         </div>
 
