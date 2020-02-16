@@ -11,15 +11,15 @@ import { AlertService, DialogType, MessageSeverity } from '../../services/alert.
 import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
-import { AccountSession } from '../../models/accountSession.model';
+import { AccountSession } from '../../models/account-session.model';
 import { AccountSessionsEditComponent } from './account-sessions-edit/account-sessions-edit.component';
 import { AccountSessionsCreateComponent } from './account-sessions-create/account-sessions-create.component';
 import { GlobalResources } from '../../services/globalResources'
 
 @Component({
-  selector: 'accountSessions',
-  templateUrl: './accountSessions-list.component.html',
-  styleUrls: ['./accountSessions-list.component.scss'],
+  selector: 'account-sessions-list',
+  templateUrl: './account-sessions-list.component.html',
+  styleUrls: ['./account-sessions-list.component.scss'],
   animations: [fadeInOut]
 })
 

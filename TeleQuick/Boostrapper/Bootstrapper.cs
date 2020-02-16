@@ -30,6 +30,7 @@ namespace Boostrapper
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IVehicleService, VehicleService>();
+            services.AddScoped<IAccountSessionService, AccountSessionService>();
 
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();

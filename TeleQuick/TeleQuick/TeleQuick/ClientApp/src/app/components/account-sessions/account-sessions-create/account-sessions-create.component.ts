@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import { AlertService, MessageSeverity } from '../../../services/alert.service';
 import { Utilities } from '../../../services/utilities';
-import { AccountSession } from '../../../models/accountSession.model';
+import { AccountSession } from '../../../models/account-session.model';
 import { NgForm } from '@angular/forms';
 import { BusinessService } from '../../../services/business.service';
 

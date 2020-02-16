@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard], data: { title: 'Home' } },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard], data: { title: 'Customers' } },
-  { path: 'accountSessions', component: AccountSessionsComponent, canActivate: [AuthGuard], data: { title: 'AccountSessions' } },
+  { path: 'account-sessions', component: AccountSessionsComponent, canActivate: [AuthGuard], data: { title: 'AccountSessions' } },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], data: { title: 'Orders' } },
   { path: 'vehicles', component: VehiclesManagementComponent, canActivate: [AuthGuard], data: { title: 'Vehicles' } },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], data: { title: 'Settings' } },

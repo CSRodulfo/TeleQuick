@@ -13,6 +13,7 @@ import { User } from '../models/user.model';
 import { Test } from '../models/test.model';
 import { Vehicle } from '../models/vehicle.model';
 import { Permission, PermissionNames, PermissionValues } from '../models/permission.model';
+import { AccountSession } from '../models/account-session.model';
 
 
 export type RolesChangedOperation = 'add' | 'delete' | 'modify';
@@ -46,6 +47,22 @@ export class BusinessService {
 
   deleteVehicle(vehicle : Vehicle){
     return this.businessEndpoint.deleteVehicleEndpoint<Vehicle[]>(vehicle.id);
+  }
+
+  getAccountSession() {
+    return this.businessEndpoint.getAccountSessionEndpoint<AccountSession[]>();
+  }
+
+  postAccountSession(accountSession : AccountSession){
+    return this.businessEndpoint.postAccountSessionEndpoint<AccountSession[]>(accountSession);
+  }
+
+  putAccountSession(accountSession : AccountSession){
+    return this.businessEndpoint.putAccountSessionEndpoint<AccountSession[]>(accountSession, accountSession.id);
+  }
+
+  deleteAccountSession(accountSession : AccountSession){
+    return this.businessEndpoint.deleteAccountSessionEndpoint<AccountSession[]>(accountSession.id);
   }
 
  // getUsersAndRoles(page?: number, pageSize?: number) {

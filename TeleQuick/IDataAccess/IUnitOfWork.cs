@@ -3,6 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
+using IDataAccess.Business;
 using IDataAccess.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace IDataAccess
         ICustomerRepository Customers { get; }
         IProductRepository Products { get; }
         IOrdersRepository Orders { get; }
-        IVehicleRepository Vehicles{ get; }
+        IVehicleRepository Vehicles { get; }
+        IAccountSessionRepository AccountSessions { get; }
 
         int SaveChanges();
     }

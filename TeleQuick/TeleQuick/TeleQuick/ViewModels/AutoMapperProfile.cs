@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAcces.Core;
 using Business.Business;
+using Business.Models.Business;
 
 namespace TeleQuick.ViewModels
 {
@@ -66,6 +67,9 @@ namespace TeleQuick.ViewModels
             CreateMap<Vehicle, VehicleViewModel>()
                 .ForMember(d => d.TAGNumber, map => map.MapFrom(s => s.TAGs.FirstOrDefault().TAGNumber))
                 .ReverseMap();
+
+            CreateMap<AccountSession, AccountSessionViewModel>()
+                 .ReverseMap();
 
         }
     }
