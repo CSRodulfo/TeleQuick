@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h4 class="modal-title float-left"><i class="fa fa-car"></i>
+        Nuevo Vehiculo</h4>
+    <button type="button" class="close float-right" title="Close" (click)="closeModel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form name="vehicleCreateForm" #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group row has-feedback-icon">
+            <label class="col-form-label col-md-3" for="vehicleMake">Marca:</label>
+            <div class="col-md-9">
+                <input autofocus type="text" id="vehicleMake" name="vehicleMake" placeholder="Ingrese la Marca"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleMake.valid, 'is-invalid' : f.submitted && !vehicleMake.valid}"
+                    [(ngModel)]="entityVehicle.make" #vehicleMake="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="vehicleModel">Modelo:</label>
+            <div class="col-md-9">
+                <input type="text" id="vehicleModel" name="vehicleModel" placeholder="Ingrese el Modelo"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleModel.valid, 'is-invalid' : f.submitted && !vehicleModel.valid}"
+                    [(ngModel)]="entityVehicle.model" #vehicleModel="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="vehicleYear">Año:</label>
+            <div class="col-md-9">
+                <input type="number" id="vehicleYear" name="vehicleYear" placeholder="Ingrese el Año"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleYear.valid, 'is-invalid' : f.submitted && !vehicleYear.valid}"
+                    [(ngModel)]="entityVehicle.year" #vehicleYear="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="vehicleRegistrationNumber">Dominio:</label>
+            <div class="col-md-9">
+                <input type="text" id="vehicleRegistrationNumber" name="vehicleRegistrationNumber"
+                    placeholder="Ingrese el Dominio" class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleRegistrationNumber.valid, 'is-invalid' : f.submitted && !vehicleRegistrationNumber.valid}"
+                    [(ngModel)]="entityVehicle.registrationNumber" #vehicleRegistrationNumber="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="vehicleTAG">Numero de TAG:</label>
+            <div class="col-md-9">
+                <input type="number" id="vehicleTAG" name="vehicleTAG" placeholder="Numero de TAG"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleTAG.valid, 'is-invalid' : f.submitted && !vehicleTAG.valid}"
+                    [(ngModel)]="entityVehicle.tagNumber" #vehicleYear="ngModel" required />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="edit-last-separator-hr" />
+            </div>
+        </div>
+        <div class="form-group actionBtn-form-group">
+            <div class="float-right">
+                <button type="submit" class="btn btn-primary">Crear Vehiculo</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+</div>

@@ -43,7 +43,20 @@
       </a>
     </ng-template>
 
-    <!--The content below is only a placeholder and can be replaced.-->
+    <div class="modal fade" bsModal #editorModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <vehicle-edit #accountSessionEditor> </vehicle-edit>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" bsModal #createModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <vehicle-create #accountSessionCreate></vehicle-create>
+        </div>
+      </div>
+    </div>
 
     <router-outlet></router-outlet>
   </div>

@@ -69,6 +69,8 @@ import { UserPreferencesComponent } from './components/controls/user-preferences
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
+import { AccountSessionsEditComponent } from './components/accountSessions/account-sessions-edit/account-sessions-edit.component';
+import { AccountSessionsCreateComponent } from './components/accountSessions/account-sessions-create/account-sessions-create.component';
 
 
 
@@ -120,7 +122,9 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
     GroupByPipe,
-    VehicleCreateComponent
+    VehicleCreateComponent,
+    AccountSessionsEditComponent,
+    AccountSessionsCreateComponent
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
