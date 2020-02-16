@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import { AlertService, MessageSeverity } from '../../../services/alert.service';
-import { AccountService } from '../../../services/account.service';
 import { Utilities } from '../../../services/utilities';
 import { AccountSession } from '../../../models/accountSession.model';
 import { NgForm } from '@angular/forms';
@@ -14,7 +13,7 @@ import { BusinessService } from '../../../services/business.service';
 })
 export class AccountSessionsCreateComponent implements OnInit {
 
-  public entityVehicle = new AccountSession();
+  public entityAccountSession = new AccountSession();
 
   public changesSavedCallback: () => void;
   public changesFailedCallback: () => void;

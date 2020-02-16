@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title float-left"><i class="fa fa-car"></i>
+        Nuevo Vehiculo</h4>
+    <button type="button" class="close float-right" title="Close" (click)="closeModel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form name="vehicleCreateForm" #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group row has-feedback-icon">
+            <label class="col-form-label col-md-3" for="vehicleMakeEdit">Marca:</label>
+            <div class="col-md-9">
+                <input autofocus type="text" id="vehicleMakeEdit" name="vehicleMakeEdit" placeholder="Ingrese la Marca"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleMakeEdit.valid, 'is-invalid' : f.submitted && !vehicleMakeEdit.valid}"
+                    [(ngModel)]="entityAccountSession.loginUserPassword" #vehicleMakeEdit="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="vehicleModelEdit">Modelo:</label>
+            <div class="col-md-9">
+                <input type="text" id="vehicleModelEdit" name="vehicleModelEdit" placeholder="Ingrese el Modelo"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && vehicleModelEdit.valid, 'is-invalid' : f.submitted && !vehicleModelEdit.valid}"
+                    [(ngModel)]="entityAccountSession.loginUserPassword" #vehicleModelEdit="ngModel" required />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="edit-last-separator-hr" />
+            </div>
+        </div>
+        <div class="form-group actionBtn-form-group">
+            <div class="float-right">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+</div>

@@ -50,7 +50,7 @@ import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { AccountSessionsComponent } from './components/accountSessions/accountSessions-list.component';
+
 import { OrdersComponent } from './components/orders/orders.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
 import { VehicleEditComponent } from './components/Vehicles/vehicle-edit/vehicle-edit.component';
@@ -69,8 +69,10 @@ import { UserPreferencesComponent } from './components/controls/user-preferences
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
-import { AccountSessionsEditComponent } from './components/accountSessions/account-sessions-edit/account-sessions-edit.component';
-import { AccountSessionsCreateComponent } from './components/accountSessions/account-sessions-create/account-sessions-create.component';
+
+import { AccountSessionsComponent } from './components/account-sessions/account-sessions-list.component';
+import { AccountSessionsEditComponent } from './components/account-sessions/account-sessions-edit/account-sessions-edit.component';
+import { AccountSessionsCreateComponent } from './components/account-sessions/account-sessions-create/account-sessions-create.component';
 
 
 

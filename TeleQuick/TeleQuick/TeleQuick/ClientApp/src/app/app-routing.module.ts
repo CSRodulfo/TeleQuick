@@ -9,7 +9,7 @@ import { Routes, RouterModule, DefaultUrlSerializer, UrlSerializer, UrlTree } fr
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { AccountSessionsComponent } from './components/accountSessions/accountSessions-list.component';
+import { AccountSessionsComponent } from './components/account-sessions/account-sessions-list.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
 import { SettingsComponent } from './components/settings/settings.component';

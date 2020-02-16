@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { AlertService, MessageSeverity } from '../../../services/alert.service';
-import { AccountService } from '../../../services/account.service';
 import { Utilities } from '../../../services/utilities';
-import { Vehicle } from '../../../models/vehicle.model';
-import { NgForm } from '@angular/forms';
+import { AccountSession } from '../../../models/accountSession.model';
 import { BusinessService } from '../../../services/business.service';
 
 @Component({
@@ -14,7 +13,7 @@ import { BusinessService } from '../../../services/business.service';
 })
 export class AccountSessionsEditComponent implements OnInit {
 
-  public entityVehicle = new Vehicle();
+  public entityAccountSession = new AccountSession();
 
   public changesSavedCallback: () => void;
   public changesFailedCallback: () => void;
@@ -42,7 +41,7 @@ export class AccountSessionsEditComponent implements OnInit {
 
   Update() {
     this.alertService.startLoadingMessage('Grabando cambios ...');
-    this.businessService.putVehicle(this.entityVehicle).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
+    //this.businessService.putVehicle(this.entityAccountSession).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
   }
 
   private saveSuccessHelper() {
