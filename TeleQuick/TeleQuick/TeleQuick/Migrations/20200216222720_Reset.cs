@@ -2,7 +2,7 @@
 
 namespace TeleQuick.Migrations
 {
-    public partial class Actualizacion : Migration
+    public partial class Reset : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,9 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeleQuick.Migrations
@@ -27,7 +22,6 @@ namespace TeleQuick.Migrations
                     PhoneNumber = table.Column<string>(unicode: false, maxLength: 30, nullable: true),
                     Address = table.Column<string>(nullable: true),
                     City = table.Column<string>(maxLength: 50, nullable: true),
-                    Gender = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     DateModified = table.Column<DateTime>(nullable: false)
                 },
@@ -107,6 +101,40 @@ namespace TeleQuick.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Concessionaries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(maxLength: 30, nullable: false),
+                    Detail = table.Column<string>(maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Concessionaries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vehicles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    Make = table.Column<string>(maxLength: 100, nullable: false),
+                    Model = table.Column<string>(maxLength: 100, nullable: false),
+                    Year = table.Column<int>(nullable: false),
+                    RegistrationNumber = table.Column<string>(maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehicles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -196,12 +224,6 @@ namespace TeleQuick.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AppOrders_AppCustomers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "AppCustomers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,6 +312,88 @@ namespace TeleQuick.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AccountSessions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    LoginUser = table.Column<string>(maxLength: 50, nullable: false),
+                    LoginUserPassword = table.Column<string>(maxLength: 50, nullable: false),
+                    IsValid = table.Column<bool>(nullable: false),
+                    ConcessionaryId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountSessions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AccountSessions_Concessionaries_ConcessionaryId",
+                        column: x => x.ConcessionaryId,
+                        principalTable: "Concessionaries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InvoiceHeaders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Hours = table.Column<DateTime>(nullable: false),
+                    Voucher = table.Column<string>(maxLength: 5, nullable: false),
+                    PointOfSale = table.Column<int>(nullable: false),
+                    CurrentAccount = table.Column<int>(nullable: false),
+                    CAE = table.Column<int>(nullable: false),
+                    Subtotal = table.Column<decimal>(nullable: false),
+                    IVAIns = table.Column<decimal>(nullable: false),
+                    IVARni = table.Column<decimal>(nullable: false),
+                    IVARG3337 = table.Column<decimal>(nullable: false),
+                    IIBB = table.Column<decimal>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false),
+                    VehicleId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InvoiceHeaders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_InvoiceHeaders_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TagRfids",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    TAGNumber = table.Column<int>(maxLength: 30, nullable: false),
+                    TAGEneable = table.Column<bool>(nullable: false),
+                    VehicleId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TagRfids", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TagRfids_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AppOrderDetails",
                 columns: table => new
                 {
@@ -322,6 +426,36 @@ namespace TeleQuick.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "InvoiceDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<string>(maxLength: 5, nullable: false),
+                    Hour = table.Column<string>(nullable: true),
+                    TollStation = table.Column<string>(nullable: true),
+                    Way = table.Column<string>(nullable: true),
+                    Categoria = table.Column<int>(nullable: false),
+                    Total = table.Column<decimal>(maxLength: 5, nullable: false),
+                    InvoiceHeaderId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InvoiceDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_InvoiceDetails_InvoiceHeaders_InvoiceHeaderId",
+                        column: x => x.InvoiceHeaderId,
+                        principalTable: "InvoiceHeaders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccountSessions_ConcessionaryId",
+                table: "AccountSessions",
+                column: "ConcessionaryId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AppCustomers_Name",
                 table: "AppCustomers",
@@ -341,11 +475,6 @@ namespace TeleQuick.Migrations
                 name: "IX_AppOrders_CashierId",
                 table: "AppOrders",
                 column: "CashierId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppOrders_CustomerId",
-                table: "AppOrders",
-                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppProducts_Name",
@@ -400,10 +529,31 @@ namespace TeleQuick.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InvoiceDetails_InvoiceHeaderId",
+                table: "InvoiceDetails",
+                column: "InvoiceHeaderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InvoiceHeaders_VehicleId",
+                table: "InvoiceHeaders",
+                column: "VehicleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TagRfids_VehicleId",
+                table: "TagRfids",
+                column: "VehicleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AccountSessions");
+
+            migrationBuilder.DropTable(
+                name: "AppCustomers");
+
             migrationBuilder.DropTable(
                 name: "AppOrderDetails");
 
@@ -423,6 +573,15 @@ namespace TeleQuick.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "InvoiceDetails");
+
+            migrationBuilder.DropTable(
+                name: "TagRfids");
+
+            migrationBuilder.DropTable(
+                name: "Concessionaries");
+
+            migrationBuilder.DropTable(
                 name: "AppOrders");
 
             migrationBuilder.DropTable(
@@ -432,13 +591,16 @@ namespace TeleQuick.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "InvoiceHeaders");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AppCustomers");
+                name: "AppProductCategories");
 
             migrationBuilder.DropTable(
-                name: "AppProductCategories");
+                name: "Vehicles");
         }
     }
 }

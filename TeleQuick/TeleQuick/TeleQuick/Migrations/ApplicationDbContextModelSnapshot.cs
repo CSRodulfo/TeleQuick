@@ -150,47 +150,6 @@ namespace TeleQuick.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Business.Business.AccountUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AccountUsers");
-                });
-
             modelBuilder.Entity("Business.Business.InvoiceHeader", b =>
                 {
                     b.Property<int>("Id")
@@ -390,10 +349,7 @@ namespace TeleQuick.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ConcessionaryId")
+                    b.Property<int>("ConcessionaryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -402,6 +358,9 @@ namespace TeleQuick.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LoginUser")
                         .IsRequired()
@@ -421,8 +380,6 @@ namespace TeleQuick.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountUserId");
 
                     b.HasIndex("ConcessionaryId");
 
@@ -818,13 +775,11 @@ namespace TeleQuick.Migrations
 
             modelBuilder.Entity("Business.Models.Business.AccountSession", b =>
                 {
-                    b.HasOne("Business.Business.AccountUser", null)
-                        .WithMany("AccountSessions")
-                        .HasForeignKey("AccountUserId");
-
                     b.HasOne("Business.Models.Business.Concessionary", "Concessionary")
-                        .WithMany()
-                        .HasForeignKey("ConcessionaryId");
+                        .WithMany("AccountSessions")
+                        .HasForeignKey("ConcessionaryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Business.Models.Business.InvoiceDetail", b =>

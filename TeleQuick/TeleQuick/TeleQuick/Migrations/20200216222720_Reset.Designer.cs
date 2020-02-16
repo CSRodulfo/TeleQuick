@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TeleQuick.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200212001852_Relaciones")]
-    partial class Relaciones
+    [Migration("20200216222720_Reset")]
+    partial class Reset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,12 +221,10 @@ namespace TeleQuick.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(111)")
-                        .HasMaxLength(111);
+                    b.Property<bool>("TAGEneable")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("NumberTAG")
+                    b.Property<int>("TAGNumber")
                         .HasColumnType("int")
                         .HasMaxLength(30);
 
@@ -245,47 +243,6 @@ namespace TeleQuick.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("TagRfids");
-                });
-
-            modelBuilder.Entity("Business.Business.UserAccount", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserAccounts");
                 });
 
             modelBuilder.Entity("Business.Business.Vehicle", b =>
@@ -387,12 +344,61 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppCustomers");
                 });
 
+            modelBuilder.Entity("Business.Models.Business.AccountSession", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ConcessionaryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LoginUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("LoginUserPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConcessionaryId");
+
+                    b.ToTable("AccountSessions");
+                });
+
             modelBuilder.Entity("Business.Models.Business.Concessionary", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Detail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -767,6 +773,13 @@ namespace TeleQuick.Migrations
                     b.HasOne("Business.Business.Vehicle", null)
                         .WithMany("TAGs")
                         .HasForeignKey("VehicleId");
+                });
+
+            modelBuilder.Entity("Business.Models.Business.AccountSession", b =>
+                {
+                    b.HasOne("Business.Models.Business.Concessionary", "Concessionary")
+                        .WithMany("AccountSessions")
+                        .HasForeignKey("ConcessionaryId");
                 });
 
             modelBuilder.Entity("Business.Models.Business.InvoiceDetail", b =>

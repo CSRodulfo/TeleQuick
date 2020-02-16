@@ -17,6 +17,12 @@ namespace Business.Models.Business
         [StringLength(50)]
         public string LoginUserPassword { get; set; }
 
+        [Required]
+        public bool IsValid { get; set; }
+
+
+        public int ConcessionaryId { get; set; }
+
         public Concessionary Concessionary { get; set; }
     }
 }
