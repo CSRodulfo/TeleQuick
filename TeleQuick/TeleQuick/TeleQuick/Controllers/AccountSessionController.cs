@@ -11,7 +11,7 @@ using TeleQuick.ViewModels;
 namespace TeleQuick.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme)]
     public class AccountSessionController : ControllerBase
     {
         private readonly IMapper _mapper;

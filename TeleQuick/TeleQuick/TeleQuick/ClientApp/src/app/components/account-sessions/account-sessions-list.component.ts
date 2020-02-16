@@ -42,10 +42,10 @@ export class AccountSessionsComponent implements OnInit {
   createModal: ModalDirective;
 
   @ViewChild('accountSessionEditor', { static: true })
-  vehicleEditor: AccountSessionsEditComponent;
+  accountSessionEditor: AccountSessionsEditComponent;
 
   @ViewChild('accountSessionCreate', { static: true })
-  vehicleCreate: AccountSessionsCreateComponent;
+  accountSessionCreate: AccountSessionsCreateComponent;
 
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
     private businessService: BusinessService, private globalResource: GlobalResources) {
@@ -72,43 +72,43 @@ export class AccountSessionsComponent implements OnInit {
 
   ngAfterViewInit() {
 
-  // this.vehicleEditor.changesSavedCallback = () => {
-  //   this.loadData();
-  //   this.editorModal.hide();
-  // };
+    this.accountSessionEditor.changesSavedCallback = () => {
+      this.loadData();
+      this.editorModal.hide();
+    };
 
-  // this.vehicleEditor.changesCancelledCallback = () => {
-  //   this.editorModal.hide();
-  // };
+    this.accountSessionEditor.changesCancelledCallback = () => {
+      this.editorModal.hide();
+    };
 
-  // this.vehicleCreate.changesSavedCallback = () => {
-  //   this.loadData();
-  //   this.createModal.hide();
-  // };
+    this.accountSessionCreate.changesSavedCallback = () => {
+      this.loadData();
+      this.createModal.hide();
+    };
 
-  // this.vehicleCreate.changesCancelledCallback = () => {
-  //   this.createModal.hide();
-  // };
+    this.accountSessionCreate.changesCancelledCallback = () => {
+      this.createModal.hide();
+    };
   }
 
   loadData() {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
 
-    //this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results),
-    // error => this.onDataLoadFailed(error));
+    this.businessService.getAccountSession().subscribe(results => this.onDataLoadSuccessful(results),
+     error => this.onDataLoadFailed(error));
   }
 
-  onDataLoadSuccessful(vehicles: AccountSession[]) {
+  onDataLoadSuccessful(accountSession: AccountSession[]) {
     this.alertService.stopLoadingMessage();
     this.loadingIndicator = false;
 
-    vehicles.forEach((user, index, vehicles) => {
+    accountSession.forEach((user, index, vehicles) => {
       (user as any).index = index + 1;
     });
 
-    this.rowsCache = [...vehicles];
-    this.rows = vehicles;
+    this.rowsCache = [...accountSession];
+    this.rows = accountSession;
   }
 
   onDataLoadFailed(error: any) {
@@ -121,7 +121,7 @@ export class AccountSessionsComponent implements OnInit {
 
 
   onSearchChanged(value: string) {
-   // this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.make, r.model, r.year, r.registrationNumber));
+     this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.loginUser));
   }
 
   createVehicle() {
@@ -129,34 +129,34 @@ export class AccountSessionsComponent implements OnInit {
   }
 
   editVehicle(row: AccountSession) {
-    //Object.assign(this.accountSessionEditor.entityVehicle, row);
+    Object.assign(this.accountSessionEditor.entityAccountSession , row);
     this.editorModal.show();
   }
 
   deleteVehicle(row: AccountSession) {
 
-    //this.alertService.showDialog(this.globalResource.error + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+    this.alertService.showDialog(this.globalResource.error + row.loginUser + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
   }
 
- //deleteUserHelper(row: AccountSession) {
- //  this.alertService.startLoadingMessage('Eliminando...');
- //  this.loadingIndicator = true;
- //  this.businessService.deleteVehicle(row)
- //    .subscribe(
- //      results => {
- //        this.alertService.stopLoadingMessage();
- //        this.loadingIndicator = false;
- //        //this.rowsCache = this.rowsCache.filter(item => item !== row);
- //        //this.rows = this.rows.filter(item => item !== row);
- //        this.loadData();
- //      },
- //      error => {
- //        this.alertService.stopLoadingMessage();
- //        this.loadingIndicator = false;
- //        this.alertService.showStickyMessage('Error al eliminar', `Ha ocurrido un error al elimiar el vehiculo\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
- //          MessageSeverity.error, error);
- //      });
- // }
+  deleteUserHelper(row: AccountSession) {
+    this.alertService.startLoadingMessage('Eliminando...');
+    this.loadingIndicator = true;
+    this.businessService.deleteAccountSession(row)
+      .subscribe(
+        results => {
+          this.alertService.stopLoadingMessage();
+          this.loadingIndicator = false;
+          //this.rowsCache = this.rowsCache.filter(item => item !== row);
+          //this.rows = this.rows.filter(item => item !== row);
+          this.loadData();
+        },
+        error => {
+          this.alertService.stopLoadingMessage();
+          this.loadingIndicator = false;
+          this.alertService.showStickyMessage('Error al eliminar', `Ha ocurrido un error al elimiar el vehiculo\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
+            MessageSeverity.error, error);
+        });
+   }
 
   canManageVehicles() {
     return true;

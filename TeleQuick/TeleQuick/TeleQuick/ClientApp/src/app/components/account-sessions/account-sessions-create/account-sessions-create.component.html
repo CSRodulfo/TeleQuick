@@ -14,7 +14,7 @@
                 <input autofocus type="text" id="vehicleMake" name="vehicleMake" placeholder="Ingrese la Marca"
                     class="form-control"
                     [ngClass]="{'is-valid': f.submitted && vehicleMake.valid, 'is-invalid' : f.submitted && !vehicleMake.valid}"
-                    [(ngModel)]="entityAccountSession" #vehicleMake="ngModel" required />
+                    [(ngModel)]="entityAccountSession.isValid" #vehicleMake="ngModel" required />
             </div>
         </div>
 

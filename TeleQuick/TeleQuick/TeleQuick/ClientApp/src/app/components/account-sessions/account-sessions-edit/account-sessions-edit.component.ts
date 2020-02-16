@@ -7,7 +7,7 @@ import { AccountSession } from '../../../models/account-session.model';
 import { BusinessService } from '../../../services/business.service';
 
 @Component({
-  selector: 'app-account-sessions-edit',
+  selector: 'account-sessions-edit',
   templateUrl: './account-sessions-edit.component.html',
   styleUrls: ['./account-sessions-edit.component.scss']
 })
@@ -40,13 +40,13 @@ export class AccountSessionsEditComponent implements OnInit {
   }
 
   Update() {
-    this.alertService.startLoadingMessage('Grabando cambios ...');
-    //this.businessService.putVehicle(this.entityAccountSession).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
+    this.alertService.startLoadingMessage('Guardando cambios ...');
+    this.businessService.putAccountSession(this.entityAccountSession).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
   }
 
   private saveSuccessHelper() {
     this.alertService.stopLoadingMessage();
-    this.alertService.showMessage('Actualizar', `El Vehiculo fue actualizado exitosamente`, MessageSeverity.success);
+    this.alertService.showMessage('Actualizar', `La cuenta de usuario fue actualizado exitosamente`, MessageSeverity.success);
 
     this.form.resetForm();
 
