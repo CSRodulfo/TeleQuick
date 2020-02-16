@@ -17,6 +17,5 @@ namespace Business.Models.Business
         [StringLength(200)]
         public string Detail { get; set; }
 
-        public ICollection<AccountSession> AccountSessions { get; set; }
     }
 }

@@ -4,6 +4,7 @@
 // =============================
 
 using Business;
+using Business.Models.Business;
 using IDataAccess;
 using IDataAccess.Core;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,41 @@ namespace DataAccess
             if (!await _context.Customers.AnyAsync() && !await _context.ProductCategories.AnyAsync())
             {
                 _logger.LogInformation("Seeding initial data");
+
+                Concessionary cons_1 = new Concessionary
+                {
+                    Name = "AUSA",
+                    Detail = "contact@ebenmonney.com",
+                };
+
+                Concessionary cons_2 = new Concessionary
+                {
+                    Name = "AUSOL",
+                    Detail = "contact@ebenmonney.com",
+                };
+                Concessionary cons_3 = new Concessionary
+                {
+                    Name = "AUBASA",
+                    Detail = "contact@ebenmonney.com",
+                };
+
+                Concessionary cons_4 = new Concessionary
+                {
+                    Name = "AUSUR",
+                    Detail = "contact@ebenmonney.com",
+                };
+
+                Concessionary cons_5 = new Concessionary
+                {
+                    Name = "AUOESTE",
+                    Detail = "contact@ebenmonney.com",
+                };
+
+                Concessionary cons_6 = new Concessionary
+                {
+                    Name = "CEAMSE",
+                    Detail = "contact@ebenmonney.com",
+                };
 
                 Customer cust_1 = new Customer
                 {
@@ -159,7 +195,12 @@ namespace DataAccess
                         new OrderDetail() {UnitPrice = prod_2.SellingPrice, Quantity=1, Product = prod_2 },
                     }
                 };
-
+                _context.Concessionaries.Add(cons_1);
+                _context.Concessionaries.Add(cons_2);
+                _context.Concessionaries.Add(cons_3);
+                _context.Concessionaries.Add(cons_4);
+                _context.Concessionaries.Add(cons_5);
+                _context.Concessionaries.Add(cons_6);
 
                 _context.Customers.Add(cust_1);
                 _context.Customers.Add(cust_2);
