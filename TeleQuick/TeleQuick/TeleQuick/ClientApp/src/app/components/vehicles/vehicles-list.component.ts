@@ -14,13 +14,12 @@ import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleCreateComponent } from './vehicle-create/vehicle-create.component';
-import { FakeMissingTranslationHandler } from '@ngx-translate/core';
 import {GlobalResources} from '../../services/globalResources'
 
 @Component({
-    selector: 'vehicles-management',
-    templateUrl: './vehicles-management.component.html',
-    styleUrls: ['./vehicles-management.component.scss'],
+    selector: 'vehicles-list',
+    templateUrl: './vehicles-list.component.html',
+    styleUrls: ['./vehicles-list.component.scss'],
     animations: [fadeInOut]
 })
 

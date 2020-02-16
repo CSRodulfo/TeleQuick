@@ -7,7 +7,7 @@
     "mainMenu": {
         "Appointments": "Equipos",
         "Customers": "Clientes",
-        "Products": "Products",
+        "AccountSessions": "AccountSessions",
         "Orders": "Ordenes",
         "Vehicle": "Vehiculos",
         "About": "Acerca de",
@@ -16,7 +16,7 @@
     "pageHeader": {
         "Dashboard": "Tablero",
         "Customers": "Clientes",
-        "Products": "Productos",
+        "AccountSessions": "Productos",
         "Orders": "Ordenes",
         "Vehicles": "Vehiculos",
         "NotFound": "No Encontrado",
@@ -63,7 +63,7 @@
         "HomePage": "Página principal:",
         "Dashboard": "Tablero",
         "Customers": "Clientes",
-        "Products": "Productos",
+        "AccountSessions": "Productos",
         "Orders": "Otros",
         "About": "Acerca de",
         "Settings": "Configuraciones",

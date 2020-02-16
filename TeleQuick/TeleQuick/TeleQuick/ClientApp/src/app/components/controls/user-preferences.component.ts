@@ -129,15 +129,15 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
         return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewCustomersPermission
     }
 
-    get canViewProducts() {
-        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewProductsPermission
+    get canViewAccountSessions() {
+        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewAccountSessionsPermission
     }
 
     get canViewOrders() {
-        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewProductsPermission
+        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewAccountSessionsPermission
     }
 
     get canViewVehicles() {
-        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewProductsPermission
+        return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewAccountSessionsPermission
     }
 }

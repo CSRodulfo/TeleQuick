@@ -14,13 +14,13 @@ import { Utilities } from '../../services/utilities';
 import { BusinessService } from '../../services/business.service';
 
 @Component({
-  selector: 'products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  selector: 'accountSessions',
+  templateUrl: './accountSessions-list.component.html',
+  styleUrls: ['./accountSessions-list.component.scss'],
   animations: [fadeInOut]
 })
 
-export class ProductsComponent implements OnInit {
+export class AccountSessionsComponent implements OnInit {
 
   latestPosts = ['Nirva', 'pepe'];
   rows = [];

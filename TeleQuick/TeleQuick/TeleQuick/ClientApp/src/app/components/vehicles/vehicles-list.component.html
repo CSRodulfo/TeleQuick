@@ -2,29 +2,33 @@
   <header class="pageHeader">
     <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Vehicles' | translate}}</h3>
   </header>
-  <div>
-    <div class="row control-box">
-      <div class="col-lg-8">
-        <div class="form-group search-box">
-          <search-box (searchChange)="onSearchChanged($event)"
-            placeholder="{{'vehicles.management.Search' | translate}}">>
-          </search-box>
+  <div [@fadeInOut]>
+    <!---- Sample Page Content ---->
+    <div>
+      <div class="row control-box">
+        <div class="col-lg-8">
+          <div class="form-group search-box">
+            <search-box (searchChange)="onSearchChanged($event)"
+              placeholder="{{'vehicles.management.Search' | translate}}">>
+            </search-box>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4 pr-lg-5">
-        <ul class="nav flex-column flex-lg-row justify-content-end">
-          <li *ngIf="canManageVehicles" class="nav-item toolbaritem">
-            <a class="nav-link" href="javascript:;" (click)="createVehicle()">
-              <i class="fa fa-plus-circle"></i> {{'vehicles.management.New' | translate}}
-            </a>
-          </li>
-        </ul>
+        <div class="col-lg-4 pr-lg-5">
+          <ul class="nav flex-column flex-lg-row justify-content-end">
+            <li *ngIf="canManageVehicles" class="nav-item toolbaritem">
+              <a class="nav-link" href="javascript:;" (click)="createVehicle()">
+                <i class="fa fa-plus-circle"></i> {{'vehicles.management.New' | translate}}
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <ngx-datatable class="material colored-header sm table table-striped table-hover"
+
+    <ngx-datatable class="material colored-header sm table-hover"
       [loadingIndicator]="loadingIndicator" [rows]="rows" [rowHeight]="35" [headerHeight]="35" [footerHeight]="35"
-      [columns]="columns" [scrollbarV]="true" [columnMode]="'force'">
+      [columns]="columns" [columnMode]="'force'">
     </ngx-datatable>
 
     <ng-template #indexTemplate let-value="value">
@@ -54,5 +58,7 @@
         </div>
       </div>
     </div>
+
+    <router-outlet></router-outlet>
   </div>
 </div>

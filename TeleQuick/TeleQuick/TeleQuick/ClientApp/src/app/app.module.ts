@@ -50,9 +50,9 @@ import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { ProductsComponent } from './components/products/products.component';
+import { AccountSessionsComponent } from './components/accountSessions/accountSessions-list.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { VehiclesManagementComponent } from './components/vehicles/vehicles-management.component';
+import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
 import { VehicleEditComponent } from './components/Vehicles/vehicle-edit/vehicle-edit.component';
 import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/vehicle-create.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -100,7 +100,7 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     LoginComponent,
     HomeComponent,
     CustomersComponent,
-    ProductsComponent,
+    AccountSessionsComponent,
     OrdersComponent,
     VehiclesManagementComponent, VehicleEditComponent,  VehicleCreateComponent,
     SettingsComponent,

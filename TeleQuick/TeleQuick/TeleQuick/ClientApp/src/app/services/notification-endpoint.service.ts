@@ -16,7 +16,7 @@ export class NotificationEndpoint {
     private demoNotifications = [
         {
             id: 1,
-            header: '20 New Products were added to your inventory by "administrator"',
+            header: '20 New AccountSessions were added to your inventory by "administrator"',
             body: '20 new "BMW M6" were added to your stock by "administrator" on 5/28/2017 4:54:13 PM',
             isRead: true,
             isPinned: true,

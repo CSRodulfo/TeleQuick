@@ -1,8 +1,7 @@
 <div class="container">
   <header class="pageHeader">
-    <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Products' | translate}}</h3>
+    <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.AccountSessions' | translate}}</h3>
   </header>
-
   <div [@fadeInOut]>
     <!---- Sample Page Content ---->
     <div>
@@ -10,7 +9,8 @@
         <div class="col-lg-12">
           <div class="form-group search-box">
             <search-box (searchChange)="onSearchChanged($event)"
-              placeholder="{{'todoDemo.management.Search' | translate}}"></search-box>
+              placeholder="{{'todoDemo.management.Search' | translate}}">
+            </search-box>
           </div>
         </div>
       </div>

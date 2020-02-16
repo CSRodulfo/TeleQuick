@@ -7,7 +7,7 @@
     "mainMenu": {
         "Appointments": "Compromissos",
         "Customers": "Clientes",
-        "Products": "Produtos",
+        "AccountSessions": "Produtos",
         "Orders": "Pedidos",
         "About": "Sobre",
         "Logout": "Sair"
@@ -15,7 +15,7 @@
     "pageHeader": {
         "Dashboard": "Painel de Controle",
         "Customers": "Clientes",
-        "Products": "Produtos",
+        "AccountSessions": "Produtos",
         "Orders": "Pedidos",
         "NotFound": "Não Encontrado",
         "About": "Sobre",
@@ -61,7 +61,7 @@
         "HomePage": "Principal:",
         "Dashboard": "Painel de Controle",
         "Customers": "Clientes",
-        "Products": "Produtos",
+        "AccountSessions": "Produtos",
         "Orders": "Pedidos",
         "About": "Sobre",
         "Settings": "Configurações",

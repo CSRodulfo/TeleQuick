@@ -7,7 +7,7 @@
     "mainMenu": {
         "Appointments": "Rendez-vous",
         "Customers": "Les clients",
-        "Products": "Les produits",
+        "AccountSessions": "Les produits",
         "Orders": "Les ordres",
         "About": "À Propos",
         "Logout": "Se Déconnecter"
@@ -15,7 +15,7 @@
     "pageHeader": {
         "Dashboard": "Tableau de bord",
         "Customers": "Les clients",
-        "Products": "Les produits",
+        "AccountSessions": "Les produits",
         "Orders": "Les ordres",
         "NotFound": "Pas trouvé",
         "About": "À Propos",
@@ -61,7 +61,7 @@
         "HomePage": "Page d'accueil:",
         "Dashboard": "Tableau de bord",
         "Customers": "Les clients",
-        "Products": "Les produits",
+        "AccountSessions": "Les produits",
         "Orders": "Les ordres",
         "About": "À propos",
         "Settings": "Paramètres",
