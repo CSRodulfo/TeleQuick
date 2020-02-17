@@ -1,6 +1,7 @@
 <div class="container">
   <header class="pageHeader">
-    <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.AccountSessions' | translate}}</h3>
+    <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.AccountSessions' | translate}}
+    </h3>
   </header>
   <div [@fadeInOut]>
     <!---- Sample Page Content ---->
@@ -35,21 +36,20 @@
       </span>
     </ng-template>
 
-    <ng-template #descriptionTemplate let-row="row" let-value="value">
-      <span class="inline-label">
-        {{value}}
-      </span>
+    <ng-template #indexTemplate let-value="value">
+      <strong>{{value}}</strong>
     </ng-template>
 
-    <ng-template #actionsTemplate let-row="row">
-      <a class="btn btn-link btn-sm" href="javascript:;" tooltip="{{'todoDemo.management.Delete' | translate}}"
-        container="body"><i class="fa fa-times"></i></a>
-      <a class="btn btn-link btn-sm" href="javascript:;" tooltip="{{'todoDemo.management.Important' | translate}}"
-        container="body" (click)="row.important = !row.important" (mouseover)="row.isMouseOver=true"
-        (mouseout)="row.isMouseOver=false">
-        <i *ngIf="row.important || row.isMouseOver" class="fa fa-bookmark"></i>
-        <i *ngIf="!row.important && !row.isMouseOver" class="fa fa-bookmark-o"></i>
-      </a>
+    <ng-template #validTemplate let-row="row" let-value="value">
+      <span *ngIf="canManageVehicles" class="badge badge-pill badge-secondary">{{value}}</span>
+      <span *ngIf="!canManageVehicles" class="badge badge-pill badge-success">{{value}}</span>
+    </ng-template>
+
+    <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
+      <div *ngIf="canManageVehicles">
+        <a class="btn btn-link btn-sm" href="javascript:;" (click)="editVehicle(row)"><i class="fa fa-pencil-square-o"
+            aria-hidden="true"></i> Configurar</a>
+      </div>
     </ng-template>
 
     <div class="modal fade" bsModal #editorModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">

@@ -7,24 +7,44 @@
 </div>
 
 <div class="modal-body">
-    <form name="vehicleCreateForm" #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+    <form name="accountSessionCreateForm" #f="ngForm" novalidate (ngSubmit)="onSubmit()">
         <div class="form-group row has-feedback-icon">
-            <label class="col-form-label col-md-3" for="vehicleMakeEdit">Marca:</label>
+            <label class="col-form-label col-md-3" for="loginUser">Cuenta de Usuario:</label>
             <div class="col-md-9">
-                <input autofocus type="text" id="vehicleMakeEdit" name="vehicleMakeEdit" placeholder="Ingrese la Marca"
+                <input autofocus type="text" id="loginUserEdit" name="loginUser" placeholder="Ingrese el Usuario"
                     class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && vehicleMakeEdit.valid, 'is-invalid' : f.submitted && !vehicleMakeEdit.valid}"
-                    [(ngModel)]="entityAccountSession.loginUserPassword" #vehicleMakeEdit="ngModel" required />
+                    [ngClass]="{'is-valid': f.submitted && loginUser.valid, 'is-invalid' : f.submitted && !loginUser.valid}"
+                    [(ngModel)]="entityAccountSession.loginUser" #loginUser="ngModel" required />
             </div>
         </div>
 
         <div class="form-group row description-form-group">
-            <label class="col-form-label col-md-3" for="vehicleModelEdit">Modelo:</label>
+            <label class="col-form-label col-md-3" for="loginUserPasswordEdit">Contraseña:</label>
             <div class="col-md-9">
-                <input type="text" id="vehicleModelEdit" name="vehicleModelEdit" placeholder="Ingrese el Modelo"
+                <input type="text" id="loginUserPasswordEdit" name="loginUserPasswordEdit" placeholder="Ingrese la Contraseña"
                     class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && vehicleModelEdit.valid, 'is-invalid' : f.submitted && !vehicleModelEdit.valid}"
-                    [(ngModel)]="entityAccountSession.loginUserPassword" #vehicleModelEdit="ngModel" required />
+                    [ngClass]="{'is-valid': f.submitted && loginUserPasswordEdit.valid, 'is-invalid' : f.submitted && !loginUserPasswordEdit.valid}"
+                    [(ngModel)]="entityAccountSession.loginUserPassword" #loginUserPasswordEdit="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="concessionaryNameEdit">Concesionaria:</label>
+            <div class="col-md-9">
+                <input type="text" id="concessionaryNameEdit" name="concessionaryNameEdit" placeholder="Ingrese el Modelo"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && concessionaryNameEdit.valid, 'is-invalid' : f.submitted && !concessionaryNameEdit.valid}"
+                    [(ngModel)]="entityAccountSession.concessionaryName" #concessionaryNameEdit="ngModel" required />
+            </div>
+        </div>
+
+        <div class="form-group row description-form-group">
+            <label class="col-form-label col-md-3" for="isValidEdit">Concesionaria:</label>
+            <div class="col-md-9">
+                <input type="text" id="isValidEdit" name="isValidEdit" placeholder="Ingrese el Modelo"
+                    class="form-control"
+                    [ngClass]="{'is-valid': f.submitted && isValidEdit.valid, 'is-invalid' : f.submitted && !isValidEdit.valid}"
+                    [(ngModel)]="entityAccountSession.isValid" #isValidEdit="ngModel" required />
             </div>
         </div>
 
