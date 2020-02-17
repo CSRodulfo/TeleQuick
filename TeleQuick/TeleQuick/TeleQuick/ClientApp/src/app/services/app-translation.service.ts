@@ -16,8 +16,8 @@ export class AppTranslationService {
   languageChanged$ = this.onLanguageChanged.asObservable();
 
   constructor(private translate: TranslateService) {
-    this.addLanguages(['en', 'fr', 'de', 'pt', 'ar', 'ko', 'es']);
-    this.setDefaultLanguage('en');
+    this.addLanguages(['en', 'fr', 'pt', 'es']);
+    this.setDefaultLanguage('es');
   }
 
   addLanguages(lang: string[]) {

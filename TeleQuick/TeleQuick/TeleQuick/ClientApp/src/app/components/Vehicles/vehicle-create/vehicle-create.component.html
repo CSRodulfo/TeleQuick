@@ -1,7 +1,7 @@
 <div class="modal-header">
     <h4 class="modal-title float-left"><i class="fa fa-car"></i>
         Nuevo Vehiculo</h4>
-    <button type="button" class="close float-right" title="Close" (click)="closeModel()">
+    <button type="button" class="close float-right" title="Cerrar" (click)="closeModel()">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -54,7 +54,7 @@
                 <input type="number" id="vehicleTAG" name="vehicleTAG" placeholder="Numero de TAG"
                     class="form-control"
                     [ngClass]="{'is-valid': f.submitted && vehicleTAG.valid, 'is-invalid' : f.submitted && !vehicleTAG.valid}"
-                    [(ngModel)]="entityVehicle.tagNumber" #vehicleYear="ngModel" required />
+                    [(ngModel)]="entityVehicle.tagNumber" #vehicleTAG="ngModel" required />
             </div>
         </div>
 

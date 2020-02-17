@@ -9,16 +9,12 @@ import { Observable, Subject } from 'rxjs';
 
 import { Utilities } from '../services/utilities';
 
-
-
 @Injectable()
 export class AlertService {
   private messages = new Subject<AlertCommand>();
   private dialogs = new Subject<AlertDialog>();
 
   private loadingMessageTimeoutId: any;
-
-
 
   showDialog(message: string);
   showDialog(message: string, type: DialogType, okCallback: (val?: any) => any);
@@ -88,7 +84,7 @@ export class AlertService {
 
       if (error) {
 
-        const msg = `Severity: "${MessageSeverity[severity]}", Summary: "${data}", Detail: "${separatorOrDetail}", Error: "${Utilities.safeStringify(error)}"`;
+        const msg = `Severidad: "${MessageSeverity[severity]}", Resumen: "${data}", Detalle: "${separatorOrDetail}", Error: "${Utilities.safeStringify(error)}"`;
 
         switch (severity) {
           case MessageSeverity.default:
@@ -131,7 +127,7 @@ export class AlertService {
     this.messages.next({ operation: 'clear' });
   }
 
-  startLoadingMessage(message = 'Loading...', caption = '') {
+  startLoadingMessage(message = 'Cargando...', caption = '') {
     clearTimeout(this.loadingMessageTimeoutId);
 
     this.loadingMessageTimeoutId = setTimeout(() => {

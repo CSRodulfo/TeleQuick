@@ -20,6 +20,7 @@ namespace DataAcces.Business
         public async Task<IEnumerable<AccountSession>> GetAllAccountSessionData()
         {
             return await _appContext.AccountSessions
+                .Include(x=> x.Concessionary)
                 .ToListAsync();
         }
 

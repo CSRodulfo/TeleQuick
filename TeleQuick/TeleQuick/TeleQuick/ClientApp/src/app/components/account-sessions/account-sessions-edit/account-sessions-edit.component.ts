@@ -5,6 +5,8 @@ import { AlertService, MessageSeverity } from '../../../services/alert.service';
 import { Utilities } from '../../../services/utilities';
 import { AccountSession } from '../../../models/account-session.model';
 import { BusinessService } from '../../../services/business.service';
+import { GlobalResources } from '../../../services/globalResources'
+
 
 @Component({
   selector: 'account-sessions-edit',
@@ -22,31 +24,29 @@ export class AccountSessionsEditComponent implements OnInit {
   @ViewChild('f', { static: false })
   private form: NgForm
 
-  constructor(private alertService: AlertService, private businessService: BusinessService) {
+  constructor(private alertService: AlertService, private businessService: BusinessService,
+    private resx: GlobalResources)  {
   }
 
   ngOnInit() {
-
-
   }
 
   onSubmit() {
-
     if (this.form.valid) {
       this.Update();
     } else {
-      this.alertService.showMessage('Error de validación', 'Por favor complete todos los campos', MessageSeverity.error);
+      this.alertService.showMessage(this.resx.saveValidationError, this.resx.saveValidationErrorDetail, MessageSeverity.error);
     }
   }
 
   Update() {
-    this.alertService.startLoadingMessage('Guardando cambios ...');
+    this.alertService.startLoadingMessage(this.resx.saveSaving);
     this.businessService.putAccountSession(this.entityAccountSession).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
   }
 
   private saveSuccessHelper() {
     this.alertService.stopLoadingMessage();
-    this.alertService.showMessage('Actualizar', `La cuenta de usuario fue actualizado exitosamente`, MessageSeverity.success);
+    this.alertService.showMessage(this.resx.updateSucces, this.resx.updateSuccesDetail, MessageSeverity.success);
 
     this.form.resetForm();
 
@@ -57,7 +57,7 @@ export class AccountSessionsEditComponent implements OnInit {
 
   private saveFailedHelper(error: any) {
     this.alertService.stopLoadingMessage();
-    this.alertService.showStickyMessage('Error al crear:', `Ha Acurrido un \r\nError: "${Utilities.getHttpResponseMessages(error)}"`, MessageSeverity.error, error);
+    this.alertService.showStickyMessage(this.resx.updateError, `${this.resx.updateErrorDetail} ${Utilities.getHttpResponseMessages(error)}`, MessageSeverity.error, error);
 
     if (this.changesFailedCallback) {
       this.changesFailedCallback();

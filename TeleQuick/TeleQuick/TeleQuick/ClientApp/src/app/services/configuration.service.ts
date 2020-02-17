@@ -102,7 +102,7 @@ export class ConfigurationService {
   public static readonly appVersion: string = '3.0.0';
 
   // ***Specify default configurations here***
-  public static readonly defaultLanguage: string = 'en';
+  public static readonly defaultLanguage: string = 'es';
   public static readonly defaultHomeUrl: string = '/';
   public static readonly defaultThemeId: number = 1;
   public static readonly defaultShowDashboardStatistics: boolean = true;

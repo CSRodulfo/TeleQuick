@@ -69,7 +69,8 @@ namespace TeleQuick.ViewModels
                 .ReverseMap();
 
             CreateMap<AccountSession, AccountSessionViewModel>()
-                 .ReverseMap();
+                .ForMember(d => d.ConcessionaryName, map => map.MapFrom(s => s.Concessionary.Name))
+                .ReverseMap();
 
         }
     }

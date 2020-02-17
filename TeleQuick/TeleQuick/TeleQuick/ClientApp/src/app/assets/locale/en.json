@@ -7,7 +7,7 @@
     "mainMenu": {
         "Appointments": "Appointments",
         "Customers": "Customers",
-        "AccountSessions": "AccountSessions",
+        "AccountSessions": "Concessionaries",
         "Orders": "Orders",
         "Vehicle": "Vehicle",
         "About": "About",
@@ -60,7 +60,7 @@
         "HomePage": "Home Page:",
         "Dashboard": "Dashboard",
         "Customers": "Customers",
-        "AccountSessions": "Account Sessions",
+        "AccountSessions": "Concesionaries",
         "Orders": "Orders",
         "Vehicles": "Vehicles",
         "About": "About",
@@ -168,26 +168,6 @@
         "Date": "Date",
         "Notification": "Notification"
     },
-    "todoDemo": {
-        "management": {
-            "Search": "Search for task...",
-            "HideCompleted": "Hide Completed",
-            "AddTask": "Add Task",
-            "Delete": "Delete task",
-            "Important": "Mark as important",
-            "Task": "Task",
-            "Description": "Description"
-        },
-        "editor": {
-            "NewTask": "New Task",
-            "Name": "Name",
-            "TaskNameRequired": "Task name is required",
-            "Description": "Description",
-            "Important": "Mark as important",
-            "AddTask": "Add Task"
-        }
-    },
-
     "vehicles": {
         "management": {
             "Search": "Search for vehicle...",

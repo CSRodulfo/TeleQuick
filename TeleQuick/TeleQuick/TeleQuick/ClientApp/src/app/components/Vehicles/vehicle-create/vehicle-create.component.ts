@@ -4,13 +4,12 @@
 // =============================
 
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-
 import { AlertService, MessageSeverity } from '../../../services/alert.service';
-import { AccountService } from '../../../services/account.service';
 import { Utilities } from '../../../services/utilities';
 import { Vehicle } from '../../../models/vehicle.model';
 import { NgForm } from '@angular/forms';
 import { BusinessService } from '../../../services/business.service';
+import { GlobalResources } from '../../../services/globalResources'
 
 @Component({
   selector: 'vehicle-create',
@@ -29,7 +28,8 @@ export class VehicleCreateComponent implements OnInit {
   @ViewChild('f', { static: false })
   private form: NgForm
 
-  constructor(private alertService: AlertService, private businessService: BusinessService) {
+  constructor(private alertService: AlertService, private businessService: BusinessService,
+    private resx: GlobalResources) {
   }
 
   ngOnInit() {
@@ -37,25 +37,24 @@ export class VehicleCreateComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (this.form.valid) {
       this.save();
     } else {
-      this.alertService.showMessage('Error de validación', 'Por favor complete todos los campos',MessageSeverity.error);
+      this.alertService.showMessage(this.resx.saveValidationError, this.resx.saveValidationErrorDetail, MessageSeverity.error);
     }
   }
 
   save() {
-    this.alertService.startLoadingMessage('Grabando cambios ...');
+    this.alertService.startLoadingMessage(this.resx.saveSaving);
     this.businessService.postVehicle(this.entityVehicle).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
   }
 
   private saveSuccessHelper() {
     this.alertService.stopLoadingMessage();
-    this.alertService.showMessage('Creado', `El Vehiculo fue creado exitosamente`, MessageSeverity.success);
+    this.alertService.showMessage(this.resx.saveSucces, this.resx.saveSuccesDetail, MessageSeverity.success);
 
     this.form.resetForm();
-    
+
     if (this.changesSavedCallback) {
       this.changesSavedCallback();
     }
@@ -63,7 +62,7 @@ export class VehicleCreateComponent implements OnInit {
 
   private saveFailedHelper(error: any) {
     this.alertService.stopLoadingMessage();
-    this.alertService.showStickyMessage('Error al crear:', `Ha Acurrido un \r\nError: "${Utilities.getHttpResponseMessages(error)}"`, MessageSeverity.error, error);
+    this.alertService.showStickyMessage(this.resx.saveError, `${this.resx.saveErrorDetail} ${Utilities.getHttpResponseMessages(error)}`, MessageSeverity.error, error);
 
     if (this.changesFailedCallback) {
       this.changesFailedCallback();

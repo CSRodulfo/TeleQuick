@@ -48,17 +48,17 @@ export class AccountSessionsComponent implements OnInit {
   accountSessionCreate: AccountSessionsCreateComponent;
 
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
-    private businessService: BusinessService, private globalResource: GlobalResources) {
+    private businessService: BusinessService, private resx: GlobalResources) {
   }
 
   ngOnInit() {
 
-    const gT = (key: string) => this.translationService.getTranslation(key);
-
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-      { prop: 'loginUser', name: gT('vehicles.management.Make'), width: 100 },
-      { prop: 'loginUserPassword', name: gT('vehicles.management.Model'), width: 100 },
+      { prop: 'loginUser', name: 'Cuenta Usuario', width: 100 },
+      { prop: 'loginUserPassword', name: 'Contraseña', width: 100 },
+      { prop: 'isValid', name: 'Conexión', width: 100 },
+      { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
       //{ prop: 'year', name: gT('vehicles.management.Year'), width: 80 },
       //{ prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 80 },
     ];
@@ -96,7 +96,7 @@ export class AccountSessionsComponent implements OnInit {
     this.loadingIndicator = true;
 
     this.businessService.getAccountSession().subscribe(results => this.onDataLoadSuccessful(results),
-     error => this.onDataLoadFailed(error));
+      error => this.onDataLoadFailed(error));
   }
 
   onDataLoadSuccessful(accountSession: AccountSession[]) {
@@ -115,13 +115,13 @@ export class AccountSessionsComponent implements OnInit {
     this.alertService.stopLoadingMessage();
     this.loadingIndicator = false;
 
-    this.alertService.showStickyMessage('Error cargando', `No se puedo recibir informacion \r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
+    this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
       MessageSeverity.error, error);
   }
 
 
   onSearchChanged(value: string) {
-     this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.loginUser));
+    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.loginUser));
   }
 
   createVehicle() {
@@ -129,17 +129,16 @@ export class AccountSessionsComponent implements OnInit {
   }
 
   editVehicle(row: AccountSession) {
-    Object.assign(this.accountSessionEditor.entityAccountSession , row);
+    Object.assign(this.accountSessionEditor.entityAccountSession, row);
     this.editorModal.show();
   }
 
   deleteVehicle(row: AccountSession) {
-
-    this.alertService.showDialog(this.globalResource.error + row.loginUser + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+    this.alertService.showDialog(this.resx.deleteWarning + row.loginUser + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
   }
 
   deleteUserHelper(row: AccountSession) {
-    this.alertService.startLoadingMessage('Eliminando...');
+    this.alertService.startLoadingMessage(this.resx.deleteWarning);
     this.loadingIndicator = true;
     this.businessService.deleteAccountSession(row)
       .subscribe(
@@ -153,10 +152,10 @@ export class AccountSessionsComponent implements OnInit {
         error => {
           this.alertService.stopLoadingMessage();
           this.loadingIndicator = false;
-          this.alertService.showStickyMessage('Error al eliminar', `Ha ocurrido un error al elimiar el vehiculo\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
+          this.alertService.showStickyMessage(this.resx.deleteError, `"${this.resx.deleteErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
             MessageSeverity.error, error);
         });
-   }
+  }
 
   canManageVehicles() {
     return true;

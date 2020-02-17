@@ -13,6 +13,8 @@ namespace TeleQuick.ViewModels
 
         public string LoginUserPassword { get; set; }
 
-        //public Concessionary Concessionary { get; set; }
+        public bool IsValid { get; set; }
+
+        public string ConcessionaryName { get; set; }
     }
 }

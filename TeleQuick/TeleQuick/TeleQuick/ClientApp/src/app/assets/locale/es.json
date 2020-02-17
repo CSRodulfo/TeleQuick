@@ -7,7 +7,7 @@
     "mainMenu": {
         "Appointments": "Equipos",
         "Customers": "Clientes",
-        "AccountSessions": "AccountSessions",
+        "AccountSessions": "Concesionarias",
         "Orders": "Ordenes",
         "Vehicle": "Vehiculos",
         "About": "Acerca de",
@@ -16,7 +16,7 @@
     "pageHeader": {
         "Dashboard": "Tablero",
         "Customers": "Clientes",
-        "AccountSessions": "Productos",
+        "AccountSessions": "Concesionarias",
         "Orders": "Ordenes",
         "Vehicles": "Vehiculos",
         "NotFound": "No Encontrado",
@@ -54,16 +54,13 @@
         "Language": "Idioma:",
         "English": "Inglés",
         "French": "Francés",
-        "German": "Alemán",
         "Portuguese": "Portugués",
-        "Arabic": "Arábica",
-        "Korean": "Coreano",
         "Espanol": "Espanol",
         "LanguageHint": "Seleccione el idioma preferido para su cuenta",
         "HomePage": "Página principal:",
         "Dashboard": "Tablero",
         "Customers": "Clientes",
-        "AccountSessions": "Productos",
+        "AccountSessions": "Concesionarias",
         "Orders": "Otros",
         "About": "Acerca de",
         "Settings": "Configuraciones",
@@ -170,32 +167,12 @@
         "Date": "Fecha",
         "Notification": "Notificación"
     },
-    "todoDemo": {
-        "management": {
-            "Search": "Buscar tarea...",
-            "HideCompleted": "Ocultar completado",
-            "AddTask": "Agregar tarea",
-            "Delete": "Eliminar tarea",
-            "Important": "Marcar como importante",
-            "Task": "Tarea",
-            "Description": "Descripción"
-        },
-        "editor": {
-            "NewTask": "Nueva tarea",
-            "Name": "Nombre",
-            "TaskNameRequired": "Se requiere el nombre de la tarea",
-            "Description": "Descripción",
-            "Important": "Marcar como importante",
-            "AddTask": "Agregar tarea"
-        }
-    },
-
     "vehicles": {
         "management": {
             "Search": "Buscar por vehiculo...",
             "Make": "Marca",
             "Model": "Modelo",
-            "Year": "Ano",
+            "Year": "Año",
             "RegistrationNumber": "Dominio",
             "New": "Nuevo Vehiculo",
             "Edit": "Editar",

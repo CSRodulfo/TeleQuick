@@ -14,7 +14,7 @@ import { Utilities } from '../../services/utilities';
 import { Vehicle } from '../../models/vehicle.model';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleCreateComponent } from './vehicle-create/vehicle-create.component';
-import {GlobalResources} from '../../services/globalResources'
+import { GlobalResources } from '../../services/globalResources'
 
 @Component({
     selector: 'vehicles-list',
@@ -48,7 +48,7 @@ export class VehiclesManagementComponent implements OnInit {
     vehicleCreate: VehicleCreateComponent;
 
     constructor(private alertService: AlertService, private translationService: AppTranslationService,
-        private businessService: BusinessService, private globalResource: GlobalResources) {
+        private businessService: BusinessService, private resx: GlobalResources) {
     }
 
     ngOnInit() {
@@ -115,7 +115,7 @@ export class VehiclesManagementComponent implements OnInit {
         this.alertService.stopLoadingMessage();
         this.loadingIndicator = false;
 
-        this.alertService.showStickyMessage('Error cargando', `No se puedo recibir informacion \r\nErrors: "${Utilities.getHttpResponseMessages(error)}"`,
+        this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
             MessageSeverity.error, error);
     }
 
@@ -134,12 +134,11 @@ export class VehiclesManagementComponent implements OnInit {
     }
 
     deleteVehicle(row: Vehicle) {
-        
-        this.alertService.showDialog(this.globalResource.error + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+        this.alertService.showDialog(this.resx.deleteWarning + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
     }
 
     deleteUserHelper(row: Vehicle) {
-        this.alertService.startLoadingMessage('Eliminando...');
+        this.alertService.startLoadingMessage(this.resx.deleteWarning);
         this.loadingIndicator = true;
         this.businessService.deleteVehicle(row)
             .subscribe(
@@ -153,7 +152,7 @@ export class VehiclesManagementComponent implements OnInit {
                 error => {
                     this.alertService.stopLoadingMessage();
                     this.loadingIndicator = false;
-                    this.alertService.showStickyMessage('Error al eliminar', `Ha ocurrido un error al elimiar el vehiculo\r\nError: "${Utilities.getHttpResponseMessages(error)}"`,
+                    this.alertService.showStickyMessage(this.resx.deleteError, `"${this.resx.deleteErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
                         MessageSeverity.error, error);
                 });
     }
