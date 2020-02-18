@@ -125,7 +125,7 @@ export class AccountSessionsComponent implements OnInit {
 
 
   onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.loginUser));
+    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.loginUser, r.concessionaryName));
   }
 
   createVehicle() {

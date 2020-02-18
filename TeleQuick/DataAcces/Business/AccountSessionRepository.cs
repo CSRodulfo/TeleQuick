@@ -17,14 +17,20 @@ namespace DataAcces.Business
         { }
 
 
-        public async Task<IEnumerable<AccountSession>> GetAllAccountSessionData()
+        public async Task<IEnumerable<AccountSession>> GetAllData()
         {
             return await _appContext.AccountSessions
-                .Include(x=> x.Concessionary)
-                .ToListAsync();
+                                    .Include(x => x.Concessionary)
+                                    .ToListAsync();
         }
 
+        public async Task<AccountSession> GetById(int id)
+        {
+            return await _appContext.AccountSessions
+                                    .Include(x => x.Concessionary)
+                                    .FirstAsync(x => x.Id == id);
 
+        }
 
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
     }

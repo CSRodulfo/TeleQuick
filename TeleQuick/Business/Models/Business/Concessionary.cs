@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Threading.Tasks;
+using TeleQuick.Core.IAutopista;
 
 namespace Business.Models.Business
 {
@@ -24,6 +26,34 @@ namespace Business.Models.Business
         [Required]
         [StringLength(50)]
         public string MainForm { get; set; }
+
+
+        public async Task<ILogin> Login()
+        {
+
+            var autopista = (AutopistasConstants)this.Id;
+
+            switch (autopista)
+            {
+                case AutopistasConstants.AUSA:
+                    return new TeleQuick.AutopistaAUSA.Login();
+                    break;
+                case AutopistasConstants.AUSOL:
+                    break;
+                case AutopistasConstants.AUBASA:
+                    break;
+                case AutopistasConstants.AUSUR:
+                    break;
+                case AutopistasConstants.AUOESTE:
+                    break;
+                case AutopistasConstants.CEAMSE:
+                    break;
+                default:
+                    break;
+            }
+
+            return null;
+        }
 
     }
 }

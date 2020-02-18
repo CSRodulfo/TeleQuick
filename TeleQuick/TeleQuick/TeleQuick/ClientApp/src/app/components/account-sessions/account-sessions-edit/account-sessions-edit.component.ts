@@ -71,7 +71,6 @@ export class AccountSessionsEditComponent implements OnInit {
   }
 
   testConeccionAU() {
-
     this.alertService.startLoadingMessage('Probando conexión');
     this.businessService.getAccountSessionValidateConection(this.entityAccountSession)
       .subscribe(

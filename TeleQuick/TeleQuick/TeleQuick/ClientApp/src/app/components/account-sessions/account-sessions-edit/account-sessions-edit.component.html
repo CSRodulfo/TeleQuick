@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <h4 class="modal-title float-left"><i class="fa fa-car"></i>
-        Nuevo Vehiculo</h4>
+    <h4 class="modal-title float-left"><i class="fa fa-road"></i>
+        Configurar Concesionaria</h4>
     <button type="button" class="close float-right" title="Close" (click)="closeModel()">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -41,8 +41,8 @@
         <div class="form-group row description-form-group">
             <label class="col-form-label col-md-3" for="isValidEdit">Validar conexión:</label>
             <div class="col-md-3">
-                    <span *ngIf="!entityAccountSession.isValid" class="badge badge-pill badge-secondary">{{entityAccountSession.isValid}}</span>
-                    <span *ngIf="entityAccountSession.isValid" class="badge badge-pill badge-success">{{entityAccountSession.isValid}}</span>
+                <span *ngIf="entityAccountSession.isValid" class="badge badge-pill badge-success">Validado</span>
+                <span *ngIf="!entityAccountSession.isValid" class="badge badge-pill badge-secondary">Invalidado</span>   
             </div>
             <div class="col-md-3">
                 <button type="button"  class="btn btn-secondary btn-sm" (click)="testConeccionAU()">
@@ -58,7 +58,7 @@
         </div>
         <div class="form-group actionBtn-form-group">
             <div class="float-right">
-                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <button type="submit" class="btn btn-primary">Configurar</button>
             </div>
         </div>
         <div class="clearfix"></div>

@@ -16,13 +16,13 @@ namespace TeleQuick.Controllers
     public class AccountSessionController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IAccountSessionService _AccountSession;
+        private readonly IAccountSessionService _accountSessionService;
         private readonly ILogger _logger;
 
-        public AccountSessionController(IMapper mapper, IAccountSessionService AccountSession, ILogger<AccountSessionController> logger)
+        public AccountSessionController(IMapper mapper, IAccountSessionService accountSessionService, ILogger<AccountSessionController> logger)
         {
             _mapper = mapper;
-            _AccountSession = AccountSession;
+            _accountSessionService = accountSessionService;
             _logger = logger;
         }
 
@@ -32,7 +32,7 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(200, Type = typeof(List<AccountSessionViewModel>))]
         public async Task<IActionResult> Get()
         {
-            var allCustomers = await _AccountSession.Get();
+            var allCustomers = await _accountSessionService.Get();
             return Ok(_mapper.Map<IEnumerable<AccountSessionViewModel>>(allCustomers));
         }
 
@@ -71,10 +71,13 @@ namespace TeleQuick.Controllers
         [HttpGet("ValidateConection/{id}")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> ValidateConectionAccountSession(string id)
+        public async Task<IActionResult> ValidateConectionAccountSession(int id)
         {
             Thread.Sleep(5000);
-            return Ok(false);
+
+            _accountSessionService.ValidateConnection(id);
+
+            return Ok(true);
         }
     }
 }
