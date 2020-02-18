@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using TeleQuick.ViewModels;
 
@@ -65,6 +66,15 @@ namespace TeleQuick.Controllers
         public async Task<IActionResult> DeleteAccountSession(string id)
         {
             return Ok();
+        }
+
+        [HttpGet("ValidateConection/{id}")]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> ValidateConectionAccountSession(string id)
+        {
+            Thread.Sleep(5000);
+            return Ok(false);
         }
     }
 }

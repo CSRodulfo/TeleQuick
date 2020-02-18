@@ -17,5 +17,13 @@ namespace Business.Models.Business
         [StringLength(200)]
         public string Detail { get; set; }
 
+        [Required]
+        [StringLength(500)]
+        public string Uri { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string MainForm { get; set; }
+
     }
 }

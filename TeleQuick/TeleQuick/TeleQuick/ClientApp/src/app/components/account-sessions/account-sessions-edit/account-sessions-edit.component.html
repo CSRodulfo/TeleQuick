@@ -39,12 +39,15 @@
         </div>
 
         <div class="form-group row description-form-group">
-            <label class="col-form-label col-md-3" for="isValidEdit">Concesionaria:</label>
-            <div class="col-md-9">
-                <input type="text" id="isValidEdit" name="isValidEdit" placeholder="Ingrese el Modelo"
-                    class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && isValidEdit.valid, 'is-invalid' : f.submitted && !isValidEdit.valid}"
-                    [(ngModel)]="entityAccountSession.isValid" #isValidEdit="ngModel" required />
+            <label class="col-form-label col-md-3" for="isValidEdit">Validar conexión:</label>
+            <div class="col-md-3">
+                    <span *ngIf="!entityAccountSession.isValid" class="badge badge-pill badge-secondary">{{entityAccountSession.isValid}}</span>
+                    <span *ngIf="entityAccountSession.isValid" class="badge badge-pill badge-success">{{entityAccountSession.isValid}}</span>
+            </div>
+            <div class="col-md-3">
+                <button type="button"  class="btn btn-secondary btn-sm" (click)="testConeccionAU()">
+                    <span aria-hidden="true">Probar conexión</span>
+                </button>
             </div>
         </div>
 

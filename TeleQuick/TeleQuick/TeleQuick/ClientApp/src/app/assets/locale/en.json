@@ -16,7 +16,7 @@
     "pageHeader": {
         "Dashboard": "Dashboard",
         "Customers": "Customers",
-        "AccountSessions": "AccountSessions",
+        "AccountSessions": "Concesionaries",
         "Orders": "Orders",
         "Vehicles": "Vehicles",
         "NotFound": "Not-Found",

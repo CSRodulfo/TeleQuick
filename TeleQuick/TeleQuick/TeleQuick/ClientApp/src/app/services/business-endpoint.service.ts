@@ -22,12 +22,13 @@ export class BusinessEndpoint extends EndpointBase {
   private readonly _userByUserNameUrl: string = '/api/account/users/username';
   private readonly _vehicles: string = '/api/Vehicle/Vehicle';
   private readonly _accountSession: string = '/api/accountSession/accountSession';
+  private readonly _accountSessionValidateCnn: string = '/api/accountSession/ValidateConection';
 
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
   get vehiclesUrl() { return this.configurations.baseUrl + this._vehicles; }
   get accountSessionUrl() { return this.configurations.baseUrl + this._accountSession; }
-
+  get accountSessionValidateCnnUrl() { return this.configurations.baseUrl + this._accountSessionValidateCnn; }
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
@@ -91,6 +92,15 @@ export class BusinessEndpoint extends EndpointBase {
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {
         return this.handleError(error, () => this.getAccountSessionEndpoint());
+      }));
+  }
+
+  getAccountSessionValidateConectionEndpoint<T>(accountSessionId?: number): Observable<T> {
+    const endpointUrl = accountSessionId ? `${this.accountSessionValidateCnnUrl}/${accountSessionId}` : this.accountSessionValidateCnnUrl;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getAccountSessionValidateConectionEndpoint());
       }));
   }
 
