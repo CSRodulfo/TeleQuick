@@ -103,7 +103,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   onLoginModalShown() {
-    this.alertService.showStickyMessage('Session Expired', 'Your Session has expired. Please log in again', MessageSeverity.info);
+    this.alertService.showStickyMessage('Session Expireda', 'Your Session has expired. Please log in again', MessageSeverity.info);
   }
 
 
@@ -159,7 +159,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       setTimeout(() => {
         if (!this.isUserLoggedIn) {
-          this.alertService.showMessage('Session Ended!', '', MessageSeverity.default);
+          this.alertService.showMessage('Session cerrada!', '', MessageSeverity.default);
         }
       }, 500);
     });
@@ -350,7 +350,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewAccountSessionsPermission
   }
 
-  get canViewOrders() {
+  get canViewProcess() {
     return this.accountService.userHasPermission(Permission.manageUsersPermission); // eg. viewAccountSessionsPermission
   }
 

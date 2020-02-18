@@ -10,7 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { AccountSessionsComponent } from './components/account-sessions/account-sessions-list.component';
-import { OrdersComponent } from './components/orders/orders.component';
+import { ProcessComponent } from './components/process/process.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard], data: { title: 'Customers' } },
   { path: 'account-sessions', component: AccountSessionsComponent, canActivate: [AuthGuard], data: { title: 'AccountSessions' } },
-  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], data: { title: 'Orders' } },
+  { path: 'process', component: ProcessComponent, canActivate: [AuthGuard], data: { title: 'Process' } },
   { path: 'vehicles', component: VehiclesManagementComponent, canActivate: [AuthGuard], data: { title: 'Vehicles' } },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], data: { title: 'Settings' } },
   { path: 'about', component: AboutComponent, data: { title: 'About Us' } },

@@ -8,7 +8,7 @@
         "Appointments": "Rendez-vous",
         "Customers": "Les clients",
         "AccountSessions": "Les produits",
-        "Orders": "Les ordres",
+        "Process": "Les ordres",
         "About": "À Propos",
         "Logout": "Se Déconnecter"
     },
@@ -16,7 +16,7 @@
         "Dashboard": "Tableau de bord",
         "Customers": "Les clients",
         "AccountSessions": "Les produits",
-        "Orders": "Les ordres",
+        "Process": "Les ordres",
         "NotFound": "Pas trouvé",
         "About": "À Propos",
         "Settings": "Paramètres"
@@ -62,7 +62,7 @@
         "Dashboard": "Tableau de bord",
         "Customers": "Les clients",
         "AccountSessions": "Les produits",
-        "Orders": "Les ordres",
+        "Process": "Les ordres",
         "About": "À propos",
         "Settings": "Paramètres",
         "HomePageHint": "Sélectionnez la page par défaut pour naviguer jusqu'à la connexion",

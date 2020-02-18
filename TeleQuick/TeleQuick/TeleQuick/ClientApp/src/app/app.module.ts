@@ -51,7 +51,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 
-import { OrdersComponent } from './components/orders/orders.component';
+import { ProcessComponent } from './components/process/process.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
 import { VehicleEditComponent } from './components/Vehicles/vehicle-edit/vehicle-edit.component';
 import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/vehicle-create.component';
@@ -105,7 +105,7 @@ import { AccountSessionsCreateComponent } from './components/account-sessions/ac
     HomeComponent,
     CustomersComponent,
     AccountSessionsComponent,
-    OrdersComponent,
+    ProcessComponent,
     VehiclesManagementComponent, VehicleEditComponent,  VehicleCreateComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,

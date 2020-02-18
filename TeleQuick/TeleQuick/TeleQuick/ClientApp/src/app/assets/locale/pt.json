@@ -8,7 +8,7 @@
         "Appointments": "Compromissos",
         "Customers": "Clientes",
         "AccountSessions": "Produtos",
-        "Orders": "Pedidos",
+        "Process": "Pedidos",
         "About": "Sobre",
         "Logout": "Sair"
     },
@@ -16,7 +16,7 @@
         "Dashboard": "Painel de Controle",
         "Customers": "Clientes",
         "AccountSessions": "Produtos",
-        "Orders": "Pedidos",
+        "Process": "Pedidos",
         "NotFound": "Não Encontrado",
         "About": "Sobre",
         "Settings": "Configurações"
@@ -62,7 +62,7 @@
         "Dashboard": "Painel de Controle",
         "Customers": "Clientes",
         "AccountSessions": "Produtos",
-        "Orders": "Pedidos",
+        "Process": "Pedidos",
         "About": "Sobre",
         "Settings": "Configurações",
         "HomePageHint": "Selecione a página padrão para acessar após o login",
