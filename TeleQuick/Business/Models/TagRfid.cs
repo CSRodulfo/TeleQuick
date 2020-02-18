@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Business.Business
+namespace Business.Models
 {
     public class TagRfid : AuditableEntity
     {

@@ -13,4 +13,8 @@
     <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.Core.IAutopista.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Process\" />
+  </ItemGroup>
+
 </Project>

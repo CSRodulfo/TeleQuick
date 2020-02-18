@@ -342,7 +342,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AppCustomers");
                 });
 
-            modelBuilder.Entity("Business.Models.Business.AccountSession", b =>
+            modelBuilder.Entity(" Business.Models.AccountSession", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -386,7 +386,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("AccountSessions");
                 });
 
-            modelBuilder.Entity("Business.Models.Business.Concessionary", b =>
+            modelBuilder.Entity(" Business.Models.Concessionary", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -418,7 +418,7 @@ namespace TeleQuick.Migrations
                     b.ToTable("Concessionaries");
                 });
 
-            modelBuilder.Entity("Business.Models.Business.InvoiceDetail", b =>
+            modelBuilder.Entity(" Business.Models.InvoiceDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -783,16 +783,16 @@ namespace TeleQuick.Migrations
                         .HasForeignKey("VehicleId");
                 });
 
-            modelBuilder.Entity("Business.Models.Business.AccountSession", b =>
+            modelBuilder.Entity(" Business.Models.AccountSession", b =>
                 {
-                    b.HasOne("Business.Models.Business.Concessionary", "Concessionary")
+                    b.HasOne(" Business.Models.Concessionary", "Concessionary")
                         .WithMany()
                         .HasForeignKey("ConcessionaryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Business.Models.Business.InvoiceDetail", b =>
+            modelBuilder.Entity(" Business.Models.InvoiceDetail", b =>
                 {
                     b.HasOne("Business.Business.InvoiceHeader", null)
                         .WithMany("InvoiceDetails")

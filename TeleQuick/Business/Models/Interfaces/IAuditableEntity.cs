@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Interfaces
+namespace Business.Models.Interfaces
 {
     public interface IAuditableEntity
     {

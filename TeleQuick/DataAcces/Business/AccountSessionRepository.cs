@@ -1,4 +1,4 @@
-﻿using Business.Models.Business;
+﻿using  Business.Models;
 using DataAccess;
 using DataAccess.Repositories;
 using IDataAccess.Business;
@@ -26,9 +26,11 @@ namespace DataAcces.Business
 
         public async Task<AccountSession> GetById(int id)
         {
-            return await _appContext.AccountSessions
+
+            var a = await _appContext.AccountSessions
                                     .Include(x => x.Concessionary)
                                     .FirstAsync(x => x.Id == id);
+            return a;
 
         }
 

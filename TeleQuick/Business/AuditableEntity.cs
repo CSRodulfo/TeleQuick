@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-using Business.Interfaces;
+using Business.Models.Interfaces;
 
 namespace Business
 {

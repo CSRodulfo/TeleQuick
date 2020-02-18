@@ -4,7 +4,7 @@
 // =============================
 
 using Business;
-using Business.Models.Business;
+using  Business.Models;
 using IDataAccess;
 using IDataAccess.Core;
 using Microsoft.EntityFrameworkCore;

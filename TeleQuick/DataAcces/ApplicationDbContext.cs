@@ -4,17 +4,14 @@
 // =============================
 
 using Business;
+using Business.Models;
+using Business.Models.Interfaces;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
-using Business.Interfaces;
-using Business.Business;
-using Business.Models.Business;
+using System.Threading.Tasks;
 
 namespace DataAccess
 {

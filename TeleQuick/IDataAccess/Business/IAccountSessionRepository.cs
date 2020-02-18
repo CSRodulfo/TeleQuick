@@ -1,4 +1,4 @@
-﻿using Business.Models.Business;
+﻿using  Business.Models;
 using IDataAccess.Repositories;
 using System;
 using System.Collections.Generic;
