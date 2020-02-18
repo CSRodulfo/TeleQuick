@@ -3,17 +3,15 @@
 // www.ebenmonney.com/templates
 // =============================
 
+using Business.Models;
+using DataAccess;
+using DataAccess.Repositories;
+using IDataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Business;
-using IDataAccess.Repositories;
-using Business.Business;
-using DataAccess.Repositories;
-using DataAccess;
 
 namespace DataAcces.Business
 {
@@ -22,13 +20,6 @@ namespace DataAcces.Business
         public VehicleRepository(ApplicationDbContext context) : base(context)
         { }
 
-
-        public async Task<IEnumerable<Vehicle>> GetTopActiveVehicles(int count)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public async Task<IEnumerable<Vehicle>> GetAllVehiclesData()
         {
             return await _appContext.Vehicles
@@ -36,8 +27,6 @@ namespace DataAcces.Business
                 .OrderBy(c => c.Year)
                 .ToListAsync();
         }
-
-
 
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
     }

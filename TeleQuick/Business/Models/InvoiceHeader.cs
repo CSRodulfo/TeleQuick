@@ -1,10 +1,10 @@
-﻿using Business.Models.Business;
+﻿using  Business.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Business.Business
+namespace Business.Models
 {
     public class InvoiceHeader
     {

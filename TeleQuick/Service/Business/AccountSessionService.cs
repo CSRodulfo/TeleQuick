@@ -1,10 +1,10 @@
-﻿using Business.Models.Business;
+﻿using Business.Models;
 using IDataAccess;
 using IService.Business;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using TeleQuick.Core.IAutopista;
 
 namespace Service.Business
 {
@@ -19,8 +19,31 @@ namespace Service.Business
         // GET: api/values
         public async Task<IEnumerable<AccountSession>> Get()
         {
-            var allCustomers = _unitOfWork.AccountSessions.GetAllAccountSessionData();
+            var allCustomers = _unitOfWork.AccountSessions.GetAllData();
             return await allCustomers;
         }
+
+        public async Task<AccountSession> ValidateConnection(int idAccountSession)
+        {
+            try
+            {
+                AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
+
+                ILogin login = await account.Concessionary.GetLogin();
+
+
+
+                throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
+       
+
     }
 }

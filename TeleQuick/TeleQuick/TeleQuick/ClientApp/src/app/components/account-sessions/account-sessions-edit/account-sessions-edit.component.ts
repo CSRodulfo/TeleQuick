@@ -25,7 +25,7 @@ export class AccountSessionsEditComponent implements OnInit {
   private form: NgForm
 
   constructor(private alertService: AlertService, private businessService: BusinessService,
-    private resx: GlobalResources)  {
+    private resx: GlobalResources) {
   }
 
   ngOnInit() {
@@ -68,5 +68,28 @@ export class AccountSessionsEditComponent implements OnInit {
     if (this.changesCancelledCallback) {
       this.changesCancelledCallback();
     }
+  }
+
+  testConeccionAU() {
+    this.alertService.startLoadingMessage('Probando conexión');
+    this.businessService.getAccountSessionValidateConection(this.entityAccountSession)
+      .subscribe(
+        results => {
+          this.alertService.stopLoadingMessage();
+          if (results) {
+            this.entityAccountSession.isValid = true;
+            this.alertService.showMessage('Conexión Valida', 'La prueba de conectividad fue realizada exitosamente', MessageSeverity.success);
+            this.alertService.showStickyMessage('Conexión Valida', 'La prueba de conectividad fue realizada exitosamente', MessageSeverity.success);
+          } else {
+            this.entityAccountSession.isValid = false;
+            this.alertService.showMessage('Conexión Invalida', 'Prueba de conectividad no es valida', MessageSeverity.error);
+          }
+        },
+        error => {
+          this.alertService.stopLoadingMessage();
+          this.entityAccountSession.isValid = false;
+          this.alertService.showStickyMessage('Error al conectar', `'Se produjo un error al validar la conección: ' ${Utilities.getHttpResponseMessages(error)}"`,
+            MessageSeverity.error, error);
+        });
   }
 }

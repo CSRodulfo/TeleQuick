@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TeleQuick.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200216222431_Initial")]
-    partial class Initial
+    [Migration("20200218121638_Concesionaria")]
+    partial class Concesionaria
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -351,7 +351,7 @@ namespace TeleQuick.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ConcessionaryId")
+                    b.Property<int>("ConcessionaryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -400,10 +400,20 @@ namespace TeleQuick.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
+                    b.Property<string>("MainForm")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
+
+                    b.Property<string>("Uri")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id");
 
@@ -778,8 +788,10 @@ namespace TeleQuick.Migrations
             modelBuilder.Entity(" Business.Models.AccountSession", b =>
                 {
                     b.HasOne(" Business.Models.Concessionary", "Concessionary")
-                        .WithMany("AccountSessions")
-                        .HasForeignKey("ConcessionaryId");
+                        .WithMany()
+                        .HasForeignKey("ConcessionaryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity(" Business.Models.InvoiceDetail", b =>

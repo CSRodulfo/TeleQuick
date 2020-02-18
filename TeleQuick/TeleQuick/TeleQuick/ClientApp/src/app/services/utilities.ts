@@ -9,12 +9,12 @@ import { HttpResponseBase, HttpResponse, HttpErrorResponse } from '@angular/comm
 @Injectable()
 export class Utilities {
   public static readonly captionAndMessageSeparator = ':';
-  public static readonly noNetworkMessageCaption = 'No Network';
-  public static readonly noNetworkMessageDetail = 'The server cannot be reached';
-  public static readonly accessDeniedMessageCaption = 'Access Denied!';
+  public static readonly noNetworkMessageCaption = 'Sin red de datos';
+  public static readonly noNetworkMessageDetail = 'No se puede acceder al servidor.';
+  public static readonly accessDeniedMessageCaption = 'Accesso Denegado!';
   public static readonly accessDeniedMessageDetail = '';
-  public static readonly notFoundMessageCaption = 'Not Found';
-  public static readonly notFoundMessageDetail = 'The target resource cannot be found';
+  public static readonly notFoundMessageCaption = 'No Encontrado';
+  public static readonly notFoundMessageDetail = 'El recurso de destino no se puede encontrar';
 
   public static cookies =
     {

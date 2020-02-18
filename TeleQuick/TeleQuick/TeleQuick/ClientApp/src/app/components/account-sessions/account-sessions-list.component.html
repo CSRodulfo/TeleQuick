@@ -1,6 +1,6 @@
 <div class="container">
   <header class="pageHeader">
-    <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.AccountSessions' | translate}}
+    <h3><i class="fa fa-road fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.AccountSessions' | translate}}
     </h3>
   </header>
   <div [@fadeInOut]>
@@ -9,19 +9,9 @@
       <div class="row control-box">
         <div class="col-lg-8">
           <div class="form-group search-box">
-            <search-box (searchChange)="onSearchChanged($event)"
-              placeholder="{{'vehicles.management.Search' | translate}}">>
+            <search-box (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">>
             </search-box>
           </div>
-        </div>
-        <div class="col-lg-4 pr-lg-5">
-          <ul class="nav flex-column flex-lg-row justify-content-end">
-            <li *ngIf="canManageVehicles" class="nav-item toolbaritem">
-              <a class="nav-link" href="javascript:;" (click)="createVehicle()">
-                <i class="fa fa-plus-circle"></i> {{'vehicles.management.New' | translate}}
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -41,8 +31,10 @@
     </ng-template>
 
     <ng-template #validTemplate let-row="row" let-value="value">
-      <span *ngIf="canManageVehicles" class="badge badge-pill badge-secondary">{{value}}</span>
-      <span *ngIf="!canManageVehicles" class="badge badge-pill badge-success">{{value}}</span>
+      <span class="inline-label">
+        <strong *ngIf="value == true" class="badge badge-pill badge-success">Validado</strong>
+        <strong *ngIf="value == false" class="badge badge-pill badge-secondary"> Invalido </strong>
+      </span>
     </ng-template>
 
     <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">

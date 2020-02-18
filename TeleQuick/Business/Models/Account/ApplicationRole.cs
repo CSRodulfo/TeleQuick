@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business.Interfaces;
+using Business.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

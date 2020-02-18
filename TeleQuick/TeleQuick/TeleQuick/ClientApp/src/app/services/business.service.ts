@@ -25,7 +25,7 @@ export class BusinessService {
   public static readonly roleModifiedOperation: RolesChangedOperation = 'modify';
 
   constructor(
-     private businessEndpoint: BusinessEndpoint) {
+    private businessEndpoint: BusinessEndpoint) {
 
   }
 
@@ -37,15 +37,15 @@ export class BusinessService {
     return this.businessEndpoint.getVehicleEndpoint<Vehicle[]>(page, pageSize);
   }
 
-  postVehicle(vehicle : Vehicle){
+  postVehicle(vehicle: Vehicle) {
     return this.businessEndpoint.postVehicleEndpoint<Vehicle[]>(vehicle);
   }
 
-  putVehicle(vehicle : Vehicle){
+  putVehicle(vehicle: Vehicle) {
     return this.businessEndpoint.putVehicleEndpoint<Vehicle[]>(vehicle, vehicle.id);
   }
 
-  deleteVehicle(vehicle : Vehicle){
+  deleteVehicle(vehicle: Vehicle) {
     return this.businessEndpoint.deleteVehicleEndpoint<Vehicle[]>(vehicle.id);
   }
 
@@ -53,23 +53,27 @@ export class BusinessService {
     return this.businessEndpoint.getAccountSessionEndpoint<AccountSession[]>();
   }
 
-  postAccountSession(accountSession : AccountSession){
+  getAccountSessionValidateConection(accountSession: AccountSession) {
+    return this.businessEndpoint.getAccountSessionValidateConectionEndpoint<AccountSession[]>(accountSession.id);
+  }
+
+  postAccountSession(accountSession: AccountSession) {
     return this.businessEndpoint.postAccountSessionEndpoint<AccountSession[]>(accountSession);
   }
 
-  putAccountSession(accountSession : AccountSession){
+  putAccountSession(accountSession: AccountSession) {
     return this.businessEndpoint.putAccountSessionEndpoint<AccountSession[]>(accountSession, accountSession.id);
   }
 
-  deleteAccountSession(accountSession : AccountSession){
+  deleteAccountSession(accountSession: AccountSession) {
     return this.businessEndpoint.deleteAccountSessionEndpoint<AccountSession[]>(accountSession.id);
   }
 
- // getUsersAndRoles(page?: number, pageSize?: number) {
-//
- //   return forkJoin(
- //     this.accountEndpoint.getUsersEndpoint<User[]>(page, pageSize),
- //     this.accountEndpoint.getRolesEndpoint<Role[]>());
- // }
+  // getUsersAndRoles(page?: number, pageSize?: number) {
+  //
+  //   return forkJoin(
+  //     this.accountEndpoint.getUsersEndpoint<User[]>(page, pageSize),
+  //     this.accountEndpoint.getRolesEndpoint<Role[]>());
+  // }
 
 }

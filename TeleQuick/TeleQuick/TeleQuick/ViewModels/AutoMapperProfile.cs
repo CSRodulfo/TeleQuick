@@ -13,8 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAcces.Core;
-using Business.Business;
-using Business.Models.Business;
+using  Business.Models;
 
 namespace TeleQuick.ViewModels
 {

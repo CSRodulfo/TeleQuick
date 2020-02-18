@@ -1,4 +1,4 @@
-﻿using Business.Models.Business;
+﻿using  Business.Models;
 using IDataAccess.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,8 @@ namespace IDataAccess.Business
 {
     public interface IAccountSessionRepository: IRepository<AccountSession>
     {
-        Task<IEnumerable<AccountSession>> GetAllAccountSessionData();
+        Task<IEnumerable<AccountSession>> GetAllData();
+
+        Task<AccountSession> GetById(int id);
     }
 }

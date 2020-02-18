@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Linq;
 
-namespace Business.Business
+namespace Business.Models
 {
     public class Vehicle : AuditableEntity
     {

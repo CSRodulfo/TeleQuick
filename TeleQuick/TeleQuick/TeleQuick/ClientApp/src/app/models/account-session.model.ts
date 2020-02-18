@@ -5,7 +5,7 @@
 
 export class AccountSession {
     constructor(id?: number, loginUser?: string, loginUserPassword?: string, isValid?: boolean,
-        concessionaryName?: string ) {
+        concessionaryName?: string) {
         this.id = id;
         this.loginUser = loginUser;
         this.loginUserPassword = loginUserPassword;
