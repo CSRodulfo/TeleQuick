@@ -16,14 +16,14 @@ namespace TeleQuick.AutopistaAUSOL
         WebPage _mainWebPage;
         private const string Uri2 = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/";
 
-        public ScrapyB(IConnectionAU connection, WebPage mainWebPage)
+        public ScrapyB(IConnectionAU connection)
         {
             _connection = connection;
-            _mainWebPage = mainWebPage;
-        }
+          }
 
-        public async Task<List<HeaderResponse>> Process()
+        public async Task<List<HeaderResponse>> Process(WebPage mainPage)
         {
+            _mainWebPage = mainPage;
             return await this.ScrappHeader();
         }
 

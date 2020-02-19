@@ -15,14 +15,14 @@ namespace TeleQuick.AutopistaAUSA
         WebPage _mainWebPage;
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/oemidetcweb?6";
 
-        public ScrapySixon(IConnectionAU connection, WebPage mainWebPage)
+        public ScrapySixon(IConnectionAU connection)
         {
             _connection = connection;
-            _mainWebPage = mainWebPage;
         }
 
-        public async Task<List<HeaderResponse>> Process()
+        public async Task<List<HeaderResponse>> Process(WebPage mainPage)
         {
+            _mainWebPage = mainPage;
             return await this.ScrappHeader();
         }
 

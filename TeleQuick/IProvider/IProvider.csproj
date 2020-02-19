@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeleQuick.Core.AutopistaModel\TeleQuick.Core.Autopista.Model.csproj" />
+  </ItemGroup>
+
 </Project>

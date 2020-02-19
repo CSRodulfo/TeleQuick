@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScrapySharp.Network;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,6 @@ namespace TeleQuick.IAutopista
 {
     public interface IScrapy
     {
-        Task<List<HeaderResponse>> Process();
+        Task<List<HeaderResponse>> Process(WebPage mainPage);
     }
 }

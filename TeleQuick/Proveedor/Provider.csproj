@@ -9,6 +9,7 @@
     <ProjectReference Include="..\IDataAccess\IDataAccess.csproj" />
     <ProjectReference Include="..\IProvider\IProvider.csproj" />
     <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.Autopista.Login.csproj" />
+    <ProjectReference Include="..\TeleQuick.Core.Autopista.Scrappys\TeleQuick.Core.Autopista.Scrappys.csproj" />
     <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.Core.IAutopista.csproj" />
   </ItemGroup>
 

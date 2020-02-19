@@ -33,7 +33,7 @@ namespace Service.Business
 
             IProviderAU provider = await _providerService.GetProvider(account);
 
-            return await provider.ValidateConnection();
+            return await provider.ValidateLogin();
         }
     }
 }

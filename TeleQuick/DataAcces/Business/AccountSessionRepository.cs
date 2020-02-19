@@ -26,12 +26,10 @@ namespace DataAcces.Business
 
         public async Task<AccountSession> GetById(int id)
         {
-
             return _appContext.AccountSessions
                                     .Where(x => x.Id == id)
                                     .Include(x => x.Concessionary)
                                     .First();
-
         }
 
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;

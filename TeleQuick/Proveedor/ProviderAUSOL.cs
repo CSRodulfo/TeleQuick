@@ -1,10 +1,13 @@
 ﻿using Business.Models;
 using IProvider;
+using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Autopista.Login;
+using TeleQuick.AutopistaAUSOL;
+using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
@@ -12,16 +15,16 @@ namespace Provider
 {
     public class ProviderAUSOL : IProviderAU
     {
-        IConnectionAU _connection;
+        IScrapy _scrapy;
         ILogin _login;
 
         public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession)
         {
-            _connection = connection;
             _login = new LoginAUSOL(connection, accountSession);
+            _scrapy = new ScrapyB(connection);
         }
 
-        public async Task<bool> ValidateConnection()
+        public async Task<bool> ValidateLogin()
         {
             try
             {
@@ -31,6 +34,15 @@ namespace Provider
             {
                 throw;
             }
+        }
+
+        public async Task<List<HeaderResponse>> Process()
+        {
+            WebPage page = await _login.LoginWebPage();
+
+            List<HeaderResponse> list = await _scrapy.Process(page);
+
+            throw new NotImplementedException();
         }
     }
 }
