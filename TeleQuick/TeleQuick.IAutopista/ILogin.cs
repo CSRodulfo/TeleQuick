@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using TeleQuick.IAutopista;
 
 namespace TeleQuick.Core.IAutopista
 {
@@ -11,6 +13,6 @@ namespace TeleQuick.Core.IAutopista
 
         string GetMainForm();
         Dictionary<string, string> GetDictionary();
-        bool LoginValidateAU(WebPage webPage);
+        Task<bool> LoginValidateAU(IConnectionAU connect);
     }
 }

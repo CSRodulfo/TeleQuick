@@ -46,9 +46,12 @@ namespace TeleQuick.AutopistaAUSA
             return Uri;
         }
 
-        public bool LoginValidateAU(WebPage webPage)
+        public async Task<bool> LoginValidateAU(IConnectionAU connect)
         {
             bool isValid = false;
+
+            var webPage = await connect.LoginWebPage(this);
+
             HtmlNode coll = webPage.Html.SelectSingleNode("//*[@id='W0005HEADER_TOP_TABLE']/tbody/tr/td[2]/p/a[3]");
 
             if (coll != null)

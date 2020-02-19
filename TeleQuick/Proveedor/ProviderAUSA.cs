@@ -7,11 +7,11 @@ using TeleQuick.IAutopista;
 
 namespace Provider
 {
-    public class ProviderAUSA  : IProviderAU
+    public class ProviderAUSA : IProviderAU
     {
 
         IConnectionAU _connection;
-        ILogin _login ;
+        ILogin _login;
 
         public ProviderAUSA(IConnectionAU connection)
         {
@@ -23,16 +23,12 @@ namespace Provider
         {
             try
             {
-
-                return await this._connection.LoginValidate(_login);
+                return await this._login.LoginValidateAU(_connection);
             }
             catch (Exception ex)
             {
-
                 throw;
             }
-
         }
-
     }
 }

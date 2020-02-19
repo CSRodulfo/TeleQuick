@@ -10,7 +10,6 @@ namespace TeleQuick.IAutopista
     {
         //ScrapingBrowser GetBrowser();
 
-        Task<bool> LoginValidate(ILogin login);
         Task<WebPage> LoginWebPage(ILogin login);
         Task<WebPage> GetWebPage(string Uri);
     }

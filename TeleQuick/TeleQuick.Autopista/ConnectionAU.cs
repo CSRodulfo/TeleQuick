@@ -38,12 +38,5 @@ namespace TeleQuick.Autopista
             return await browser.NavigateToPageAsync(new Uri(Uri));
         }
 
-        public async Task<bool> LoginValidate(ILogin login)
-        {
-            var webPage = await this.LoginWebPage(login);
-
-            return  login.LoginValidateAU(webPage);
-
-        }
     }
 }
