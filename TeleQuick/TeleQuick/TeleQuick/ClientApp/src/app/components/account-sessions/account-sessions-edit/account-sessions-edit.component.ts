@@ -79,7 +79,6 @@ export class AccountSessionsEditComponent implements OnInit {
           if (results) {
             this.entityAccountSession.isValid = true;
             this.alertService.showMessage('Conexión Valida', 'La prueba de conectividad fue realizada exitosamente', MessageSeverity.success);
-            this.alertService.showStickyMessage('Conexión Valida', 'La prueba de conectividad fue realizada exitosamente', MessageSeverity.success);
           } else {
             this.entityAccountSession.isValid = false;
             this.alertService.showMessage('Conexión Invalida', 'Prueba de conectividad no es valida', MessageSeverity.error);

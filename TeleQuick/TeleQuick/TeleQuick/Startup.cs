@@ -23,6 +23,8 @@ using System;
 using System.Collections.Generic;
 using AppPermissions = Business.ApplicationPermissions;
 using DataAccess;
+using System.Threading;
+using System.Globalization;
 
 namespace TeleQuick
 {
@@ -44,6 +46,9 @@ namespace TeleQuick
         public void ConfigureServices(IServiceCollection services)
         {
             this.boostrapperStartup.ConfigureServices(services);
+
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("TeleQuick")));
