@@ -41,6 +41,9 @@ namespace TeleQuick.AutopistaAUSOL
             return Uri;
         }
 
-
+        public bool LoginValidateAU(WebPage webPage)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

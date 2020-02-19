@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScrapySharp.Network;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,6 +11,6 @@ namespace TeleQuick.Core.IAutopista
 
         string GetMainForm();
         Dictionary<string, string> GetDictionary();
-       
+        bool LoginValidateAU(WebPage webPage);
     }
 }

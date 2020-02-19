@@ -40,18 +40,10 @@ namespace TeleQuick.Autopista
 
         public async Task<bool> LoginValidate(ILogin login)
         {
-            bool isValid = false;
             var webPage = await this.LoginWebPage(login);
 
-            HtmlNode coll = webPage.Html.SelectSingleNode("//*[@id='W0005HEADER_TOP_TABLE']/tbody/tr/td[2]/p/a[3]");
+            return  login.LoginValidateAU(webPage);
 
-            if (coll != null)
-            {
-                isValid = true;
-            }
-            
-            return Convert.ToBoolean(isValid);
-            
         }
     }
 }

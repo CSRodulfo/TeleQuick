@@ -1,4 +1,5 @@
-﻿using ScrapySharp.Network;
+﻿using HtmlAgilityPack;
+using ScrapySharp.Network;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
@@ -43,6 +44,18 @@ namespace TeleQuick.AutopistaAUSA
         public string GetUri()
         {
             return Uri;
+        }
+
+        public bool LoginValidateAU(WebPage webPage)
+        {
+            bool isValid = false;
+            HtmlNode coll = webPage.Html.SelectSingleNode("//*[@id='W0005HEADER_TOP_TABLE']/tbody/tr/td[2]/p/a[3]");
+
+            if (coll != null)
+            {
+                isValid = true;
+            }
+            return isValid;
         }
     }
 }
