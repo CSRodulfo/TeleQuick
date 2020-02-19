@@ -28,21 +28,12 @@ namespace Service.Business
 
         public async Task<bool> ValidateConnection(int idAccountSession)
         {
-            try
-            {
-                AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
 
-                var provider = await _providerService.GetProvider(account);
+            AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
 
-                var login = provider.ValidateConnection();
+            IProviderAU provider = await _providerService.GetProvider(account);
 
-                return await login;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-
+            return await provider.ValidateConnection();
         }
     }
 }

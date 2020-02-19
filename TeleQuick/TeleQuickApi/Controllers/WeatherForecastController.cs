@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Autopista.Login;
 using TeleQuick.AutopistaAUSA;
 using TeleQuick.AutopistaAUSOL;
 using TeleQuick.Core.Autopista.Model;
@@ -30,7 +31,7 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSA")]
         public async Task<List<HeaderResponse>> Get()
         {
-            var AUSALogin = await _connection.LoginWebPage(new AutopistaAUSA.Login( new Business.Models.AccountSession()));
+            var AUSALogin = await _connection.LoginWebPage(new LoginAUSA( new Business.Models.AccountSession()));
 
             IScrapy scrapy = new ScrapySixon(_connection, AUSALogin);
 
@@ -40,7 +41,7 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSOL")]
         public async Task<List<HeaderResponse>> GetAUSOL()
         {
-            var AUSOLLogin = await _connection.LoginWebPage(new AutopistaAUSOL.Login());
+            var AUSOLLogin = await _connection.LoginWebPage(new LoginAUSOL());
 
             IScrapy scrapy = new ScrapyB(_connection, AUSOLLogin);
 

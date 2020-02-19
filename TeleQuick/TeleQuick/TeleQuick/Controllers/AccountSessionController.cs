@@ -4,9 +4,11 @@ using IService.Business;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using TeleQuick.Helpers;
 using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers
@@ -75,10 +77,19 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> ValidateConectionAccountSession(int id)
         {
+            try
+            {
+                var rtn = await _accountSessionService.ValidateConnection(id);
 
-            var rtn = await _accountSessionService.ValidateConnection(id);
+                return Ok(rtn);
 
-            return Ok(rtn);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(LoggingEvents.SEND_EMAIL, ex, "An error occurred whilst sending email");
+                return Ok(false);
+            }
+
         }
     }
 }

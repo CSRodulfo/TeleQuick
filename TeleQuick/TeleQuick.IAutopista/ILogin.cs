@@ -13,6 +13,6 @@ namespace TeleQuick.Core.IAutopista
 
         string GetMainForm();
         Dictionary<string, string> GetDictionary();
-        Task<bool> LoginValidateAU(IConnectionAU connect);
+        Task<bool> LoginValidateAU();
     }
 }

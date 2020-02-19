@@ -2,6 +2,7 @@
 using IProvider;
 using System;
 using System.Threading.Tasks;
+using TeleQuick.Autopista.Login;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
@@ -16,14 +17,14 @@ namespace Provider
         public ProviderAUSA(IConnectionAU connection, AccountSession accountSession)
         {
             _connection = connection;
-            _login = new TeleQuick.AutopistaAUSA.Login(accountSession);
+            _login = new LoginAUSA(connection, accountSession);
         }
 
         public async Task<bool> ValidateConnection()
         {
             try
             {
-                return await this._login.LoginValidateAU(_connection);
+                return await this._login.LoginValidateAU();
             }
             catch (Exception ex)
             {

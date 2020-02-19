@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.AutopistaAUSA.csproj" />
-    <ProjectReference Include="..\TeleQuick.AutopistaAUSOL\TeleQuick.AutopistaAUSOL.csproj" />
+    <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.Autopista.Login.csproj" />
     <ProjectReference Include="..\TeleQuick.Autopista\TeleQuick.Core.Autopista.csproj" />
     <ProjectReference Include="..\TeleQuick.Core.Autopista.Scrappys\TeleQuick.Core.Autopista.Scrappys.csproj" />
     <ProjectReference Include="..\TeleQuick.Core.AutopistaModel\TeleQuick.Core.Autopista.Model.csproj" />

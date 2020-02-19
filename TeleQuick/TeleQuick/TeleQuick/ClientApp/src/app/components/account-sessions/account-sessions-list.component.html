@@ -20,14 +20,14 @@
       [rowHeight]="35" [headerHeight]="35" [footerHeight]="35" [columns]="columns" [columnMode]="'force'">
     </ngx-datatable>
 
+    <ng-template #indexTemplate let-value="value">
+      <strong>{{value}}</strong>
+    </ng-template>
+
     <ng-template #nameTemplate let-row="row" let-value="value">
       <span class="inline-label">
         {{value}}
       </span>
-    </ng-template>
-
-    <ng-template #indexTemplate let-value="value">
-      <strong>{{value}}</strong>
     </ng-template>
 
     <ng-template #validTemplate let-row="row" let-value="value">

@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.AutopistaAUSOL", "TeleQuick.AutopistaAUSOL\TeleQuick.AutopistaAUSOL.csproj", "{495AE67B-A2B1-4E99-BF18-18FB9B1EFEDB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{AF99A0BC-282F-4020-B765-D19690E576CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{256A6D30-FB62-4FF2-B603-D4F9B1F70753}"
@@ -30,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAcces", "DataAcces\Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Core.Autopista", "TeleQuick.Autopista\TeleQuick.Core.Autopista.csproj", "{F6BFB8B2-28B7-46BF-95CE-BB3EC87DFDD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.AutopistaAUSA", "TeleQuick.AutopistaAUSA\TeleQuick.AutopistaAUSA.csproj", "{14989F4A-D434-43BC-ADFD-F17F17683ED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Autopista.Login", "TeleQuick.AutopistaAUSA\TeleQuick.Autopista.Login.csproj", "{14989F4A-D434-43BC-ADFD-F17F17683ED2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Negocio", "Negocio", "{E3CB16BE-A26A-4AF4-8701-8DDDC6A55FA3}"
 EndProject
@@ -46,9 +44,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAcces", "DataAcces", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provider", "Provider", "{646FB521-64D8-4505-9AA3-83D93E51FC37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provider", "Proveedor\Provider.csproj", "{7CF6127F-29B1-4C2B-AC55-328DE2C80F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Provider", "Proveedor\Provider.csproj", "{7CF6127F-29B1-4C2B-AC55-328DE2C80F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IProvider", "IProvider\IProvider.csproj", "{24A8FDAD-71F3-4181-A018-2C7CE042493D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IProvider", "IProvider\IProvider.csproj", "{24A8FDAD-71F3-4181-A018-2C7CE042493D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,10 +66,6 @@ Global
 		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{623E8ECE-2C11-45F8-A5FB-7377C89FBD74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{495AE67B-A2B1-4E99-BF18-18FB9B1EFEDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{495AE67B-A2B1-4E99-BF18-18FB9B1EFEDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{495AE67B-A2B1-4E99-BF18-18FB9B1EFEDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{495AE67B-A2B1-4E99-BF18-18FB9B1EFEDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF99A0BC-282F-4020-B765-D19690E576CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF99A0BC-282F-4020-B765-D19690E576CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF99A0BC-282F-4020-B765-D19690E576CE}.Release|Any CPU.ActiveCfg = Release|Any CPU

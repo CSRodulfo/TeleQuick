@@ -1,4 +1,5 @@
-﻿using ScrapySharp.Network;
+﻿using Business.Models;
+using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -6,17 +7,18 @@ using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
-namespace TeleQuick.AutopistaAUSOL
+namespace TeleQuick.Autopista.Login
 {
-    public class Login : ILogin
+    public class LoginAUSOL : LoginBase, ILogin
     {
-        private const string MainForm = "form1";
-        private const string Uri = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/Login.aspx";
-        public Login()
+
+        public LoginAUSOL(IConnectionAU connect, AccountSession accountSession)
         {
+            _accountSession = accountSession;
+            _connect = connect;
         }
 
-        public Dictionary<string, string> GetDictionary()
+        public  Dictionary<string, string> GetDictionary()
         {
             var dictionary = new Dictionary<string, string>();
 
@@ -31,17 +33,7 @@ namespace TeleQuick.AutopistaAUSOL
             return dictionary;
         }
 
-        public string GetMainForm()
-        {
-            return MainForm;
-        }
-
-        public string GetUri()
-        {
-            return Uri;
-        }
-
-        public async Task<bool> LoginValidateAU(IConnectionAU connect)
+        public Task<bool> LoginValidateAU()
         {
             throw new NotImplementedException();
         }

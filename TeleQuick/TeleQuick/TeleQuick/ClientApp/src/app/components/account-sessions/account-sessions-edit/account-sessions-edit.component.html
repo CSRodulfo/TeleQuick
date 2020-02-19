@@ -33,8 +33,7 @@
             <div class="col-md-9">
                 <input disabled=true type="text" id="concessionaryNameEdit" name="concessionaryNameEdit" placeholder="Ingrese el Modelo"
                     class="form-control"
-                    [ngClass]="{'is-valid': f.submitted && concessionaryNameEdit.valid, 'is-invalid' : f.submitted && !concessionaryNameEdit.valid}"
-                    [(ngModel)]="entityAccountSession.concessionaryName" #concessionaryNameEdit="ngModel" required />
+                    [(ngModel)]="entityAccountSession.concessionaryName" #concessionaryNameEdit="ngModel" />
             </div>
         </div>
 

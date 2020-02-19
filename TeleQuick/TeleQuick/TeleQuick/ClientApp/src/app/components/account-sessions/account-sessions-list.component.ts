@@ -35,6 +35,8 @@ export class AccountSessionsComponent implements OnInit {
   @ViewChild('validTemplate', { static: true })
   validTemplate: TemplateRef<any>;
 
+  @ViewChild('nameTemplate', { static: true })
+  nameTemplate: TemplateRef<any>;
 
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;
@@ -60,7 +62,7 @@ export class AccountSessionsComponent implements OnInit {
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
       { prop: 'loginUser', name: 'Cuenta Usuario', width: 100 },
-      { prop: 'loginUserPassword', name: 'Contraseña', width: 100 },
+      { prop: 'loginUserPassword', name: 'Contraseña', width: 100, cellTemplate: this.nameTemplate },
       { prop: 'isValid', name: 'Conexión', width: 100, cellTemplate: this.validTemplate },
       { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
       //{ prop: 'year', name: gT('vehicles.management.Year'), width: 80 },

@@ -7,14 +7,14 @@ using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
-namespace TeleQuick.AutopistaAUSA
+namespace TeleQuick.Autopista.Login
 {
-    public class Login : ILogin
+    public class LoginAUSA : LoginBase, ILogin
     {
-        AccountSession _accountSession;
-        public Login(AccountSession accountSession)
+        public LoginAUSA(IConnectionAU connect, AccountSession accountSession)
         {
-            _accountSession = accountSession;
+            base._accountSession = accountSession;
+            _connect = connect;
         }
         public Dictionary<string, string> GetDictionary()
         {
@@ -35,21 +35,11 @@ namespace TeleQuick.AutopistaAUSA
             return dictionary;
         }
 
-        public string GetMainForm()
-        {
-            return _accountSession.Concessionary.MainForm;
-        }
-
-        public string GetUri()
-        {
-            return _accountSession.Concessionary.Uri;
-        }
-
-        public async Task<bool> LoginValidateAU(IConnectionAU connect)
+        public async Task<bool> LoginValidateAU()
         {
             bool isValid = false;
 
-            var webPage = await connect.LoginWebPage(this);
+            var webPage = await _connect.LoginWebPage(this);
 
             HtmlNode coll = webPage.Html.SelectSingleNode("//*[@id='W0005HEADER_TOP_TABLE']/tbody/tr/td[2]/p/a[3]");
 

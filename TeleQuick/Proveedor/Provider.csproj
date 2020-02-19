@@ -8,8 +8,7 @@
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\IDataAccess\IDataAccess.csproj" />
     <ProjectReference Include="..\IProvider\IProvider.csproj" />
-    <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.AutopistaAUSA.csproj" />
-    <ProjectReference Include="..\TeleQuick.AutopistaAUSOL\TeleQuick.AutopistaAUSOL.csproj" />
+    <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.Autopista.Login.csproj" />
     <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.Core.IAutopista.csproj" />
   </ItemGroup>
 
