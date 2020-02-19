@@ -1,38 +1,29 @@
 ﻿using Business.Models;
-using IDataAccess;
 using IProvider;
 using IService.Business;
 using Provider;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
 namespace Service.Business
 {
     public class ProviderService : IProviderService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IConnection _provider;
+        private readonly IConnection _connection;
 
-        public ProviderService(IUnitOfWork unitOfWork, IConnection provider)
+        public ProviderService(IConnection connection)
         {
-            _unitOfWork = unitOfWork;
-            _provider = provider;
+            _connection = connection;
         }
 
-        public async Task<IProviderAU> GetProvider(int idAccountSession)
+        public async Task<IProviderAU> GetProvider(Concessionary concessionary)
         {
-            AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
-
             IProviderAU provider = null;
 
-            switch (account.Concessionary.GetAutopista())
+            switch (concessionary.GetAutopista())
             {
                 case AutopistasConstants.AUSA:
-                    provider = new ProviderAUSA(_provider);
+                    provider = new ProviderAUSA(_connection);
                     break;
                 case AutopistasConstants.AUSOL:
                     break;

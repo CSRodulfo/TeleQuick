@@ -23,15 +23,14 @@ namespace DataAccess
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<AccountSession> AccountSessions { get; set; }
-        public DbSet<Concessionary> Concessionaries { get; set; }
-
 
 
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<TagRfid> TagRfids { get; set; }
         public DbSet<InvoiceHeader> InvoiceHeaders { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<AccountSession> AccountSessions { get; set; }
+        public DbSet<Concessionary> Concessionaries { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions options) : base(options)

@@ -24,7 +24,7 @@ namespace Provider
             try
             {
 
-                this._connection.LoginWebPage(_login);
+                await this._connection.LoginWebPage(_login);
 
 
                 throw new NotImplementedException();

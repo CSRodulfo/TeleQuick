@@ -30,7 +30,9 @@ namespace Service.Business
         {
             try
             {
-                IProviderAU provider = await _providerService.GetProvider(idAccountSession);
+                AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
+
+                IProviderAU provider = await _providerService.GetProvider(account.Concessionary);
 
                 //ILogin login = await account.Concessionary.GetLogin();
 

@@ -1,4 +1,5 @@
-﻿using IProvider;
+﻿using Business.Models;
+using IProvider;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,6 @@ namespace IService.Business
 {
     public interface IProviderService
     {
-        Task<IProviderAU> GetProvider(int idAccountSession);
+        Task<IProviderAU> GetProvider(Concessionary concessionary);
     }
 }
