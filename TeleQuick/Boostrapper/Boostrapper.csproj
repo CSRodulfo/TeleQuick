@@ -13,7 +13,10 @@
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\DataAcces\DataAcces.csproj" />
     <ProjectReference Include="..\IService\IService.csproj" />
+    <ProjectReference Include="..\Proveedor\Provider.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />
+    <ProjectReference Include="..\TeleQuick.Autopista\TeleQuick.Core.Autopista.csproj" />
+    <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.Core.IAutopista.csproj" />
   </ItemGroup>
 
 </Project>

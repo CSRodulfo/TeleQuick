@@ -2,7 +2,7 @@
 
 namespace IProvider
 {
-    public class Class1
+    public interface IProviderAU
     {
     }
 }

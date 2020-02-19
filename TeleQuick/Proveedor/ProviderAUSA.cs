@@ -1,4 +1,5 @@
 ﻿using Business.Models;
+using IProvider;
 using System;
 using System.Threading.Tasks;
 using TeleQuick.Core.IAutopista;
@@ -6,7 +7,7 @@ using TeleQuick.IAutopista;
 
 namespace Provider
 {
-    public class ProviderAUSA
+    public class ProviderAUSA  : IProviderAU
     {
 
         IConnection _connection;

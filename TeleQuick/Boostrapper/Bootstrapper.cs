@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service;
 using Service.Business;
+using TeleQuick.Autopista;
+using TeleQuick.IAutopista;
 
 namespace Boostrapper
 {
@@ -31,6 +33,8 @@ namespace Boostrapper
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IAccountSessionService, AccountSessionService>();
+            services.AddScoped<IConnection, Connection>();
+            services.AddScoped<IProviderService, ProviderService>();
 
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();

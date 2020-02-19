@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\IProvider\IProvider.csproj" />
   </ItemGroup>
 
 </Project>

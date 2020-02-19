@@ -8,7 +8,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\IDataAccess\IDataAccess.csproj" />
+    <ProjectReference Include="..\IProvider\IProvider.csproj" />
     <ProjectReference Include="..\IService\IService.csproj" />
+    <ProjectReference Include="..\Proveedor\Provider.csproj" />
   </ItemGroup>
 
 </Project>

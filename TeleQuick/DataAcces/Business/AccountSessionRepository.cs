@@ -29,7 +29,7 @@ namespace DataAcces.Business
 
             var a = await _appContext.AccountSessions
                                     .Include(x => x.Concessionary)
-                                    .FirstAsync(x => x.Id == id);
+                                    .FirstOrDefaultAsync(x => x.Id == id);
             return a;
 
         }

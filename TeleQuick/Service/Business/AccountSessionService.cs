@@ -1,5 +1,6 @@
 ﻿using Business.Models;
 using IDataAccess;
+using IProvider;
 using IService.Business;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,14 @@ namespace Service.Business
     public class AccountSessionService : IAccountSessionService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IProviderService _providerService;
 
-        public AccountSessionService(IUnitOfWork unitOfWork)
+        public AccountSessionService(IUnitOfWork unitOfWork, IProviderService providerService)
         {
             _unitOfWork = unitOfWork;
+            _providerService = providerService;
         }
-        // GET: api/values
+
         public async Task<IEnumerable<AccountSession>> Get()
         {
             var allCustomers = _unitOfWork.AccountSessions.GetAllData();
@@ -27,9 +30,11 @@ namespace Service.Business
         {
             try
             {
-                AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
+                IProviderAU provider = await _providerService.GetProvider(idAccountSession);
 
-                ILogin login = await account.Concessionary.GetLogin();
+                //ILogin login = await account.Concessionary.GetLogin();
+
+                //IProviderAU 
 
 
 
