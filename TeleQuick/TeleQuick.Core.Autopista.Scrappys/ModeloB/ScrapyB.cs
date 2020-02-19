@@ -12,11 +12,11 @@ namespace TeleQuick.AutopistaAUSOL
 {
     public class ScrapyB : IScrapy
     {
-        IConnection _connection;
+        IConnectionAU _connection;
         WebPage _mainWebPage;
         private const string Uri2 = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/";
 
-        public ScrapyB(IConnection connection, WebPage mainWebPage)
+        public ScrapyB(IConnectionAU connection, WebPage mainWebPage)
         {
             _connection = connection;
             _mainWebPage = mainWebPage;

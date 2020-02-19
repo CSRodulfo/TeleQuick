@@ -11,11 +11,11 @@ namespace TeleQuick.AutopistaAUSA
 {
     public class ScrapySixon : IScrapy
     {
-        IConnection _connection;
+        IConnectionAU _connection;
         WebPage _mainWebPage;
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/oemidetcweb?6";
 
-        public ScrapySixon(IConnection connection, WebPage mainWebPage)
+        public ScrapySixon(IConnectionAU connection, WebPage mainWebPage)
         {
             _connection = connection;
             _mainWebPage = mainWebPage;

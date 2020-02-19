@@ -9,9 +9,9 @@ namespace Service.Business
 {
     public class ProviderService : IProviderService
     {
-        private readonly IConnection _connection;
+        private readonly IConnectionAU _connection;
 
-        public ProviderService(IConnection connection)
+        public ProviderService(IConnectionAU connection)
         {
             _connection = connection;
         }

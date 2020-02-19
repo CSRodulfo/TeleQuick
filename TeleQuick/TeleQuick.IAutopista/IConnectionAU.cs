@@ -6,7 +6,7 @@ using TeleQuick.Core.IAutopista;
 
 namespace TeleQuick.IAutopista
 {
-    public interface IConnection
+    public interface IConnectionAU
     {
         //ScrapingBrowser GetBrowser();
         Task<WebPage> LoginWebPage(ILogin login);

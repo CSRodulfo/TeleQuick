@@ -20,8 +20,8 @@ namespace TeleQuick.WebApi.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        IConnection _connection; 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConnection connection)
+        IConnectionAU _connection; 
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConnectionAU connection)
         {
             _logger = logger;
             _connection = connection;

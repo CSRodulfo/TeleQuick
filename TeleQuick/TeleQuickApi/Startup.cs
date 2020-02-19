@@ -29,9 +29,6 @@ namespace TeleQuick.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<IConnection, Connection>();
-
-
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

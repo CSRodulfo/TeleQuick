@@ -9,10 +9,10 @@ using TeleQuick.IAutopista;
 
 namespace TeleQuick.Autopista
 {
-    public class Connection : IConnection
+    public class ConnectionAU : IConnectionAU
     {
         private ScrapingBrowser browser;
-        public Connection()
+        public ConnectionAU()
         {
             browser = new ScrapingBrowser();
             browser.UseDefaultCookiesParser = false;

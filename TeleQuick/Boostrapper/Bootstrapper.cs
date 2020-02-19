@@ -33,7 +33,7 @@ namespace Boostrapper
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IAccountSessionService, AccountSessionService>();
-            services.AddScoped<IConnection, Connection>();
+            services.AddScoped<IConnectionAU, ConnectionAU>();
             services.AddScoped<IProviderService, ProviderService>();
 
             // DB Creation and Seeding

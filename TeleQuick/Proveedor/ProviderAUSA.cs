@@ -10,10 +10,10 @@ namespace Provider
     public class ProviderAUSA  : IProviderAU
     {
 
-        IConnection _connection;
+        IConnectionAU _connection;
         ILogin _login ;
 
-        public ProviderAUSA(IConnection connection)
+        public ProviderAUSA(IConnectionAU connection)
         {
             _connection = connection;
             _login = new TeleQuick.AutopistaAUSA.Login();

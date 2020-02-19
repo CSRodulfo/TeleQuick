@@ -27,9 +27,9 @@ namespace DataAcces.Business
         public async Task<AccountSession> GetById(int id)
         {
 
-            var a = await _appContext.AccountSessions
+            var a =  _appContext.AccountSessions
                                     .Include(x => x.Concessionary)
-                                    .FirstOrDefaultAsync(x => x.Id == id);
+                                    .FirstOrDefault(x => x.Id == id);
             return a;
 
         }
