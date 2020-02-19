@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\TeleQuick.Core.AutopistaModel\TeleQuick.Core.Autopista.Model.csproj" />
   </ItemGroup>
 

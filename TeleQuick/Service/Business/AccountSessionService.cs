@@ -32,7 +32,7 @@ namespace Service.Business
             {
                 AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
 
-                var provider = await _providerService.GetProvider(account.Concessionary);
+                var provider = await _providerService.GetProvider(account);
 
                 var login = provider.ValidateConnection();
 

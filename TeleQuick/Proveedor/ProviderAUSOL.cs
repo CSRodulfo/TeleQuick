@@ -1,22 +1,23 @@
 ﻿using Business.Models;
 using IProvider;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IAutopista;
 
 namespace Provider
 {
-    public class ProviderAUSA : IProviderAU
+    public class ProviderAUSOL : IProviderAU
     {
-
         IConnectionAU _connection;
         ILogin _login;
 
-        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession)
+        public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession)
         {
             _connection = connection;
-            _login = new TeleQuick.AutopistaAUSA.Login(accountSession);
+            _login = new TeleQuick.AutopistaAUSOL.Login(accountSession);
         }
 
         public async Task<bool> ValidateConnection()

@@ -9,6 +9,6 @@ namespace IService.Business
 {
     public interface IProviderService
     {
-        Task<IProviderAU> GetProvider(Concessionary concessionary);
+        Task<IProviderAU> GetProvider(AccountSession accountSession);
     }
 }

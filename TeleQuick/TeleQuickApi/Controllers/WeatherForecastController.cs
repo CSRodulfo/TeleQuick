@@ -30,7 +30,7 @@ namespace TeleQuick.WebApi.Controllers
         [HttpGet("GetAUSA")]
         public async Task<List<HeaderResponse>> Get()
         {
-            var AUSALogin = await _connection.LoginWebPage(new AutopistaAUSA.Login());
+            var AUSALogin = await _connection.LoginWebPage(new AutopistaAUSA.Login( new Business.Models.AccountSession()));
 
             IScrapy scrapy = new ScrapySixon(_connection, AUSALogin);
 

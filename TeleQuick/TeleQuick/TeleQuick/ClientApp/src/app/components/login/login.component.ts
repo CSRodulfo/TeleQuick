@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.isLoading = true;
-    this.alertService.startLoadingMessage('', 'Intentando ingresar...');
+    this.alertService.startLoadingMessage('', 'Ingresando...');
 
     this.authService.login(this.userLogin.userName, this.userLogin.password, this.userLogin.rememberMe)
       .subscribe(
@@ -86,9 +86,9 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.reset();
 
             if (!this.isModal) {
-              this.alertService.showMessage('Ingresar', `Bienvenido ${user.userName}!`, MessageSeverity.success);
+              this.alertService.showMessage('Sesión iniciada', `Bienvenido ${user.userName}!`, MessageSeverity.success);
             } else {
-              this.alertService.showMessage('Ingresar', `Sesion para ${user.userName} restaurada!`, MessageSeverity.success);
+              this.alertService.showMessage('Sesión iniciada', `Sesion para ${user.userName} restaurada!`, MessageSeverity.success);
               setTimeout(() => {
                 this.alertService.showStickyMessage('Sesion Restaurada', 'Intente nuevamente la operación', MessageSeverity.default);
               }, 500);

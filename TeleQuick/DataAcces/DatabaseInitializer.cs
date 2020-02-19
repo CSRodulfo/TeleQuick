@@ -58,13 +58,18 @@ namespace DataAccess
                 {
                     Name = "AUSA",
                     Detail = "contact@ebenmonney.com",
+                    MainForm = "MAINFORM",
+                    Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0",
                 };
 
                 Concessionary cons_2 = new Concessionary
                 {
                     Name = "AUSOL",
                     Detail = "contact@ebenmonney.com",
+                    MainForm = "form1",
+                    Uri = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/Login.aspx",
                 };
+
                 Concessionary cons_3 = new Concessionary
                 {
                     Name = "AUBASA",

@@ -16,16 +16,17 @@ namespace Service.Business
             _connection = connection;
         }
 
-        public async Task<IProviderAU> GetProvider(Concessionary concessionary)
+        public async Task<IProviderAU> GetProvider(AccountSession accountSession)
         {
             IProviderAU provider = null;
 
-            switch (concessionary.GetAutopista())
+            switch (accountSession.Concessionary.GetAutopista())
             {
                 case AutopistasConstants.AUSA:
-                    provider = new ProviderAUSA(_connection);
+                    provider = new ProviderAUSA(_connection, accountSession);
                     break;
                 case AutopistasConstants.AUSOL:
+                    provider = new ProviderAUSOL(_connection, accountSession);
                     break;
                 case AutopistasConstants.AUBASA:
                     break;

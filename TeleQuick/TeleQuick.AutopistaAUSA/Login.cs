@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using Business.Models;
+using HtmlAgilityPack;
 using ScrapySharp.Network;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,12 +11,10 @@ namespace TeleQuick.AutopistaAUSA
 {
     public class Login : ILogin
     {
-        private const string MainForm = "MAINFORM";
-        private const string Uri = "https://cliente.ausa.com.ar/fael/servlet/hlogin?6,0";
-
-        public Login()
+        AccountSession _accountSession;
+        public Login(AccountSession accountSession)
         {
-
+            _accountSession = accountSession;
         }
         public Dictionary<string, string> GetDictionary()
         {
@@ -25,8 +24,8 @@ namespace TeleQuick.AutopistaAUSA
             dictionary.Add("_EventGridId", "");
             dictionary.Add("_EventRowId", "");
             dictionary.Add("_EMPCOD", "6");
-            dictionary.Add("_USRCOD", "363306");
-            dictionary.Add("_USRPSWING", "tat406");
+            dictionary.Add("_USRCOD", _accountSession.LoginUser);
+            dictionary.Add("_USRPSWING", _accountSession.LoginUserPassword);
             dictionary.Add("BTNCONFIRM", "Aceptar");
             dictionary.Add("_MSJDATEMP", "");
             dictionary.Add("_CBIO", "0");
@@ -38,12 +37,12 @@ namespace TeleQuick.AutopistaAUSA
 
         public string GetMainForm()
         {
-            return MainForm;
+            return _accountSession.Concessionary.MainForm;
         }
 
         public string GetUri()
         {
-            return Uri;
+            return _accountSession.Concessionary.Uri;
         }
 
         public async Task<bool> LoginValidateAU(IConnectionAU connect)

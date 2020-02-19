@@ -135,9 +135,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.alertService.resetStickyMessage();
 
         if (!this.authService.isSessionExpired)
-          this.alertService.showMessage('Ingresar', `Bienvenido ${this.userName}!`, MessageSeverity.default);
+          this.alertService.showMessage('Sesión iniciada', `Bienvenido ${this.userName}!`, MessageSeverity.default);
         else
-          this.alertService.showStickyMessage("Session Expired", "Your Session has expired. Please log in again", MessageSeverity.warn);
+          this.alertService.showStickyMessage("Sesión expirada", "Su sesión ha expirado. Please log in again", MessageSeverity.warn);
       }
     }, 2000);
 

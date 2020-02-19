@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Threading.Tasks;
-using TeleQuick.Core.IAutopista;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Business.Models
 {
