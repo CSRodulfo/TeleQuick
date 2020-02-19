@@ -71,6 +71,8 @@ namespace TeleQuick.Controllers
         [HttpGet("ValidateConection/{id}")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200)]
+        [ProducesResponseType(403)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> ValidateConectionAccountSession(int id)
         {
             Thread.Sleep(5000);

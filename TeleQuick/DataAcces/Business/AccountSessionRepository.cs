@@ -1,4 +1,4 @@
-﻿using  Business.Models;
+﻿using Business.Models;
 using DataAccess;
 using DataAccess.Repositories;
 using IDataAccess.Business;
@@ -24,13 +24,13 @@ namespace DataAcces.Business
                                     .ToListAsync();
         }
 
-        public async Task<AccountSession> GetById(int id)
+        public Task<AccountSession> GetById(int id)
         {
 
-            var a =  _appContext.AccountSessions
+            return _appContext.AccountSessions
+                                    .Where(x => x.Id == id)
                                     .Include(x => x.Concessionary)
-                                    .FirstOrDefault(x => x.Id == id);
-            return a;
+                                    .FirstAsync();
 
         }
 
