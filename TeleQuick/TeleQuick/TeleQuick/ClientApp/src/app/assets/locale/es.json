@@ -8,7 +8,7 @@
         "Appointments": "Equipos",
         "Customers": "Clientes",
         "AccountSessions": "Concesionarias",
-        "Process": "Ordenes",
+        "Process": "Procesar",
         "Vehicle": "Vehiculos",
         "About": "Acerca de",
         "Logout": "Cerrar sesión"
@@ -17,7 +17,7 @@
         "Dashboard": "Tablero",
         "Customers": "Clientes",
         "AccountSessions": "Concesionarias",
-        "Process": "Ordenes",
+        "Process": "Procesar",
         "Vehicles": "Vehiculos",
         "NotFound": "No Encontrado",
         "About": "Acerca de",

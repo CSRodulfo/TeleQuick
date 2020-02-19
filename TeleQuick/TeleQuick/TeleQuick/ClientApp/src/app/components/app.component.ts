@@ -103,7 +103,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   onLoginModalShown() {
-    this.alertService.showStickyMessage('Session Expireda', 'Your Session has expired. Please log in again', MessageSeverity.info);
+    this.alertService.showStickyMessage('Sesión Expirada', 'La sesión a expirado, por favor ingrese de nuevo', MessageSeverity.info);
   }
 
 
@@ -113,7 +113,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.shouldShowLoginModal = false;
 
     if (this.authService.isSessionExpired) {
-      this.alertService.showStickyMessage('Session Expired', 'Your Session has expired. Please log in again to renew your session', MessageSeverity.warn);
+      this.alertService.showStickyMessage('Sesión Expirada', 'La sesión a expirado, por favor ingrese de nuevo para renovar la sesión', MessageSeverity.warn);
     }
   }
 
@@ -134,10 +134,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (this.isUserLoggedIn) {
         this.alertService.resetStickyMessage();
 
-        // if (!this.authService.isSessionExpired)
-        this.alertService.showMessage('Login', `Welcome back ${this.userName}!`, MessageSeverity.default);
-        // else
-        //    this.alertService.showStickyMessage("Session Expired", "Your Session has expired. Please log in again", MessageSeverity.warn);
+        if (!this.authService.isSessionExpired)
+          this.alertService.showMessage('Ingresar', `Bienvenido ${this.userName}!`, MessageSeverity.default);
+        else
+          this.alertService.showStickyMessage("Session Expired", "Your Session has expired. Please log in again", MessageSeverity.warn);
       }
     }, 2000);
 
@@ -159,7 +159,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       setTimeout(() => {
         if (!this.isUserLoggedIn) {
-          this.alertService.showMessage('Session cerrada!', '', MessageSeverity.default);
+          this.alertService.showMessage('Sesión cerrada!', '', MessageSeverity.default);
         }
       }, 500);
     });
@@ -192,7 +192,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           if (this.dataLoadingConsecutiveFailures++ < 20) {
             setTimeout(() => this.initNotificationsLoading(), 5000);
           } else {
-            this.alertService.showStickyMessage('Load Error', 'Loading new notifications from the server failed!', MessageSeverity.error);
+            this.alertService.showStickyMessage('Error al cargar', 'Error en el servidor al recibir notificaciones!', MessageSeverity.error);
           }
         });
   }
@@ -225,8 +225,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     alertify.set({
       labels: {
-        ok: dialog.okLabel || 'OK',
-        cancel: dialog.cancelLabel || 'Cancel'
+        ok: dialog.okLabel || 'Aceptar',
+        cancel: dialog.cancelLabel || 'Cancelar'
       }
     });
 

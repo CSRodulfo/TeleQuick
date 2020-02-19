@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.isLoading = true;
-    this.alertService.startLoadingMessage('', 'Attempting login...');
+    this.alertService.startLoadingMessage('', 'Intentando ingresar...');
 
     this.authService.login(this.userLogin.userName, this.userLogin.password, this.userLogin.rememberMe)
       .subscribe(
@@ -86,11 +86,11 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.reset();
 
             if (!this.isModal) {
-              this.alertService.showMessage('Login', `Welcome ${user.userName}!`, MessageSeverity.success);
+              this.alertService.showMessage('Ingresar', `Bienvenido ${user.userName}!`, MessageSeverity.success);
             } else {
-              this.alertService.showMessage('Login', `Session for ${user.userName} restored!`, MessageSeverity.success);
+              this.alertService.showMessage('Ingresar', `Sesion para ${user.userName} restaurada!`, MessageSeverity.success);
               setTimeout(() => {
-                this.alertService.showStickyMessage('Session Restored', 'Please try your last operation again', MessageSeverity.default);
+                this.alertService.showStickyMessage('Sesion Restaurada', 'Intente nuevamente la operación', MessageSeverity.default);
               }, 500);
 
               this.closeModal();
@@ -108,9 +108,9 @@ export class LoginComponent implements OnInit, OnDestroy {
             const errorMessage = Utilities.getHttpResponseMessage(error);
 
             if (errorMessage) {
-              this.alertService.showStickyMessage('Unable to login', this.mapLoginErrorMessage(errorMessage), MessageSeverity.error, error);
+              this.alertService.showStickyMessage('No se puede ingresar', this.mapLoginErrorMessage(errorMessage), MessageSeverity.error, error);
             } else {
-              this.alertService.showStickyMessage('Unable to login', 'An error occured whilst logging in, please try again later.\nError: ' + Utilities.getResponseBody(error), MessageSeverity.error, error);
+              this.alertService.showStickyMessage('No se puede ingresar', 'An error occured whilst logging in, please try again later.\nError: ' + Utilities.getResponseBody(error), MessageSeverity.error, error);
             }
           }
 
@@ -143,11 +143,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   mapLoginErrorMessage(error: string) {
 
     if (error == 'invalid_username_or_password') {
-      return 'Invalid username or password';
+      return 'Usuario o contraseña incorrectos';
     }
 
     if (error == 'invalid_grant') {
-      return 'This account has been disabled';
+      return 'La cuenta fue deshabilitada';
     }
 
     return error;
