@@ -38,9 +38,5 @@ namespace TeleQuick.Autopista
             return await browser.NavigateToPageAsync(new Uri(Uri));
         }
 
-        //public ScrapingBrowser GetBrowser()
-        //{
-        //    return browser;
-        //}
     }
 }
