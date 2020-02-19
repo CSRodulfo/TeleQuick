@@ -19,15 +19,11 @@ namespace Provider
             _login = new TeleQuick.AutopistaAUSA.Login();
         }
 
-        public async Task<AccountSession> ValidateConnection(AccountSession account)
+        public async Task<bool> ValidateConnection()
         {
             try
             {
-
-                await this._connection.LoginWebPage(_login);
-
-
-                throw new NotImplementedException();
+                return await this._connection.LoginValidate(_login);
             }
             catch (Exception ex)
             {

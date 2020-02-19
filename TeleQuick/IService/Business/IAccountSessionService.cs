@@ -9,6 +9,6 @@ namespace IService.Business
     public interface IAccountSessionService
     {
         Task<IEnumerable<AccountSession>> Get();
-        Task<AccountSession> ValidateConnection(int idAccountSession);
+        Task<bool> ValidateConnection(int idAccountSession);
     }
 }

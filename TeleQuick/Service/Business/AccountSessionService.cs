@@ -26,31 +26,23 @@ namespace Service.Business
             return await allCustomers;
         }
 
-        public async Task<AccountSession> ValidateConnection(int idAccountSession)
+        public async Task<bool> ValidateConnection(int idAccountSession)
         {
             try
             {
-                AccountSession account =  await _unitOfWork.AccountSessions.GetById(idAccountSession);
+                AccountSession account = await _unitOfWork.AccountSessions.GetById(idAccountSession);
 
-                var provider =  _providerService.GetProvider(account.Concessionary);
+                var provider = await _providerService.GetProvider(account.Concessionary);
 
-                //ILogin login = await account.Concessionary.GetLogin();
+                var login = provider.ValidateConnection();
 
-                //IProviderAU 
-
-
-
-                throw new NotImplementedException();
+                return await login;
             }
             catch (Exception ex)
             {
-
                 throw;
             }
 
         }
-
-       
-
     }
 }

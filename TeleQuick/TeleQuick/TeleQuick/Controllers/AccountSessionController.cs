@@ -75,11 +75,10 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> ValidateConectionAccountSession(int id)
         {
-            Thread.Sleep(5000);
 
-            _accountSessionService.ValidateConnection(id);
+            var rtn = await _accountSessionService.ValidateConnection(id);
 
-            return Ok(true);
+            return Ok(rtn);
         }
     }
 }

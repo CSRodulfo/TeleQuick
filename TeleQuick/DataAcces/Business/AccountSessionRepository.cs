@@ -24,13 +24,13 @@ namespace DataAcces.Business
                                     .ToListAsync();
         }
 
-        public Task<AccountSession> GetById(int id)
+        public async Task<AccountSession> GetById(int id)
         {
 
             return _appContext.AccountSessions
                                     .Where(x => x.Id == id)
                                     .Include(x => x.Concessionary)
-                                    .FirstAsync();
+                                    .First();
 
         }
 
