@@ -28,6 +28,6 @@ namespace DataAcces.Business
                 .ToListAsync();
         }
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
+        private ApplicationDbContext _appContext => (ApplicationDbContext)Context;
     }
 }

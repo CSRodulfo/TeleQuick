@@ -20,12 +20,6 @@ namespace DataAccess.Repositories
         { }
 
 
-        public IEnumerable<Customer> GetTopActiveCustomers(int count)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public IEnumerable<Customer> GetAllCustomersData()
         {
             return _appContext.Customers
@@ -35,6 +29,6 @@ namespace DataAccess.Repositories
 
 
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
+        private ApplicationDbContext _appContext => (ApplicationDbContext)Context;
     }
 }

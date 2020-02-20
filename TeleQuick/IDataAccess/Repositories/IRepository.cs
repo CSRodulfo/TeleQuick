@@ -12,25 +12,15 @@ using System.Threading.Tasks;
 
 namespace IDataAccess.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<T> where T : class
     {
-        void Add(TEntity entity);
-        void AddRange(IEnumerable<TEntity> entities);
-
-        void Update(TEntity entity);
-        void UpdateRange(IEnumerable<TEntity> entities);
-
-        void Remove(TEntity entity);
-        void RemoveRange(IEnumerable<TEntity> entities);
-
-        int Count();
-
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
-        TEntity GetSingleOrDefault(Expression<Func<TEntity, bool>> predicate);
-        TEntity Get(int id);
-        IEnumerable<TEntity> GetAll();
-
-        Task<TEntity> GetAync(int id);
+        Task<T> GetById(int id);
+        Task Add(T entity);
+        Task Update(T entity);
+        Task Remove(T entity);
+        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
+        Task<int> CountAll();
+        Task<int> CountWhere(Expression<Func<T, bool>> predicate);
     }
-
 }

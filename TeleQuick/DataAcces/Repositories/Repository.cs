@@ -14,80 +14,64 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly DbContext _context;
-        protected readonly DbSet<TEntity> _entities;
+
+        #region Fields
+
+        protected readonly DbContext Context;
+
+        #endregion
 
         public Repository(DbContext context)
         {
-            _context = context;
-            _entities = context.Set<TEntity>();
+            Context = context;
         }
 
-        public virtual void Add(TEntity entity)
+        #region Public Methods
+
+        public async Task<T> GetById(int id)
         {
-            _entities.Add(entity);
+            return await Context.Set<T>().FindAsync(id);
         }
 
-        public virtual void AddRange(IEnumerable<TEntity> entities)
+
+        public async Task Add(T entity)
         {
-            _entities.AddRange(entities);
+            // await Context.AddAsync(entity);
+            await Context.Set<T>().AddAsync(entity);
+            await Context.SaveChangesAsync();
         }
 
-
-        public virtual void Update(TEntity entity)
+        public Task Update(T entity)
         {
-            _entities.Update(entity);
+            // In case AsNoTracking is used
+            Context.Entry(entity).State = EntityState.Modified;
+            return Context.SaveChangesAsync();
         }
 
-        public virtual void UpdateRange(IEnumerable<TEntity> entities)
+        public Task Remove(T entity)
         {
-            _entities.UpdateRange(entities);
+            Context.Set<T>().Remove(entity);
+            return Context.SaveChangesAsync();
         }
 
-
-
-        public virtual void Remove(TEntity entity)
+        public async Task<IEnumerable<T>> GetAll()
         {
-            _entities.Remove(entity);
+            return await Context.Set<T>().ToListAsync();
         }
 
-        public virtual void RemoveRange(IEnumerable<TEntity> entities)
+        public async Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate)
         {
-            _entities.RemoveRange(entities);
+            return await Context.Set<T>().Where(predicate).ToListAsync();
         }
 
+        public Task<int> CountAll() => Context.Set<T>().CountAsync();
 
-        public virtual int Count()
-        {
-            return _entities.Count();
-        }
+        public Task<int> CountWhere(Expression<Func<T, bool>> predicate)
+            => Context.Set<T>().CountAsync(predicate);
 
+        #endregion
 
-        public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _entities.Where(predicate);
-        }
-
-        public virtual TEntity GetSingleOrDefault(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _entities.SingleOrDefault(predicate);
-        }
-
-        public virtual TEntity Get(int id)
-        {
-            return _entities.Find(id);
-        }
-
-        public virtual async Task<TEntity> GetAync(int id)
-        {
-            return  await _entities.FindAsync(id);
-        }
-
-        public virtual IEnumerable<TEntity> GetAll()
-        {
-            return _entities.ToList();
-        }
     }
 }

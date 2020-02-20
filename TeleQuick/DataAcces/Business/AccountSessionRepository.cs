@@ -32,6 +32,6 @@ namespace DataAcces.Business
                                     .First();
         }
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
+        private ApplicationDbContext _appContext => (ApplicationDbContext)Context;
     }
 }

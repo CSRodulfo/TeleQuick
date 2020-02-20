@@ -34,7 +34,7 @@ namespace Service.Business
 
         public async Task<Vehicle> GetById(int id)
         {
-            return await _unitOfWork.Vehicles.GetAync(id);
+            return await _unitOfWork.Vehicles.GetById(id);
         }
     }
 }
