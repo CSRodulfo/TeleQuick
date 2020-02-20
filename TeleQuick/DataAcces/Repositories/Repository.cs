@@ -36,21 +36,21 @@ namespace DataAccess.Repositories
         }
 
 
-        public async Task Add(T entity)
+        public async Task<int> Add(T entity)
         {
             // await Context.AddAsync(entity);
             await Context.Set<T>().AddAsync(entity);
-            await Context.SaveChangesAsync();
+            return await Context.SaveChangesAsync();
         }
 
-        public Task Update(T entity)
+        public Task<int> Update(T entity)
         {
             // In case AsNoTracking is used
             Context.Entry(entity).State = EntityState.Modified;
             return Context.SaveChangesAsync();
         }
 
-        public Task Remove(T entity)
+        public Task<int> Remove(T entity)
         {
             Context.Set<T>().Remove(entity);
             return Context.SaveChangesAsync();

@@ -13,5 +13,7 @@ namespace IDataAccess.Repositories
     {
         new Task<IEnumerable<Vehicle>> GetAll();
 
+        Task<Vehicle> GetByIdAll(int id);
+
     }
 }

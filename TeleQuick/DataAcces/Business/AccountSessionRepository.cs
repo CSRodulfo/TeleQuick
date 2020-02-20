@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAcces.Business
 {
-    class AccountSessionRepository : Repository<AccountSession>, IAccountSessionRepository
+    public class AccountSessionRepository : Repository<AccountSession>, IAccountSessionRepository
     {
         public AccountSessionRepository(ApplicationDbContext context) : base(context)
         { }

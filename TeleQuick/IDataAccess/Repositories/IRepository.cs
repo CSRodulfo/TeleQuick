@@ -15,9 +15,9 @@ namespace IDataAccess.Repositories
     public interface IRepository<T> where T : class
     {
         Task<T> GetById(int id);
-        Task Add(T entity);
-        Task Update(T entity);
-        Task Remove(T entity);
+        Task<int> Add(T entity);
+        Task<int> Update(T entity);
+        Task<int> Remove(T entity);
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
         Task<int> CountAll();

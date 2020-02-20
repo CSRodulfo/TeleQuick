@@ -28,6 +28,15 @@ namespace DataAcces.Business
                 .ToListAsync();
         }
 
+        public async Task<Vehicle> GetByIdAll(int id)
+        {
+            return await _appContext.Vehicles
+                .Where(x => x.Id == id)
+                .Include(x => x.TAGs)
+                .OrderBy(c => c.Year)
+                .FirstAsync();
+        }
+
         private ApplicationDbContext _appContext => (ApplicationDbContext)Context;
     }
 }
