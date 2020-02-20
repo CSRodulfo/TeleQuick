@@ -73,6 +73,7 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
 import { AccountSessionsComponent } from './components/account-sessions/account-sessions-list.component';
 import { AccountSessionsEditComponent } from './components/account-sessions/account-sessions-edit/account-sessions-edit.component';
 import { AccountSessionsCreateComponent } from './components/account-sessions/account-sessions-create/account-sessions-create.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 
 
@@ -97,7 +98,8 @@ import { AccountSessionsCreateComponent } from './components/account-sessions/ac
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    ProgressbarModule.forRoot()
   ],
   declarations: [
     AppComponent,
