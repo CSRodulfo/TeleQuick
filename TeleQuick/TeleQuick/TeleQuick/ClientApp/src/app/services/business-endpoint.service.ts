@@ -95,12 +95,12 @@ export class BusinessEndpoint extends EndpointBase {
       }));
   }
 
-  getAccountSessionValidateConectionEndpoint<T>(accountSessionId?: number): Observable<T> {
-    const endpointUrl = accountSessionId ? `${this.accountSessionValidateCnnUrl}/${accountSessionId}` : this.accountSessionValidateCnnUrl;
+  getAccountSessionValidateConectionEndpoint<T>(accountSession: AccountSession): Observable<T> {
+    //const endpointUrl = accountSessionId ? `${this.accountSessionValidateCnnUrl}/${accountSessionId}` : this.accountSessionValidateCnnUrl;
 
-    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+    return this.http.put<T>(this.accountSessionValidateCnnUrl, JSON.stringify(accountSession), this.requestHeaders).pipe<T>(
       catchError(error => {
-        return this.handleError(error, () => this.getAccountSessionValidateConectionEndpoint());
+        return this.handleError(error, () => this.getAccountSessionValidateConectionEndpoint(accountSession));
       }));
   }
 

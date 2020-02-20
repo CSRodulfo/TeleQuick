@@ -26,11 +26,22 @@ namespace Service.Business
             return await allCustomers;
         }
 
-        public async Task<bool> ValidateConnection(int idAccountSession)
+        public async Task<AccountSession> GetById(int id)
         {
+            return await _repository.GetById(id);
+        }
+        public async Task<int> Create(AccountSession account)
+        {
+            return await _repository.Add(account);
+        }
 
-            AccountSession account = await _repository.GetById(idAccountSession);
+        public async Task<int> Update(AccountSession account)
+        {
+            return await _repository.Update(account);
+        }
 
+        public async Task<bool> ValidateConnection(AccountSession account)
+        {
             IProviderAU provider = await _providerService.GetProvider(account);
 
             return await provider.ValidateLogin();

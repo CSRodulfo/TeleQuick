@@ -3,7 +3,6 @@ using Business.Models;
 using IdentityServer4.AccessTokenValidation;
 using IService.Business;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -18,13 +17,13 @@ namespace TeleQuick.Controllers
     public class VehicleController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IVehicleService _vehicle;
+        private readonly IVehicleService _vehicleService;
         private readonly ILogger _logger;
 
-        public VehicleController(IMapper mapper, IVehicleService vehicle, ILogger<VehicleController> logger)
+        public VehicleController(IMapper mapper, IVehicleService vehicleService, ILogger<VehicleController> logger)
         {
             _mapper = mapper;
-            _vehicle = vehicle;
+            _vehicleService = vehicleService;
             _logger = logger;
         }
 
@@ -34,7 +33,7 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetById(int id)
         {
-            Vehicle vehicle = await _vehicle.GetById(id);
+            Vehicle vehicle = await _vehicleService.GetById(id);
 
             if (vehicle == null)
                 return NotFound();
@@ -48,8 +47,8 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(200, Type = typeof(List<VehicleViewModel>))]
         public async Task<IActionResult> Get()
         {
-            var allCustomers = await _vehicle.GetAll();
-            return Ok(_mapper.Map<IEnumerable<VehicleViewModel>>(allCustomers));
+            IEnumerable<Vehicle> allVehicle = await _vehicleService.GetAll();
+            return Ok(_mapper.Map<IEnumerable<VehicleViewModel>>(allVehicle));
         }
 
         // POST api/values
@@ -66,7 +65,7 @@ namespace TeleQuick.Controllers
                 Vehicle newVehicle = _mapper.Map<Vehicle>(vehicle);
                 newVehicle.TAGs.Add(new TagRfid() { TAGNumber = vehicle.TAGNumber });
 
-                return Ok( await _vehicle.Create(newVehicle));
+                return Ok( await _vehicleService.Create(newVehicle));
             }
 
             return BadRequest(ModelState);
@@ -82,7 +81,7 @@ namespace TeleQuick.Controllers
         {
             if (ModelState.IsValid)
             {
-                Vehicle vehicle = await _vehicle.GetById(id);
+                Vehicle vehicle = await _vehicleService.GetById(id);
 
                 _mapper.Map(vm, vehicle);
                 vehicle.TAGs.First().TAGNumber = vm.TAGNumber;
@@ -93,7 +92,7 @@ namespace TeleQuick.Controllers
 //                var toBeDeleted = masterList.Except(compareList, comparer).ToList();
 //                var toBeUpdated = masterList.Intersect(compareList, comparer).ToList();
 
-                return Ok(await _vehicle.Update(vehicle));
+                return Ok(await _vehicleService.Update(vehicle));
             }
 
             return BadRequest(ModelState);

@@ -54,7 +54,7 @@ export class BusinessService {
   }
 
   getAccountSessionValidateConection(accountSession: AccountSession) {
-    return this.businessEndpoint.getAccountSessionValidateConectionEndpoint<AccountSession[]>(accountSession.id);
+    return this.businessEndpoint.getAccountSessionValidateConectionEndpoint<AccountSession[]>(accountSession);
   }
 
   postAccountSession(accountSession: AccountSession) {

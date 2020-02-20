@@ -10,7 +10,6 @@ namespace IService.Business
     {
         Task<IEnumerable<Vehicle>> GetAll();
         Task<int> Create(Vehicle vehicle);
-
         Task<int> Update(Vehicle vehicle);
         Task<Vehicle> GetById(int id);
     }
