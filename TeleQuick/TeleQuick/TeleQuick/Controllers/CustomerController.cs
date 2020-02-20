@@ -3,17 +3,14 @@
 // www.ebenmonney.com/templates
 // =============================
 
+using AutoMapper;
+using IService.Business;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using TeleQuick.ViewModels;
-using AutoMapper;
-using Microsoft.Extensions.Logging;
 using TeleQuick.Helpers;
-using IDataAccess;
-using Microsoft.AspNetCore.Authorization;
+using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers
 {
