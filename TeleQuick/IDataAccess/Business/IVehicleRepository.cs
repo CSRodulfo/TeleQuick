@@ -11,6 +11,7 @@ namespace IDataAccess.Repositories
 {
     public interface IVehicleRepository : IRepository<Vehicle>
     {
-        Task<IEnumerable<Vehicle>> GetAllVehiclesData();
+        new Task<IEnumerable<Vehicle>> GetAll();
+
     }
 }

@@ -22,10 +22,12 @@ namespace TeleQuick.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            List<Test> list = new List<Test>();
-            list.Add(new Test() { Name = "Create visual studio extension", Description = "Create a visual studio VSIX extension package that wi" });
-            list.Add(new Test() { Name = "Do a quick how-to writeup", Description = "Lola" });
-            list.Add(new Test() { Name = "Create aspnet-core/Angular8 tutorials based on this project", Description = "Create tutorials (blog/video/youtube) " });
+            List<Test> list = new List<Test>
+            {
+                new Test() { Name = "Create visual studio extension", Description = "Create a visual studio VSIX extension package that wi" },
+                new Test() { Name = "Do a quick how-to writeup", Description = "Lola" },
+                new Test() { Name = "Create aspnet-core/Angular8 tutorials based on this project", Description = "Create tutorials (blog/video/youtube) " }
+            };
 
             return Ok(list);
         }

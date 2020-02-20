@@ -15,10 +15,26 @@ namespace Service.Business
             _unitOfWork = unitOfWork;
         }
         // GET: api/values
-        public async Task<IEnumerable<Vehicle>> Get()
+        public async Task<IEnumerable<Vehicle>> GetAll()
         {
-            var allCustomers = _unitOfWork.Vehicles.GetAllVehiclesData();
-            return await allCustomers;
+            return await _unitOfWork.Vehicles.GetAll();
+        }
+
+        public async Task<int> Create(Vehicle vehicle)
+        {
+            _unitOfWork.Vehicles.Add(vehicle);
+            return _unitOfWork.SaveChanges();
+        }
+
+        public async Task<int> Update(Vehicle vehicle)
+        {
+            _unitOfWork.Vehicles.Update(vehicle);
+            return _unitOfWork.SaveChanges();
+        }
+
+        public async Task<Vehicle> GetById(int id)
+        {
+            return await _unitOfWork.Vehicles.GetAync(id);
         }
     }
 }

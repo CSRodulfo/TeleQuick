@@ -8,6 +8,10 @@ namespace IService.Business
 {
     public interface IVehicleService
     {
-        Task<IEnumerable<Vehicle>> Get();
+        Task<IEnumerable<Vehicle>> GetAll();
+        Task<int> Create(Vehicle vehicle);
+
+        Task<int> Update(Vehicle vehicle);
+        Task<Vehicle> GetById(int id);
     }
 }

@@ -29,6 +29,8 @@ namespace IDataAccess.Repositories
         TEntity GetSingleOrDefault(Expression<Func<TEntity, bool>> predicate);
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
+
+        Task<TEntity> GetAync(int id);
     }
 
 }

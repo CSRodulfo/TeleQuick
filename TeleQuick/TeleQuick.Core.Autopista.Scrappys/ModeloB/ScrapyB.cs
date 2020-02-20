@@ -89,13 +89,14 @@ namespace TeleQuick.AutopistaAUSOL
 
         private HeaderResponse GenerateHeader(HtmlNode[] a)
         {
-            HeaderResponse header = new HeaderResponse();
-
-            header.Campo0 = a[0].InnerText.Trim();
-            header.Campo1 = a[1].InnerText.Trim();
-            header.Campo2 = a[2].InnerText.Trim();
-            header.Campo3 = a[3].InnerText.Trim();
-            header.Campo4 = a[4].InnerText.Trim();
+            HeaderResponse header = new HeaderResponse
+            {
+                Campo0 = a[0].InnerText.Trim(),
+                Campo1 = a[1].InnerText.Trim(),
+                Campo2 = a[2].InnerText.Trim(),
+                Campo3 = a[3].InnerText.Trim(),
+                Campo4 = a[4].InnerText.Trim()
+            };
             //header.Campo5 = a[5].InnerText.Trim();
             //header.Campo6 = a[6].InnerText.Trim();
             //header.Campo7 = a[7].InnerText.Trim();

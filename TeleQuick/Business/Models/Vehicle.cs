@@ -8,6 +8,12 @@ namespace Business.Models
 {
     public class Vehicle : AuditableEntity
     {
+
+        public Vehicle()
+        {
+            this.TAGs = new HashSet<TagRfid>();
+            this.InvoiceHeaders = new HashSet<InvoiceHeader>();
+        }
         public int Id { get; set; }
 
         [Required]

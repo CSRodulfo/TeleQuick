@@ -242,12 +242,12 @@ namespace TeleQuick.Controllers
                 {
                     _mapper.Map<UserPatchViewModel, ApplicationUser>(userPVM, appUser);
 
-                    var result = await _accountManager.UpdateUserAsync(appUser);
-                    if (result.Succeeded)
+                    var (Succeeded, Errors) = await _accountManager.UpdateUserAsync(appUser);
+                    if (Succeeded)
                         return NoContent();
 
 
-                    AddError(result.Errors);
+                    AddError(Errors);
                 }
             }
 
@@ -274,14 +274,14 @@ namespace TeleQuick.Controllers
 
                 ApplicationUser appUser = _mapper.Map<ApplicationUser>(user);
 
-                var result = await _accountManager.CreateUserAsync(appUser, user.Roles, user.NewPassword);
-                if (result.Succeeded)
+                var (Succeeded, Errors) = await _accountManager.CreateUserAsync(appUser, user.Roles, user.NewPassword);
+                if (Succeeded)
                 {
                     UserViewModel userVM = await GetUserViewModelHelper(appUser.Id);
                     return CreatedAtAction(GetUserByIdActionName, new { id = userVM.Id }, userVM);
                 }
 
-                AddError(result.Errors);
+                AddError(Errors);
             }
 
             return BadRequest(ModelState);
@@ -310,9 +310,9 @@ namespace TeleQuick.Controllers
 
             UserViewModel userVM = await GetUserViewModelHelper(appUser.Id);
 
-            var result = await _accountManager.DeleteUserAsync(appUser);
-            if (!result.Succeeded)
-                throw new Exception("The following errors occurred whilst deleting user: " + string.Join(", ", result.Errors));
+            var (Succeeded, Errors) = await _accountManager.DeleteUserAsync(appUser);
+            if (!Succeeded)
+                throw new Exception("The following errors occurred whilst deleting user: " + string.Join(", ", Errors));
 
 
             return Ok(userVM);
@@ -331,9 +331,9 @@ namespace TeleQuick.Controllers
                 return NotFound(id);
 
             appUser.LockoutEnd = null;
-            var result = await _accountManager.UpdateUserAsync(appUser);
-            if (!result.Succeeded)
-                throw new Exception("The following errors occurred whilst unblocking user: " + string.Join(", ", result.Errors));
+            var (Succeeded, Errors) = await _accountManager.UpdateUserAsync(appUser);
+            if (!Succeeded)
+                throw new Exception("The following errors occurred whilst unblocking user: " + string.Join(", ", Errors));
 
 
             return NoContent();
@@ -360,9 +360,9 @@ namespace TeleQuick.Controllers
 
             appUser.Configuration = data;
 
-            var result = await _accountManager.UpdateUserAsync(appUser);
-            if (!result.Succeeded)
-                throw new Exception("The following errors occurred whilst updating User Configurations: " + string.Join(", ", result.Errors));
+            var (Succeeded, Errors) = await _accountManager.UpdateUserAsync(appUser);
+            if (!Succeeded)
+                throw new Exception("The following errors occurred whilst updating User Configurations: " + string.Join(", ", Errors));
 
             return NoContent();
         }
@@ -452,11 +452,11 @@ namespace TeleQuick.Controllers
 
                 _mapper.Map<RoleViewModel, ApplicationRole>(role, appRole);
 
-                var result = await _accountManager.UpdateRoleAsync(appRole, role.Permissions?.Select(p => p.Value).ToArray());
-                if (result.Succeeded)
+                var (Succeeded, Errors) = await _accountManager.UpdateRoleAsync(appRole, role.Permissions?.Select(p => p.Value).ToArray());
+                if (Succeeded)
                     return NoContent();
 
-                AddError(result.Errors);
+                AddError(Errors);
 
             }
 
@@ -478,14 +478,14 @@ namespace TeleQuick.Controllers
 
                 ApplicationRole appRole = _mapper.Map<ApplicationRole>(role);
 
-                var result = await _accountManager.CreateRoleAsync(appRole, role.Permissions?.Select(p => p.Value).ToArray());
-                if (result.Succeeded)
+                var (Succeeded, Errors) = await _accountManager.CreateRoleAsync(appRole, role.Permissions?.Select(p => p.Value).ToArray());
+                if (Succeeded)
                 {
                     RoleViewModel roleVM = await GetRoleViewModelHelper(appRole.Name);
                     return CreatedAtAction(GetRoleByIdActionName, new { id = roleVM.Id }, roleVM);
                 }
 
-                AddError(result.Errors);
+                AddError(Errors);
             }
 
             return BadRequest(ModelState);
@@ -510,9 +510,9 @@ namespace TeleQuick.Controllers
 
             RoleViewModel roleVM = await GetRoleViewModelHelper(appRole.Name);
 
-            var result = await _accountManager.DeleteRoleAsync(appRole);
-            if (!result.Succeeded)
-                throw new Exception("The following errors occurred whilst deleting role: " + string.Join(", ", result.Errors));
+            var (Succeeded, Errors) = await _accountManager.DeleteRoleAsync(appRole);
+            if (!Succeeded)
+                throw new Exception("The following errors occurred whilst deleting role: " + string.Join(", ", Errors));
 
 
             return Ok(roleVM);

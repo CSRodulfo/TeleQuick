@@ -80,6 +80,11 @@ namespace DataAccess.Repositories
             return _entities.Find(id);
         }
 
+        public virtual async Task<TEntity> GetAync(int id)
+        {
+            return  await _entities.FindAsync(id);
+        }
+
         public virtual IEnumerable<TEntity> GetAll()
         {
             return _entities.ToList();

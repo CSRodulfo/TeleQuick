@@ -20,7 +20,7 @@ namespace DataAcces.Business
         public VehicleRepository(ApplicationDbContext context) : base(context)
         { }
 
-        public async Task<IEnumerable<Vehicle>> GetAllVehiclesData()
+        public async Task<IEnumerable<Vehicle>> GetAll()
         {
             return await _appContext.Vehicles
                 .Include(x => x.TAGs)
