@@ -8,7 +8,6 @@ using TeleQuick.Autopista.Login;
 using TeleQuick.AutopistaAUSA;
 using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
-using TeleQuick.IAutopista;
 
 namespace Provider
 {
@@ -25,21 +24,14 @@ namespace Provider
 
         public async Task<bool> ValidateLogin()
         {
-            try
-            {
-                return await this._login.LoginValidateAU();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return await this._login.LoginValidateAU();
         }
 
         public async Task<List<HeaderResponse>> Process()
         {
             WebPage page = await _login.LoginWebPage();
 
-            List <HeaderResponse> list = await _scrapy.Process(page);
+            List<HeaderResponse> list = await _scrapy.Process(page);
 
             throw new NotImplementedException();
         }

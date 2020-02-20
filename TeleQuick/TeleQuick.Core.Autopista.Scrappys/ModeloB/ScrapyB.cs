@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.Autopista.Scrappys.ModeloB;
-using TeleQuick.IAutopista;
+using TeleQuick.Core.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
 {

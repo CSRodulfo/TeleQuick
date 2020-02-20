@@ -1,9 +1,6 @@
 ﻿using ScrapySharp.Network;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using TeleQuick.IAutopista;
 
 namespace TeleQuick.Core.IAutopista
 {

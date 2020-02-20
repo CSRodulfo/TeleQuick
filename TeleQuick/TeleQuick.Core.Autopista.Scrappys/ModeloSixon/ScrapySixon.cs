@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
-using TeleQuick.IAutopista;
+using TeleQuick.Core.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {

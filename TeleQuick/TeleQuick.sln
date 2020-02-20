@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Core.Autopista", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Core.Autopista.Login", "TeleQuick.AutopistaAUSA\TeleQuick.Core.Autopista.Login.csproj", "{14989F4A-D434-43BC-ADFD-F17F17683ED2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Negocio", "02 - Negocio", "{E3CB16BE-A26A-4AF4-8701-8DDDC6A55FA3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Negocio", "03 - Negocio", "{E3CB16BE-A26A-4AF4-8701-8DDDC6A55FA3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Api", "01 - Api", "{771D2D8F-A70F-4B88-B19E-6A90CCAB3CC3}"
 EndProject
@@ -40,15 +40,15 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Databa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - DataAcces", "05 - DataAcces", "{9A5AE55F-F8FB-4CB1-8FB3-CFFD58C364AF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03- Provider", "03- Provider", "{646FB521-64D8-4505-9AA3-83D93E51FC37}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Provider", "04 - Provider", "{646FB521-64D8-4505-9AA3-83D93E51FC37}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Provider", "Proveedor\Provider.csproj", "{7CF6127F-29B1-4C2B-AC55-328DE2C80F74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IProvider", "IProvider\IProvider.csproj", "{24A8FDAD-71F3-4181-A018-2C7CE042493D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Provider", "04 - Provider", "{488704A8-B8CC-470A-A23C-CC9C648D75F6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Autopista", "05 - Autopista", "{488704A8-B8CC-470A-A23C-CC9C648D75F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Servicios", "01 - Servicios", "{B8925B70-34CA-4CD8-A075-F7D6175C30EE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Servicios", "02 - Servicios", "{B8925B70-34CA-4CD8-A075-F7D6175C30EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

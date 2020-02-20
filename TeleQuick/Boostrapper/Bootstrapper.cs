@@ -7,8 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service;
 using Service.Business;
-using TeleQuick.Autopista;
-using TeleQuick.IAutopista;
+using TeleQuick.Core.Autopista;
+using TeleQuick.Core.IAutopista;
 
 namespace Boostrapper
 {

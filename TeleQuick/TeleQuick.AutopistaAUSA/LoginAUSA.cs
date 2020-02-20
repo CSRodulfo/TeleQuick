@@ -1,11 +1,8 @@
 ﻿using Business.Models;
 using HtmlAgilityPack;
-using ScrapySharp.Network;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
-using TeleQuick.IAutopista;
 
 namespace TeleQuick.Autopista.Login
 {
@@ -16,7 +13,7 @@ namespace TeleQuick.Autopista.Login
             base._accountSession = accountSession;
             _connect = connect;
         }
-        public Dictionary<string, string> GetDictionary()
+        public override Dictionary<string, string> GetDictionary()
         {
             var dictionary = new Dictionary<string, string>();
 
@@ -35,7 +32,7 @@ namespace TeleQuick.Autopista.Login
             return dictionary;
         }
 
-        public async Task<bool> LoginValidateAU()
+        public override async Task<bool> LoginValidateAU()
         {
             bool isValid = false;
 

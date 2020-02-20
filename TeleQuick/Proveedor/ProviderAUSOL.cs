@@ -3,13 +3,11 @@ using IProvider;
 using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Autopista.Login;
 using TeleQuick.AutopistaAUSOL;
 using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
-using TeleQuick.IAutopista;
 
 namespace Provider
 {
@@ -26,14 +24,7 @@ namespace Provider
 
         public async Task<bool> ValidateLogin()
         {
-            try
-            {
-                return await this._login.LoginValidateAU();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return await this._login.LoginValidateAU();
         }
 
         public async Task<List<HeaderResponse>> Process()

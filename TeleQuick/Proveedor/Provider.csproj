@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\IDataAccess\IDataAccess.csproj" />
     <ProjectReference Include="..\IProvider\IProvider.csproj" />
     <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.Core.Autopista.Login.csproj" />

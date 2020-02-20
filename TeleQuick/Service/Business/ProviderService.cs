@@ -3,7 +3,7 @@ using IProvider;
 using IService.Business;
 using Provider;
 using System.Threading.Tasks;
-using TeleQuick.IAutopista;
+using TeleQuick.Core.IAutopista;
 
 namespace Service.Business
 {

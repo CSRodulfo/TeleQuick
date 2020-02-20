@@ -1,13 +1,10 @@
-﻿using HtmlAgilityPack;
-using ScrapySharp.Html.Forms;
+﻿using ScrapySharp.Html.Forms;
 using ScrapySharp.Network;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Core.IAutopista;
-using TeleQuick.IAutopista;
 
-namespace TeleQuick.Autopista
+namespace TeleQuick.Core.Autopista
 {
     public class ConnectionAU : IConnectionAU
     {

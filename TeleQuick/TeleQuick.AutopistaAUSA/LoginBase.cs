@@ -2,10 +2,8 @@
 using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Core.IAutopista;
-using TeleQuick.IAutopista;
 
 namespace TeleQuick.Autopista.Login
 {
@@ -14,7 +12,7 @@ namespace TeleQuick.Autopista.Login
         protected AccountSession _accountSession;
         protected IConnectionAU _connect;
 
-        public Dictionary<string, string> GetDictionary()
+        public virtual Dictionary<string, string> GetDictionary()
         {
             throw new NotImplementedException();
         }
