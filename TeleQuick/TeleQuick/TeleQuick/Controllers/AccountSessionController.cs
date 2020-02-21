@@ -39,7 +39,7 @@ namespace TeleQuick.Controllers
             if (account == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<VehicleViewModel>(account));
+            return Ok(_mapper.Map<AccountSessionViewModel>(account));
         }
 
         // GET: api/values
