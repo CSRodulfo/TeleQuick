@@ -1,5 +1,4 @@
 ﻿using Business.Models;
-using Business.Process;
 using IProvider;
 using ScrapySharp.Network;
 using System;
@@ -16,13 +15,13 @@ namespace Provider
     {
         ILogin _login;
         IScrapy _scrapy;
-        InvoiceHeaderFactory _invoiceHeader;
+        InvoiceFactoryAUSA _invoiceHeader;
 
-        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession, InvoiceHeaderFactory invoiceHeader)
+        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession)
         {
             _login = new LoginAUSA(connection, accountSession);
             _scrapy = new ScrapySixon(connection);
-            _invoiceHeader = invoiceHeader;
+            _invoiceHeader = new InvoiceFactoryAUSA();
         }
 
         public async Task<bool> ValidateLogin()
@@ -36,12 +35,9 @@ namespace Provider
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            foreach (var item in list)
-            {
-                var a = _invoiceHeader.Create(item);
-            }
+            List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            throw new NotImplementedException();
+            return invoices;
         }
     }
 }

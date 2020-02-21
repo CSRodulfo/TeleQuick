@@ -8,11 +8,10 @@ namespace TeleQuick.Autopista.Login
 {
     public class LoginAUSOL : LoginBase, ILogin
     {
-
-        public LoginAUSOL(IConnectionAU connect, AccountSession accountSession)
+        public LoginAUSOL(IConnectionAU connect, AccountSession accountSession) :
+            base(connect, accountSession)
         {
-            _accountSession = accountSession;
-            _connect = connect;
+
         }
 
         public override Dictionary<string, string> GetDictionary()

@@ -8,6 +8,10 @@ namespace Business.Models
 {
     public class InvoiceHeader
     {
+        public InvoiceHeader()
+        {
+            this.InvoiceDetails = new HashSet<InvoiceDetail>();
+        }
         public int Id { get; set; }
 
         [Required]

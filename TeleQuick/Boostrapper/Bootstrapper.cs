@@ -1,5 +1,4 @@
-﻿using Business.Process;
-using DataAcces.Business;
+﻿using DataAcces.Business;
 using DataAcces.Core;
 using DataAccess;
 using IDataAccess;
@@ -41,8 +40,7 @@ namespace Boostrapper
             services.AddScoped<IProviderService, ProviderService>();
             services.AddScoped<IAccountSessionRepository, AccountSessionRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
-            services.AddScoped<InvoiceHeaderFactory>();
-
+            
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
 

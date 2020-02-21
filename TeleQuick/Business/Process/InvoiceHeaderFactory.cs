@@ -7,9 +7,9 @@ using TeleQuick.Core.Autopista.Model;
 
 namespace Business.Process
 {
-    public class InvoiceHeaderFactory
+    public class InvoiceHeaderFactoryAUSA
     {
-        public InvoiceHeaderFactory()
+        public InvoiceHeaderFactoryAUSA()
         {
 
         }

@@ -1,9 +1,9 @@
 ﻿using Business.Models;
-using Business.Process;
 using IProvider;
 using IService.Business;
 using Provider;
 using System.Threading.Tasks;
+using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 
 namespace Service.Business
@@ -11,12 +11,10 @@ namespace Service.Business
     public class ProviderService : IProviderService
     {
         private IConnectionAU _connection;
-        private InvoiceHeaderFactory _invoiceHeader;
 
-        public ProviderService(IConnectionAU connection, InvoiceHeaderFactory invoiceHeader)
+        public ProviderService(IConnectionAU connection)
         {
             _connection = connection;
-            _invoiceHeader = invoiceHeader;
         }
 
         public async Task<IProviderAU> GetProvider(AccountSession accountSession)
@@ -26,7 +24,7 @@ namespace Service.Business
             switch (accountSession.Concessionary.GetAutopista())
             {
                 case AutopistasConstants.AUSA:
-                    provider = new ProviderAUSA(_connection, accountSession, _invoiceHeader);
+                    provider = new ProviderAUSA(_connection, accountSession);
                     break;
                 case AutopistasConstants.AUSOL:
                     provider = new ProviderAUSOL(_connection, accountSession);

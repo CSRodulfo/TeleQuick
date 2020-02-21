@@ -12,6 +12,11 @@ namespace TeleQuick.Autopista.Login
         protected AccountSession _accountSession;
         protected IConnectionAU _connect;
 
+        public LoginBase(IConnectionAU connect, AccountSession accountSession)
+        {
+            _accountSession = accountSession;
+            _connect = connect;
+        }
         public virtual Dictionary<string, string> GetDictionary()
         {
             throw new NotImplementedException();
