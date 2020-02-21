@@ -13,5 +13,6 @@ namespace IService.Business
         Task<int> Create(AccountSession account);
         Task<int> Update(AccountSession account);
         Task<bool> ValidateConnection(AccountSession account);
+        Task<List<InvoiceHeader>> Process(AccountSession account);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Business.Models;
+using Business.Process;
 using IProvider;
 using IService.Business;
 using Provider;
@@ -9,11 +10,13 @@ namespace Service.Business
 {
     public class ProviderService : IProviderService
     {
-        private readonly IConnectionAU _connection;
+        private IConnectionAU _connection;
+        private InvoiceHeaderFactory _invoiceHeader;
 
-        public ProviderService(IConnectionAU connection)
+        public ProviderService(IConnectionAU connection, InvoiceHeaderFactory invoiceHeader)
         {
             _connection = connection;
+            _invoiceHeader = invoiceHeader;
         }
 
         public async Task<IProviderAU> GetProvider(AccountSession accountSession)
@@ -23,7 +26,7 @@ namespace Service.Business
             switch (accountSession.Concessionary.GetAutopista())
             {
                 case AutopistasConstants.AUSA:
-                    provider = new ProviderAUSA(_connection, accountSession);
+                    provider = new ProviderAUSA(_connection, accountSession, _invoiceHeader);
                     break;
                 case AutopistasConstants.AUSOL:
                     provider = new ProviderAUSOL(_connection, accountSession);

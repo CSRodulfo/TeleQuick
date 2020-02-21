@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
@@ -9,6 +10,6 @@ namespace IProvider
     {
         Task<bool> ValidateLogin();
 
-        Task<List<HeaderResponse>> Process();
+        Task<List<InvoiceHeader>> Process();
     }
 }

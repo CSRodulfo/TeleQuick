@@ -46,5 +46,12 @@ namespace Service.Business
 
             return await provider.ValidateLogin();
         }
+
+        public async Task<List<InvoiceHeader>> Process(AccountSession account)
+        {
+            IProviderAU provider = await _providerService.GetProvider(account);
+
+            return await provider.Process();
+        }
     }
 }

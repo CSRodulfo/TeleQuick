@@ -27,7 +27,7 @@ namespace Provider
             return await this._login.LoginValidateAU();
         }
 
-        public async Task<List<HeaderResponse>> Process()
+        public async Task<List<InvoiceHeader>> Process()
         {
             WebPage page = await _login.LoginWebPage();
 

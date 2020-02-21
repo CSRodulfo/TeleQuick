@@ -46,6 +46,7 @@ namespace TeleQuick.Controllers
         [HttpGet("AccountSession")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<AccountSessionViewModel>))]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> Get()
         {
             IEnumerable<AccountSession> accounts = await _accountSessionService.Get();
@@ -126,6 +127,29 @@ namespace TeleQuick.Controllers
                 return Ok(false);
             }
 
+        }
+
+        [HttpGet("Process")]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(403)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> ProcessAccountSession()
+        {
+            try
+            {
+                AccountSession account = await _accountSessionService.GetById(3);
+
+                var rtn = await _accountSessionService.Process(account);
+
+                return Ok(rtn);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(LoggingEvents.SEND_EMAIL, ex, "An error occurred whilst sending email");
+                return Ok(false);
+            }
         }
     }
 }
