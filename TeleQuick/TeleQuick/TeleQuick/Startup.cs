@@ -210,7 +210,8 @@ namespace TeleQuick
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<MessageHub>("/MessageHub");
+                endpoints.MapHub<NotifyHub>("/notify");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");

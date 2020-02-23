@@ -3,9 +3,11 @@
 // www.ebenmonney.com/templates
 // =============================
 
-import { Component, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { fadeInOut } from '../../services/animations';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { AlertService, MessageSeverity } from '../../services/alert.service';
 
 import { Message } from '../../models/Message';
 import { ChatService } from '../../services/chat.service';
@@ -16,43 +18,29 @@ import { ChatService } from '../../services/chat.service';
     styleUrls: ['./process.component.scss'],
     animations: [fadeInOut]
 })
-export class ProcessComponent {
+export class ProcessComponent implements OnInit {
     max: number = 200;
     showWarning: boolean;
     dynamic: number;
     type: string;
 
-    title = 'ClientApp';
-    txtMessage: string = '';
-    uniqueID: string = new Date().getTime().toString();
-    messages = new Array<Message>();
-    message = new Message();
+    constructor(private alertService: AlertService, ) { }
 
-    constructor(private chatService: ChatService, private zone: NgZone) {
-        this.subscribeToEvents();
-        this.random();
-    }
-    sendMessage(): void {
-        if (this.txtMessage) {
-            this.message = new Message();
-            this.message.clientuniqueid = this.uniqueID;
-            this.message.type = "sent";
-            this.message.message = this.txtMessage;
-            this.message.date = new Date();
-            this.messages.push(this.message);
-            this.chatService.sendMessage(this.message);
-            this.txtMessage = '';
-        }
-    }
-    private subscribeToEvents(): void {
+    ngOnInit(): void {
+        const connection = new HubConnectionBuilder()
+            //.configureLogging(signalR.LogLevel.Information)
+            .withUrl("https://localhost:44350/notify")
+            .build();
 
-        this.chatService.messageReceived.subscribe((message: Message) => {
-            this.zone.run(() => {
-                if (message.clientuniqueid !== this.uniqueID) {
-                    message.type = "received";
-                    this.messages.push(message);
-                }
-            });
+        connection.start().then(function () {
+            console.log('Connected!');
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.on("BroadcastMessage", (type: string, payload: string) => {
+            this.random();
+            this.alertService.showMessage(type, payload, MessageSeverity.error);
         });
     }
 
