@@ -5,21 +5,25 @@
     </header>
 
     <div [@fadeInOut]>
-        <span class="text-muted">-- Sample Page --</span>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe  frameBorder="0" [src]="urlSafe"></iframe>
+      </div>
+
+
 
         <div class="mb-2">
-            <progressbar [max]="max" [value]="dynamic">
-              <span class="text-nowrap">{{dynamic}} / {{max}}</span>
-            </progressbar>
-            <small><em>No animation</em></small>
-          </div>
-          <div class="mb-2">
-            <progressbar [animate]="false" [value]="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
-            <small><em>Object (changes type based on value)</em></small>
-          </div>
-          <div class="mb-3">
-            <progressbar class="progress-striped active" [value]="dynamic" [type]="type">{{type}}</progressbar>
-          </div>
-          <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
-    </div>
+          <progressbar [max]="max" [value]="dynamic">
+            <span class="text-nowrap">{{dynamic}} / {{max}}</span>
+          </progressbar>
+          <small><em>No animation</em></small>
+        </div>
+        <div class="mb-2">
+          <progressbar [animate]="false" [value]="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
+          <small><em>Object (changes type based on value)</em></small>
+        </div>
+        <div class="mb-3">
+          <progressbar class="progress-striped active" [value]="dynamic" [type]="type">{{type}}</progressbar>
+        </div>
+        <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
+        </div>
 </div>

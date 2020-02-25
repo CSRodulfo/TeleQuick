@@ -6,6 +6,7 @@
 import { Component } from '@angular/core';
 import { fadeInOut } from '../../services/animations';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'process',
@@ -19,7 +20,12 @@ export class ProcessComponent {
     dynamic: number;
     type: string;
 
-    constructor() {
+    name = 'Set iframe source';
+    url: string = "http://127.0.0.1:32767/start.html#id=o5m8pw&p=page_3&c=1";
+    urlSafe: SafeResourceUrl;
+
+    constructor(public sanitizer: DomSanitizer) {
+        this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
         this.random();
     }
 
