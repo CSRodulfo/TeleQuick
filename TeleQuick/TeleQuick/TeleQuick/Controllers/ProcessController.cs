@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -38,10 +40,14 @@ namespace TeleQuick.Controllers
 
             try
             {
-                for (int i = 0; i < 100; i++)
+
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                list.CollectionChanged += this.listChanged;
+
+                for (int i = 0; i < 20; i++)
                 {
-                    _hubContext.Clients.All.BroadcastMessage("dasdsada", "dasdasds");
-                    System.Threading.Thread.Sleep(5000);
+
+                    list.Add("pepe");
                 }
                 retMessage = "Successdsadasdas";
             }
@@ -51,6 +57,12 @@ namespace TeleQuick.Controllers
             }
 
             return retMessage;
+        }
+
+        private void listChanged(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            _hubContext.Clients.All.BroadcastMessage("dasdsada", "dasdasds");
+            System.Threading.Thread.Sleep(5000);
         }
     }
 }
