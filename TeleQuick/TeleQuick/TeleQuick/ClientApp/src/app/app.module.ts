@@ -10,7 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+//import { HubConnection } from '@aspnet/signalr';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ToastaModule } from 'ngx-toasta';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -36,6 +38,7 @@ import { AccountEndpoint } from './services/account-endpoint.service';
 import { BusinessService } from './services/business.service';
 import { BusinessEndpoint } from './services/business-endpoint.service';
 import { GlobalResources } from './services/globalResources';
+import { ChatService } from './services/chat.service';
 
 import { EqualValidator } from './directives/equal-validator.directive';
 import { LastElementDirective } from './directives/last-element.directive';
@@ -53,8 +56,8 @@ import { CustomersComponent } from './components/customers/customers.component';
 
 import { ProcessComponent } from './components/process/process.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
-import { VehicleEditComponent } from './components/Vehicles/vehicle-edit/vehicle-edit.component';
-import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/vehicle-create.component';
+import { VehicleEditComponent } from './components/vehicles/vehicle-edit/vehicle-edit.component';
+import { VehicleCreateComponent } from './components/vehicles/vehicle-create/vehicle-create.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -84,6 +87,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+//    HubConnection,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -128,7 +132,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     GroupByPipe,
     VehicleCreateComponent,
     AccountSessionsEditComponent,
-    AccountSessionsCreateComponent
+    AccountSessionsCreateComponent,
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
@@ -145,7 +149,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     BusinessEndpoint,
     BusinessService,
     LocalStoreManager,
-    GlobalResources
+    GlobalResources,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })

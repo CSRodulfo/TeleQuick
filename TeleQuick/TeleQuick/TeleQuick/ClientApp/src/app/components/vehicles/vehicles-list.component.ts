@@ -28,6 +28,7 @@ export class VehiclesManagementComponent implements OnInit {
     rows: Vehicle[] = [];
     rowsCache: Vehicle[] = [];
     loadingIndicator: boolean;
+    force: any = 'force';
 
     @ViewChild('indexTemplate', { static: true })
     indexTemplate: TemplateRef<any>;

@@ -30,6 +30,7 @@ export class UsersManagementComponent implements OnInit, AfterViewInit {
     sourceUser: UserEdit;
     editingUserName: { name: string };
     loadingIndicator: boolean;
+    force: any = 'force';
 
     allRoles: Role[] = [];
 

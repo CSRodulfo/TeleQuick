@@ -29,6 +29,7 @@ export class RolesManagementComponent implements OnInit, AfterViewInit {
     sourceRole: Role;
     editingRoleName: { name: string };
     loadingIndicator: boolean;
+    force: any = 'force';
 
 
 

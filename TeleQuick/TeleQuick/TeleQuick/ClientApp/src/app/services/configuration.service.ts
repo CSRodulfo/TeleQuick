@@ -44,7 +44,7 @@ export class ConfigurationService {
   }
 
 
-  set themeId(value: number) {
+  set themeId(value: any) {
     value = +value;
     this._themeId = value;
     this.saveToLocalStore(value, DBkeys.THEME_ID);
