@@ -60,7 +60,7 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
     }
   ];
   chartLegend = true;
-  chartType = 'line';
+  chartType = 'line' as any;
 
   timerReference: any;
   windowWidth$: Observable<number>;
@@ -102,7 +102,7 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
     this.chartData = _chartData;
   }
 
-  changeChartType(type: string) {
+  changeChartType(type: any) {
     this.chartType = type;
   }
 

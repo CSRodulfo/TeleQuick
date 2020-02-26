@@ -32,8 +32,8 @@ export class CustomersComponent implements OnInit {
   loadingIndicator: boolean;
 
   name = 'Set iframe source';
-  url: string = "http://127.0.0.1:32767/start.html#id=2v3r81&p=page_2&c=1";
-  urlSafe: SafeResourceUrl;
+  url: string = "https://binlbc.axshare.com/#id=fo3n9u&p=page_1&c=1";
+  urlSafe: any; //SafeResourceUrl;
 
 
   @ViewChild('indexTemplate', { static: true })
