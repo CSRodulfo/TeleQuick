@@ -28,6 +28,7 @@ export class AccountSessionsComponent implements OnInit {
   rows: AccountSession[] = [];
   rowsCache: AccountSession[] = [];
   loadingIndicator: boolean;
+  force: any = 'force';
 
   @ViewChild('indexTemplate', { static: true })
   indexTemplate: TemplateRef<any>;
