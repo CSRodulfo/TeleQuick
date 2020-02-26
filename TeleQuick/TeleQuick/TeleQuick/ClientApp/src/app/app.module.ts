@@ -10,7 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+//import { HubConnection } from '@aspnet/signalr';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ToastaModule } from 'ngx-toasta';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -36,6 +38,7 @@ import { AccountEndpoint } from './services/account-endpoint.service';
 import { BusinessService } from './services/business.service';
 import { BusinessEndpoint } from './services/business-endpoint.service';
 import { GlobalResources } from './services/globalResources';
+import { ChatService } from './services/chat.service';
 
 import { EqualValidator } from './directives/equal-validator.directive';
 import { LastElementDirective } from './directives/last-element.directive';
@@ -84,6 +87,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+//    HubConnection,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -128,7 +132,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     GroupByPipe,
     VehicleCreateComponent,
     AccountSessionsEditComponent,
-    AccountSessionsCreateComponent
+    AccountSessionsCreateComponent,
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
@@ -145,7 +149,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     BusinessEndpoint,
     BusinessService,
     LocalStoreManager,
-    GlobalResources
+    GlobalResources,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })
