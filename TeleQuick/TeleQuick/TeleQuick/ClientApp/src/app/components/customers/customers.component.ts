@@ -32,7 +32,7 @@ export class CustomersComponent implements OnInit {
   loadingIndicator: boolean;
 
   name = 'Set iframe source';
-  url: string = "https://binlbc.axshare.com/#id=fo3n9u&p=page_1&c=1";
+  url: string = "https://binlbc.axshare.com/#id=2v3r81&p=page_2&c=1";
   urlSafe: any; //SafeResourceUrl;
 
 

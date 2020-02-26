@@ -26,15 +26,15 @@ export class ProcessComponent implements OnInit {
     type: string;
 
     name = 'Set iframe source';
-    url: string = "http://127.0.0.1:32767/start.html#id=o5m8pw&p=page_3&c=1";
+    url: string = "https://binlbc.axshare.com/#id=o5m8pw&p=page_3&c=1";
     urlSafe: any; //SafeResourceUrl;
 
     constructor(private alertService: AlertService, public sanitizer: DomSanitizer) {
-
+        this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     }
 
     ngOnInit(): void {
-        this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+      
 
         const connection = new HubConnectionBuilder()
             //.configureLogging(signalR.LogLevel.Information)

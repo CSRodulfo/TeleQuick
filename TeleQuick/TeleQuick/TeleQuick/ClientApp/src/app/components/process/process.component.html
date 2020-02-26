@@ -3,15 +3,15 @@
     <h3><i class="fa fa-shopping-cart fa-lg page-caption" aria-hidden="true"></i>
       {{'pageHeader.Process' | translate}}</h3>
   </header>
+  <div [@fadeInOut]>
 
-    <div [@fadeInOut]>
-      <div class="embed-responsive embed-responsive-21by9">
-        <iframe  frameBorder="0" [src]="urlSafe"></iframe>
-      </div>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" [src]="urlSafe"></iframe>
+    </div>
 
 
 
-        <div class="mb-2">
+    <!-- <div class="mb-2">
           <progressbar [max]="max" [value]="dynamic">
             <span class="text-nowrap">{{dynamic}} / {{max}}</span>
           </progressbar>
@@ -25,5 +25,4 @@
           <progressbar class="progress-striped active" [value]="dynamic" [type]="type">{{type}}</progressbar>
         </div>
         <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
-        </div>
-</div>
+        </div> -->
