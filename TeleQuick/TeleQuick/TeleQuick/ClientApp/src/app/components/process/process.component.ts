@@ -32,6 +32,8 @@ export class ProcessComponent implements OnInit {
     constructor(private alertService: AlertService, ) { }
 
     ngOnInit(): void {
+        this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+        
         const connection = new HubConnectionBuilder()
             //.configureLogging(signalR.LogLevel.Information)
             .withUrl("https://localhost:44350/notify")
@@ -45,7 +47,6 @@ export class ProcessComponent implements OnInit {
 
         connection.on("BroadcastMessage", (type: string, payload: string) => {
             this.random();
-            this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
             this.alertService.showMessage(type, payload, MessageSeverity.error);
         });
     }
