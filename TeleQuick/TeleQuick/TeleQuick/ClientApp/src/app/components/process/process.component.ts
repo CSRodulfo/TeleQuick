@@ -29,11 +29,13 @@ export class ProcessComponent implements OnInit {
     url: string = "http://127.0.0.1:32767/start.html#id=o5m8pw&p=page_3&c=1";
     urlSafe: any; //SafeResourceUrl;
 
-    constructor(private alertService: AlertService, ) { }
+    constructor(private alertService: AlertService, public sanitizer: DomSanitizer) {
+
+    }
 
     ngOnInit(): void {
         this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-        
+
         const connection = new HubConnectionBuilder()
             //.configureLogging(signalR.LogLevel.Information)
             .withUrl("https://localhost:44350/notify")
