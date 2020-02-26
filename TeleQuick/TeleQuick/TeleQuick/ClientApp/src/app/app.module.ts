@@ -53,8 +53,8 @@ import { CustomersComponent } from './components/customers/customers.component';
 
 import { ProcessComponent } from './components/process/process.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
-import { VehicleEditComponent } from './components/Vehicles/vehicle-edit/vehicle-edit.component';
-import { VehicleCreateComponent } from './components/Vehicles/vehicle-create/vehicle-create.component';
+import { VehicleEditComponent } from './components/vehicles/vehicle-edit/vehicle-edit.component';
+import { VehicleCreateComponent } from './components/vehicles/vehicle-create/vehicle-create.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
