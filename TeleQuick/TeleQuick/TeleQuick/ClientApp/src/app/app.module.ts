@@ -65,6 +65,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BannerDemoComponent } from './components/controls/banner-demo.component';
 import { StatisticsDemoComponent } from './components/statistics/statistics-demo.component';
 import { StatisticsVehicleComponent } from './components/statistics/statistics-vehicle.component';
+import { StatisticsYearComponent } from './components/statistics/statistics-year.component';
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
@@ -122,7 +123,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,
-    StatisticsDemoComponent, StatisticsVehicleComponent, BannerDemoComponent,
+    StatisticsDemoComponent, StatisticsVehicleComponent, StatisticsYearComponent, BannerDemoComponent,
     EqualValidator,
     LastElementDirective,
     AutofocusDirective,
