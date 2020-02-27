@@ -15,9 +15,6 @@ namespace IDataAccess
 {
     public interface IUnitOfWork
     {
-        ICustomerRepository Customers { get; }
-        IProductRepository Products { get; }
-        IOrdersRepository Orders { get; }
         IVehicleRepository Vehicles { get; }
         IAccountSessionRepository AccountSessions { get; }
 

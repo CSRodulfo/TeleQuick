@@ -54,15 +54,6 @@ namespace TeleQuick.ViewModels
             CreateMap<IdentityRoleClaim<string>, PermissionViewModel>()
                 .ConvertUsing(s => (PermissionViewModel)ApplicationPermissions.GetPermissionByValue(s.ClaimValue));
 
-            CreateMap<Customer, CustomerViewModel>()
-                .ReverseMap();
-
-            CreateMap<Product, ProductViewModel>()
-                .ReverseMap();
-
-            CreateMap<Order, OrderViewModel>()
-                .ReverseMap();
-
             CreateMap<Vehicle, VehicleViewModel>()
                 .ForMember(d => d.TAGNumber, map => map.MapFrom(s => s.TAGs.FirstOrDefault().TAGNumber))
                 .ReverseMap();
