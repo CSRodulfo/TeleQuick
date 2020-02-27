@@ -63,7 +63,8 @@ import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { BannerDemoComponent } from './components/controls/banner-demo.component';
-import { StatisticsDemoComponent } from './components/controls/statistics-demo.component';
+import { StatisticsDemoComponent } from './components/statistics/statistics-demo.component';
+import { StatisticsVehicleComponent } from './components/statistics/statistics-vehicle.component';
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
@@ -77,25 +78,18 @@ import { AccountSessionsComponent } from './components/account-sessions/account-
 import { AccountSessionsEditComponent } from './components/account-sessions/account-sessions-edit/account-sessions-edit.component';
 import { AccountSessionsCreateComponent } from './components/account-sessions/account-sessions-create/account-sessions-create.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
-import { StatisticVehiculoComponentComponent } from './statistic-vehiculo-component/statistic-vehiculo-component.component';
 
 
 
 @NgModule({
-   imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      HttpClientModule,
-      FormsModule,
-      AppRoutingModule,
-      //HubConnection,
-      TranslateModule.forRoot(\r\nloader
-   ],
-   declarations: [
-      StatisticVehiculoComponentComponent
-   ]
-}),
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
     NgxDatatableModule,
+    ChartsModule,
     OAuthModule.forRoot(),
     ToastaModule.forRoot(),
     TooltipModule.forRoot(),
@@ -103,8 +97,14 @@ import { StatisticVehiculoComponentComponent } from './statistic-vehiculo-compon
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    ChartsModule,
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslateLanguageLoader
+      }
+    }),
+
   ],
   declarations: [
     AppComponent,
@@ -113,7 +113,7 @@ import { StatisticVehiculoComponentComponent } from './statistic-vehiculo-compon
     CustomersComponent,
     AccountSessionsComponent,
     ProcessComponent,
-    VehiclesManagementComponent, VehicleEditComponent,  VehicleCreateComponent,
+    VehiclesManagementComponent, VehicleEditComponent, VehicleCreateComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
     CustomerCreateComponent,
@@ -122,7 +122,7 @@ import { StatisticVehiculoComponentComponent } from './statistic-vehiculo-compon
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,
-    StatisticsDemoComponent, BannerDemoComponent,
+    StatisticsDemoComponent, StatisticsVehicleComponent, BannerDemoComponent,
     EqualValidator,
     LastElementDirective,
     AutofocusDirective,

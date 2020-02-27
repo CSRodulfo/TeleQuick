@@ -4,9 +4,11 @@
 // =============================
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AlertService, DialogType, MessageSeverity } from '../services/alert.service';
+import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { Subscription, Observable, fromEvent, of, merge } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
+import { ChartsModule } from 'ng2-charts';
+import { ChartDataSets, ChartType, RadialChartOptions } from 'chart.js';
 
 require('chart.js');
 
@@ -20,11 +22,9 @@ require('chart.js');
 export class StatisticsDemoComponent implements OnInit, OnDestroy {
 
   chartData = [
-    { data: [65, 59, 80, 81, 56, 55], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27], label: 'Series B' },
-    { data: [18, 48, 77, 9, 100, 27], label: 'Series C' }
+    { data: [650, 590, 800, 1200, 560, 550], label: 'Concesionaria' }
   ];
-  chartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  chartLabels = ['AUSA', 'AUSOL', 'AUSUR', 'AUOESTE', 'AUBASA', 'CEAMSE'];
   chartOptions = {
     responsive: true,
     title: {
@@ -35,17 +35,17 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
   };
   chartColors = [
     { // something else
-      backgroundColor: 'rgba(128,128,128,0.2)',
-      borderColor: 'rgba(128,128,128,1)',
-      pointBackgroundColor: 'rgba(128,128,128,1)',
+      backgroundColor: 'rgba(255, 0, 0 ,0.4)',
+      borderColor: 'rgb(255, 0, 0, 0.4)',
+      pointBackgroundColor: 'rgb(255, 0, 0, 0.4)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(128,128,128,0.8)'
+      pointHoverBorderColor: 'rgba(255, 0, 0, 0.4)'
     }
 
   ];
   chartLegend = true;
-  chartType = 'bar' as any;
+  chartType = 'bar' as ChartType
 
   timerReference: any;
   windowWidth$: Observable<number>;
@@ -77,7 +77,4 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
     console.log(e);
   }
 
-  chartHovered(e): void {
-    console.log(e);
-  }
 }

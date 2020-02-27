@@ -14,16 +14,25 @@
                 </div>
             </div>
 
-            <div *ngIf="configurations.showDashboardStatistics" class="col-12 my-3">
+            <div *ngIf="configurations.showDashboardStatistics" class="col-6 my-3">
                 <button type="button" class="close" aria-label="Close" title="Close" (click)="configurations.showDashboardStatistics = false">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="clearfix"></div>
                 <div class="card card-body bg-light">
-
                     <statistics-demo></statistics-demo>
                 </div>
             </div>
+
+            <div *ngIf="configurations.showDashboardStatistics" class="col-6 my-3">
+              <button type="button" class="close" aria-label="Close" title="Close" (click)="configurations.showDashboardStatistics = false">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="clearfix"></div>
+              <div class="card card-body bg-light">
+                  <statistics-vehicle></statistics-vehicle>>
+              </div>
+          </div>
 
             <div *ngIf="configurations.showDashboardNotifications" class="col-12 my-3">
                 <button type="button" class="close" aria-label="Close" title="Close" (click)="configurations.showDashboardNotifications = false">
