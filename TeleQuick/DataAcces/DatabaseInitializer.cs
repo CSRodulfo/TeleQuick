@@ -74,24 +74,32 @@ namespace DataAccess
                 {
                     Name = "AUBASA",
                     Detail = "contact@ebenmonney.com",
+                    MainForm = "",
+                    Uri = "",
                 };
 
                 Concessionary cons_4 = new Concessionary
                 {
                     Name = "AUSUR",
                     Detail = "contact@ebenmonney.com",
+                    MainForm = "",
+                    Uri = "",
                 };
 
                 Concessionary cons_5 = new Concessionary
                 {
                     Name = "AUOESTE",
                     Detail = "contact@ebenmonney.com",
+                    MainForm = "",
+                    Uri = "",
                 };
 
                 Concessionary cons_6 = new Concessionary
                 {
                     Name = "CEAMSE",
                     Detail = "contact@ebenmonney.com",
+                    MainForm = "",
+                    Uri = "",
                 };
 
                 Customer cust_1 = new Customer
