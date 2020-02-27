@@ -19,7 +19,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'account-sessions-list',
+  selector: 'customers-list',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
   animations: [fadeInOut]

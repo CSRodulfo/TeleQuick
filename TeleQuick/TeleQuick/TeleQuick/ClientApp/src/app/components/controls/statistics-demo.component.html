@@ -1,7 +1,8 @@
 <div class="row statistics-container">
   <div class="col-md-6">
+    <h5 class="text-muted d-inline-block">Concesarionaria Mayor Consumo</h5>
     <div class="chart-container">
-      <canvas baseChart width="600" height="250"
+      <canvas baseChart
               [datasets]="chartData"
               [labels]="chartLabels"
               [options]="chartOptions"
@@ -12,22 +13,19 @@
               (chartClick)="chartClicked($event)"></canvas>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="d-none d-sm-block table-responsive">
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th class="border-top-0"></th>
-            <th class="border-top-0" *ngFor="let label of chartLabels">{{label}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let d of chartData">
-            <th>{{d && d.label.split(' ').pop()}}</th>
-            <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j]}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
+  <div class="col-md-6">
+    <h5 class="text-muted d-inline-block">Vehiculo Mayor consumo</h5>
+    <div class="chart-container">
+      <canvas baseChart
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [colors]="chartColors"
+              [legend]="chartLegend"
+              [chartType]="chartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
 </div>
