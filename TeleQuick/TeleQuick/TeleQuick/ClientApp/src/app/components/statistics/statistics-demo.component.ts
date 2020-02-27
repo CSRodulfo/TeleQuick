@@ -35,17 +35,14 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
   };
   chartColors = [
     { // something else
-      backgroundColor: 'rgba(255, 0, 0 ,0.4)',
-      borderColor: 'rgb(255, 0, 0, 0.4)',
-      pointBackgroundColor: 'rgb(255, 0, 0, 0.4)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(255, 0, 0, 0.4)'
+      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+      borderWidth: 2,
     }
 
   ];
   chartLegend = true;
-  chartType = 'bar' as ChartType
+  chartType = 'pie' as ChartType
 
   timerReference: any;
   windowWidth$: Observable<number>;

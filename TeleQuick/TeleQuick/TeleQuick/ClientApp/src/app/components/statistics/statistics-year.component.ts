@@ -27,21 +27,15 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
     }
   };
   chartColors = [
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    {
+      backgroundColor: 'rgba(105, 0, 132, .2)',
+      borderColor: 'rgba(200, 99, 132, .7)',
+      borderWidth: 2,
     },
-    { // something else
-      backgroundColor: 'rgba(128,128,128,0.2)',
-      borderColor: 'rgba(128,128,128,1)',
-      pointBackgroundColor: 'rgba(128,128,128,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(128,128,128,0.8)'
+    {
+      backgroundColor: 'rgba(0, 137, 132, .2)',
+      borderColor: 'rgba(0, 10, 130, .7)',
+      borderWidth: 2,
     },
     { // something else
       backgroundColor: 'rgba(255, 0, 0 ,0.4)',

@@ -122,7 +122,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,
-    StatisticsDemoComponent, StatisticsVehicleComponent, StatisticsYearComponent, BannerDemoComponent,
+    StatisticsDemoComponent, StatisticsVehicleComponent, StatisticsYearComponent,
     EqualValidator,
     LastElementDirective,
     AutofocusDirective,
