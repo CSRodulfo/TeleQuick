@@ -26,16 +26,13 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
   };
   chartColors = [
     { // something else
-      backgroundColor: 'rgba(128,128,128,0.2)',
-      borderColor: 'rgba(128,128,128,1)',
-      pointBackgroundColor: 'rgba(128,128,128,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(128,128,128,0.8)'
+     backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+      borderWidth: 2,
     }
 
   ];
-  chartLegend = true;
+  chartLegend = false;
   chartType = 'bar' as any;
 
   timerReference: any;
