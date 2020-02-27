@@ -4,7 +4,7 @@
 // =============================
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
+import { AlertService, DialogType, MessageSeverity } from '../services/alert.service';
 import { Subscription, Observable, fromEvent, of, merge } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
@@ -56,7 +56,6 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
 
   }
 
-
   ngOnInit() {
     const initialWidth$ = of(window.innerWidth);
     const resizedWidth$ = fromEvent(window, 'resize').pipe(map((event: any) => event.target.innerWidth as number));
@@ -69,7 +68,6 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
     clearInterval(this.timerReference);
     this.windowWidthSub.unsubscribe();
   }
-
 
   changeChartType(type: any) {
     this.chartType = type;

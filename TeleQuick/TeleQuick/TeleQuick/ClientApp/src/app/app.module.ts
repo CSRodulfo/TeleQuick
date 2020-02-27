@@ -77,23 +77,24 @@ import { AccountSessionsComponent } from './components/account-sessions/account-
 import { AccountSessionsEditComponent } from './components/account-sessions/account-sessions-edit/account-sessions-edit.component';
 import { AccountSessionsCreateComponent } from './components/account-sessions/account-sessions-create/account-sessions-create.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { StatisticVehiculoComponentComponent } from './statistic-vehiculo-component/statistic-vehiculo-component.component';
 
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-//    HubConnection,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useClass: TranslateLanguageLoader
-      }
-    }),
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      FormsModule,
+      AppRoutingModule,
+      //HubConnection,
+      TranslateModule.forRoot(\r\nloader
+   ],
+   declarations: [
+      StatisticVehiculoComponentComponent
+   ]
+}),
     NgxDatatableModule,
     OAuthModule.forRoot(),
     ToastaModule.forRoot(),
