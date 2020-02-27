@@ -5,7 +5,7 @@
 
     <div [@fadeInOut]>
         <div class="row">
-            <div *ngIf="!configurations.showDashboardStatistics && !configurations.showDashboardNotifications && !configurations.showDashboardTodo && !configurations.showDashboardBanner" class="col-12 my-5">
+            <div *ngIf="!configurations.showDashboardStatistics && !configurations.showDashboardNotifications && !configurations.showDashboardTodo" class="col-12 my-5">
                 <div class="card card-body bg-light">
                     <h4 class="text-muted text-center">
                         {{'home.NoWidgets1' | translate}} <a routerLink="/settings" fragment="preferences"><i class="fa fa-sliders"></i> {{'settings.tab.Preferences' | translate}}</a>
@@ -33,21 +33,7 @@
                 <notifications-viewer></notifications-viewer>
             </div>
 
-            <div *ngIf="configurations.showDashboardTodo" class="col-12 my-3">
-                <button type="button" class="close" aria-label="Close" title="Close" (click)="configurations.showDashboardTodo = false">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="clearfix"></div>
-                <customers></customers>
-            </div>
 
-            <div *ngIf="configurations.showDashboardBanner" class="col-12 my-3">
-                <button type="button" class="close" aria-label="Close" title="Close" (click)="configurations.showDashboardBanner = false">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="clearfix"></div>
-                <banner-demo></banner-demo>
-            </div>
         </div>
     </div>
 </div>
