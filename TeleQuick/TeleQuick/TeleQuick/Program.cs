@@ -22,7 +22,10 @@ namespace TeleQuick
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
+            var host = CreateWebHostBuilder(args)
+                            .CaptureStartupErrors(true)
+                            .UseSetting("detailedErrors", "true")
+                            .Build();
 
 
             //Seed database
