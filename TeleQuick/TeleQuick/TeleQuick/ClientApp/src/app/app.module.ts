@@ -62,7 +62,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-import { StatisticsDemoComponent } from './components/controls/statistics-demo.component';
+import { StatisticsDemoComponent } from './components/statistics/statistics-demo.component';
+import { StatisticsVehicleComponent } from './components/statistics/statistics-vehicle.component';
+import { StatisticsYearComponent } from './components/statistics/statistics-year.component';
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
@@ -86,14 +88,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-//    HubConnection,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useClass: TranslateLanguageLoader
-      }
-    }),
     NgxDatatableModule,
+    ChartsModule,
     OAuthModule.forRoot(),
     ToastaModule.forRoot(),
     TooltipModule.forRoot(),
@@ -101,8 +97,14 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    ChartsModule,
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslateLanguageLoader
+      }
+    }),
+
   ],
   declarations: [
     AppComponent,
@@ -111,7 +113,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     CustomersComponent,
     AccountSessionsComponent,
     ProcessComponent,
-    VehiclesManagementComponent, VehicleEditComponent,  VehicleCreateComponent,
+    VehiclesManagementComponent, VehicleEditComponent, VehicleCreateComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
     CustomerCreateComponent,
@@ -120,7 +122,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,
-    StatisticsDemoComponent,
+    StatisticsDemoComponent, StatisticsVehicleComponent, StatisticsYearComponent, BannerDemoComponent,
     EqualValidator,
     LastElementDirective,
     AutofocusDirective,

@@ -1,0 +1,15 @@
+<div class="row statistics-container">
+  <div class="col-md-12">
+    <h5 class="text-muted d-inline-block">Concesionaria de Mayor Consumo</h5>
+    <div class="chart-container">
+      <canvas baseChart
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [colors]="chartColors"
+              [legend]="chartLegend"
+              [chartType]="chartType"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>
