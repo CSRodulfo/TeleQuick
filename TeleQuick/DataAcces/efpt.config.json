@@ -5,7 +5,7 @@
    "DoNotCombineNamespace": false,
    "IdReplace": false,
    "IncludeConnectionString": false,
-   "ModelNamespace": "TeleQuick.Business.Models",
+   "ModelNamespace": "Business.Models",
    "OutputContextPath": "..\\DataAcces",
    "OutputPath": "..\\TeleQuick.Business\\Models",
    "ProjectRootNamespace": "TeleQuick",
