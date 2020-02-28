@@ -215,7 +215,7 @@ namespace TeleQuick
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
-            });blob:https://web.whatsapp.com/12c8a4cd-c023-487f-9816-e378960f843d
+            });
 
             app.UseSpa(spa =>
             {
