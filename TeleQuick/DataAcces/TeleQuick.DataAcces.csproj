@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\TeleQuick.Business.csproj" />
     <ProjectReference Include="..\IDataAccess\TeleQuick.IDataAccess.csproj" />
+    <ProjectReference Include="..\TeleQuick.Business\TeleQuick.Business.csproj" />
   </ItemGroup>
 
 </Project>
