@@ -1,4 +1,4 @@
-﻿using Business.Models;
+﻿using TeleQuick.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

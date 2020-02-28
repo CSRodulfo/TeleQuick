@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business;
+using TeleQuick.Business;
 using DataAccess.Core;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;

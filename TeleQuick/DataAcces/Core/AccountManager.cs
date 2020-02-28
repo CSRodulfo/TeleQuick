@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business;
+using IDataAccess.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using DataAccess;
-using IDataAccess.Core;
+using TeleQuick.Business;
+using TeleQuick.DataAcces;
 
 namespace DataAcces.Core
 {

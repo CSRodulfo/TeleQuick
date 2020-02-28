@@ -1,10 +1,10 @@
-﻿using  Business.Models;
+﻿using  TeleQuick.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IService.Business
+namespace IService.TeleQuick.Business
 {
     public interface IAccountSessionService
     {

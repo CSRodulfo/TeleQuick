@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-using Business.Models.Interfaces;
+using TeleQuick.Business.Models.Interfaces;
 
-namespace Business
+namespace TeleQuick.Business
 {
     public class AuditableEntity : IAuditableEntity
     {

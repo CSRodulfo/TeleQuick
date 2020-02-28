@@ -1,4 +1,4 @@
-﻿using Business.Models;
+﻿using TeleQuick.Business.Models;
 using IProvider;
 using ScrapySharp.Network;
 using System;

@@ -8,9 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Business;
+using TeleQuick.Business;
 using DataAccess.Core;
 using Microsoft.AspNetCore.Http;
+using TeleQuick.DataAcces;
 
 namespace DataAccess
 {

@@ -3,14 +3,14 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business.Models.Interfaces;
+using TeleQuick.Business.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Business
+namespace TeleQuick.Business
 {
     public class ApplicationRole : IdentityRole, IAuditableEntity
     {

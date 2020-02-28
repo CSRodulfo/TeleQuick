@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business
+namespace TeleQuick.Business
 {
     public class ApplicationPermission
     {

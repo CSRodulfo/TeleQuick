@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj" />
-    <ProjectReference Include="..\DataAcces\DataAcces.csproj" />
-    <ProjectReference Include="..\IDataAccess\IDataAccess.csproj" />
+    <ProjectReference Include="..\Business\TeleQuick.Business.csproj" />
+    <ProjectReference Include="..\DataAcces\TeleQuick.DataAcces.csproj" />
+    <ProjectReference Include="..\IDataAccess\TeleQuick.IDataAccess.csproj" />
     <ProjectReference Include="..\IService\IService.csproj" />
     <ProjectReference Include="..\Proveedor\Provider.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />

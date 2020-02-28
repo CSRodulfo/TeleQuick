@@ -4,7 +4,7 @@
 // =============================
 
 using AutoMapper;
-using Business;
+using TeleQuick.Business;
 using IDataAccess.Core;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;

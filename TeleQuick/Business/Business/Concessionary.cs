@@ -1,4 +1,4 @@
-﻿namespace Business.Models
+﻿namespace TeleQuick.Business.Models
 {
     public partial class Concessionary
     {

@@ -7,7 +7,7 @@ using DataAccess.Core;
 using DataAcces.Core;
 using System;
 using System.Linq;
-using Business;
+using TeleQuick.Business;
 
 namespace TeleQuick.ViewModels
 {

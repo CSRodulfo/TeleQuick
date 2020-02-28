@@ -5,7 +5,7 @@
 
 using AutoMapper;
 using DataAccess.Core;
-using Business;
+using TeleQuick.Business;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAcces.Core;
-using  Business.Models;
+using  TeleQuick.Business.Models;
 
 namespace TeleQuick.ViewModels
 {
@@ -55,7 +55,7 @@ namespace TeleQuick.ViewModels
                 .ConvertUsing(s => (PermissionViewModel)ApplicationPermissions.GetPermissionByValue(s.ClaimValue));
 
             CreateMap<Vehicle, VehicleViewModel>()
-                .ForMember(d => d.TAGNumber, map => map.MapFrom(s => s.TAGs.FirstOrDefault().TAGNumber))
+                .ForMember(d => d.TAGNumber, map => map.MapFrom(s => s.TagRfids.FirstOrDefault().Tagnumber))
                 .ReverseMap();
 
             CreateMap<AccountSession, AccountSessionViewModel>()

@@ -3,17 +3,16 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business.Models;
-using DataAccess;
 using DataAccess.Repositories;
 using IDataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TeleQuick.Business.Models;
+using TeleQuick.DataAcces;
 
-namespace DataAcces.Business
+namespace DataAcces.TeleQuick.Business
 {
     public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     {
@@ -23,7 +22,7 @@ namespace DataAcces.Business
         public async Task<IEnumerable<Vehicle>> GetAll()
         {
             return await _appContext.Vehicles
-                .Include(x => x.TAGs)
+                .Include(x => x.TagRfids)
                 .OrderBy(c => c.Year)
                 .ToListAsync();
         }
@@ -32,7 +31,7 @@ namespace DataAcces.Business
         {
             return await _appContext.Vehicles
                 .Where(x => x.Id == id)
-                .Include(x => x.TAGs)
+                .Include(x => x.TagRfids)
                 .OrderBy(c => c.Year)
                 .FirstAsync();
         }

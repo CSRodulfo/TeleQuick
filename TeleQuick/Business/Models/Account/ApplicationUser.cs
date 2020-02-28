@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Business.Models.Interfaces;
+using TeleQuick.Business.Models.Interfaces;
 
-namespace Business
+namespace TeleQuick.Business
 {
     public class ApplicationUser : IdentityUser, IAuditableEntity
     {

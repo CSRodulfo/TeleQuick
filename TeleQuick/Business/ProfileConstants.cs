@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business
+namespace TeleQuick.Business
 {
     public static class ClaimConstants
     {

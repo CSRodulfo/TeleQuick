@@ -1,4 +1,4 @@
-﻿using Business.Models;
+﻿using TeleQuick.Business.Models;
 using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.Threading.Tasks;

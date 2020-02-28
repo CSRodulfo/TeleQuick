@@ -8,11 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAcces.Business;
+using DataAcces.TeleQuick.Business;
 using DataAccess.Repositories;
 using IDataAccess;
-using IDataAccess.Business;
+using IDataAccess.TeleQuick.Business;
 using IDataAccess.Repositories;
+using TeleQuick.DataAcces;
 
 namespace DataAccess
 {

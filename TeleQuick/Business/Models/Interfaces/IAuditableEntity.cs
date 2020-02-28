@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Models.Interfaces
+namespace TeleQuick.Business.Models.Interfaces
 {
     public interface IAuditableEntity
     {

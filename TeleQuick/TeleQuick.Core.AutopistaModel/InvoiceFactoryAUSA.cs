@@ -1,4 +1,4 @@
-﻿using Business.Models;
+﻿using TeleQuick.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -43,7 +43,7 @@ namespace TeleQuick.Core.Autopista.Model
             //header.CAE = Convert.ToInt32(hr.Campo9);
             
             header.Subtotal = Convert.ToDecimal(hr.Campo22);
-            header.IVAIns = Convert.ToDecimal(hr.Campo25);
+            header.Ivains = Convert.ToDecimal(hr.Campo25);
             header.Total = Convert.ToDecimal(hr.Campo32);
 
 

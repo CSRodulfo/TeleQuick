@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Business.Models;
+using TeleQuick.Business.Models;
 using IdentityServer4.AccessTokenValidation;
-using IService.Business;
+using IService.TeleQuick.Business;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -63,7 +63,7 @@ namespace TeleQuick.Controllers
             if (ModelState.IsValid)
             {
                 Vehicle newVehicle = _mapper.Map<Vehicle>(vehicle);
-                newVehicle.TAGs.Add(new TagRfid() { TAGNumber = vehicle.TAGNumber });
+                newVehicle.TagRfids.Add(new TagRfid() { Tagnumber = vehicle.TAGNumber });
 
                 return Ok( await _vehicleService.Create(newVehicle));
             }
@@ -84,7 +84,7 @@ namespace TeleQuick.Controllers
                 Vehicle vehicle = await _vehicleService.GetById(id);
 
                 _mapper.Map(vm, vehicle);
-                vehicle.TAGs.First().TAGNumber = vm.TAGNumber;
+                vehicle.TagRfids.First().Tagnumber = vm.TAGNumber;
 
 //v               var comparer = new AccommodationImageModelComparer();
 

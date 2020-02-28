@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Business.Models;
+using TeleQuick.Business.Models;
 using IdentityServer4.AccessTokenValidation;
-using IService.Business;
+using IService.TeleQuick.Business;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

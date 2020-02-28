@@ -1,11 +1,11 @@
-﻿using  Business.Models;
+﻿using  TeleQuick.Business.Models;
 using IDataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDataAccess.Business
+namespace IDataAccess.TeleQuick.Business
 {
     public interface IAccountSessionRepository: IRepository<AccountSession>
     {

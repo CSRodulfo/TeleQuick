@@ -5,7 +5,7 @@
 
 using System;
 using System.Collections.Generic;
-using Business;
+using TeleQuick.Business;
 using DataAccess.Core;
 using IdentityModel;
 using IdentityServer4;

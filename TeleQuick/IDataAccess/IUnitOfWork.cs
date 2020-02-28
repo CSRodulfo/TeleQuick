@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using IDataAccess.Business;
+using IDataAccess.TeleQuick.Business;
 using IDataAccess.Repositories;
 using System;
 using System.Collections.Generic;

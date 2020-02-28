@@ -1,13 +1,13 @@
-﻿using Business.Models;
+﻿using TeleQuick.Business.Models;
 using IDataAccess;
-using IDataAccess.Business;
+using IDataAccess.TeleQuick.Business;
 using IDataAccess.Repositories;
 using IProvider;
-using IService.Business;
+using IService.TeleQuick.Business;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Service.Business
+namespace Service.TeleQuick.Business
 {
     public class AccountSessionService : IAccountSessionService
     {

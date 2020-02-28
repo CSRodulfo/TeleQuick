@@ -14,7 +14,7 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using DataAccess.Core;
-using Business;
+using TeleQuick.Business;
 
 namespace TeleQuick.Authorization
 {

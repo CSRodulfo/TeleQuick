@@ -1,0 +1,46 @@
+﻿{
+   "ContextClassName": "ApplicationDbContext",
+   "ContextNamespace": "DataAcces",
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "TeleQuick.Business.Models",
+   "OutputContextPath": "..\\DataAcces",
+   "OutputPath": "..\\TeleQuick.Business\\Models",
+   "ProjectRootNamespace": "TeleQuick",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AccountSessions]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Concessionaries]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[InvoiceDetails]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[InvoiceHeaders]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[TagRfids]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Vehicles]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

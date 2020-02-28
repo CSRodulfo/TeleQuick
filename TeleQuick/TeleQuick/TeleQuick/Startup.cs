@@ -4,7 +4,7 @@
 // =============================
 
 using AutoMapper;
-using Business;
+using TeleQuick.Business;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -21,11 +21,12 @@ using TeleQuick.Authorization;
 using TeleQuick.Helpers;
 using System;
 using System.Collections.Generic;
-using AppPermissions = Business.ApplicationPermissions;
+using AppPermissions = TeleQuick.Business.ApplicationPermissions;
 using DataAccess;
 using System.Threading;
 using System.Globalization;
 using TeleQuick.SignalR;
+using TeleQuick.DataAcces;
 
 namespace TeleQuick
 {

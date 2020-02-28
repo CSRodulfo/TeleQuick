@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Business;
+using TeleQuick.Business;
 
-namespace Business
+namespace TeleQuick.Business
 {
     public static class ApplicationPermissions
     {

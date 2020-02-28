@@ -1,15 +1,15 @@
-﻿using DataAcces.Business;
+﻿using DataAcces.TeleQuick.Business;
 using DataAcces.Core;
 using DataAccess;
 using IDataAccess;
-using IDataAccess.Business;
+using IDataAccess.TeleQuick.Business;
 using IDataAccess.Core;
 using IDataAccess.Repositories;
-using IService.Business;
+using IService.TeleQuick.Business;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service;
-using Service.Business;
+using Service.TeleQuick.Business;
 using TeleQuick.Core.Autopista;
 using TeleQuick.Core.IAutopista;
 
@@ -27,7 +27,7 @@ namespace Boostrapper
         public static IConfiguration Configuration { get; private set; }
         public IServiceCollection ConfigureServices(IServiceCollection services)
         {
-            // Business Services
+            // TeleQuick.Business Services
             //services.AddScoped<IEmailSender, EmailSender>();
 
             // Repositories

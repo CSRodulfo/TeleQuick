@@ -1,15 +1,13 @@
-﻿using Business.Models;
-using DataAccess;
-using DataAccess.Repositories;
-using IDataAccess.Business;
+﻿using DataAccess.Repositories;
+using IDataAccess.TeleQuick.Business;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using TeleQuick.Business.Models;
+using TeleQuick.DataAcces;
 
-namespace DataAcces.Business
+namespace DataAcces.TeleQuick.Business
 {
     public class AccountSessionRepository : Repository<AccountSession>, IAccountSessionRepository
     {

@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business.Models;
+using TeleQuick.Business.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

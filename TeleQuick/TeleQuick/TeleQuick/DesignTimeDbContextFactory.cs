@@ -3,16 +3,11 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
-using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using AutoMapper;
+using System.IO;
+using TeleQuick.DataAcces;
 
 namespace TeleQuick
 {

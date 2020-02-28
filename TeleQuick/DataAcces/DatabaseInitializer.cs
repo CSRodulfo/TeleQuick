@@ -3,15 +3,15 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business;
-using  Business.Models;
 using IDataAccess;
 using IDataAccess.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Business;
+using TeleQuick.Business.Models;
+using TeleQuick.DataAcces;
 
 namespace DataAccess
 {
