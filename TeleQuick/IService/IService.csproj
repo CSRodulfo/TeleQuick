@@ -4,14 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="IAccountManager.cs" />
-    <Compile Remove="IDatabaseInitializer.cs" />
-  </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\TeleQuick.Business.csproj" />
     <ProjectReference Include="..\IProvider\IProvider.csproj" />
+    <ProjectReference Include="..\TeleQuick.Business\TeleQuick.Business.csproj" />
   </ItemGroup>
 
 </Project>

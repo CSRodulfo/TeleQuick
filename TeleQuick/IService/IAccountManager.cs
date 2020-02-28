@@ -3,12 +3,9 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using Business;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 
 namespace IService
 {
