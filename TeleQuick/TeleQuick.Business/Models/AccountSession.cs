@@ -10,14 +10,6 @@ namespace TeleQuick.Business.Models
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(256)]
-        public string CreatedBy { get; set; }
-        [StringLength(256)]
-        public string UpdatedBy { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime UpdatedDate { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime CreatedDate { get; set; }
         [Required]
         [StringLength(50)]
         public string LoginUser { get; set; }
@@ -26,6 +18,14 @@ namespace TeleQuick.Business.Models
         public string LoginUserPassword { get; set; }
         public bool IsValid { get; set; }
         public int ConcessionaryId { get; set; }
+        [StringLength(256)]
+        public string CreatedBy { get; set; }
+        [StringLength(256)]
+        public string UpdatedBy { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime UpdatedDate { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime CreatedDate { get; set; }
 
         [ForeignKey(nameof(ConcessionaryId))]
         [InverseProperty("AccountSessions")]

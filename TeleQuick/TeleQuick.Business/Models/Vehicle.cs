@@ -16,14 +16,6 @@ namespace TeleQuick.Business.Models
 
         [Key]
         public int Id { get; set; }
-        [StringLength(256)]
-        public string CreatedBy { get; set; }
-        [StringLength(256)]
-        public string UpdatedBy { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime UpdatedDate { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime CreatedDate { get; set; }
         [Required]
         [StringLength(50)]
         public string Make { get; set; }
@@ -34,6 +26,14 @@ namespace TeleQuick.Business.Models
         [Required]
         [StringLength(10)]
         public string RegistrationNumber { get; set; }
+        [StringLength(256)]
+        public string CreatedBy { get; set; }
+        [StringLength(256)]
+        public string UpdatedBy { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime UpdatedDate { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime CreatedDate { get; set; }
 
         [InverseProperty(nameof(InvoiceHeader.Vehicle))]
         public virtual ICollection<InvoiceHeader> InvoiceHeaders { get; set; }

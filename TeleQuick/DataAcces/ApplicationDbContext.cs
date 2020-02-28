@@ -41,6 +41,8 @@ namespace TeleQuick.DataAcces
 
             modelBuilder.Entity<Concessionary>(entity =>
             {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
                 entity.Property(e => e.MainForm).HasDefaultValueSql("(N'')");
 
                 entity.Property(e => e.Uri).HasDefaultValueSql("(N'')");
@@ -59,6 +61,12 @@ namespace TeleQuick.DataAcces
             modelBuilder.Entity<InvoiceHeader>(entity =>
             {
                 entity.HasIndex(e => e.VehicleId);
+
+                entity.HasOne(d => d.Concessionary)
+                    .WithMany(p => p.InvoiceHeaders)
+                    .HasForeignKey(d => d.ConcessionaryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InvoiceHeaders_Concessionaries");
 
                 entity.HasOne(d => d.Vehicle)
                     .WithMany(p => p.InvoiceHeaders)

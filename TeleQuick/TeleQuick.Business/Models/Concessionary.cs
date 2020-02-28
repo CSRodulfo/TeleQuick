@@ -11,6 +11,7 @@ namespace TeleQuick.Business.Models
         public Concessionary()
         {
             AccountSessions = new HashSet<AccountSession>();
+            InvoiceHeaders = new HashSet<InvoiceHeader>();
         }
 
         [Key]
@@ -30,5 +31,7 @@ namespace TeleQuick.Business.Models
 
         [InverseProperty(nameof(AccountSession.Concessionary))]
         public virtual ICollection<AccountSession> AccountSessions { get; set; }
+        [InverseProperty(nameof(InvoiceHeader.Concessionary))]
+        public virtual ICollection<InvoiceHeader> InvoiceHeaders { get; set; }
     }
 }
