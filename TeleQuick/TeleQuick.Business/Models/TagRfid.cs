@@ -14,13 +14,15 @@ namespace TeleQuick.Business.Models
         public string CreatedBy { get; set; }
         [StringLength(256)]
         public string UpdatedBy { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime UpdatedDate { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime CreatedDate { get; set; }
         [Column("TAGNumber")]
         public int Tagnumber { get; set; }
         [Column("TAGEneable")]
         public bool Tageneable { get; set; }
-        public int? VehicleId { get; set; }
+        public int VehicleId { get; set; }
 
         [ForeignKey(nameof(VehicleId))]
         [InverseProperty("TagRfids")]

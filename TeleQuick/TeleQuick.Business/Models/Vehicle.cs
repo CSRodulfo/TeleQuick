@@ -20,13 +20,15 @@ namespace TeleQuick.Business.Models
         public string CreatedBy { get; set; }
         [StringLength(256)]
         public string UpdatedBy { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime UpdatedDate { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime CreatedDate { get; set; }
         [Required]
-        [StringLength(100)]
+        [StringLength(50)]
         public string Make { get; set; }
         [Required]
-        [StringLength(100)]
+        [StringLength(50)]
         public string Model { get; set; }
         public int Year { get; set; }
         [Required]

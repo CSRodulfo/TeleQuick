@@ -62,19 +62,18 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\AppUserAccounts.sql" />
-    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
-    <Build Include="dbo\Tables\AppCustomers.sql" />
-    <Build Include="dbo\Tables\AppProductCategories.sql" />
     <Build Include="dbo\Tables\AspNetRoles.sql" />
     <Build Include="dbo\Tables\AspNetUsers.sql" />
-    <Build Include="dbo\Tables\AppProducts.sql" />
     <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
-    <Build Include="dbo\Tables\AppOrders.sql" />
     <Build Include="dbo\Tables\AspNetUserClaims.sql" />
     <Build Include="dbo\Tables\AspNetUserLogins.sql" />
     <Build Include="dbo\Tables\AspNetUserRoles.sql" />
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
-    <Build Include="dbo\Tables\AppOrderDetails.sql" />
+    <Build Include="dbo\Tables\Vehicles.sql" />
+    <Build Include="dbo\Tables\TagRfids.sql" />
+    <Build Include="dbo\Tables\InvoiceHeaders.sql" />
+    <Build Include="dbo\Tables\InvoiceDetails.sql" />
+    <Build Include="dbo\Tables\Concessionaries.sql" />
+    <Build Include="dbo\Tables\AccountSessions.sql" />
   </ItemGroup>
 </Project>

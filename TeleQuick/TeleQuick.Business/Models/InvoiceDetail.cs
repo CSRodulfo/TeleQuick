@@ -10,16 +10,19 @@ namespace TeleQuick.Business.Models
     {
         [Key]
         public int Id { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime Date { get; set; }
+        public TimeSpan Hour { get; set; }
         [Required]
         [StringLength(5)]
-        public string Date { get; set; }
-        public string Hour { get; set; }
         public string TollStation { get; set; }
+        [Required]
+        [StringLength(5)]
         public string Way { get; set; }
         public int Categoria { get; set; }
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "decimal(6, 2)")]
         public decimal Total { get; set; }
-        public int? InvoiceHeaderId { get; set; }
+        public int InvoiceHeaderId { get; set; }
 
         [ForeignKey(nameof(InvoiceHeaderId))]
         [InverseProperty("InvoiceDetails")]

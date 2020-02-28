@@ -55,7 +55,7 @@ namespace TeleQuick.Core.Autopista.Model
         {
             InvoiceDetail detail = new InvoiceDetail();
 
-            detail.Date = hr.Campo4;
+            detail.Date = DateTime.ParseExact(hr.Campo4, "dd/MM/yyyy", null);
 
             return detail;
         }

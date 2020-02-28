@@ -15,28 +15,30 @@ namespace TeleQuick.Business.Models
 
         [Key]
         public int Id { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime Hours { get; set; }
         [Required]
-        [StringLength(5)]
+        [StringLength(50)]
         public string Voucher { get; set; }
         public int PointOfSale { get; set; }
         public int CurrentAccount { get; set; }
-        [Column("CAE")]
-        public int Cae { get; set; }
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column("CAE", TypeName = "numeric(18, 0)")]
+        public decimal Cae { get; set; }
+        [Column(TypeName = "decimal(6, 2)")]
         public decimal Subtotal { get; set; }
-        [Column("IVAIns", TypeName = "decimal(18, 2)")]
+        [Column("IVAIns", TypeName = "decimal(6, 2)")]
         public decimal Ivains { get; set; }
-        [Column("IVARni", TypeName = "decimal(18, 2)")]
+        [Column("IVARni", TypeName = "decimal(6, 2)")]
         public decimal Ivarni { get; set; }
-        [Column("IVARG3337", TypeName = "decimal(18, 2)")]
+        [Column("IVARG3337", TypeName = "decimal(6, 2)")]
         public decimal Ivarg3337 { get; set; }
-        [Column("IIBB", TypeName = "decimal(18, 2)")]
+        [Column("IIBB", TypeName = "decimal(6, 2)")]
         public decimal Iibb { get; set; }
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "decimal(6, 2)")]
         public decimal Total { get; set; }
-        public int? VehicleId { get; set; }
+        public int VehicleId { get; set; }
 
         [ForeignKey(nameof(VehicleId))]
         [InverseProperty("InvoiceHeaders")]

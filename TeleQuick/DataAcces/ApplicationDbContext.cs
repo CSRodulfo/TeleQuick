@@ -49,16 +49,31 @@ namespace TeleQuick.DataAcces
             modelBuilder.Entity<InvoiceDetail>(entity =>
             {
                 entity.HasIndex(e => e.InvoiceHeaderId);
+
+                entity.HasOne(d => d.InvoiceHeader)
+                    .WithMany(p => p.InvoiceDetails)
+                    .HasForeignKey(d => d.InvoiceHeaderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<InvoiceHeader>(entity =>
             {
                 entity.HasIndex(e => e.VehicleId);
+
+                entity.HasOne(d => d.Vehicle)
+                    .WithMany(p => p.InvoiceHeaders)
+                    .HasForeignKey(d => d.VehicleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<TagRfid>(entity =>
             {
                 entity.HasIndex(e => e.VehicleId);
+
+                entity.HasOne(d => d.Vehicle)
+                    .WithMany(p => p.TagRfids)
+                    .HasForeignKey(d => d.VehicleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             OnModelCreatingPartial(modelBuilder);
