@@ -26,7 +26,8 @@
 
     <ng-template #nameTemplate let-row="row" let-value="value">
       <span class="inline-label">
-        {{value}}
+        <strong *ngIf="value == ' '"> {{value}} </strong>
+        <strong *ngIf="value != ''">  ********** </strong>
       </span>
     </ng-template>
 
