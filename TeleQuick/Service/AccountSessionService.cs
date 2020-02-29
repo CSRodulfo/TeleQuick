@@ -51,7 +51,13 @@ namespace Service.TeleQuick.Business
         {
             IProviderAU provider = await _providerService.GetProvider(account);
 
-            return await provider.Process();
+            List<InvoiceHeader>  list = await provider.Process();
+
+            account.Concessionary.InvoiceHeaders = list;
+
+            var a = await _repository.Update(account);
+
+            return list;
         }
     }
 }

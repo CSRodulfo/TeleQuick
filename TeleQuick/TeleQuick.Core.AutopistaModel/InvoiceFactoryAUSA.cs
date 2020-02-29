@@ -45,6 +45,7 @@ namespace TeleQuick.Core.Autopista.Model
             header.Subtotal = Convert.ToDecimal(hr.Campo22);
             header.Ivains = Convert.ToDecimal(hr.Campo25);
             header.Total = Convert.ToDecimal(hr.Campo32);
+            header.ConcessionaryId = 1;
 
 
 
@@ -61,6 +62,7 @@ namespace TeleQuick.Core.Autopista.Model
             detail.Way = hr.Campo3;
             detail.TollStation = hr.Campo5;
             detail.Total = Convert.ToDecimal(hr.Campo6);
+            detail.VehicleId = 1;
 
 
             return detail;
