@@ -12,6 +12,7 @@ using Service;
 using Service.TeleQuick.Business;
 using TeleQuick.Core.Autopista;
 using TeleQuick.Core.IAutopista;
+using System.Collections.ObjectModel;
 
 namespace Boostrapper
 {
@@ -39,7 +40,9 @@ namespace Boostrapper
             services.AddScoped<IProviderService, ProviderService>();
             services.AddScoped<IAccountSessionRepository, AccountSessionRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
-            
+            services.AddScoped<ObservableCollection<string>>();
+
+
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
 

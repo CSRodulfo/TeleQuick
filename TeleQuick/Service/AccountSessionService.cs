@@ -6,6 +6,7 @@ using IProvider;
 using IService.TeleQuick.Business;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Service.TeleQuick.Business
 {
@@ -13,11 +14,14 @@ namespace Service.TeleQuick.Business
     {
         private readonly IAccountSessionRepository _repository;
         private readonly IProviderService _providerService;
+        private ObservableCollection<string> _summary;
 
-        public AccountSessionService(IAccountSessionRepository repository, IProviderService providerService)
+        public AccountSessionService(IAccountSessionRepository repository, IProviderService providerService,
+              ObservableCollection<string> summary)
         {
             _repository = repository;
             _providerService = providerService;
+            _summary = summary;
         }
 
         public async Task<IEnumerable<AccountSession>> Get()

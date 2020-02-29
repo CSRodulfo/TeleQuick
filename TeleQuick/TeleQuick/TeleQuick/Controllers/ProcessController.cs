@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -26,46 +27,26 @@ namespace TeleQuick.Controllers
         private readonly IAccountSessionService _accountSessionService;
         private readonly ILogger _logger;
         private IHubContext<NotifyHub, ITypedHubClient> _hubContext;
+        private ObservableCollection<string> _summary;
 
-        public ProcessController(IMapper mapper, IAccountSessionService accountSessionService, 
-            ILogger<AccountSessionController> logger, IHubContext<NotifyHub, ITypedHubClient> hubContext)
+        public ProcessController(IMapper mapper, IAccountSessionService accountSessionService,
+            ILogger<AccountSessionController> logger, IHubContext<NotifyHub, ITypedHubClient> hubContext,
+            ObservableCollection<string> summary)
         {
             _mapper = mapper;
             _accountSessionService = accountSessionService;
             _logger = logger;
             _hubContext = hubContext;
-        }
-
-
-        [HttpGet]
-        public string Post()
-        {
-            string retMessage;
-
-            try
-            {
-
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                list.CollectionChanged += this.listChanged;
-
-                for (int i = 0; i < 20; i++)
-                {
-
-                    list.Add("pepe");
-                }
-                retMessage = "Successdsadasdas";
-            }
-            catch (Exception e)
-            {
-                retMessage = e.ToString();
-            }
-
-            return retMessage;
+            _summary = summary;
         }
 
         private void listChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            _hubContext.Clients.All.BroadcastMessage("dasdsada", "dasdasds");
+            var array = (IList<string>)sender;
+
+            _hubContext.Clients.All.BroadcastMessage(array.Last().ToString(), "");
+            //array.RemoveAt(0);
+
             System.Threading.Thread.Sleep(5000);
         }
 
@@ -78,6 +59,8 @@ namespace TeleQuick.Controllers
         {
             try
             {
+                _summary.CollectionChanged += this.listChanged;
+
                 AccountSession account = await _accountSessionService.GetById(3);
 
                 var rtn = await _accountSessionService.Process(account);
