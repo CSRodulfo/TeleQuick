@@ -49,8 +49,9 @@ namespace TeleQuick
         {
             this.boostrapperStartup.ConfigureServices(services);
 
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+            var culturaArgentina = CultureInfo.GetCultureInfo("es-AR");
+            CultureInfo.DefaultThreadCurrentCulture = culturaArgentina;
+            CultureInfo.DefaultThreadCurrentUICulture = culturaArgentina;
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("TeleQuick")));

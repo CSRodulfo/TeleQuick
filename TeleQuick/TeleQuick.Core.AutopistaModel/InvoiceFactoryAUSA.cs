@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace TeleQuick.Core.Autopista.Model
 {
@@ -36,13 +37,13 @@ namespace TeleQuick.Core.Autopista.Model
              
             InvoiceHeader header = new InvoiceHeader();
 
-            header.Date = DateTime.ParseExact(hr.Campo4, "dd/MM/yyyy", null);
+            header.Date = DateTime.ParseExact(hr.Campo4, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             header.Voucher = hr.Campo6;
             header.PointOfSale = Convert.ToInt32(hr.Campo7);
             header.CurrentAccount = Convert.ToInt32(hr.Campo8);
             //header.CAE = Convert.ToInt32(hr.Campo9);
             
-            header.Subtotal = Convert.ToDecimal(hr.Campo22);
+            header.Subtotal = decimal.Parse(hr.Campo22);
             header.Ivains = Convert.ToDecimal(hr.Campo25);
             header.Total = Convert.ToDecimal(hr.Campo32);
             header.ConcessionaryId = 1;
@@ -56,12 +57,12 @@ namespace TeleQuick.Core.Autopista.Model
         {
             InvoiceDetail detail = new InvoiceDetail();
 
-            detail.Date = DateTime.ParseExact(hr.Campo0, "dd/MM/yyyy", null);
-            detail.Hour = TimeSpan.ParseExact( hr.Campo1, "g",null);
+            detail.Date = DateTime.ParseExact(hr.Campo0, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            detail.Hour = TimeSpan.ParseExact( hr.Campo1, "g", CultureInfo.InvariantCulture);
             detail.Categoria = Convert.ToInt32( hr.Campo2);
             detail.Way = hr.Campo3;
             detail.TollStation = hr.Campo5;
-            detail.Total = Convert.ToDecimal(hr.Campo6);
+            detail.Total = decimal.Parse(hr.Campo6, CultureInfo.InvariantCulture);
             detail.VehicleId = 1;
 
 

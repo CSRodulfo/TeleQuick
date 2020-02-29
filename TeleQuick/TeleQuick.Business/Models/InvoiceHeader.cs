@@ -17,8 +17,6 @@ namespace TeleQuick.Business.Models
         public int Id { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime Hours { get; set; }
         [Required]
         [StringLength(50)]
         public string Voucher { get; set; }
