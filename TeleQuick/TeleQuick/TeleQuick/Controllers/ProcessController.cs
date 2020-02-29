@@ -5,17 +5,21 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using IdentityServer4.AccessTokenValidation;
 using IService.TeleQuick.Business;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
+using TeleQuick.Business.Models;
+using TeleQuick.Helpers;
 using TeleQuick.SignalR;
 
 namespace TeleQuick.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme)]
     public class ProcessController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -63,6 +67,29 @@ namespace TeleQuick.Controllers
         {
             _hubContext.Clients.All.BroadcastMessage("dasdsada", "dasdasds");
             System.Threading.Thread.Sleep(5000);
+        }
+
+        [HttpGet("Process")]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(403)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> ProcessAccountSession()
+        {
+            try
+            {
+                AccountSession account = await _accountSessionService.GetById(3);
+
+                var rtn = await _accountSessionService.Process(account);
+
+                return Ok(rtn);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(LoggingEvents.SEND_EMAIL, ex, "An error occurred whilst sending email");
+                return Ok(false);
+            }
         }
     }
 }
