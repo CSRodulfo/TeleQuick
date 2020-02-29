@@ -31,10 +31,11 @@ namespace TeleQuick.AutopistaAUSA
             }
             linea = _array[14];
             List<String> detalleItem = new List<string>();
-            string _strDom = _array[12];
-            int posD = _strDom.IndexOf("Dominio:") + 8;
-            int posT = _strDom.IndexOf("TAG");
-            _strDom = _strDom.Substring(posD, posT - posD).Trim();
+            string _item = _array[12];
+            int posD = _item.IndexOf("Dominio:") + 8;
+            int posT = _item.IndexOf("TAG");
+            var _strDom = _item.Substring(posD, posT - posD).Trim();
+            var _strTag = _item.Substring(_item.Length - 12, 12).Trim();
 
             while (!finBusqueda)
             {
@@ -54,13 +55,14 @@ namespace TeleQuick.AutopistaAUSA
             {
                 DetailResponse id = new DetailResponse();
                 int lastSpace = it.LastIndexOf(' ');
-                id.Campo4 = it.Substring(lastSpace, it.Length - lastSpace).Trim().Replace(",", ".");
+                id.Campo6 = it.Substring(lastSpace, it.Length - lastSpace).Trim().Replace(",", ".");
                 string[] detArray = it.Substring(0, lastSpace).Trim().Split(' ');
                 id.Campo0 = detArray[0];
                 id.Campo1 = detArray[1];
                 id.Campo2 = detArray[2];
                 id.Campo3 = detArray[3];
                 id.Campo4 = _strDom;
+                id.Campo7 = _strTag;
                 for (int i = 4; i < detArray.Length; i++)
                 {
                     id.Campo5 += detArray[i] + " ";
