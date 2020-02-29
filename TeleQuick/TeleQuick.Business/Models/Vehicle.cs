@@ -10,7 +10,7 @@ namespace TeleQuick.Business.Models
     {
         public Vehicle()
         {
-            InvoiceHeaders = new HashSet<InvoiceHeader>();
+            InvoiceDetails = new HashSet<InvoiceDetail>();
             TagRfids = new HashSet<TagRfid>();
         }
 
@@ -35,8 +35,8 @@ namespace TeleQuick.Business.Models
         [Column(TypeName = "datetime")]
         public DateTime CreatedDate { get; set; }
 
-        [InverseProperty(nameof(InvoiceHeader.Vehicle))]
-        public virtual ICollection<InvoiceHeader> InvoiceHeaders { get; set; }
+        [InverseProperty(nameof(InvoiceDetail.Vehicle))]
+        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
         [InverseProperty(nameof(TagRfid.Vehicle))]
         public virtual ICollection<TagRfid> TagRfids { get; set; }
     }

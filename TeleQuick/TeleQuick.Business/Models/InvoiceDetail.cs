@@ -23,9 +23,13 @@ namespace TeleQuick.Business.Models
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Total { get; set; }
         public int InvoiceHeaderId { get; set; }
+        public int VehicleId { get; set; }
 
         [ForeignKey(nameof(InvoiceHeaderId))]
         [InverseProperty("InvoiceDetails")]
         public virtual InvoiceHeader InvoiceHeader { get; set; }
+        [ForeignKey(nameof(VehicleId))]
+        [InverseProperty("InvoiceDetails")]
+        public virtual Vehicle Vehicle { get; set; }
     }
 }

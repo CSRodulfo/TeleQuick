@@ -21,7 +21,7 @@ namespace DataAcces.TeleQuick.Business
 
         public async Task<IEnumerable<Vehicle>> GetAll()
         {
-            return await _appContext.Vehicles
+            return await appContext.Vehicles
                 .Include(x => x.TagRfids)
                 .OrderBy(c => c.Year)
                 .ToListAsync();
@@ -29,13 +29,13 @@ namespace DataAcces.TeleQuick.Business
 
         public async Task<Vehicle> GetByIdAll(int id)
         {
-            return await _appContext.Vehicles
+            return await appContext.Vehicles
                 .Where(x => x.Id == id)
                 .Include(x => x.TagRfids)
                 .OrderBy(c => c.Year)
                 .FirstAsync();
         }
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)Context;
+        private ApplicationDbContext appContext => (ApplicationDbContext)Context;
     }
 }

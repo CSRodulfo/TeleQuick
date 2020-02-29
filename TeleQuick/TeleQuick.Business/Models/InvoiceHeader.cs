@@ -38,15 +38,11 @@ namespace TeleQuick.Business.Models
         public decimal Iibb { get; set; }
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Total { get; set; }
-        public int VehicleId { get; set; }
         public int ConcessionaryId { get; set; }
 
         [ForeignKey(nameof(ConcessionaryId))]
         [InverseProperty("InvoiceHeaders")]
         public virtual Concessionary Concessionary { get; set; }
-        [ForeignKey(nameof(VehicleId))]
-        [InverseProperty("InvoiceHeaders")]
-        public virtual Vehicle Vehicle { get; set; }
         [InverseProperty(nameof(InvoiceDetail.InvoiceHeader))]
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }

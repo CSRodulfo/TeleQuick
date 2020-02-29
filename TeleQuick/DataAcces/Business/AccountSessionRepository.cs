@@ -17,19 +17,19 @@ namespace DataAcces.TeleQuick.Business
 
         public async Task<IEnumerable<AccountSession>> GetAllData()
         {
-            return await _appContext.AccountSessions
+            return await appContext.AccountSessions
                                     .Include(x => x.Concessionary)
                                     .ToListAsync();
         }
 
         public async Task<AccountSession> GetById(int id)
         {
-            return _appContext.AccountSessions
+            return appContext.AccountSessions
                                     .Where(x => x.Id == id)
                                     .Include(x => x.Concessionary)
                                     .First();
         }
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)Context;
+        private ApplicationDbContext appContext => (ApplicationDbContext)Context;
     }
 }

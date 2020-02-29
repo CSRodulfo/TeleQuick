@@ -30,8 +30,6 @@ namespace TeleQuick.DataAcces
 
             base.OnModelCreating(modelBuilder);
 
-            const string priceDecimalType = "decimal(18,2)";
-
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Claims).WithOne().HasForeignKey(c => c.UserId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Roles).WithOne().HasForeignKey(r => r.UserId).IsRequired().OnDelete(DeleteBehavior.Cascade);
 
