@@ -1,16 +1,10 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using IDataAccess.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
+using TeleQuick.IDataAccess.Repositories;
 
 namespace TeleQuick.DataAcces.Repositories
 {
@@ -35,7 +29,6 @@ namespace TeleQuick.DataAcces.Repositories
         {
             return await Context.Set<T>().FindAsync(id);
         }
-
 
         public async Task<int> Add(T entity)
         {

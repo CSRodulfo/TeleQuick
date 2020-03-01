@@ -1,16 +1,8 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using TeleQuick.Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 
-namespace IDataAccess.Core
+namespace TeleQuick.IDataAccess.Core
 {
     public interface IAccountManager
     {

@@ -1,9 +1,8 @@
-﻿using IDataAccess;
-using TeleQuick.DataAcces;
-using TeleQuick.DataAcces.Business;
+﻿using TeleQuick.DataAcces.Business;
+using TeleQuick.IDataAccess;
 using TeleQuick.IDataAccess.Business;
 
-namespace DataAccess
+namespace TeleQuick.DataAcces
 {
     public class UnitOfWork : IUnitOfWork
     {

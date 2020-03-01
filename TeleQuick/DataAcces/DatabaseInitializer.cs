@@ -3,17 +3,16 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using IDataAccess;
-using IDataAccess.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 using TeleQuick.Business;
 using TeleQuick.Business.Models;
-using TeleQuick.DataAcces;
+using TeleQuick.IDataAccess;
+using TeleQuick.IDataAccess.Core;
 
-namespace DataAccess
+namespace TeleQuick.DataAcces
 {
     public class DatabaseInitializer : IDatabaseInitializer
     {

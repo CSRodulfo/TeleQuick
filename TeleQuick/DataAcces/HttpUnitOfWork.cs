@@ -1,13 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using TeleQuick.Business;
-using TeleQuick.DataAcces;
 
-namespace DataAccess
+namespace TeleQuick.DataAcces
 {
     public class HttpUnitOfWork : UnitOfWork
     {

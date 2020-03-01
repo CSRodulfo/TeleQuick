@@ -1,12 +1,6 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using AutoMapper;
-using TeleQuick.Business;
-using IDataAccess.Core;
+﻿using AutoMapper;
 using IdentityServer4.AccessTokenValidation;
+using IService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Authorization;
+using TeleQuick.Business;
 using TeleQuick.Helpers;
 using TeleQuick.ViewModels;
 

@@ -1,12 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using TeleQuick.Business.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using IDataAccess.Repositories;
+using TeleQuick.Business.Models;
+using TeleQuick.IDataAccess.Repositories;
 
 namespace TeleQuick.IDataAccess.Business
 {
@@ -15,6 +10,5 @@ namespace TeleQuick.IDataAccess.Business
         new Task<IEnumerable<Vehicle>> GetAll();
 
         Task<Vehicle> GetByIdAll(int id);
-
     }
 }

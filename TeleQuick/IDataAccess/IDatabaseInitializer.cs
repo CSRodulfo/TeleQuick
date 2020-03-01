@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDataAccess
+namespace TeleQuick.IDataAccess
 {
     public interface IDatabaseInitializer
     {

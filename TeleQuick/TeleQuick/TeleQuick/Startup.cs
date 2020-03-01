@@ -4,29 +4,27 @@
 // =============================
 
 using AutoMapper;
-using TeleQuick.Business;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TeleQuick.Authorization;
-using TeleQuick.Helpers;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using AppPermissions = TeleQuick.Business.ApplicationPermissions;
-using DataAccess;
-using System.Threading;
 using System.Globalization;
-using TeleQuick.SignalR;
+using TeleQuick.Authorization;
+using TeleQuick.Business;
 using TeleQuick.DataAcces;
+using TeleQuick.Helpers;
+using TeleQuick.SignalR;
+using AppPermissions = TeleQuick.Business.ApplicationPermissions;
 
 namespace TeleQuick
 {

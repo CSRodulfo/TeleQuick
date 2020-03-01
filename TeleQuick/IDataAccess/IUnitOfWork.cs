@@ -5,7 +5,7 @@
 
 using TeleQuick.IDataAccess.Business;
 
-namespace IDataAccess
+namespace TeleQuick.IDataAccess
 {
     public interface IUnitOfWork
     {

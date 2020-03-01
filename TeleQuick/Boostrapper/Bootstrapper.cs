@@ -1,16 +1,16 @@
-﻿using DataAccess;
-using IDataAccess;
-using IDataAccess.Core;
-using IService.TeleQuick.Business;
+﻿using IService.TeleQuick.Business;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service.TeleQuick.Business;
 using System.Collections.ObjectModel;
 using TeleQuick.Core.Autopista;
 using TeleQuick.Core.IAutopista;
+using TeleQuick.DataAcces;
 using TeleQuick.DataAcces.Business;
 using TeleQuick.DataAcces.Core;
+using TeleQuick.IDataAccess;
 using TeleQuick.IDataAccess.Business;
+using TeleQuick.IDataAccess.Core;
 
 namespace Boostrapper
 {

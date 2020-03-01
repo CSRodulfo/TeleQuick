@@ -1,12 +1,9 @@
-﻿using TeleQuick.DataAcces.Repositories;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
+using TeleQuick.DataAcces.Repositories;
 using TeleQuick.IDataAccess.Business;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace TeleQuick.DataAcces.Business
 {
