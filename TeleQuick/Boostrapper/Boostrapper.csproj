@@ -12,9 +12,9 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAcces\TeleQuick.DataAcces.csproj" />
     <ProjectReference Include="..\IDataAccess\TeleQuick.IDataAccess.csproj" />
-    <ProjectReference Include="..\IService\IService.csproj" />
+    <ProjectReference Include="..\IService\TeleQuick.IService.csproj" />
     <ProjectReference Include="..\Proveedor\Provider.csproj" />
-    <ProjectReference Include="..\Service\Service.csproj" />
+    <ProjectReference Include="..\Service\TeleQuick.Service.csproj" />
     <ProjectReference Include="..\TeleQuick.Autopista\TeleQuick.Core.Autopista.csproj" />
     <ProjectReference Include="..\TeleQuick.Business\TeleQuick.Business.csproj" />
     <ProjectReference Include="..\TeleQuick.IAutopista\TeleQuick.Core.IAutopista.csproj" />

@@ -1,15 +1,10 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Business;
 
 namespace IService
 {
-    public interface IAccountManager
+    public interface IAccountManagerService
     {
 
         Task<bool> CheckPasswordAsync(ApplicationUser user, string password);

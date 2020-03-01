@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IService.TeleQuick.Business
+namespace TeleQuick.IService
 {
     public interface IProviderService
     {

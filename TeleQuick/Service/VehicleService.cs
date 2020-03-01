@@ -1,10 +1,10 @@
-﻿using IService.TeleQuick.Business;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
+using TeleQuick.IService;
 
-namespace Service.TeleQuick.Business
+namespace TeleQuick.Service
 {
     public class VehicleService : IVehicleService
     {
@@ -25,7 +25,6 @@ namespace Service.TeleQuick.Business
             return await _vehicleRepository.Add(vehicle);
 
         }
-
         public async Task<int> Update(Vehicle vehicle)
         {
             return await _vehicleRepository.Update(vehicle);

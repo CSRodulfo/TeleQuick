@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using IdentityServer4.AccessTokenValidation;
-using IService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +11,7 @@ using System.Threading.Tasks;
 using TeleQuick.Authorization;
 using TeleQuick.Business;
 using TeleQuick.Helpers;
+using TeleQuick.IService;
 using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers

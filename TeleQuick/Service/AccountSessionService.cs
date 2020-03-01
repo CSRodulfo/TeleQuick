@@ -1,12 +1,12 @@
 ﻿using IProvider;
-using IService.TeleQuick.Business;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
+using TeleQuick.IService;
 
-namespace Service.TeleQuick.Business
+namespace TeleQuick.Service
 {
     public class AccountSessionService : IAccountSessionService
     {

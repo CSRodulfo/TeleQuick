@@ -1,11 +1,10 @@
-﻿using TeleQuick.Business.Models;
-using IProvider;
-using IService.TeleQuick.Business;
+﻿using IProvider;
 using Provider;
-using System.Threading.Tasks;
-using TeleQuick.Core.Autopista.Model;
-using TeleQuick.Core.IAutopista;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using TeleQuick.Business.Models;
+using TeleQuick.Core.IAutopista;
+using TeleQuick.IService;
 
 namespace Service.TeleQuick.Business
 {

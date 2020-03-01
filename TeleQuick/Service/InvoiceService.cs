@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TeleQuick.IDataAccess.Business;
 
-namespace Service
+namespace TeleQuick.Service
 {
     public class InvoiceService
     {

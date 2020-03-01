@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{256A6D30-FB62-4FF2-B603-D4F9B1F70753}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Service", "Service\TeleQuick.Service.csproj", "{256A6D30-FB62-4FF2-B603-D4F9B1F70753}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IService", "IService\IService.csproj", "{370DD48D-3905-4482-9508-15EFD73049D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.IService", "IService\TeleQuick.IService.csproj", "{370DD48D-3905-4482-9508-15EFD73049D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boostrapper", "Boostrapper\Boostrapper.csproj", "{3B90AB42-2F41-4941-A814-8DFD7EF807DE}"
 EndProject

@@ -1,5 +1,4 @@
-﻿using IService.TeleQuick.Business;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service.TeleQuick.Business;
 using System.Collections.ObjectModel;
@@ -11,6 +10,8 @@ using TeleQuick.DataAcces.Core;
 using TeleQuick.IDataAccess;
 using TeleQuick.IDataAccess.Business;
 using TeleQuick.IDataAccess.Core;
+using TeleQuick.IService;
+using TeleQuick.Service;
 
 namespace Boostrapper
 {

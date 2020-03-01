@@ -1,10 +1,8 @@
-﻿using TeleQuick.Business.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Business.Models;
 
-namespace IService.TeleQuick.Business
+namespace TeleQuick.IService
 {
     public interface IVehicleService
     {

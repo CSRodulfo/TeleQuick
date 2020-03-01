@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IDataAccess\TeleQuick.IDataAccess.csproj" />
     <ProjectReference Include="..\IProvider\IProvider.csproj" />
-    <ProjectReference Include="..\IService\IService.csproj" />
+    <ProjectReference Include="..\IService\TeleQuick.IService.csproj" />
     <ProjectReference Include="..\TeleQuick.AutopistaAUSA\TeleQuick.Core.Autopista.Login.csproj" />
     <ProjectReference Include="..\TeleQuick.Business\TeleQuick.Business.csproj" />
     <ProjectReference Include="..\TeleQuick.Core.Autopista.Scrappys\TeleQuick.Core.Autopista.Scrappys.csproj" />

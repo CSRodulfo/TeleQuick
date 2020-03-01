@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using IdentityServer4.AccessTokenValidation;
-using IService.TeleQuick.Business;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using TeleQuick.Business.Models;
+using TeleQuick.IService;
 using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers

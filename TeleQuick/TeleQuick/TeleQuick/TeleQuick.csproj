@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Boostrapper\Boostrapper.csproj" />
-    <ProjectReference Include="..\..\IService\IService.csproj" />
+    <ProjectReference Include="..\..\IService\TeleQuick.IService.csproj" />
     <ProjectReference Include="..\..\TeleQuick.Business\TeleQuick.Business.csproj" />
   </ItemGroup>
 
