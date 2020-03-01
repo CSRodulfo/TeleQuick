@@ -42,11 +42,11 @@ namespace Provider
 
             _summary.Add("Login de sesion AUSA exitoso");
 
-            _summary.Add("Comienzo de Scrapu AUSA");
+            _summary.Add("Comienzo de Scrapy AUSA");
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.Add("Comienzo de Scrapu AUSA exitoso");
+            _summary.Add("Scrapy AUSA exitoso");
 
             List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 

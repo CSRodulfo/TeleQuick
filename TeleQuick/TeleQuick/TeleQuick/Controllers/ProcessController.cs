@@ -46,11 +46,12 @@ namespace TeleQuick.Controllers
 
             _hubContext.Clients.All.BroadcastMessage(array.Last().ToString(), "");
             //array.RemoveAt(0);
+            
 
             System.Threading.Thread.Sleep(5000);
         }
 
-        [HttpGet("Process")]
+        [HttpGet("Process")]    
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200)]
         [ProducesResponseType(403)]
@@ -59,6 +60,7 @@ namespace TeleQuick.Controllers
         {
             try
             {
+                //_summary.
                 _summary.CollectionChanged += this.listChanged;
 
                 AccountSession account = await _accountSessionService.GetById(3);

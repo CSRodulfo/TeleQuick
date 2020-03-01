@@ -3,10 +3,10 @@
 // www.ebenmonney.com/templates
 // =============================
 
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fadeInOut } from '../../services/animations';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { HubConnectionBuilder } from '@aspnet/signalr';
 import { AlertService, MessageSeverity } from '../../services/alert.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -24,6 +24,7 @@ export class ProcessComponent implements OnInit {
     showWarning: boolean;
     dynamic: number;
     type: string;
+    text: string;
 
     name = 'Set iframe source';
     url: string = "https://binlbc.axshare.com/#id=o5m8pw&p=page_3&c=1";
@@ -34,7 +35,8 @@ export class ProcessComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      
+      this.random();
+      this.dynamic = 0;
 
         const connection = new HubConnectionBuilder()
             //.configureLogging(signalR.LogLevel.Information)
@@ -48,27 +50,15 @@ export class ProcessComponent implements OnInit {
         });
 
         connection.on("BroadcastMessage", (type: string, payload: string) => {
-            this.random();
-            this.alertService.showMessage(type, payload, MessageSeverity.error);
+            this.dynamic = this.dynamic + 10 ;
+            this.text = type;
+            this.type = 'info';
+           // this.alertService.showMessage(type, payload, MessageSeverity.error);
         });
     }
 
 
     random(): void {
-        let value = Math.floor(Math.random() * 100 + 1);
-        let type: string;
 
-        if (value < 25) {
-            type = 'success';
-        } else if (value < 50) {
-            type = 'info';
-        } else if (value < 75) {
-            type = 'warning';
-        } else {
-            type = 'danger';
-        }
-
-        this.dynamic = value;
-        this.type = type;
     }
 }
