@@ -1,16 +1,9 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
+﻿
 using Microsoft.AspNetCore.Authorization;
-using TeleQuick.Helpers;
-using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Business;
-using DataAccess.Core;
+using TeleQuick.Helpers;
 
 namespace TeleQuick.Authorization
 {

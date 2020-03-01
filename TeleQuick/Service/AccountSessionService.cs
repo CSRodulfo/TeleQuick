@@ -1,12 +1,10 @@
-﻿using TeleQuick.Business.Models;
-using IDataAccess;
-using IDataAccess.TeleQuick.Business;
-using IDataAccess.Repositories;
-using IProvider;
+﻿using IProvider;
 using IService.TeleQuick.Business;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using TeleQuick.Business.Models;
+using TeleQuick.IDataAccess.Business;
 
 namespace Service.TeleQuick.Business
 {

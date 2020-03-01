@@ -3,14 +3,8 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeleQuick.Business;
-using DataAccess.Core;
 using Microsoft.AspNetCore.Http;
+using TeleQuick.Business;
 using TeleQuick.DataAcces;
 
 namespace DataAccess

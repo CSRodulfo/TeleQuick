@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDataAccess.TeleQuick.Business
+namespace TeleQuick.IDataAccess.Business
 {
     public interface IAccountSessionRepository: IRepository<AccountSession>
     {

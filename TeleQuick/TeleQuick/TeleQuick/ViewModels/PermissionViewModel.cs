@@ -1,13 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using DataAccess.Core;
-using DataAcces.Core;
-using System;
-using System.Linq;
-using TeleQuick.Business;
+﻿using TeleQuick.Business;
 
 namespace TeleQuick.ViewModels
 {

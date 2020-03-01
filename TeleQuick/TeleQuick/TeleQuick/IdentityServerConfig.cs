@@ -1,15 +1,8 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
-using System.Collections.Generic;
-using TeleQuick.Business;
-using DataAccess.Core;
-using IdentityModel;
+﻿using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
+using System.Collections.Generic;
+using TeleQuick.Business;
 
 namespace TeleQuick
 {

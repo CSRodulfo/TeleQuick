@@ -1,19 +1,8 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using AutoMapper;
-using DataAccess.Core;
-using TeleQuick.Business;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAcces.Core;
-using  TeleQuick.Business.Models;
+using TeleQuick.Business;
+using TeleQuick.Business.Models;
 
 namespace TeleQuick.ViewModels
 {

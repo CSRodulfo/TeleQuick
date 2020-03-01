@@ -1,14 +1,6 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using TeleQuick.Business;
-using DataAccess.Core;
-using Microsoft.AspNetCore.Authorization;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 
 namespace TeleQuick.Authorization
 {
@@ -16,8 +8,6 @@ namespace TeleQuick.Authorization
     {
 
     }
-
-
 
     public class ViewRoleAuthorizationHandler : AuthorizationHandler<ViewRoleAuthorizationRequirement, string>
     {

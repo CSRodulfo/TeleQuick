@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using TeleQuick.Business;
 using TeleQuick.DataAcces;
 
-namespace DataAcces.Core
+namespace TeleQuick.DataAcces.Core
 {
     public class AccountManager : IAccountManager
     {

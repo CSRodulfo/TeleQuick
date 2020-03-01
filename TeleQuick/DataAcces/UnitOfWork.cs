@@ -1,19 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAcces.TeleQuick.Business;
-using DataAccess.Repositories;
-using IDataAccess;
-using IDataAccess.TeleQuick.Business;
-using IDataAccess.Repositories;
+﻿using IDataAccess;
 using TeleQuick.DataAcces;
+using TeleQuick.DataAcces.Business;
+using TeleQuick.IDataAccess.Business;
 
 namespace DataAccess
 {
@@ -23,7 +11,7 @@ namespace DataAccess
 
         IVehicleRepository _vehicles;
         IAccountSessionRepository _accountSessions;
-
+        IInvoiceRepository _invoice;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -49,6 +37,17 @@ namespace DataAccess
                     _accountSessions = new AccountSessionRepository(_context);
 
                 return _accountSessions;
+            }
+        }
+
+        public IInvoiceRepository Invoice
+        {
+            get
+            {
+                if (_invoice == null)
+                    _invoice = new InvoiceRepository(_context);
+
+                return _invoice;
             }
         }
 

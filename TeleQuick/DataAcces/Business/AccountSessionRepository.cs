@@ -1,17 +1,17 @@
-﻿using DataAccess.Repositories;
-using IDataAccess.TeleQuick.Business;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
-using TeleQuick.DataAcces;
+using TeleQuick.DataAcces.Repositories;
+using TeleQuick.IDataAccess.Business;
 
-namespace DataAcces.TeleQuick.Business
+namespace TeleQuick.DataAcces.Business
 {
     public class AccountSessionRepository : Repository<AccountSession>, IAccountSessionRepository
     {
-        public AccountSessionRepository(ApplicationDbContext context) : base(context)
+        public AccountSessionRepository(ApplicationDbContext context) :
+            base(context)
         { }
 
 
@@ -29,7 +29,5 @@ namespace DataAcces.TeleQuick.Business
                                     .Include(x => x.Concessionary)
                                     .First();
         }
-
-        private ApplicationDbContext appContext => (ApplicationDbContext)Context;
     }
 }

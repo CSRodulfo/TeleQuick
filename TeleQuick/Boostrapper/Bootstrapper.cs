@@ -1,18 +1,16 @@
-﻿using DataAcces.TeleQuick.Business;
-using DataAcces.Core;
-using DataAccess;
+﻿using DataAccess;
 using IDataAccess;
-using IDataAccess.TeleQuick.Business;
 using IDataAccess.Core;
-using IDataAccess.Repositories;
 using IService.TeleQuick.Business;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Service;
 using Service.TeleQuick.Business;
+using System.Collections.ObjectModel;
 using TeleQuick.Core.Autopista;
 using TeleQuick.Core.IAutopista;
-using System.Collections.ObjectModel;
+using TeleQuick.DataAcces.Business;
+using TeleQuick.DataAcces.Core;
+using TeleQuick.IDataAccess.Business;
 
 namespace Boostrapper
 {
@@ -40,6 +38,7 @@ namespace Boostrapper
             services.AddScoped<IProviderService, ProviderService>();
             services.AddScoped<IAccountSessionRepository, AccountSessionRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<ObservableCollection<string>>();
 
 

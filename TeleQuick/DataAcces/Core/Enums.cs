@@ -5,7 +5,7 @@
 
 using System;
 
-namespace DataAccess.Core
+namespace TeleQuick.DataAcces.Core
 {
     public enum Gender
     {

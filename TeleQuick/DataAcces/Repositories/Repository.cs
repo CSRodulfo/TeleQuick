@@ -12,7 +12,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Repositories
+namespace TeleQuick.DataAcces.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -20,6 +20,7 @@ namespace DataAccess.Repositories
         #region Fields
 
         protected readonly DbContext Context;
+        public ApplicationDbContext appContext => (ApplicationDbContext)Context;
 
         #endregion
 

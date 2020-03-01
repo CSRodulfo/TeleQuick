@@ -3,21 +3,22 @@
 // www.ebenmonney.com/templates
 // =============================
 
-using DataAccess.Repositories;
-using IDataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
-using TeleQuick.DataAcces;
+using TeleQuick.DataAcces.Repositories;
+using TeleQuick.IDataAccess.Business;
 
-namespace DataAcces.TeleQuick.Business
+namespace TeleQuick.DataAcces.Business
 {
     public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     {
-        public VehicleRepository(ApplicationDbContext context) : base(context)
-        { }
+        public VehicleRepository(ApplicationDbContext context)
+            : base(context)
+        {
+        }
 
         public async Task<IEnumerable<Vehicle>> GetAll()
         {
@@ -35,7 +36,5 @@ namespace DataAcces.TeleQuick.Business
                 .OrderBy(c => c.Year)
                 .FirstAsync();
         }
-
-        private ApplicationDbContext appContext => (ApplicationDbContext)Context;
     }
 }

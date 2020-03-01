@@ -6,8 +6,9 @@
 using TeleQuick.Business.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IDataAccess.Repositories;
 
-namespace IDataAccess.Repositories
+namespace TeleQuick.IDataAccess.Business
 {
     public interface IVehicleRepository : IRepository<Vehicle>
     {

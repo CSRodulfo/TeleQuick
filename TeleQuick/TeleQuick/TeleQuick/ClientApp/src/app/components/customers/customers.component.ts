@@ -14,9 +14,7 @@ import { Utilities } from '../../services/utilities';
 import { AccountSession } from '../../models/account-session.model';
 ////import { AccountSessionsEditComponent } from './account-sessions-edit/account-sessions-edit.component';
 //import { AccountSessionsCreateComponent } from './account-sessions-create/account-sessions-create.component';
-import { GlobalResources } from '../../services/globalResources'
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { GlobalResources } from '../../services/globalResources';
 
 @Component({
   selector: 'customers-list',
@@ -30,10 +28,7 @@ export class CustomersComponent implements OnInit {
   rows: AccountSession[] = [];
   rowsCache: AccountSession[] = [];
   loadingIndicator: boolean;
-
-  name = 'Set iframe source';
-  url: string = "https://binlbc.axshare.com/#id=2v3r81&p=page_2&c=1";
-  urlSafe: any; //SafeResourceUrl;
+  force: any = 'force';
 
 
   @ViewChild('indexTemplate', { static: true })
@@ -54,20 +49,11 @@ export class CustomersComponent implements OnInit {
   @ViewChild('createModal', { static: true })
   createModal: ModalDirective;
 
- //@ViewChild('accountSessionEditor', { static: true })
- //accountSessionEditor: AccountSessionsEditComponent;
-
- //@ViewChild('accountSessionCreate', { static: true })
- //accountSessionCreate: AccountSessionsCreateComponent;
-
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
-    private businessService: BusinessService, private resx: GlobalResources, public sanitizer: DomSanitizer) {
+    private businessService: BusinessService, private resx: GlobalResources ) {
   }
 
   ngOnInit() {
-    this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-
-
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
       { prop: 'loginUser', name: 'Cuenta Usuario', width: 100 },
@@ -87,23 +73,7 @@ export class CustomersComponent implements OnInit {
 
   ngAfterViewInit() {
 
-//    this.accountSessionEditor.changesSavedCallback = () => {
-//      this.loadData();
-//      this.editorModal.hide();
-//    };
-//
-//    this.accountSessionEditor.changesCancelledCallback = () => {
-//      this.editorModal.hide();
-//    };
-//
-//    this.accountSessionCreate.changesSavedCallback = () => {
-//      this.loadData();
-//      this.createModal.hide();
-//    };
-//
-//    this.accountSessionCreate.changesCancelledCallback = () => {
-//      this.createModal.hide();
-//    };
+
   }
 
   loadData() {
