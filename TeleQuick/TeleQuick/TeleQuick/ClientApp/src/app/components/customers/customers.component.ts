@@ -78,7 +78,7 @@ export class CustomersComponent implements OnInit {
 
   onDataLoadSuccessful(invoice: InvoiceHeader[]) {
     this.alertService.stopLoadingMessage();
-    this.loadingIndicator = false;
+    setTimeout(() => { this.loadingIndicator = false; }, 1500);
 
     invoice.forEach((user, index, vehicles) => {
       (user as any).index = index + 1;

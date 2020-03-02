@@ -17,148 +17,150 @@ import { VehicleCreateComponent } from './vehicle-create/vehicle-create.componen
 import { GlobalResources } from '../../services/globalResources'
 
 @Component({
-    selector: 'vehicles-list',
-    templateUrl: './vehicles-list.component.html',
-    styleUrls: ['./vehicles-list.component.scss'],
-    animations: [fadeInOut]
+  selector: 'vehicles-list',
+  templateUrl: './vehicles-list.component.html',
+  styleUrls: ['./vehicles-list.component.scss'],
+  animations: [fadeInOut]
 })
 
 export class VehiclesManagementComponent implements OnInit {
-    columns: any[] = [];
-    rows: Vehicle[] = [];
-    rowsCache: Vehicle[] = [];
-    loadingIndicator: boolean;
-    force: any = 'force';
+  columns: any[] = [];
+  rows: Vehicle[] = [];
+  rowsCache: Vehicle[] = [];
+  loadingIndicator: boolean;
+  force: any = 'force';
 
-    @ViewChild('indexTemplate', { static: true })
-    indexTemplate: TemplateRef<any>;
+  @ViewChild('indexTemplate', { static: true })
+  indexTemplate: TemplateRef<any>;
 
-    @ViewChild('actionsTemplate', { static: true })
-    actionsTemplate: TemplateRef<any>;
+  @ViewChild('actionsTemplate', { static: true })
+  actionsTemplate: TemplateRef<any>;
 
-    @ViewChild('editorModal', { static: true })
-    editorModal: ModalDirective;
+  @ViewChild('editorModal', { static: true })
+  editorModal: ModalDirective;
 
-    @ViewChild('createModal', { static: true })
-    createModal: ModalDirective;
+  @ViewChild('createModal', { static: true })
+  createModal: ModalDirective;
 
-    @ViewChild('vehicleEditor', { static: true })
-    vehicleEditor: VehicleEditComponent;
+  @ViewChild('vehicleEditor', { static: true })
+  vehicleEditor: VehicleEditComponent;
 
-    @ViewChild('vehicleCreate', { static: true })
-    vehicleCreate: VehicleCreateComponent;
+  @ViewChild('vehicleCreate', { static: true })
+  vehicleCreate: VehicleCreateComponent;
 
-    constructor(private alertService: AlertService, private translationService: AppTranslationService,
-        private businessService: BusinessService, private resx: GlobalResources) {
-    }
+  constructor(private alertService: AlertService, private translationService: AppTranslationService,
+    private businessService: BusinessService, private resx: GlobalResources) {
+  }
 
-    ngOnInit() {
+  ngOnInit() {
 
-        const gT = (key: string) => this.translationService.getTranslation(key);
+    const gT = (key: string) => this.translationService.getTranslation(key);
 
-        this.columns = [
-            { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-            { prop: 'make', name: gT('vehicles.management.Make'), width: 100 },
-            { prop: 'model', name: gT('vehicles.management.Model'), width: 100 },
-            { prop: 'year', name: gT('vehicles.management.Year'), width: 80 },
-            { prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 80 },
-        ];
+    this.columns = [
+      { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
+      { prop: 'make', name: gT('vehicles.management.Make'), width: 100 },
+      { prop: 'model', name: gT('vehicles.management.Model'), width: 100 },
+      { prop: 'year', name: gT('vehicles.management.Year'), width: 80 },
+      { prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 80 },
+    ];
 
-        // if (this.canManageVehicles) {
-        this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
-        //}
+    // if (this.canManageVehicles) {
+    this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
+    //}
 
-        this.loadData();
-    }
+    this.loadData();
+  }
 
-    ngAfterViewInit() {
+  ngAfterViewInit() {
 
-        this.vehicleEditor.changesSavedCallback = () => {
-            this.loadData();
-            this.editorModal.hide();
-        };
+    this.vehicleEditor.changesSavedCallback = () => {
+      this.loadData();
+      this.editorModal.hide();
+    };
 
-        this.vehicleEditor.changesCancelledCallback = () => {
-            this.editorModal.hide();
-        };
+    this.vehicleEditor.changesCancelledCallback = () => {
+      this.editorModal.hide();
+    };
 
-        this.vehicleCreate.changesSavedCallback = () => {
-            this.loadData();
-            this.createModal.hide();
-        };
+    this.vehicleCreate.changesSavedCallback = () => {
+      this.loadData();
+      this.createModal.hide();
+    };
 
-        this.vehicleCreate.changesCancelledCallback = () => {
-            this.createModal.hide();
-        };
-    }
+    this.vehicleCreate.changesCancelledCallback = () => {
+      this.createModal.hide();
+    };
+  }
 
-    loadData() {
-        this.alertService.startLoadingMessage();
-        this.loadingIndicator = true;
+  loadData() {
+    this.alertService.startLoadingMessage();
+    this.loadingIndicator = true;
 
-        this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results),
-            error => this.onDataLoadFailed(error));
-    }
+    this.businessService.getVehicles().subscribe(results => this.onDataLoadSuccessful(results),
+      error => this.onDataLoadFailed(error));
+  }
 
-    onDataLoadSuccessful(vehicles: Vehicle[]) {
-        this.alertService.stopLoadingMessage();
-        this.loadingIndicator = false;
+  onDataLoadSuccessful(vehicles: Vehicle[]) {
+    this.alertService.stopLoadingMessage();
+    setTimeout(() => { this.loadingIndicator = false; }, 1500);
 
-        vehicles.forEach((user, index, vehicles) => {
-            (user as any).index = index + 1;
-        });
 
-        this.rowsCache = [...vehicles];
-        this.rows = vehicles;
-    }
 
-    onDataLoadFailed(error: any) {
-        this.alertService.stopLoadingMessage();
-        this.loadingIndicator = false;
+    vehicles.forEach((user, index, vehicles) => {
+      (user as any).index = index + 1;
+    });
 
-        this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
+    this.rowsCache = [...vehicles];
+    this.rows = vehicles;
+  }
+
+  onDataLoadFailed(error: any) {
+    this.alertService.stopLoadingMessage();
+    this.loadingIndicator = false;
+
+    this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
+      MessageSeverity.error, error);
+  }
+
+
+  onSearchChanged(value: string) {
+    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.make, r.model, r.year, r.registrationNumber));
+  }
+
+  createVehicle() {
+    this.createModal.show();
+  }
+
+  editVehicle(row: Vehicle) {
+    Object.assign(this.vehicleEditor.entityVehicle, row);
+    this.editorModal.show();
+  }
+
+  deleteVehicle(row: Vehicle) {
+    this.alertService.showDialog(this.resx.deleteWarning + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
+  }
+
+  deleteUserHelper(row: Vehicle) {
+    this.alertService.startLoadingMessage(this.resx.deleteWarning);
+    this.loadingIndicator = true;
+    this.businessService.deleteVehicle(row)
+      .subscribe(
+        results => {
+          this.alertService.stopLoadingMessage();
+          this.loadingIndicator = false;
+          //this.rowsCache = this.rowsCache.filter(item => item !== row);
+          //this.rows = this.rows.filter(item => item !== row);
+          this.loadData();
+        },
+        error => {
+          this.alertService.stopLoadingMessage();
+          this.loadingIndicator = false;
+          this.alertService.showStickyMessage(this.resx.deleteError, `"${this.resx.deleteErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
             MessageSeverity.error, error);
-    }
+        });
+  }
 
-
-    onSearchChanged(value: string) {
-        this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.make, r.model, r.year, r.registrationNumber));
-    }
-
-    createVehicle() {
-        this.createModal.show();
-    }
-
-    editVehicle(row: Vehicle) {
-        Object.assign(this.vehicleEditor.entityVehicle, row);
-        this.editorModal.show();
-    }
-
-    deleteVehicle(row: Vehicle) {
-        this.alertService.showDialog(this.resx.deleteWarning + row.model + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
-    }
-
-    deleteUserHelper(row: Vehicle) {
-        this.alertService.startLoadingMessage(this.resx.deleteWarning);
-        this.loadingIndicator = true;
-        this.businessService.deleteVehicle(row)
-            .subscribe(
-                results => {
-                    this.alertService.stopLoadingMessage();
-                    this.loadingIndicator = false;
-                    //this.rowsCache = this.rowsCache.filter(item => item !== row);
-                    //this.rows = this.rows.filter(item => item !== row);
-                    this.loadData();
-                },
-                error => {
-                    this.alertService.stopLoadingMessage();
-                    this.loadingIndicator = false;
-                    this.alertService.showStickyMessage(this.resx.deleteError, `"${this.resx.deleteErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
-                        MessageSeverity.error, error);
-                });
-    }
-
-    canManageVehicles() {
-        return true;
-    }
+  canManageVehicles() {
+    return true;
+  }
 }
