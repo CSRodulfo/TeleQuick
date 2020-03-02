@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TeleQuick.Business;
 
-namespace IService
+namespace TeleQuick.IService
 {
     public interface IAccountManagerService
     {
