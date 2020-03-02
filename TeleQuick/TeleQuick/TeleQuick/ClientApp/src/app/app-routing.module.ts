@@ -1,8 +1,3 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, DefaultUrlSerializer, UrlSerializer, UrlTree } from '@angular/router';
 
@@ -11,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { AccountSessionsComponent } from './components/account-sessions/account-sessions-list.component';
 import { ProcessComponent } from './components/process/process.component';
+import { RegistrationsComponent } from './components/registrations/registrations.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
@@ -18,7 +14,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { Utilities } from './services/utilities';
-
 
 
 export class LowerCaseUrlSerializer extends DefaultUrlSerializer {
@@ -46,6 +41,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard], data: { title: 'Home' } },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard], data: { title: 'Customers' } },
+  { path: 'registrations', component: RegistrationsComponent, canActivate: [AuthGuard], data: { title: 'Registratio' } },
   { path: 'account-sessions', component: AccountSessionsComponent, canActivate: [AuthGuard], data: { title: 'AccountSessions' } },
   { path: 'process', component: ProcessComponent, canActivate: [AuthGuard], data: { title: 'Process' } },
   { path: 'vehicles', component: VehiclesManagementComponent, canActivate: [AuthGuard], data: { title: 'Vehicles' } },

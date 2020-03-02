@@ -51,6 +51,7 @@ import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { RegistrationsComponent } from './components/registrations/registrations.component';
 
 import { ProcessComponent } from './components/process/process.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
@@ -109,6 +110,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     LoginComponent,
     HomeComponent,
     CustomersComponent,
+    RegistrationsComponent,
     AccountSessionsComponent,
     ProcessComponent,
     VehiclesManagementComponent, VehicleEditComponent, VehicleCreateComponent,
