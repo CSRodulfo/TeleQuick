@@ -17,31 +17,12 @@
     </div>
 
     <ngx-datatable class="material colored-header sm table-hover" [loadingIndicator]="loadingIndicator" [rows]="rows"
-      [rowHeight]="35" [headerHeight]="35" [footerHeight]="35" [columns]="columns" [columnMode]="force"  [externalPaging]="true">
-
-      <ngx-datatable-footer>
-        <ng-template
-          ngx-datatable-footer-template
-          let-rowCount="1"
-          let-pageSize="10"
-          let-selectedCount="selectedCount"
-          let-curPage="1"
-          let-offset="offset"
-          let-isVisible="isVisible">
-
-            <datatable-pager
-                [pagerLeftArrowIcon]="'datatable-icon-left'"
-                [pagerRightArrowIcon]="'datatable-icon-right'"
-                [pagerPreviousIcon]="'datatable-icon-prev'"
-                [pagerNextIcon]="'datatable-icon-skip'"
-                [page]="curPage"
-                [size]="pageSize"
-                [count]="rowCount"
-                [hidden]="!((rowCount / pageSize) > 1)"                 >
-            </datatable-pager>
-        </ng-template>
-      </ngx-datatable-footer>
-
+      [columns]="columns" [columnMode]="force" [headerHeight]="35" [footerHeight]="35" [rowHeight]="35" 
+      [limit]="5"
+      [messages]="messagesCustom"
+      [selected]="selected"
+      [selectionType]="selectionType"
+      (select)="onSelect($event)" > 
     </ngx-datatable>
 
     <ng-template #indexTemplate let-value="value">
@@ -56,8 +37,8 @@
 
     <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
       <div *ngIf="canManageVehicles">
-        <a class="btn btn-link btn-sm" href="javascript:;"  ><i class="fa fa-pencil-square-o"
-            aria-hidden="true"></i> Configurar</a>
+        <a class="btn btn-link btn-sm" href="javascript:;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          Configurar</a>
       </div>
     </ng-template>
 

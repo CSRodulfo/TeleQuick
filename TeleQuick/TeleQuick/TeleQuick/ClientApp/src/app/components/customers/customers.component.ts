@@ -27,6 +27,18 @@ export class CustomersComponent implements OnInit {
   rowsCache: InvoiceHeader[] = [];
   loadingIndicator: boolean;
   force: any = 'force';
+  selected: any[] = [];
+  selectionType: any = 'single';
+
+  messagesCustom = {
+    emptyMessage: 'Sin datos para mostrar',
+    totalMessage: 'Total',
+    selectedMessage: ''
+  };
+
+  curPage: number = 1;
+  pageSize: number = 10;
+  rowCount: number = 36;
 
   @ViewChild('indexTemplate', { static: true })
   indexTemplate: TemplateRef<any>;
@@ -71,7 +83,7 @@ export class CustomersComponent implements OnInit {
   loadData() {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
-
+    console.log('Activate Loading');
     this.businessService.getInvoice().subscribe(results => this.onDataLoadSuccessful(results),
       error => this.onDataLoadFailed(error));
   }
@@ -80,8 +92,8 @@ export class CustomersComponent implements OnInit {
     this.alertService.stopLoadingMessage();
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
 
-    invoice.forEach((user, index, vehicles) => {
-      (user as any).index = index + 1;
+    invoice.forEach((invoice, index, invoices) => {
+      (invoice as any).index = index + 1;
     });
 
     this.rowsCache = [...invoice];
@@ -102,5 +114,9 @@ export class CustomersComponent implements OnInit {
 
   canManageVehicles() {
     return true;
+  }
+
+  onSelect({ selected }) {
+    console.log('Select Event', selected, this.selected);
   }
 }
