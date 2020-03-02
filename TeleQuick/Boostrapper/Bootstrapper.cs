@@ -13,14 +13,12 @@ using TeleQuick.IDataAccess.Core;
 using TeleQuick.IService;
 using TeleQuick.Service;
 
-namespace Boostrapper
+namespace TeleQuick.Boostrapper
 {
     public class Startup
     {
-        private readonly IConfiguration configuration;
-        public Startup(IConfiguration configuration)
+       public Startup(IConfiguration configuration)
         {
-            this.configuration = configuration;
             Configuration = configuration;
         }
 

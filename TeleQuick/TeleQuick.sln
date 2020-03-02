@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Service", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.IService", "IService\TeleQuick.IService.csproj", "{370DD48D-3905-4482-9508-15EFD73049D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boostrapper", "Boostrapper\Boostrapper.csproj", "{3B90AB42-2F41-4941-A814-8DFD7EF807DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Boostrapper", "Boostrapper\TeleQuick.Boostrapper.csproj", "{3B90AB42-2F41-4941-A814-8DFD7EF807DE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleQuick.Core.Autopista", "TeleQuick.Autopista\TeleQuick.Core.Autopista.csproj", "{F6BFB8B2-28B7-46BF-95CE-BB3EC87DFDD8}"
 EndProject

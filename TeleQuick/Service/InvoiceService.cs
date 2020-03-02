@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using TeleQuick.IDataAccess.Business;
+using TeleQuick.IService;
 
 namespace TeleQuick.Service
 {
-    public class InvoiceService
+    public class InvoiceService : IInvoiceService
     {
 
         private readonly IInvoiceRepository _invoiceRepository;

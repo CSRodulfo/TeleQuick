@@ -16,40 +16,40 @@ namespace TeleQuick.Controllers
     public class InvoiceController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IAccountSessionService _accountSessionService;
+        private readonly IInvoiceService _invoiceService;
         private readonly ILogger _logger;
 
-        public InvoiceController(IMapper mapper, IAccountSessionService accountSessionService, ILogger<AccountSessionController> logger)
+        public InvoiceController(IMapper mapper, IInvoiceService invoiceService, ILogger<InvoiceController> logger)
         {
             _mapper = mapper;
-            _accountSessionService = accountSessionService;
+            _invoiceService = invoiceService;
             _logger = logger;
         }
 
 
-        [HttpGet("AccountSession/{id}")]
+        [HttpGet("Invoice/{id}")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        [ProducesResponseType(200, Type = typeof(AccountSessionViewModel))]
+        //[ProducesResponseType(200, Type = typeof(InvoiceViewModel))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetById(int id)
         {
-            AccountSession account = await _accountSessionService.GetById(id);
+            InvoiceHeader invoice = await _invoiceService.GetById(id);
 
-            if (account == null)
+            if (invoice == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<AccountSessionViewModel>(account));
+            return Ok(_mapper.Map<InvoiceViewModel>(invoice));
         }
 
         // GET: api/values
-        [HttpGet("AccountSession")]
+        [HttpGet("Invoice")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<AccountSessionViewModel>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<InvoiceViewModel>))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Get()
         {
-            IEnumerable<AccountSession> accounts = await _accountSessionService.Get();
-            return Ok(_mapper.Map<IEnumerable<AccountSessionViewModel>>(accounts));
+            IEnumerable<InvoiceHeader> invoices = await _invoiceService.Get();
+            return Ok(_mapper.Map<IEnumerable<InvoiceViewModel>>(invoices));
         }
     }
 }
