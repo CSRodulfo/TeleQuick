@@ -48,7 +48,7 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> Get()
         {
-            IEnumerable<InvoiceHeader> invoices = await _invoiceService.Get();
+            IEnumerable<InvoiceHeader> invoices = await _invoiceService.GetAll();
             return Ok(_mapper.Map<IEnumerable<InvoiceViewModel>>(invoices));
         }
     }

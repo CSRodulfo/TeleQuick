@@ -17,6 +17,7 @@ namespace TeleQuick.DataAcces.Business
         public async Task<IEnumerable<InvoiceHeader>> GetAll()
         {
             return await appContext.InvoiceHeaders
+                .Include(x => x.Concessionary)
                 .Include(x => x.InvoiceDetails)
                 .ToListAsync();
         }

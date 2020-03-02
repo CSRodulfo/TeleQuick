@@ -18,8 +18,8 @@ namespace TeleQuick.ViewModels
         //public decimal Ivarni { get; set; }
         //public decimal Ivarg3337 { get; set; }
         //public decimal Iibb { get; set; }
-        //public decimal Total { get; set; }
-        public int ConcessionaryId { get; set; }
+        public decimal Total { get; set; }
+        public string ConcessionaryName { get; set; }
 
         //public virtual Concessionary Concessionary { get; set; }
         //public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }

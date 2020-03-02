@@ -51,6 +51,9 @@ namespace TeleQuick.ViewModels
                 .ForMember(d => d.ConcessionaryName, map => map.MapFrom(s => s.Concessionary.Name))
                 .ReverseMap();
 
+            CreateMap<InvoiceHeader, InvoiceViewModel>()
+                .ForMember(d => d.ConcessionaryName, map => map.MapFrom(s => s.Concessionary.Name));
+                //.ReverseMap();
         }
     }
 }
