@@ -33,6 +33,7 @@ namespace Boostrapper
             // Repositories
             services.AddTransient<IUnitOfWork, HttpUnitOfWork>();
             services.AddScoped<IAccountManager, AccountManager>();
+            services.AddScoped<IAccountManagerService, AccountManagerService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IAccountSessionService, AccountSessionService>();
             services.AddScoped<IConnectionAU, ConnectionAU>();

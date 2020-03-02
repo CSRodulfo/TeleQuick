@@ -21,13 +21,13 @@ namespace TeleQuick.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IAccountManager _accountManager;
+        private readonly IAccountManagerService _accountManager;
         private readonly IAuthorizationService _authorizationService;
         private readonly ILogger<AccountController> _logger;
         private const string GetUserByIdActionName = "GetUserById";
         private const string GetRoleByIdActionName = "GetRoleById";
 
-        public AccountController(IMapper mapper, IAccountManager accountManager, IAuthorizationService authorizationService,
+        public AccountController(IMapper mapper, IAccountManagerService accountManager, IAuthorizationService authorizationService,
             ILogger<AccountController> logger)
         {
             _mapper = mapper;

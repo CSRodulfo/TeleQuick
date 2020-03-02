@@ -1,7 +1,4 @@
-﻿using IService;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Business;
 using TeleQuick.IDataAccess.Core;
@@ -14,7 +11,7 @@ namespace TeleQuick.Service
         IAccountManager _accountManager;
         public AccountManagerService(IAccountManager accountManager)
         {
-            _accountManager = accountManager
+            _accountManager = accountManager;
         }
         public Task<bool> CheckPasswordAsync(ApplicationUser user, string password)
         {
@@ -109,11 +106,6 @@ namespace TeleQuick.Service
         public Task<bool> TestCanDeleteRoleAsync(string roleId)
         {
             return _accountManager.TestCanDeleteRoleAsync(roleId);
-        }
-
-        public Task<bool> TestCanDeleteUserAsync(string userId)
-        {
-            return _accountManager.tes
         }
 
         public Task<(bool Succeeded, string[] Errors)> UpdatePasswordAsync(ApplicationUser user, string currentPassword, string newPassword)
