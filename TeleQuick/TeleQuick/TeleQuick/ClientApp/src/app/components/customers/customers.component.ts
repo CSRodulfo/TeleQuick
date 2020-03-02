@@ -11,9 +11,7 @@ import { AlertService, DialogType, MessageSeverity } from '../../services/alert.
 import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
-import { AccountSession } from '../../models/account-session.model';
-////import { AccountSessionsEditComponent } from './account-sessions-edit/account-sessions-edit.component';
-//import { AccountSessionsCreateComponent } from './account-sessions-create/account-sessions-create.component';
+import { InvoiceHeader } from '../../models/invoice-header.model';
 import { GlobalResources } from '../../services/globalResources';
 
 @Component({
@@ -25,11 +23,10 @@ import { GlobalResources } from '../../services/globalResources';
 
 export class CustomersComponent implements OnInit {
   columns: any[] = [];
-  rows: AccountSession[] = [];
-  rowsCache: AccountSession[] = [];
+  rows: InvoiceHeader[] = [];
+  rowsCache: InvoiceHeader[] = [];
   loadingIndicator: boolean;
   force: any = 'force';
-
 
   @ViewChild('indexTemplate', { static: true })
   indexTemplate: TemplateRef<any>;
@@ -43,22 +40,17 @@ export class CustomersComponent implements OnInit {
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;
 
-  @ViewChild('editorModal', { static: true })
-  editorModal: ModalDirective;
-
-  @ViewChild('createModal', { static: true })
-  createModal: ModalDirective;
-
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
-    private businessService: BusinessService, private resx: GlobalResources ) {
+    private businessService: BusinessService, private resx: GlobalResources) {
   }
 
   ngOnInit() {
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-      { prop: 'loginUser', name: 'Cuenta Usuario', width: 100 },
-      { prop: 'loginUserPassword', name: 'Contraseña', width: 100, cellTemplate: this.nameTemplate },
-      { prop: 'isValid', name: 'Conexión', width: 100, cellTemplate: this.validTemplate },
+      { prop: 'date', name: 'Fecha', width: 100 },
+      { prop: 'subTotal', name: 'Subtotal', width: 100, cellTemplate: this.nameTemplate },
+      { prop: 'ivaIns', name: 'Iva', width: 100 },
+      { prop: 'total', name: 'Total', width: 100 },
       { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
       //{ prop: 'year', name: gT('vehicles.management.Year'), width: 80 },
       //{ prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 80 },
@@ -80,20 +72,20 @@ export class CustomersComponent implements OnInit {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
 
-    this.businessService.getAccountSession().subscribe(results => this.onDataLoadSuccessful(results),
+    this.businessService.getInvoice().subscribe(results => this.onDataLoadSuccessful(results),
       error => this.onDataLoadFailed(error));
   }
 
-  onDataLoadSuccessful(accountSession: AccountSession[]) {
+  onDataLoadSuccessful(invoice: InvoiceHeader[]) {
     this.alertService.stopLoadingMessage();
     this.loadingIndicator = false;
 
-    accountSession.forEach((user, index, vehicles) => {
+    invoice.forEach((user, index, vehicles) => {
       (user as any).index = index + 1;
     });
 
-    this.rowsCache = [...accountSession];
-    this.rows = accountSession;
+    this.rowsCache = [...invoice];
+    this.rows = invoice;
   }
 
   onDataLoadFailed(error: any) {
@@ -104,42 +96,8 @@ export class CustomersComponent implements OnInit {
       MessageSeverity.error, error);
   }
 
-
   onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.loginUser, r.concessionaryName));
-  }
-
-  createVehicle() {
-    this.createModal.show();
-  }
-
-  editVehicle(row: AccountSession) {
-    //Object.assign(this.accountSessionEditor.entityAccountSession, row);
-    this.editorModal.show();
-  }
-
-  deleteVehicle(row: AccountSession) {
-    this.alertService.showDialog(this.resx.deleteWarning + row.loginUser + '\"?', DialogType.confirm, () => this.deleteUserHelper(row));
-  }
-
-  deleteUserHelper(row: AccountSession) {
-    this.alertService.startLoadingMessage(this.resx.deleteWarning);
-    this.loadingIndicator = true;
-    this.businessService.deleteAccountSession(row)
-      .subscribe(
-        results => {
-          this.alertService.stopLoadingMessage();
-          this.loadingIndicator = false;
-          //this.rowsCache = this.rowsCache.filter(item => item !== row);
-          //this.rows = this.rows.filter(item => item !== row);
-          this.loadData();
-        },
-        error => {
-          this.alertService.stopLoadingMessage();
-          this.loadingIndicator = false;
-          this.alertService.showStickyMessage(this.resx.deleteError, `"${this.resx.deleteErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
-            MessageSeverity.error, error);
-        });
+    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.concessionaryName));
   }
 
   canManageVehicles() {

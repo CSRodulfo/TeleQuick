@@ -1,6 +1,6 @@
 <div class="container">
   <header class="pageHeader">
-    <h3><i class="fa fa-road fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.AccountSessions' | translate}}
+    <h3><i class="fa fa-road fa-lg page-caption" aria-hidden="true"></i> Facturación
     </h3>
   </header>
   <div [@fadeInOut]>
@@ -30,34 +30,12 @@
       </span>
     </ng-template>
 
-    <ng-template #validTemplate let-row="row" let-value="value">
-      <span class="inline-label">
-        <strong *ngIf="value == true" class="badge badge-pill badge-success">Validado</strong>
-        <strong *ngIf="value == false" class="badge badge-pill badge-secondary"> Invalido </strong>
-      </span>
-    </ng-template>
-
     <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
       <div *ngIf="canManageVehicles">
-        <a class="btn btn-link btn-sm" href="javascript:;" (click)="editVehicle(row)"><i class="fa fa-pencil-square-o"
+        <a class="btn btn-link btn-sm" href="javascript:;"  ><i class="fa fa-pencil-square-o"
             aria-hidden="true"></i> Configurar</a>
       </div>
     </ng-template>
-
-    <div class="modal fade" bsModal #editorModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <account-sessions-edit #accountSessionEditor> </account-sessions-edit>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" bsModal #createModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <account-sessions-create #accountSessionCreate></account-sessions-create>
-        </div>
-      </div>
-    </div>
 
     <router-outlet></router-outlet>
   </div>

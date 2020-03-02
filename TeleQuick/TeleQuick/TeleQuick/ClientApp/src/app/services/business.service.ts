@@ -14,6 +14,7 @@ import { Test } from '../models/test.model';
 import { Vehicle } from '../models/vehicle.model';
 import { Permission, PermissionNames, PermissionValues } from '../models/permission.model';
 import { AccountSession } from '../models/account-session.model';
+import { InvoiceHeader } from '../models/invoice-header.model';
 
 
 export type RolesChangedOperation = 'add' | 'delete' | 'modify';
@@ -67,6 +68,10 @@ export class BusinessService {
 
   deleteAccountSession(accountSession: AccountSession) {
     return this.businessEndpoint.deleteAccountSessionEndpoint<AccountSession[]>(accountSession.id);
+  }
+
+  getInvoice() {
+    return this.businessEndpoint.getInvoiceEndpoint<InvoiceHeader[]>();
   }
 
   // getUsersAndRoles(page?: number, pageSize?: number) {
