@@ -7,8 +7,8 @@ namespace TeleQuick.IDataAccess.Business
 {
     public interface IAccountSessionRepository : IRepository<AccountSession>
     {
-        Task<IEnumerable<AccountSession>> GetAllData();
-
+        Task<IList<AccountSession>> GetAllData();
+        Task<IList<AccountSession>> GetAllIsValid();
         Task<AccountSession> GetById(int id);
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Core.IAutopista;
+using HtmlAgilityPack;
 
 namespace TeleQuick.Autopista.Login
 {
@@ -31,7 +32,17 @@ namespace TeleQuick.Autopista.Login
 
         public override async Task<bool> LoginValidateAU()
         {
-            throw new NotImplementedException();
+            bool isValid = false;
+
+            var webPage = await _connect.LoginWebPage(this);
+
+            HtmlNode coll = webPage.Html.SelectSingleNode("//*[@id='MainContent_ChildContent_gdvCuentas']");
+
+            if (coll != null)
+            {
+                isValid = true;
+            }
+            return isValid;
         }
     }
 }

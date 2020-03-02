@@ -49,17 +49,21 @@ namespace TeleQuick.Service
             return await provider.ValidateLogin();
         }
 
-        public async Task<List<InvoiceHeader>> Process(AccountSession account)
+        public async Task<IList<AccountSession>> Process()
         {
-            IProviderAU provider = await _providerService.GetProvider(account);
 
-            List<InvoiceHeader>  list = await provider.Process();
+            IList<AccountSession> account = await _repository.GetAllIsValid();
 
-            account.Concessionary.InvoiceHeaders = list;
+            foreach (var item in account)
+            {
+                var provider = await _providerService.GetProvider(item);
+                var list = await provider.Process();
+                item.Concessionary.InvoiceHeaders = list;
+                var a = _repository.Update(item);
+            }
 
-            var a = await _repository.Update(account);
 
-            return list;
+            return account;
         }
     }
 }

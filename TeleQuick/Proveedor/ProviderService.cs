@@ -29,7 +29,7 @@ namespace Service.TeleQuick.Business
                     provider = new ProviderAUSA(_connection, accountSession, _summary);
                     break;
                 case AutopistasConstants.AUSOL:
-                    provider = new ProviderAUSOL(_connection, accountSession);
+                    provider = new ProviderAUSOL(_connection, accountSession, _summary);
                     break;
                 case AutopistasConstants.AUBASA:
                     break;

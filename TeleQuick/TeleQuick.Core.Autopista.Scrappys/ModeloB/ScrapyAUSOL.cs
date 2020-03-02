@@ -10,13 +10,13 @@ using TeleQuick.Core.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
 {
-    public class ScrapyB : IScrapy
+    public class ScrapyAUSOL : IScrapy
     {
         IConnectionAU _connection;
         WebPage _mainWebPage;
         private const string Uri2 = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/";
 
-        public ScrapyB(IConnectionAU connection)
+        public ScrapyAUSOL(IConnectionAU connection)
         {
             _connection = connection;
           }

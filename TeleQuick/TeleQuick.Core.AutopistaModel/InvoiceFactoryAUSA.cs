@@ -55,6 +55,7 @@ namespace TeleQuick.Core.Autopista.Model
 
             detail.Date = DateTime.ParseExact(hr.Campo0, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             detail.Hour = TimeSpan.ParseExact(hr.Campo1, "g", CultureInfo.InvariantCulture);
+            detail.Quantity = 1;
             detail.Categoria = Convert.ToInt32(hr.Campo2);
             detail.Way = hr.Campo3;
             detail.TollStation = hr.Campo5;

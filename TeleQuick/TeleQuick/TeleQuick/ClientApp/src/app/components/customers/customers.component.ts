@@ -64,14 +64,9 @@ export class CustomersComponent implements OnInit {
       { prop: 'ivaIns', name: 'Iva', width: 100 },
       { prop: 'total', name: 'Total', width: 100 },
       { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
-      //{ prop: 'year', name: gT('vehicles.management.Year'), width: 80 },
-      //{ prop: 'registrationNumber', name: gT('vehicles.management.RegistrationNumber'), width: 80 },
     ];
 
-    // if (this.canManageVehicles) {
     this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
-    //}
-
     this.loadData();
   }
 

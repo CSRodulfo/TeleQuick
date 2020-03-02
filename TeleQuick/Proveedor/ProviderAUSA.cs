@@ -14,12 +14,12 @@ namespace Provider
 {
     public class ProviderAUSA : IProviderAU
     {
-        ILogin _login;
-        IScrapy _scrapy;
-        InvoiceFactoryAUSA _invoiceHeader;
-        ObservableCollection<string> _summary;
+        private ILogin _login;
+        private IScrapy _scrapy;
+        private InvoiceFactoryAUSA _invoiceHeader;
+        private ObservableCollection<string> _summary;
 
-        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession, 
+        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession,
             ObservableCollection<string> summary)
         {
             _login = new LoginAUSA(connection, accountSession);

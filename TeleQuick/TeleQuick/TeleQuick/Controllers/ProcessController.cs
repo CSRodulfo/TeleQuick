@@ -38,17 +38,6 @@ namespace TeleQuick.Controllers
             _summary = summary;
         }
 
-        private void listChanged(object sender, NotifyCollectionChangedEventArgs args)
-        {
-            var array = (IList<string>)sender;
-
-            _hubContext.Clients.All.BroadcastMessage(array.Last().ToString(), "");
-            //array.RemoveAt(0);
-            
-
-            System.Threading.Thread.Sleep(5000);
-        }
-
         [HttpGet("Process")]    
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200)]
@@ -59,13 +48,15 @@ namespace TeleQuick.Controllers
             try
             {
                 //_summary.
-                _summary.CollectionChanged += this.listChanged;
+                _summary.CollectionChanged += async (o, e) =>
+                {
+                    var array = (IList<string>)o;
+                    await _hubContext.Clients.All.BroadcastMessage(array.Last().ToString(), "");
+                };
 
-                AccountSession account = await _accountSessionService.GetById(3);
+                var rtn = await _accountSessionService.Process();
 
-                var rtn = await _accountSessionService.Process(account);
-
-                return Ok(rtn);
+                return Ok();
 
             }
             catch (Exception ex)

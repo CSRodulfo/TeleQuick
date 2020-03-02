@@ -8,10 +8,11 @@ import { fadeInOut } from '../../services/animations';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { HubConnectionBuilder } from '@aspnet/signalr';
 import { AlertService, MessageSeverity } from '../../services/alert.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Utilities } from '../../services/utilities';
 
 import { Message } from '../../models/Message';
-import { ChatService } from '../../services/chat.service';
+import { BusinessService } from '../../services/business.service';
+import { GlobalResources } from '../../services/globalResources'
 
 @Component({
     selector: 'process',
@@ -26,17 +27,12 @@ export class ProcessComponent implements OnInit {
     type: string;
     text: string;
 
-    name = 'Set iframe source';
-    url: string = "https://binlbc.axshare.com/#id=o5m8pw&p=page_3&c=1";
-    urlSafe: any; //SafeResourceUrl;
+    constructor(private alertService: AlertService, private businessService: BusinessService, private resx: GlobalResources) {
 
-    constructor(private alertService: AlertService, public sanitizer: DomSanitizer) {
-        this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     }
 
     ngOnInit(): void {
-      this.random();
-      this.dynamic = 0;
+        this.dynamic = 0;
 
         const connection = new HubConnectionBuilder()
             //.configureLogging(signalR.LogLevel.Information)
@@ -50,15 +46,31 @@ export class ProcessComponent implements OnInit {
         });
 
         connection.on("BroadcastMessage", (type: string, payload: string) => {
-            this.dynamic = this.dynamic + 10 ;
+            this.dynamic = this.dynamic + 10;
             this.text = type;
             this.type = 'info';
-           // this.alertService.showMessage(type, payload, MessageSeverity.error);
+            // this.alertService.showMessage(type, payload, MessageSeverity.error);
         });
     }
 
 
     random(): void {
+        this.alertService.startLoadingMessage();
+        this.dynamic = 0;
 
+        this.businessService.getProcess().subscribe(results => this.onDataLoadSuccessful(),
+            error => this.onDataLoadFailed(error));
     }
+
+    onDataLoadSuccessful() {
+        this.alertService.stopLoadingMessage();
+    }
+
+    onDataLoadFailed(error: any) {
+        this.alertService.stopLoadingMessage();
+        
+        this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
+            MessageSeverity.error, error);
+    }
+
 }

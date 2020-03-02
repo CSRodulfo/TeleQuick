@@ -74,6 +74,10 @@ export class BusinessService {
     return this.businessEndpoint.getInvoiceEndpoint<InvoiceHeader[]>(page, pageSize);
   }
 
+  getProcess() {
+    return this.businessEndpoint.getProcessEndpoint();
+  }
+
   // getUsersAndRoles(page?: number, pageSize?: number) {
   //
   //   return forkJoin(

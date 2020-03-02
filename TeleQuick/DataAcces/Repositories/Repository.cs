@@ -30,18 +30,18 @@ namespace TeleQuick.DataAcces.Repositories
             return await Context.Set<T>().FindAsync(id);
         }
 
-        public async Task<int> Add(T entity)
+        public Task<int> Add(T entity)
         {
             // await Context.AddAsync(entity);
-            await Context.Set<T>().AddAsync(entity);
-            return await Context.SaveChangesAsync();
+            Context.Set<T>().AddAsync(entity);
+            return Context.SaveChangesAsync();
         }
 
-        public async Task<int> Update(T entity)
+        public Task<int> Update(T entity)
         {
             // In case AsNoTracking is used
             Context.Entry(entity).State = EntityState.Modified;
-            return await Context.SaveChangesAsync();
+            return Context.SaveChangesAsync();
         }
 
         public Task<int> Remove(T entity)

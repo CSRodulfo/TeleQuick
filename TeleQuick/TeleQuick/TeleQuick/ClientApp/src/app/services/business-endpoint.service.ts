@@ -24,6 +24,7 @@ export class BusinessEndpoint extends EndpointBase {
   private readonly _accountSession: string = '/api/accountSession/accountSession';
   private readonly _accountSessionValidateCnn: string = '/api/accountSession/ValidateConection';
   private readonly _invoiceCnn: string = '/api/Invoice/Invoice';
+  private readonly _processCnn: string = '/api/Process/Process';
 
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
@@ -31,6 +32,7 @@ export class BusinessEndpoint extends EndpointBase {
   get accountSessionUrl() { return this.configurations.baseUrl + this._accountSession; }
   get accountSessionValidateCnnUrl() { return this.configurations.baseUrl + this._accountSessionValidateCnn; }
   get invoiceCnnUrl() { return this.configurations.baseUrl + this._invoiceCnn; }
+  get processUrl() { return this.configurations.baseUrl + this._processCnn; }
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
@@ -137,6 +139,15 @@ export class BusinessEndpoint extends EndpointBase {
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {
         return this.handleError(error, () => this.getAccountSessionEndpoint());
+      }));
+  }
+
+  getProcessEndpoint<T>(): Observable<T> {
+    const endpointUrl = `${this.processUrl}`;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getProcessEndpoint());
       }));
   }
 }

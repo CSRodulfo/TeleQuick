@@ -13,8 +13,9 @@ namespace TeleQuick.Business.Models
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
         public TimeSpan Hour { get; set; }
+        public int Quantity { get; set; }
         [Required]
-        [StringLength(5)]
+        [StringLength(50)]
         public string TollStation { get; set; }
         [Required]
         [StringLength(5)]
