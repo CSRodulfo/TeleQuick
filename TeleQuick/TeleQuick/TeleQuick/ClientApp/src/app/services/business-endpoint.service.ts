@@ -131,8 +131,8 @@ export class BusinessEndpoint extends EndpointBase {
       }));
   }
 
-  getInvoiceEndpoint<T>(): Observable<T> {
-    const endpointUrl = `${this.invoiceCnnUrl}`;
+  getInvoiceEndpoint<T>(page?: number, pageSize?: number): Observable<T> {
+    const endpointUrl = page && pageSize ? `${this.invoiceCnnUrl}/${page}/${pageSize}` : this.invoiceCnnUrl;
 
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {

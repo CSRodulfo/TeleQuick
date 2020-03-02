@@ -70,8 +70,8 @@ export class BusinessService {
     return this.businessEndpoint.deleteAccountSessionEndpoint<AccountSession[]>(accountSession.id);
   }
 
-  getInvoice() {
-    return this.businessEndpoint.getInvoiceEndpoint<InvoiceHeader[]>();
+  getInvoice(page?: number, pageSize?: number) {
+    return this.businessEndpoint.getInvoiceEndpoint<InvoiceHeader[]>(page, pageSize);
   }
 
   // getUsersAndRoles(page?: number, pageSize?: number) {

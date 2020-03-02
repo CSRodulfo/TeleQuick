@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
 using TeleQuick.DataAcces.Repositories;
@@ -14,11 +15,13 @@ namespace TeleQuick.DataAcces.Business
         {
         }
 
-        public async Task<IEnumerable<InvoiceHeader>> GetAll()
+        public async Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize)
         {
+            //IQueryable<InvoiceHeader> rolesQuery
             return await appContext.InvoiceHeaders
                 .Include(x => x.Concessionary)
                 .Include(x => x.InvoiceDetails)
+                //.Skip(pageNumber).Take(pageSize)
                 .ToListAsync();
         }
     }

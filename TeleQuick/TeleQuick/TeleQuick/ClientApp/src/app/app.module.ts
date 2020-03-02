@@ -8,9 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-//import { HubConnection } from '@aspnet/signalr';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';

@@ -46,9 +46,9 @@ namespace TeleQuick.Controllers
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<InvoiceViewModel>))]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(int pageNumber, int pageSize)
         {
-            IEnumerable<InvoiceHeader> invoices = await _invoiceService.GetAll();
+            IEnumerable<InvoiceHeader> invoices = await _invoiceService.GetAll(pageNumber, pageSize);
             return Ok(_mapper.Map<IEnumerable<InvoiceViewModel>>(invoices));
         }
     }

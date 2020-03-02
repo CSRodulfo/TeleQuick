@@ -18,9 +18,9 @@ namespace TeleQuick.Service
             _invoiceRepository = invoiceRepository;
         }
 
-        public Task<IEnumerable<InvoiceHeader>> GetAll()
+        public Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize)
         {
-           return _invoiceRepository.GetAll();
+            return _invoiceRepository.GetAll(pageNumber, pageSize);
         }
 
         public Task<InvoiceHeader> GetById(int id)
