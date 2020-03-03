@@ -46,7 +46,7 @@ namespace TeleQuick
         public void ConfigureServices(IServiceCollection services)
         {
             this.boostrapperStartup.ConfigureServices(services);
-            services.AddScoped<CallingSideClass>();
+            services.AddTransient<CallingSideClass>();
 
             var culturaArgentina = CultureInfo.GetCultureInfo("es-AR");
             CultureInfo.DefaultThreadCurrentCulture = culturaArgentina;

@@ -35,22 +35,30 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
+            //try
+            //{
+                _summary.Add("Validando login de sesion AUSA");
 
-            _summary.Add("Validando login de sesion AUSA");
+                WebPage page = await _login.LoginWebPage();
 
-            WebPage page = await _login.LoginWebPage();
+                _summary.Add("Login de sesion AUSA exitoso");
 
-            _summary.Add("Login de sesion AUSA exitoso");
+                _summary.Add("Comienzo de Scrapy AUSA");
 
-            _summary.Add("Comienzo de Scrapy AUSA");
+                List<HeaderResponse> list = await _scrapy.Process(page);
 
-            List<HeaderResponse> list = await _scrapy.Process(page);
+                _summary.Add("Scrapy AUSA exitoso");
 
-            _summary.Add("Scrapy AUSA exitoso");
+                List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
+                return invoices;
 
-            return invoices;
+            //}
+            //catch (Exception ex)
+            //{
+            //    _summary.Add("Error en procesar AUSA");
+            //    return new List<InvoiceHeader>();
+            //}
         }
     }
 }

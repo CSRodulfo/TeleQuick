@@ -51,7 +51,7 @@ namespace TeleQuick.Controllers
                 _summary.CollectionChanged += async (o, e) =>
                 {
                     var array = (IList<string>)o;
-                    await _hubContext.BroadcastMessage(array.Last().ToString(), "");
+                    await _hubContext.BroadcastMessage(array.Last().ToString(), ""); 
                 };
 
                 var rtn = await _accountSessionService.Process();
@@ -61,7 +61,7 @@ namespace TeleQuick.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(LoggingEvents.SEND_EMAIL, ex, "An error occurred whilst sending email");
+                _logger.LogError(LoggingEvents.PROCESS, ex, "Se produjo un error en el procesamiento");
                 return Ok(false);
             }
         }

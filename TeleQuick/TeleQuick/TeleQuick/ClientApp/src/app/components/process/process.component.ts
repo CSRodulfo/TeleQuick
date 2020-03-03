@@ -15,62 +15,70 @@ import { BusinessService } from '../../services/business.service';
 import { GlobalResources } from '../../services/globalResources'
 
 @Component({
-    selector: 'process',
-    templateUrl: './process.component.html',
-    styleUrls: ['./process.component.scss'],
-    animations: [fadeInOut]
+  selector: 'process',
+  templateUrl: './process.component.html',
+  styleUrls: ['./process.component.scss'],
+  animations: [fadeInOut]
 })
 export class ProcessComponent implements OnInit {
-    max: number = 200;
-    showWarning: boolean;
-    dynamic: number;
-    type: string;
-    text: string;
+  max: number = 200;
+  showWarning: boolean;
+  dynamic: number;
+  type: string;
+  text: string;
 
-    constructor(private alertService: AlertService, private businessService: BusinessService, private resx: GlobalResources) {
+  constructor(private alertService: AlertService, private businessService: BusinessService, private resx: GlobalResources) {
 
-    }
+  }
 
-    ngOnInit(): void {
-        this.dynamic = 0;
+  ngOnInit(): void {
+    this.dynamic = 0;
 
-        const connection = new HubConnectionBuilder()
-            //.configureLogging(signalR.LogLevel.Information)
-            .withUrl("https://localhost:44350/notify")
-            .build();
-
-        connection.start().then(function () {
-            console.log('Connected!');
-        }).catch(function (err) {
-            return console.error(err.toString());
-        });
-
-        connection.on("BroadcastMessage", (type: string, payload: string) => {
-            this.dynamic = this.dynamic + 10;
-            this.text = type;
-            this.type = 'info';
-            // this.alertService.showMessage(type, payload, MessageSeverity.error);
-        });
-    }
+    this.connect();
 
 
-    random(): void {
-        this.alertService.startLoadingMessage();
-        this.dynamic = 0;
+  }
 
-        this.businessService.getProcess().subscribe(results => this.onDataLoadSuccessful(),
-            error => this.onDataLoadFailed(error));
-    }
 
-    onDataLoadSuccessful() {
-        this.alertService.stopLoadingMessage();
-    }
+  random(): void {
+    this.alertService.startLoadingMessage();
+    this.dynamic = 0;
 
-    onDataLoadFailed(error: any) {
-        this.alertService.stopLoadingMessage();
-        
-        this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
-            MessageSeverity.error, error);
-    }
+    this.businessService.getProcess().subscribe(results => this.onDataLoadSuccessful(),
+      error => this.onDataLoadFailed(error));
+  }
+
+  onDataLoadSuccessful() {
+    this.alertService.stopLoadingMessage();
+  }
+
+  onDataLoadFailed(error: any) {
+    this.alertService.stopLoadingMessage();
+
+    this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
+      MessageSeverity.error, error);
+
+      this.connect();
+  }
+
+  connect(): void {
+    const connection = new HubConnectionBuilder()
+      //.configureLogging(signalR.LogLevel.Information)
+      .withUrl("https://localhost:44350/notify")
+      .build();
+
+    connection.start().then(function () {
+      console.log('Connected!');
+    }).catch(function (err) {
+      return console.error(err.toString());
+    });
+
+    connection.on("BroadcastMessage", (type: string, payload: string) => {
+      this.dynamic = this.dynamic + 10;
+      this.text = type;
+      this.type = 'info';
+      // this.alertService.showMessage(type, payload, MessageSeverity.error);
+    });
+  }
 
 }

@@ -6,6 +6,8 @@ using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
 using TeleQuick.IService;
 using ExtensionMethods;
+using System;
+using Microsoft.Extensions.Logging;
 
 namespace TeleQuick.Service
 {
@@ -14,9 +16,10 @@ namespace TeleQuick.Service
         private readonly IAccountSessionRepository _repository;
         private readonly IProviderService _providerService;
         private ObservableCollection<string> _summary;
+        private readonly ILogger _logger;
 
         public AccountSessionService(IAccountSessionRepository repository, IProviderService providerService,
-              ObservableCollection<string> summary)
+              ObservableCollection<string> summary, ILogger<IAccountSessionService> logger )
         {
             _repository = repository;
             _providerService = providerService;
@@ -56,13 +59,21 @@ namespace TeleQuick.Service
 
             await account.ForEachAsync(4, async item =>
              {
-                 var provider = await _providerService.GetProvider(item);
-                 var list = await provider.Process();
-                 item.Concessionary.InvoiceHeaders = list;
-                 await _repository.Update(item);
+                 try
+                 {
+                     var provider = await _providerService.GetProvider(item);
+                     var list = await provider.Process();
+                     item.Concessionary.InvoiceHeaders = list;
+                     await _repository.Update(item);
+                 }
+                 catch (Exception ex)
+                 {
+                     _logger.LogError(ex, "Error en procesar");
+                     _summary.Add("Error en procesar" + item.Concessionary.Name);
+                 }
              });
 
-            return  account;
+            return account;
         }
     }
 }

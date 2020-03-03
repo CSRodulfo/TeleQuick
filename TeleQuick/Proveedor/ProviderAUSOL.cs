@@ -35,21 +35,30 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
-            _summary.Add("Validando login de sesion AUSOL");
+            //try
+            //{
+                _summary.Add("Validando login de sesion AUSOL");
 
-            WebPage page = await _login.LoginWebPage();
+                WebPage page = await _login.LoginWebPage();
 
-            _summary.Add("Login de sesion AUSOL exitoso");
+                _summary.Add("Login de sesion AUSOL exitoso");
 
-            _summary.Add("Comienzo de Scrapy AUSOL");
+                _summary.Add("Comienzo de Scrapy AUSOL");
 
-            List<HeaderResponse> list = await _scrapy.Process(page);
+                List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.Add("Scrapy AUSOL exitoso");
+                _summary.Add("Scrapy AUSOL exitoso");
 
-            List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
+                List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            return invoices;
+                return invoices;
+
+            //}
+            //catch (Exception)
+            //{
+            //    _summary.Add("Error en procesar AUSOL");
+            //    return new List<InvoiceHeader>();
+            //}
         }
     }
 }

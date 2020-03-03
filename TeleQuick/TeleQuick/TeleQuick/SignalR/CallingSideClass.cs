@@ -24,7 +24,7 @@ namespace TeleQuick.SignalR
 
         public Task BroadcastMessage(string userId, string message)
         {
-            return _hubContext.Clients.All.BroadcastMessage(message, "");
+            return _hubContext.Clients.All.BroadcastMessage(userId, "");
 
         }
     }
