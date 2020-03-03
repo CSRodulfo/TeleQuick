@@ -23,6 +23,12 @@ namespace TeleQuick.Service
             return _invoiceRepository.GetAll(pageNumber, pageSize);
         }
 
+        public Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize)
+        {
+            return _invoiceRepository.GetAllDetails(pageNumber, pageSize);
+          
+        }
+
         public Task<InvoiceHeader> GetById(int id)
         {
             throw new NotImplementedException();

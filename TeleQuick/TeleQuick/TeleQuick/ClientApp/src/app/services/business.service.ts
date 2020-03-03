@@ -15,7 +15,7 @@ import { Vehicle } from '../models/vehicle.model';
 import { Permission, PermissionNames, PermissionValues } from '../models/permission.model';
 import { AccountSession } from '../models/account-session.model';
 import { InvoiceHeader } from '../models/invoice-header.model';
-
+import { InvoiceDetail } from '../models/invoice-detail.model';
 
 export type RolesChangedOperation = 'add' | 'delete' | 'modify';
 
@@ -72,6 +72,10 @@ export class BusinessService {
 
   getInvoice(page?: number, pageSize?: number) {
     return this.businessEndpoint.getInvoiceEndpoint<InvoiceHeader[]>(page, pageSize);
+  }
+
+  getInvoiceDetail(page?: number, pageSize?: number) {
+    return this.businessEndpoint.getInvoiceDetailEndpoint<InvoiceDetail[]>(page, pageSize);
   }
 
   getProcess() {

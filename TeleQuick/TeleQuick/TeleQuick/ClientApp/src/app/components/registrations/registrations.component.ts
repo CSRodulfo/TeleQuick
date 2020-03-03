@@ -6,7 +6,7 @@ import { AlertService, DialogType, MessageSeverity } from '../../services/alert.
 import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
-import { InvoiceHeader } from '../../models/invoice-header.model';
+import { InvoiceDetail } from '../../models/invoice-detail.model';
 import { GlobalResources } from '../../services/globalResources';
 
 @Component({
@@ -18,8 +18,8 @@ import { GlobalResources } from '../../services/globalResources';
 
 export class RegistrationsComponent implements OnInit {
   columns: any[] = [];
-  rows: InvoiceHeader[] = [];
-  rowsCache: InvoiceHeader[] = [];
+  rows: InvoiceDetail[] = [];
+  rowsCache: InvoiceDetail[] = [];
   loadingIndicator: boolean;
   force: any = 'force';
   selected: any[] = [];
@@ -44,6 +44,9 @@ export class RegistrationsComponent implements OnInit {
   @ViewChild('nameTemplate', { static: true })
   nameTemplate: TemplateRef<any>;
 
+  @ViewChild('dateTemplate', { static: true })
+  dateTemplate: TemplateRef<any>;
+
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;
 
@@ -54,11 +57,13 @@ export class RegistrationsComponent implements OnInit {
   ngOnInit() {
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-      { prop: 'date', name: 'Fecha', width: 100 },
-      { prop: 'subTotal', name: 'Subtotal', width: 100, cellTemplate: this.nameTemplate },
-      { prop: 'ivaIns', name: 'Iva', width: 100 },
-      { prop: 'total', name: 'Total', width: 100 },
-      { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
+      { prop: 'date', name: 'Fecha', width: 100, cellTemplate: this.dateTemplate },
+      { prop: 'hour', name: 'Hora', width: 100, cellTemplate: this.nameTemplate },
+      { prop: 'quantity', name: 'Cantidad', width: 50 },
+      { prop: 'tollStation', name: 'Paso', width: 200 },
+      { prop: 'category', name: 'Categoria', width: 50 },
+      { prop: 'total', name: 'Total', width: 50 },
+      { prop: 'vehicleRegistration', name: 'Dominio', width: 100 },
     ];
 
     this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
@@ -74,11 +79,11 @@ export class RegistrationsComponent implements OnInit {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
     console.log('Activate Loading');
-    this.businessService.getInvoice().subscribe(results => this.onDataLoadSuccessful(results),
+    this.businessService.getInvoiceDetail().subscribe(results => this.onDataLoadSuccessful(results),
       error => this.onDataLoadFailed(error));
   }
 
-  onDataLoadSuccessful(invoice: InvoiceHeader[]) {
+  onDataLoadSuccessful(invoice: InvoiceDetail[]) {
     this.alertService.stopLoadingMessage();
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
 
@@ -99,7 +104,7 @@ export class RegistrationsComponent implements OnInit {
   }
 
   onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.concessionaryName));
+    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.vehicleRegistration));
   }
 
   canManageVehicles() {

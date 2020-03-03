@@ -8,6 +8,7 @@ namespace TeleQuick.IService
 {
     public interface IInvoiceService
     {
+        Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize);
         Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize);
         Task<InvoiceHeader> GetById(int id);
     }

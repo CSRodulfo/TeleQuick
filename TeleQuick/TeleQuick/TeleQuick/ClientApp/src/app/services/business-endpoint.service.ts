@@ -20,19 +20,21 @@ export class BusinessEndpoint extends EndpointBase {
 
   private readonly _usersUrl: string = '/api/BaseData';
   private readonly _userByUserNameUrl: string = '/api/account/users/username';
-  private readonly _vehicles: string = '/api/Vehicle/Vehicle';
-  private readonly _accountSession: string = '/api/accountSession/accountSession';
-  private readonly _accountSessionValidateCnn: string = '/api/accountSession/ValidateConection';
-  private readonly _invoiceCnn: string = '/api/Invoice/Invoice';
-  private readonly _processCnn: string = '/api/Process/Process';
+  private readonly _vehiclesUrl: string = '/api/Vehicle/Vehicle';
+  private readonly _accountSessionUrl: string = '/api/accountSession/accountSession';
+  private readonly _accountSessionValidateUrl: string = '/api/accountSession/ValidateConection';
+  private readonly _invoiceUrl: string = '/api/Invoice/Invoice';
+  private readonly _processUrl: string = '/api/Process/Process';
+  private readonly _registrationUrl: string = '/api/Registration/Invoice';
 
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
-  get vehiclesUrl() { return this.configurations.baseUrl + this._vehicles; }
-  get accountSessionUrl() { return this.configurations.baseUrl + this._accountSession; }
-  get accountSessionValidateCnnUrl() { return this.configurations.baseUrl + this._accountSessionValidateCnn; }
-  get invoiceCnnUrl() { return this.configurations.baseUrl + this._invoiceCnn; }
-  get processUrl() { return this.configurations.baseUrl + this._processCnn; }
+  get vehiclesUrl() { return this.configurations.baseUrl + this._vehiclesUrl; }
+  get accountSessionUrl() { return this.configurations.baseUrl + this._accountSessionUrl; }
+  get accountSessionValidateUrl() { return this.configurations.baseUrl + this._accountSessionValidateUrl; }
+  get invoiceUrl() { return this.configurations.baseUrl + this._invoiceUrl; }
+  get processUrl() { return this.configurations.baseUrl + this._processUrl; }
+  get registrationUrl() { return this.configurations.baseUrl + this._registrationUrl; }
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
@@ -102,7 +104,7 @@ export class BusinessEndpoint extends EndpointBase {
   getAccountSessionValidateConectionEndpoint<T>(accountSession: AccountSession): Observable<T> {
     //const endpointUrl = accountSessionId ? `${this.accountSessionValidateCnnUrl}/${accountSessionId}` : this.accountSessionValidateCnnUrl;
 
-    return this.http.put<T>(this.accountSessionValidateCnnUrl, JSON.stringify(accountSession), this.requestHeaders).pipe<T>(
+    return this.http.put<T>(this.accountSessionValidateUrl, JSON.stringify(accountSession), this.requestHeaders).pipe<T>(
       catchError(error => {
         return this.handleError(error, () => this.getAccountSessionValidateConectionEndpoint(accountSession));
       }));
@@ -134,11 +136,20 @@ export class BusinessEndpoint extends EndpointBase {
   }
 
   getInvoiceEndpoint<T>(page?: number, pageSize?: number): Observable<T> {
-    const endpointUrl = page && pageSize ? `${this.invoiceCnnUrl}/${page}/${pageSize}` : this.invoiceCnnUrl;
+    const endpointUrl = page && pageSize ? `${this.invoiceUrl}/${page}/${pageSize}` : this.invoiceUrl;
 
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {
         return this.handleError(error, () => this.getAccountSessionEndpoint());
+      }));
+  }
+
+  getInvoiceDetailEndpoint<T>(page?: number, pageSize?: number): Observable<T> {
+    const endpointUrl = page && pageSize ? `${this.invoiceUrl}/${page}/${pageSize}` : this.registrationUrl;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getInvoiceDetailEndpoint());
       }));
   }
 

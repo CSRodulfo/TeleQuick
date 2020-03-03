@@ -20,7 +20,7 @@ namespace TeleQuick.Business.Models
         [Required]
         [StringLength(5)]
         public string Way { get; set; }
-        public int Categoria { get; set; }
+        public int Category { get; set; }
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Total { get; set; }
         public int InvoiceHeaderId { get; set; }

@@ -24,5 +24,14 @@ namespace TeleQuick.DataAcces.Business
                 //.Skip(pageNumber).Take(pageSize)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize)
+        {
+            //IQueryable<InvoiceHeader> rolesQuery
+            return await appContext.InvoiceDetails
+                .Include(x => x.Vehicle)
+                //.Skip(pageNumber).Take(pageSize)
+                .ToListAsync();
+        }
     }
 }
