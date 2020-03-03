@@ -1,5 +1,6 @@
 ﻿using IProvider;
 using Provider;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
@@ -19,17 +20,17 @@ namespace Service.TeleQuick.Business
             _summary = summary;
         }
 
-        public async Task<IProviderAU> GetProvider(AccountSession accountSession)
+        public IProviderAU GetProvider(AccountSession accountSession, IEnumerable<Vehicle> vehicles)
         {
             IProviderAU provider = null;
 
             switch (accountSession.Concessionary.GetAutopista())
             {
                 case AutopistasConstants.AUSA:
-                    provider = new ProviderAUSA(_connection, accountSession, _summary);
+                    provider = new ProviderAUSA(_connection, accountSession, vehicles, _summary);
                     break;
                 case AutopistasConstants.AUSOL:
-                    provider = new ProviderAUSOL(_connection, accountSession, _summary);
+                    provider = new ProviderAUSOL(_connection, accountSession, vehicles, _summary);
                     break;
                 case AutopistasConstants.AUBASA:
                     break;
@@ -44,6 +45,11 @@ namespace Service.TeleQuick.Business
             }
 
             return provider;
+        }
+
+        public IProviderAU GetProviderToLogin(AccountSession accountSession)
+        {
+            return this.GetProvider(accountSession, null);
         }
     }
 }

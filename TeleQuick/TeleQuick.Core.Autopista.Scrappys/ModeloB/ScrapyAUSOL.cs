@@ -5,30 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
+using TeleQuick.Core.Autopista.Scrappys;
 using TeleQuick.Core.Autopista.Scrappys.ModeloB;
 using TeleQuick.Core.IAutopista;
 
 namespace TeleQuick.AutopistaAUSOL
 {
-    public class ScrapyAUSOL : IScrapy
+    public class ScrapyAUSOL : Scrapy, IScrapy
     {
-        IConnectionAU _connection;
         WebPage _mainWebPage;
         private const string Uri2 = "https://www.ausol.com.ar:91/WebPages/EstadoCuenta/";
 
-        public ScrapyAUSOL(IConnectionAU connection)
+        public ScrapyAUSOL(IConnectionAU connection) :
+            base(connection)
         {
-            _connection = connection;
-          }
 
+        }
         public async Task<List<HeaderResponse>> Process(WebPage mainPage)
         {
             _mainWebPage = mainPage;
-            return await this.ScrappHeader();
-        }
-
-        private async Task<List<HeaderResponse>> ScrappHeader()
-        {
             return await this.ProcessMainPage();
         }
 

@@ -16,16 +16,22 @@ namespace Provider
     {
         private ILogin _login;
         private IScrapy _scrapy;
-        private InvoiceFactoryAUSA _invoiceHeader;
+        private IInvoiceFactory _invoiceHeader;
         private ObservableCollection<string> _summary;
 
-        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession,
+        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
             ObservableCollection<string> summary)
         {
             _login = new LoginAUSA(connection, accountSession);
             _scrapy = new ScrapySixon(connection);
-            _invoiceHeader = new InvoiceFactoryAUSA();
+            _invoiceHeader = new InvoiceFactoryAUSA(vehicles);
             _summary = summary;
+        }
+
+        public ProviderAUSA(IConnectionAU connection, AccountSession accountSession)
+        {
+            _login = new LoginAUSA(connection, accountSession);
+            _scrapy = new ScrapySixon(connection);
         }
 
         public async Task<bool> ValidateLogin()

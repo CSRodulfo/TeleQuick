@@ -9,6 +9,8 @@ namespace TeleQuick.IService
 {
     public interface IProviderService
     {
-        Task<IProviderAU> GetProvider(AccountSession accountSession);
+        IProviderAU GetProviderToLogin(AccountSession accountSession);
+
+        IProviderAU GetProvider(AccountSession accountSession, IEnumerable<Vehicle> vehicles);
     }
 }

@@ -1,14 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Logging;
 
 namespace TeleQuick.Helpers
 {
@@ -18,6 +8,4 @@ namespace TeleQuick.Helpers
         public static readonly EventId SEND_EMAIL = new EventId(201, "Error whilst sending email");
         public static readonly EventId PROCESS = new EventId(301, "Error en procesamiento Scrappy");
     }
-}
-
 }

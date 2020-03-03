@@ -5,29 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
+using TeleQuick.Core.Autopista.Scrappys;
 using TeleQuick.Core.IAutopista;
 
 namespace TeleQuick.AutopistaAUSA
 {
-    public class ScrapySixon : IScrapy
+    public class ScrapySixon : Scrapy, IScrapy
     {
-        IConnectionAU _connection;
         WebPage _mainWebPage;
         private const string Uri2 = "https://cliente.ausa.com.ar/fael/servlet/oemidetcweb?6";
 
-        public ScrapySixon(IConnectionAU connection)
+        public ScrapySixon(IConnectionAU connection) :
+            base(connection)
         {
-            _connection = connection;
+
         }
 
         public async Task<List<HeaderResponse>> Process(WebPage mainPage)
         {
             _mainWebPage = mainPage;
-            return await this.ScrappHeader();
-        }
-
-        private async Task<List<HeaderResponse>> ScrappHeader()
-        {
             return await this.ProcessMainPage();
         }
 

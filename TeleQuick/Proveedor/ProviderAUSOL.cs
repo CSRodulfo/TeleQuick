@@ -16,16 +16,22 @@ namespace Provider
     {
         private IScrapy _scrapy;
         private ILogin _login;
-        private InvoiceFactoryAUSOL _invoiceHeader;
+        private IInvoiceFactory _invoiceHeader;
         private ObservableCollection<string> _summary;
 
-        public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession,
+        public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
             ObservableCollection<string> summary)
         {
             _login = new LoginAUSOL(connection, accountSession);
             _scrapy = new ScrapyAUSOL(connection);
-            _invoiceHeader = new InvoiceFactoryAUSOL();
+            _invoiceHeader = new InvoiceFactoryAUSOL(vehicles);
             _summary = summary;
+        }
+
+        public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession)
+        {
+            _login = new LoginAUSOL(connection, accountSession);
+            _scrapy = new ScrapyAUSOL(connection);
         }
 
         public async Task<bool> ValidateLogin()
@@ -37,21 +43,21 @@ namespace Provider
         {
             //try
             //{
-                _summary.Add("Validando login de sesion AUSOL");
+            _summary.Add("Validando login de sesion AUSOL");
 
-                WebPage page = await _login.LoginWebPage();
+            WebPage page = await _login.LoginWebPage();
 
-                _summary.Add("Login de sesion AUSOL exitoso");
+            _summary.Add("Login de sesion AUSOL exitoso");
 
-                _summary.Add("Comienzo de Scrapy AUSOL");
+            _summary.Add("Comienzo de Scrapy AUSOL");
 
-                List<HeaderResponse> list = await _scrapy.Process(page);
+            List<HeaderResponse> list = await _scrapy.Process(page);
 
-                _summary.Add("Scrapy AUSOL exitoso");
+            _summary.Add("Scrapy AUSOL exitoso");
 
-                List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
+            List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-                return invoices;
+            return invoices;
 
             //}
             //catch (Exception)

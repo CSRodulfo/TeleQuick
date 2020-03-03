@@ -7,9 +7,10 @@ using System.Text.RegularExpressions;
 
 namespace TeleQuick.Core.Autopista.Model
 {
-    public class InvoiceFactoryAUSOL
+    public class InvoiceFactoryAUSOL : InvoiceFactory, IInvoiceFactory
     {
-        public InvoiceFactoryAUSOL()
+        public InvoiceFactoryAUSOL(IEnumerable<Vehicle> vehicles) :
+            base(vehicles)
         {
 
         }

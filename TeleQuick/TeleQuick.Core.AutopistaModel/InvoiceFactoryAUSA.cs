@@ -6,9 +6,10 @@ using System.Globalization;
 
 namespace TeleQuick.Core.Autopista.Model
 {
-    public class InvoiceFactoryAUSA
+    public class InvoiceFactoryAUSA : InvoiceFactory,  IInvoiceFactory
     {
-        public InvoiceFactoryAUSA()
+        public InvoiceFactoryAUSA(IEnumerable<Vehicle> vehicles):
+            base(vehicles)
         {
 
         }
@@ -60,7 +61,7 @@ namespace TeleQuick.Core.Autopista.Model
             detail.Way = hr.Campo3;
             detail.TollStation = hr.Campo5;
             detail.Total = decimal.Parse(hr.Campo6, CultureInfo.InvariantCulture);
-            detail.VehicleId = 1;
+            detail.Vehicle = GetVehicle(hr.Campo4);
 
 
             return detail;

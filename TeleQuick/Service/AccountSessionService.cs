@@ -14,16 +14,18 @@ namespace TeleQuick.Service
     public class AccountSessionService : IAccountSessionService
     {
         private readonly IAccountSessionRepository _repository;
+        private readonly IVehicleRepository _repositoryVehicle;
         private readonly IProviderService _providerService;
         private ObservableCollection<string> _summary;
         private readonly ILogger _logger;
 
         public AccountSessionService(IAccountSessionRepository repository, IProviderService providerService,
-              ObservableCollection<string> summary, ILogger<IAccountSessionService> logger )
+              ObservableCollection<string> summary, ILogger<IAccountSessionService> logger, IVehicleRepository repositoryVehicle)
         {
             _repository = repository;
             _providerService = providerService;
             _summary = summary;
+            _repositoryVehicle = repositoryVehicle;
         }
 
         public async Task<IEnumerable<AccountSession>> Get()
@@ -48,7 +50,7 @@ namespace TeleQuick.Service
 
         public async Task<bool> ValidateConnection(AccountSession account)
         {
-            IProviderAU provider = await _providerService.GetProvider(account);
+            IProviderAU provider = _providerService.GetProviderToLogin(account);
 
             return await provider.ValidateLogin();
         }
@@ -61,7 +63,8 @@ namespace TeleQuick.Service
              {
                  try
                  {
-                     var provider = await _providerService.GetProvider(item);
+                     var vehicle = await _repositoryVehicle.GetAll();
+                     var provider = _providerService.GetProvider(item, vehicle);
                      var list = await provider.Process();
                      item.Concessionary.InvoiceHeaders = list;
                      await _repository.Update(item);
