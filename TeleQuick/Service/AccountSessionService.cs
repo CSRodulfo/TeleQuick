@@ -56,11 +56,16 @@ namespace TeleQuick.Service
 
             foreach (var item in account)
             {
-                var provider = await _providerService.GetProvider(item);
-                var list = await provider.Process();
-                item.Concessionary.InvoiceHeaders = list;
-                var a = _repository.Update(item);
+                var yourForeachTask = Task.Run(async () =>
+                {
+                    var provider = await _providerService.GetProvider(item);
+                    var list = await provider.Process();
+                    item.Concessionary.InvoiceHeaders = list;
+                    var a = await _repository.Update(item);
+
+                });
             }
+
 
 
             return account;
