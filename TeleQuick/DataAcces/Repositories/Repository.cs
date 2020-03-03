@@ -30,11 +30,11 @@ namespace TeleQuick.DataAcces.Repositories
             return await Context.Set<T>().FindAsync(id);
         }
 
-        public Task<int> Add(T entity)
+        public async Task<int> Add(T entity)
         {
             // await Context.AddAsync(entity);
-            Context.Set<T>().AddAsync(entity);
-            return Context.SaveChangesAsync();
+            await Context.Set<T>().AddAsync(entity);
+            return await Context.SaveChangesAsync();
         }
 
         public Task<int> Update(T entity)

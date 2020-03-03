@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
 using TeleQuick.IService;
+using ExtensionMethods;
 
 namespace TeleQuick.Service
 {
@@ -49,26 +50,19 @@ namespace TeleQuick.Service
             return await provider.ValidateLogin();
         }
 
-        public async Task<IList<AccountSession>> Process()
+        public async Task<List<AccountSession>> Process()
         {
+            var account = await _repository.GetAllIsValid();
 
-            IList<AccountSession> account = await _repository.GetAllIsValid();
+            await account.ForEachAsync(4, async item =>
+             {
+                 var provider = await _providerService.GetProvider(item);
+                 var list = await provider.Process();
+                 item.Concessionary.InvoiceHeaders = list;
+                 await _repository.Update(item);
+             });
 
-            foreach (var item in account)
-            {
-                var yourForeachTask = Task.Run(async () =>
-                {
-                    var provider = await _providerService.GetProvider(item);
-                    var list = await provider.Process();
-                    item.Concessionary.InvoiceHeaders = list;
-                    var a = await _repository.Update(item);
-
-                });
-            }
-
-
-
-            return account;
+            return  account;
         }
     }
 }

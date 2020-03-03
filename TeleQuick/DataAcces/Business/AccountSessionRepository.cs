@@ -15,15 +15,15 @@ namespace TeleQuick.DataAcces.Business
         { }
 
 
-        public async Task<IList<AccountSession>> GetAllData()
+        public Task<List<AccountSession>> GetAllData()
         {
-            return await appContext.AccountSessions
+            return appContext.AccountSessions
                                     .Include(x => x.Concessionary)
                                     .ToListAsync();
         }
-        public async Task<IList<AccountSession>> GetAllIsValid()
+        public Task<List<AccountSession>> GetAllIsValid()
         {
-            return await appContext.AccountSessions
+            return appContext.AccountSessions
                                     .Include(x => x.Concessionary)
                                     .Where(x=> x.IsValid == true)
                                     .ToListAsync();
