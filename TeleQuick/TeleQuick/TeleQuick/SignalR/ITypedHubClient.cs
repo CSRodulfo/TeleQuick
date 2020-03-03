@@ -5,5 +5,7 @@ namespace TeleQuick.SignalR
     public interface ITypedHubClient
     {
         Task BroadcastMessage(string type, string payload);
+
+        Task BroadcastMessageUser(string userId, Message message);
     }
 }

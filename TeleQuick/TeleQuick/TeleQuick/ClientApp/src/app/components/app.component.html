@@ -43,12 +43,12 @@
         <span class="app-component navbar-text notifications-popup">{{'app.Welcome' | translate}}</span>
         <a class="app-component nav-link user-name d-inline-block px-1" [popover]="popTemplate" (onHidden)="markNotificationsAsRead()" placement="bottom" [popoverTitle]="notificationsTitle" href="javascript:;" triggers="focus">
           {{userName}}
-          <span *ngIf="newNotificationCount > 0" class="badge badge-pill badge-secondary">{{newNotificationCount}}</span>
+          <!-- <span *ngIf="newNotificationCount > 0" class="badge badge-pill badge-secondary">{{newNotificationCount}}</span> -->
         </a>
         <ng-template #popTemplate>
           <notifications-viewer [isViewOnly]="true"></notifications-viewer>
         </ng-template>
-        <span class="app-component navbar-text">, </span>
+        <span class="app-component navbar-text"> </span>
         <ul class="app-component nav nav-pills ml-lg-2 flex-column flex-lg-row">
           <li class="nav-item" (click)="logout()">
             <a class="nav-link" href="javascript:;"><i class="fa fa-sign-out"></i> {{'mainMenu.Logout' | translate}}</a>

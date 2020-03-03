@@ -24,11 +24,11 @@ namespace TeleQuick.Controllers
         private readonly IMapper _mapper;
         private readonly IAccountSessionService _accountSessionService;
         private readonly ILogger _logger;
-        private IHubContext<NotifyHub, ITypedHubClient> _hubContext;
+        private CallingSideClass _hubContext;
         private ObservableCollection<string> _summary;
 
         public ProcessController(IMapper mapper, IAccountSessionService accountSessionService,
-            ILogger<AccountSessionController> logger, IHubContext<NotifyHub, ITypedHubClient> hubContext,
+            ILogger<AccountSessionController> logger, CallingSideClass hubContext,
             ObservableCollection<string> summary)
         {
             _mapper = mapper;
@@ -51,7 +51,7 @@ namespace TeleQuick.Controllers
                 _summary.CollectionChanged += async (o, e) =>
                 {
                     var array = (IList<string>)o;
-                    await _hubContext.Clients.All.BroadcastMessage(array.Last().ToString(), "");
+                    await _hubContext.BroadcastMessage(array.Last().ToString(), "");
                 };
 
                 var rtn = await _accountSessionService.Process();
