@@ -10,7 +10,6 @@ namespace TeleQuick.ViewModels
 
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public TimeSpan Hour { get; set; }
         public int Quantity { get; set; }
         public string TollStation { get; set; }
         public string Way { get; set; }

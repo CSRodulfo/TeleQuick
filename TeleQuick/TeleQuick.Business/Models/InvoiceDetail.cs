@@ -10,9 +10,8 @@ namespace TeleQuick.Business.Models
     {
         [Key]
         public int Id { get; set; }
-        [Column(TypeName = "date")]
+        [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
-        public TimeSpan Hour { get; set; }
         public int Quantity { get; set; }
         [Required]
         [StringLength(50)]

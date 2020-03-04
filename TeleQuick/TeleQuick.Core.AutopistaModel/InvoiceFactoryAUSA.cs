@@ -6,9 +6,9 @@ using System.Globalization;
 
 namespace TeleQuick.Core.Autopista.Model
 {
-    public class InvoiceFactoryAUSA : InvoiceFactory,  IInvoiceFactory
+    public class InvoiceFactoryAUSA : InvoiceFactory, IInvoiceFactory
     {
-        public InvoiceFactoryAUSA(IEnumerable<Vehicle> vehicles):
+        public InvoiceFactoryAUSA(IEnumerable<Vehicle> vehicles) :
             base(vehicles)
         {
 
@@ -54,8 +54,8 @@ namespace TeleQuick.Core.Autopista.Model
         {
             InvoiceDetail detail = new InvoiceDetail();
 
-            detail.Date = DateTime.ParseExact(hr.Campo0, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            detail.Hour = TimeSpan.ParseExact(hr.Campo1, "g", CultureInfo.InvariantCulture);
+            var date = string.Concat(hr.Campo0, " ", hr.Campo1);
+            detail.Date = DateTime.ParseExact(date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             detail.Quantity = 1;
             detail.Category = Convert.ToInt32(hr.Campo2);
             detail.Way = hr.Campo3;

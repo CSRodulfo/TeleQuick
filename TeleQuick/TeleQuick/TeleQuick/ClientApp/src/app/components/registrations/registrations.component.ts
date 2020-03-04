@@ -47,6 +47,13 @@ export class RegistrationsComponent implements OnInit {
   @ViewChild('dateTemplate', { static: true })
   dateTemplate: TemplateRef<any>;
 
+  @ViewChild('hourTemplate', { static: true })
+  hourTemplate: TemplateRef<any>;
+
+  @ViewChild('numberTemplate', { static: true })
+  numberTemplate: TemplateRef<any>
+
+
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;
 
@@ -58,11 +65,11 @@ export class RegistrationsComponent implements OnInit {
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
       { prop: 'date', name: 'Fecha', width: 100, cellTemplate: this.dateTemplate },
-      { prop: 'hour', name: 'Hora', width: 100, cellTemplate: this.nameTemplate },
-      { prop: 'quantity', name: 'Cantidad', width: 50 },
+      { prop: 'date', name: 'Hora', width: 100, cellTemplate: this.hourTemplate },
+      { prop: 'quantity', name: 'Cantidad', width: 50, cellTemplate: this.nameTemplate },
       { prop: 'tollStation', name: 'Paso', width: 200 },
       { prop: 'category', name: 'Categoria', width: 50 },
-      { prop: 'total', name: 'Total', width: 50 },
+      { prop: 'total', name: 'Total', width: 50, cellTemplate: this.numberTemplate  },
       { prop: 'vehicleRegistration', name: 'Dominio', width: 100 },
     ];
 

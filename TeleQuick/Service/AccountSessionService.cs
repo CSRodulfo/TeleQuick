@@ -26,6 +26,7 @@ namespace TeleQuick.Service
             _providerService = providerService;
             _summary = summary;
             _repositoryVehicle = repositoryVehicle;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<AccountSession>> Get()

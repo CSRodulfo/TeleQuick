@@ -3,7 +3,7 @@
 // www.ebenmonney.com/templates
 // =============================
 
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -138,6 +138,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: OAuthStorage, useClass: AuthStorage },
+    { provide: LOCALE_ID, useValue: 'es-AR' },
     AlertService,
     ThemeManager,
     ConfigurationService,
