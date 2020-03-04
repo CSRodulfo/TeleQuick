@@ -38,8 +38,7 @@
     </ng-template>
 
     <ng-template #numberTemplate let-value="value">
-      $ {{value | number:'1.2-2'}}
-      <!-- {{value | currency:'ARS':'symbol' }} -->
+      {{value | currency:'ARS':'symbol' }}
     </ng-template>
 
     <ng-template #nameTemplate let-row="row" let-value="value">

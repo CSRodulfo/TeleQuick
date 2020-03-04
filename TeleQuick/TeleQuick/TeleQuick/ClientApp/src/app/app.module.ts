@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
+
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ToastaModule } from 'ngx-toasta';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -78,7 +79,9 @@ import { AccountSessionsEditComponent } from './components/account-sessions/acco
 import { AccountSessionsCreateComponent } from './components/account-sessions/account-sessions-create/account-sessions-create.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
-
+import { registerLocaleData } from '@angular/common';
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es-Ar');
 
 @NgModule({
   imports: [
