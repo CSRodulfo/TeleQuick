@@ -24,7 +24,7 @@ export class ProcessComponent implements OnInit {
   max: number = 200;
   showWarning: boolean;
   dynamic: number;
-  type: string;
+  type: any = 'info';
   text: string;
 
   constructor(private alertService: AlertService, private businessService: BusinessService, private resx: GlobalResources) {
@@ -76,8 +76,6 @@ export class ProcessComponent implements OnInit {
     connection.on("BroadcastMessage", (type: string, payload: string) => {
       this.dynamic = this.dynamic + 10;
       this.text = type;
-      this.type = 'info';
-      // this.alertService.showMessage(type, payload, MessageSeverity.error);
     });
   }
 
