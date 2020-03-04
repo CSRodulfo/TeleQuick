@@ -41,6 +41,8 @@
     "bootswatch": "^4.3.1",
     "chart.js": "^2.9.3",
     "font-awesome": "^4.7.0",
+    "handlebars": "^4.7.3",
+    "https-proxy-agent": "^5.0.0",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "ng2-charts": "^2.3.0",
