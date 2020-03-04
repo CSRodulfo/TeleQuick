@@ -8,6 +8,7 @@ import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
 import { InvoiceDetail } from '../../models/invoice-detail.model';
 import { GlobalResources } from '../../services/globalResources';
+import { BootstrapDatepickerDirective } from '../../directives/bootstrap-datepicker.directive';
 
 @Component({
   selector: 'registrations',
@@ -53,6 +54,8 @@ export class RegistrationsComponent implements OnInit {
   @ViewChild('numberTemplate', { static: true })
   numberTemplate: TemplateRef<any>
 
+  @ViewChild('dp', { static: true })
+  bootstrapDatepicker: BootstrapDatepickerDirective;
 
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;

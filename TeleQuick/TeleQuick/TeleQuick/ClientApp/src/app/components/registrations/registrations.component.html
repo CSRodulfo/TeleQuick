@@ -7,22 +7,23 @@
     <!---- Sample Page Content ---->
     <div>
       <div class="row control-box">
-        <div class="col-lg-8">
+        <div class="col-lg-4">
           <div class="form-group search-box">
             <search-box (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">>
             </search-box>
           </div>
         </div>
+        <div class="col-lg-4">
+          <div class="form-group search-box">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" bootstrapDatepicker>
+          </div>
+        </div>
       </div>
     </div>
 
-    <ngx-datatable class="material colored-header sm table-hover" [loadingIndicator]="loadingIndicator" [rows]="rows"
-      [columns]="columns" [columnMode]="force" [headerHeight]="35" [footerHeight]="35" [rowHeight]="35"
-      [limit]="10"
-      [messages]="messagesCustom"
-      [selected]="selected"
-      [selectionType]="selectionType"
-      (select)="onSelect($event)" >
+    <ngx-datatable class=" material colored-header sm table-hover" [loadingIndicator]="loadingIndicator" [rows]="rows"
+      [columns]="columns" [columnMode]="force" [headerHeight]="35" [footerHeight]="35" [rowHeight]="35" [limit]="10"
+      [messages]="messagesCustom" [selected]="selected" [selectionType]="selectionType" (select)="onSelect($event)">
     </ngx-datatable>
 
     <ng-template #indexTemplate let-value="value">
