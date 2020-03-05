@@ -37,7 +37,7 @@ namespace TeleQuick.Service
 
         public async Task<AccountSession> GetById(int id)
         {
-            return await _repository.GetById(id);
+            return await _repository.GetByIdWithConcesionary(id);
         }
         public async Task<int> Create(AccountSession account)
         {

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TeleQuick.Business.Models;
+using TeleQuick.IDataAccess.Repositories;
 
-namespace TeleQuick.IService
+namespace TeleQuick.IDataAccess.Business
 {
-    public interface IInvoiceService
+    public interface IInvoiceDetailRepository : IRepository<InvoiceDetail>
     {
         Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize);
-        Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize);
-        Task<InvoiceDetail> GetById(int id);
     }
 }

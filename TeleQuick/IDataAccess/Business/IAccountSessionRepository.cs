@@ -9,6 +9,7 @@ namespace TeleQuick.IDataAccess.Business
     {
         Task<List<AccountSession>> GetAllData();
         Task<List<AccountSession>> GetAllIsValid();
-        Task<AccountSession> GetById(int id);
+
+        Task<AccountSession> GetByIdWithConcesionary(int id);
     }
 }

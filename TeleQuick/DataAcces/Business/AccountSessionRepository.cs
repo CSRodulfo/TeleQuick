@@ -29,12 +29,12 @@ namespace TeleQuick.DataAcces.Business
                                     .ToListAsync();
         }
 
-        public async Task<AccountSession> GetById(int id)
+        public Task<AccountSession> GetByIdWithConcesionary(int id)
         {
             return appContext.AccountSessions
                                     .Where(x => x.Id == id)
                                     .Include(x => x.Concessionary)
-                                    .First();
+                                    .FirstAsync();
         }
     }
 }

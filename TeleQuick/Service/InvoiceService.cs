@@ -12,10 +12,12 @@ namespace TeleQuick.Service
     {
 
         private readonly IInvoiceRepository _invoiceRepository;
+        private readonly IInvoiceDetailRepository _invoiceDetailRepository;
 
-        public InvoiceService(IInvoiceRepository invoiceRepository)
+        public InvoiceService(IInvoiceRepository invoiceRepository, IInvoiceDetailRepository invoiceDetailRepository)
         {
             _invoiceRepository = invoiceRepository;
+            _invoiceDetailRepository = invoiceDetailRepository;
         }
 
         public Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize)
@@ -25,13 +27,13 @@ namespace TeleQuick.Service
 
         public Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize)
         {
-            return _invoiceRepository.GetAllDetails(pageNumber, pageSize);
+            return _invoiceDetailRepository.GetAllDetails(pageNumber, pageSize);
           
         }
 
-        public Task<InvoiceHeader> GetById(int id)
+        public Task<InvoiceDetail> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _invoiceDetailRepository.GetById(id);
         }
     }
 }

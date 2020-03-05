@@ -26,19 +26,18 @@ namespace TeleQuick.Controllers
             _logger = logger;
         }
 
-
-        [HttpGet("Invoice/{id}")]
+        [HttpGet("InvoiceDetail/{id}")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        //[ProducesResponseType(200, Type = typeof(InvoiceViewModel))]
+        [ProducesResponseType(200, Type = typeof(InvoiceDetailViewModel))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetById(int id)
         {
-            InvoiceHeader invoice = await _invoiceService.GetById(id);
+            InvoiceDetail invoice = await _invoiceService.GetById(id);
 
             if (invoice == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<InvoiceViewModel>(invoice));
+            return Ok(_mapper.Map<InvoiceDetailViewModel>(invoice));
         }
 
         // GET: api/values

@@ -51,8 +51,6 @@ export class RegistrationListComponent implements OnInit {
   @ViewChild('currencyTemplate', { static: true })
   currencyTemplate: TemplateRef<any>
 
-
-
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;
 
@@ -68,16 +66,14 @@ export class RegistrationListComponent implements OnInit {
       { prop: 'quantity', name: 'Cantidad', width: 50, cellTemplate: this.nameTemplate },
       { prop: 'tollStation', name: 'Paso', width: 200 },
       { prop: 'category', name: 'Categoria', width: 50 },
-      { prop: 'total', name: 'Total', width: 50, cellTemplate: this.currencyTemplate  },
+      { prop: 'total', name: 'Total', width: 50, cellTemplate: this.currencyTemplate },
       { prop: 'vehicleRegistration', name: 'Dominio', width: 100 },
     ];
 
     this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
-    this.loadData();
   }
 
   ngAfterViewInit() {
-
 
   }
 

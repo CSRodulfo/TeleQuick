@@ -35,7 +35,7 @@ export class RegistrationsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.gridRegistration.loadData();
   }
 
   ngAfterViewInit() {
