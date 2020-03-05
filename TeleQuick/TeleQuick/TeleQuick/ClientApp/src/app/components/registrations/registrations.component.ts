@@ -51,8 +51,8 @@ export class RegistrationsComponent implements OnInit {
   @ViewChild('hourTemplate', { static: true })
   hourTemplate: TemplateRef<any>;
 
-  @ViewChild('numberTemplate', { static: true })
-  numberTemplate: TemplateRef<any>
+  @ViewChild('currencyTemplate', { static: true })
+  currencyTemplate: TemplateRef<any>
 
   @ViewChild('dp', { static: true })
   bootstrapDatepicker: BootstrapDatepickerDirective;
@@ -72,7 +72,7 @@ export class RegistrationsComponent implements OnInit {
       { prop: 'quantity', name: 'Cantidad', width: 50, cellTemplate: this.nameTemplate },
       { prop: 'tollStation', name: 'Paso', width: 200 },
       { prop: 'category', name: 'Categoria', width: 50 },
-      { prop: 'total', name: 'Total', width: 50, cellTemplate: this.numberTemplate  },
+      { prop: 'total', name: 'Total', width: 50, cellTemplate: this.currencyTemplate  },
       { prop: 'vehicleRegistration', name: 'Dominio', width: 100 },
     ];
 
