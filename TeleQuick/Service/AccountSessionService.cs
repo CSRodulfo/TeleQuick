@@ -51,7 +51,7 @@ namespace TeleQuick.Service
 
         public async Task<bool> ValidateConnection(AccountSession account)
         {
-            IProviderAU provider = _providerService.GetProviderToLogin(account);
+            IProviderAU provider =  _providerService.GetProviderToLogin(account);
 
             return await provider.ValidateLogin();
         }
@@ -59,12 +59,12 @@ namespace TeleQuick.Service
         public async Task<List<AccountSession>> Process()
         {
             var account = await _repository.GetAllIsValid();
+            var vehicle = await _repositoryVehicle.GetAll();
 
             await account.ForEachAsync(4, async item =>
              {
                  try
                  {
-                     var vehicle = await _repositoryVehicle.GetAll();
                      var provider = _providerService.GetProvider(item, vehicle);
                      var list = await provider.Process();
                      item.Concessionary.InvoiceHeaders = list;
@@ -76,6 +76,22 @@ namespace TeleQuick.Service
                      _summary.Add("Error en procesar" + item.Concessionary.Name);
                  }
              });
+
+            //foreach (var item in account)
+            //{
+            //    try
+            //    {
+            //        var provider = await _providerService.GetProvider(item, vehicle);
+            //        var list = await provider.Process();
+            //        item.Concessionary.InvoiceHeaders = list;
+            //        await _repository.Update(item);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        _logger.LogError(ex, "Error en procesar");
+            //        _summary.Add("Error en procesar" + item.Concessionary.Name);
+            //    }
+            //}
 
             return account;
         }
