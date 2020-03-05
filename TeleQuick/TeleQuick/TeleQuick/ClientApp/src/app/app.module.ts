@@ -53,6 +53,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { RegistrationsComponent } from './components/registrations/registrations.component';
+import { RegistrationListComponent } from './components/registrations/registration-list.component';
 
 import { ProcessComponent } from './components/process/process.component';
 import { VehiclesManagementComponent } from './components/vehicles/vehicles-list.component';
@@ -113,7 +114,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     LoginComponent,
     HomeComponent,
     CustomersComponent,
-    RegistrationsComponent,
+    RegistrationsComponent, RegistrationListComponent,
     AccountSessionsComponent,
     ProcessComponent,
     VehiclesManagementComponent, VehicleEditComponent, VehicleCreateComponent,

@@ -6,21 +6,18 @@ import { AlertService, DialogType, MessageSeverity } from '../../services/alert.
 import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
-import { InvoiceHeader } from '../../models/invoice-header.model';
+import { InvoiceDetail } from '../../models/invoice-detail.model';
 import { GlobalResources } from '../../services/globalResources';
-import { RegistrationListComponent } from '../registrations/registration-list.component';
 
 @Component({
-  selector: 'customers-list',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
-  animations: [fadeInOut]
+  selector: 'registration-list',
+  templateUrl: './registration-list.component.html',
+  styleUrls: ['./registration-list.component.scss']
 })
-
-export class CustomersComponent implements OnInit {
+export class RegistrationListComponent implements OnInit {
   columns: any[] = [];
-  rows: InvoiceHeader[] = [];
-  rowsCache: InvoiceHeader[] = [];
+  rows: InvoiceDetail[] = [];
+  rowsCache: InvoiceDetail[] = [];
   loadingIndicator: boolean;
   force: any = 'force';
   selected: any[] = [];
@@ -45,9 +42,6 @@ export class CustomersComponent implements OnInit {
   @ViewChild('nameTemplate', { static: true })
   nameTemplate: TemplateRef<any>;
 
-  @ViewChild('actionsTemplate', { static: true })
-  actionsTemplate: TemplateRef<any>;
-
   @ViewChild('dateTemplate', { static: true })
   dateTemplate: TemplateRef<any>;
 
@@ -57,9 +51,10 @@ export class CustomersComponent implements OnInit {
   @ViewChild('currencyTemplate', { static: true })
   currencyTemplate: TemplateRef<any>
 
-  @ViewChild('gridRegistration', { static: true })
-  gridRegistration: RegistrationListComponent;
 
+
+  @ViewChild('actionsTemplate', { static: true })
+  actionsTemplate: TemplateRef<any>;
 
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
     private businessService: BusinessService, private resx: GlobalResources) {
@@ -69,10 +64,12 @@ export class CustomersComponent implements OnInit {
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
       { prop: 'date', name: 'Fecha', width: 100, cellTemplate: this.dateTemplate },
-      { prop: 'subTotal', name: 'Subtotal', width: 100, cellTemplate: this.currencyTemplate },
-      { prop: 'ivaIns', name: 'Iva', width: 100, cellTemplate: this.currencyTemplate },
-      { prop: 'total', name: 'Total', width: 100, cellTemplate: this.currencyTemplate },
-      { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
+      { prop: 'date', name: 'Hora', width: 100, cellTemplate: this.hourTemplate },
+      { prop: 'quantity', name: 'Cantidad', width: 50, cellTemplate: this.nameTemplate },
+      { prop: 'tollStation', name: 'Paso', width: 200 },
+      { prop: 'category', name: 'Categoria', width: 50 },
+      { prop: 'total', name: 'Total', width: 50, cellTemplate: this.currencyTemplate  },
+      { prop: 'vehicleRegistration', name: 'Dominio', width: 100 },
     ];
 
     this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
@@ -88,11 +85,11 @@ export class CustomersComponent implements OnInit {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
     console.log('Activate Loading');
-    this.businessService.getInvoice().subscribe(results => this.onDataLoadSuccessful(results),
+    this.businessService.getInvoiceDetail().subscribe(results => this.onDataLoadSuccessful(results),
       error => this.onDataLoadFailed(error));
   }
 
-  onDataLoadSuccessful(invoice: InvoiceHeader[]) {
+  onDataLoadSuccessful(invoice: InvoiceDetail[]) {
     this.alertService.stopLoadingMessage();
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
 
@@ -113,14 +110,11 @@ export class CustomersComponent implements OnInit {
   }
 
   onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.concessionaryName));
-  }
-
-  canManageVehicles() {
-    return true;
+    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.vehicleRegistration));
   }
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
   }
+
 }

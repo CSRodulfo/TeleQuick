@@ -29,36 +29,11 @@
       {{value | date:'dd/MM/yyyy'}}
     </ng-template>
 
-    <ng-template #hourTemplate let-value="value">
-      {{value | date:'HH:mm:ss'}}
-    </ng-template>
-
     <ng-template #currencyTemplate let-value="value">
       {{value | currency:'ARS':'symbol' }}
     </ng-template>
 
-    <ngx-datatable class="material colored-header sm table-hover" [loadingIndicator]="loadingIndicator" [rows]="rows"
-    [columns]="columns" [columnMode]="force" [headerHeight]="35" [footerHeight]="35" [rowHeight]="35"
-    [limit]="5"
-    [messages]="messagesCustom" >
-  </ngx-datatable>
-
-    <ng-template #indexTemplate let-value="value">
-      <strong>{{value}}</strong>
-    </ng-template>
-
-    <ng-template #nameTemplate let-row="row" let-value="value">
-      <span class="inline-label">
-        {{value}}
-      </span>
-    </ng-template>
-
-    <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
-      <div *ngIf="canManageVehicles">
-        <a class="btn btn-link btn-sm" href="javascript:;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          Configurar</a>
-      </div>
-    </ng-template>
+    <registration-list> </registration-list>
 
     <router-outlet></router-outlet>
   </div>
