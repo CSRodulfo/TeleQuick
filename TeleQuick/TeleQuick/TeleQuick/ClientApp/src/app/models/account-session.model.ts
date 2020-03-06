@@ -1,7 +1,3 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
 
 export class AccountSession {
     constructor(id?: number, loginUser?: string, loginUserPassword?: string, isValid?: boolean,

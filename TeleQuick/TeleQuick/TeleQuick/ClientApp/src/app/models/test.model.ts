@@ -1,7 +1,3 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
 
 export class Test {
   // Note: Using only optional constructor properties without backing store disables typescript's type checking for the type
@@ -9,7 +5,7 @@ export class Test {
 
     this.name = name;
     this.description = description;
-    
+
   }
 
   public name: string;

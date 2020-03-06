@@ -1,7 +1,7 @@
 import { fadeInOut } from '../../services/animations';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
-import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
+import { AlertService, MessageSeverity } from '../../services/alert.service';
 import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';

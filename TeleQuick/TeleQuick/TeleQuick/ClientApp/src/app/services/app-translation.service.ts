@@ -1,7 +1,3 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
 
 import { Injectable } from '@angular/core';
 import { TranslateService, TranslateLoader } from '@ngx-translate/core';
@@ -16,7 +12,7 @@ export class AppTranslationService {
   languageChanged$ = this.onLanguageChanged.asObservable();
 
   constructor(private translate: TranslateService) {
-    this.addLanguages(['en', 'fr', 'pt', 'es']);
+    this.addLanguages(['en', 'pt', 'es']);
     this.setDefaultLanguage('es');
   }
 
@@ -47,7 +43,7 @@ export class AppTranslationService {
   useBrowserLanguage(): string | void {
     const browserLang = this.getBrowserLanguage();
 
-    if (browserLang.match(/en|fr|pt|es/)) {
+    if (browserLang.match(/en|pt|es/)) {
       this.changeLanguage(browserLang);
       return browserLang;
     }
@@ -94,8 +90,6 @@ export class TranslateLanguageLoader implements TranslateLoader {
     switch (lang) {
       case 'en':
         return of(require('../assets/locale/en.json'));
-      case 'fr':
-        return of(require('../assets/locale/fr.json'));
       case 'pt':
         return of(require('../assets/locale/pt.json'));
       case 'es':

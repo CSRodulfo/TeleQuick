@@ -1,7 +1,3 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
