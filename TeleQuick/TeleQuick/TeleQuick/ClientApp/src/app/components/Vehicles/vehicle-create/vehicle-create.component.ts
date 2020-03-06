@@ -21,7 +21,7 @@ export class VehicleCreateComponent implements OnInit {
   public changesFailedCallback: () => void;
   public changesCancelledCallback: () => void;
 
-  @ViewChild('f', { static: false })
+  @ViewChild('f')
   private form: NgForm
 
   constructor(private alertService: AlertService, private businessService: BusinessService,
