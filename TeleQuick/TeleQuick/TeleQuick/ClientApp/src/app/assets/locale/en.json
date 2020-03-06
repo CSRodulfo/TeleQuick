@@ -6,7 +6,8 @@
     },
     "mainMenu": {
         "Appointments": "Appointments",
-        "Customers": "Customers",
+        "Invoices": "invoices",
+        "Registrations": "Registrations",
         "AccountSessions": "Concessionaries",
         "Process": "Process",
         "Vehicle": "Vehicle",
@@ -15,9 +16,10 @@
     },
     "pageHeader": {
         "Dashboard": "Dashboard",
-        "Customers": "Customers",
+        "invoices": "invoices",
+        "Registrations": "Dominios",
         "AccountSessions": "Concesionaries",
-        "Orders": "Orders",
+        "Process": "Process",
         "Vehicles": "Vehicles",
         "NotFound": "Not-Found",
         "About": "About",

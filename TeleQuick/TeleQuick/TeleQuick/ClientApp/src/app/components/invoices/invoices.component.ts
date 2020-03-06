@@ -1,6 +1,5 @@
 import { fadeInOut } from '../../services/animations';
-import { Component, OnInit, AfterViewInit, TemplateRef, ViewChild, Input } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { AppTranslationService } from '../../services/app-translation.service';
@@ -11,13 +10,13 @@ import { GlobalResources } from '../../services/globalResources';
 import { RegistrationListComponent } from '../registrations/registration-list.component';
 
 @Component({
-  selector: 'customers-list',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
+  selector: 'invoices-list',
+  templateUrl: './invoices.component.html',
+  styleUrls: ['./invoices.component.scss'],
   animations: [fadeInOut]
 })
 
-export class CustomersComponent implements OnInit {
+export class InvoicesComponent implements OnInit {
   columns: any[] = [];
   rows: InvoiceHeader[] = [];
   rowsCache: InvoiceHeader[] = [];

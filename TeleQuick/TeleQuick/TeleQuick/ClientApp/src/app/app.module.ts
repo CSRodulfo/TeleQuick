@@ -51,7 +51,7 @@ import { GroupByPipe } from './pipes/group-by.pipe';
 import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { CustomersComponent } from './components/customers/customers.component';
+import { InvoicesComponent } from './components/invoices/invoices.component';
 import { RegistrationsComponent } from './components/registrations/registrations.component';
 import { RegistrationListComponent } from './components/registrations/registration-list.component';
 
@@ -69,7 +69,7 @@ import { StatisticsYearComponent } from './components/statistics/statistics-year
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
-import { CustomerCreateComponent } from './components/customers/customer-create.component';
+import { CustomerCreateComponent } from './components/invoices/customer-create.component';
 import { UserPreferencesComponent } from './components/controls/user-preferences.component';
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
@@ -113,7 +113,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CustomersComponent,
+    InvoicesComponent,
     RegistrationsComponent, RegistrationListComponent,
     AccountSessionsComponent,
     ProcessComponent,

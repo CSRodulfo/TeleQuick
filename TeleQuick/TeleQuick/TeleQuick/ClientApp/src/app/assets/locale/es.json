@@ -6,7 +6,8 @@
     },
     "mainMenu": {
         "Appointments": "Equipos",
-        "Customers": "Clientes",
+        "Invoices": "Facturación",
+        "Registrations": "Dominios",
         "AccountSessions": "Concesionarias",
         "Process": "Procesar",
         "Vehicle": "Vehiculos",
@@ -15,7 +16,8 @@
     },
     "pageHeader": {
         "Dashboard": "Tablero",
-        "Customers": "Clientes",
+        "Invoices": "Facturación",
+        "Registrations": "Dominios",
         "AccountSessions": "Concesionarias",
         "Process": "Procesar",
         "Vehicles": "Vehiculos",

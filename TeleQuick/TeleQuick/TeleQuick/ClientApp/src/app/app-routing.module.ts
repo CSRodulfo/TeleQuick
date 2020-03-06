@@ -3,7 +3,7 @@ import { Routes, RouterModule, DefaultUrlSerializer, UrlSerializer, UrlTree } fr
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { CustomersComponent } from './components/customers/customers.component';
+import { InvoicesComponent } from './components/invoices/invoices.component';
 import { AccountSessionsComponent } from './components/account-sessions/account-sessions-list.component';
 import { ProcessComponent } from './components/process/process.component';
 import { RegistrationsComponent } from './components/registrations/registrations.component';
@@ -40,8 +40,8 @@ export class LowerCaseUrlSerializer extends DefaultUrlSerializer {
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard], data: { title: 'Home' } },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard], data: { title: 'Customers' } },
-  { path: 'registrations', component: RegistrationsComponent, canActivate: [AuthGuard], data: { title: 'Registratio' } },
+  { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard], data: { title: 'Invoices' } },
+  { path: 'registrations', component: RegistrationsComponent, canActivate: [AuthGuard], data: { title: 'Registrations' } },
   { path: 'account-sessions', component: AccountSessionsComponent, canActivate: [AuthGuard], data: { title: 'AccountSessions' } },
   { path: 'process', component: ProcessComponent, canActivate: [AuthGuard], data: { title: 'Process' } },
   { path: 'vehicles', component: VehiclesManagementComponent, canActivate: [AuthGuard], data: { title: 'Vehicles' } },
