@@ -1,5 +1,6 @@
 
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { ConfigurationService } from '../../services/configuration.service';

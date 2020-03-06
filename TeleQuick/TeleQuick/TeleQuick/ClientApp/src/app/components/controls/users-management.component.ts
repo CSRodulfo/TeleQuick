@@ -63,8 +63,8 @@ export class UsersManagementComponent implements OnInit, AfterViewInit {
             { prop: 'userName', name: gT('users.management.UserName'), width: 90, cellTemplate: this.userNameTemplate },
             { prop: 'fullName', name: gT('users.management.FullName'), width: 120 },
             { prop: 'email', name: gT('users.management.Email'), width: 140 },
-            { prop: 'roles', name: gT('users.management.Roles'), width: 120, cellTemplate: this.rolesTemplate },
-            { prop: 'phoneNumber', name: gT('users.management.PhoneNumber'), width: 100 }
+            { prop: 'roles', name: gT('users.management.Roles'), width: 10, cellTemplate: this.rolesTemplate },
+            { prop: 'phoneNumber', name: gT('users.management.PhoneNumber'), width: 50 }
         ];
 
         if (this.canManageUsers) {
