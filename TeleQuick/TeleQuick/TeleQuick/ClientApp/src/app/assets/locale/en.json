@@ -16,7 +16,7 @@
     },
     "pageHeader": {
         "Dashboard": "Dashboard",
-        "invoices": "invoices",
+        "Invoices": "invoices",
         "Registrations": "Dominios",
         "AccountSessions": "Concesionaries",
         "Process": "Process",
@@ -60,7 +60,8 @@
         "LanguageHint": "Select the preferred language for your account",
         "HomePage": "Home Page:",
         "Dashboard": "Dashboard",
-        "Customers": "Customers",
+        "Invoices": "invoices",
+        "Registrations": "Registrations",
         "AccountSessions": "Concesionaries",
         "Process": "Process",
         "Vehicles": "Vehicles",

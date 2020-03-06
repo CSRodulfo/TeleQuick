@@ -16,10 +16,10 @@
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link" routerLink=""><i class="fa fa-home"></i></a>
           </li>
-          <li class="nav-item" routerLinkActive="active" *ngIf="canViewCustomers">
+          <li class="nav-item" routerLinkActive="active" *ngIf="canViewInvoices">
             <a class="nav-link" routerLink="/invoices">{{'mainMenu.Invoices' | translate}}</a>
           </li>
-          <li class="nav-item" routerLinkActive="active" *ngIf="canViewCustomers">
+          <li class="nav-item" routerLinkActive="active" *ngIf="canViewRegistrations">
             <a class="nav-link" routerLink="/registrations">{{'mainMenu.Registrations' | translate}}</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="canViewAccountSessions">

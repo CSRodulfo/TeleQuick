@@ -338,19 +338,23 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
 
-  get canViewCustomers() {
-    return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewCustomersPermission
+  get canViewInvoices() {
+    return this.accountService.userHasPermission(Permission.viewUsersPermission);
+  }
+
+  get canViewRegistrations() {
+    return this.accountService.userHasPermission(Permission.viewUsersPermission);
   }
 
   get canViewAccountSessions() {
-    return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewAccountSessionsPermission
+    return this.accountService.userHasPermission(Permission.viewUsersPermission);
   }
 
   get canViewProcess() {
-    return this.accountService.userHasPermission(Permission.manageUsersPermission); // eg. viewAccountSessionsPermission
+    return this.accountService.userHasPermission(Permission.viewUsersPermission);
   }
 
   get canViewVehicles() {
-    return this.accountService.userHasPermission(Permission.viewUsersPermission); // eg. viewAccountSessionsPermission
+    return this.accountService.userHasPermission(Permission.viewUsersPermission);
   }
 }
