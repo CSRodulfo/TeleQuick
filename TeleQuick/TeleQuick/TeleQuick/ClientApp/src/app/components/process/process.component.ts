@@ -44,8 +44,11 @@ export class ProcessComponent implements OnInit {
     this.alertService.startLoadingMessage();
     this.dynamic = 0;
 
-    this.businessService.getProcess().subscribe(results => this.onDataLoadSuccessful(),
-      error => this.onDataLoadFailed(error));
+    this.businessService.getProcess().subscribe({
+      next: (results: any) => { this.onDataLoadSuccessful() },
+      error: (error: any) => { this.onDataLoadFailed(error) },
+      complete: () => { console.log('complete') }
+    });
   }
 
   onDataLoadSuccessful() {
@@ -58,7 +61,7 @@ export class ProcessComponent implements OnInit {
     this.alertService.showStickyMessage(this.resx.loadError, `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(error)}"`,
       MessageSeverity.error, error);
 
-      this.connect();
+    this.connect();
   }
 
   connect(): void {

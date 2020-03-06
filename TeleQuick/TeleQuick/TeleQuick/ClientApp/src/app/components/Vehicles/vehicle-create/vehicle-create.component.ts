@@ -46,7 +46,11 @@ export class VehicleCreateComponent implements OnInit {
 
   save() {
     this.alertService.startLoadingMessage(this.resx.saveSaving);
-    this.businessService.postVehicle(this.entityVehicle).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
+    this.businessService.postVehicle(this.entityVehicle).subscribe({
+      next: (results: any) => { this.saveSuccessHelper() },
+      error: (error: any) => { this.saveFailedHelper(error) },
+      complete: () => { console.log('complete') }
+    });
   }
 
   private saveSuccessHelper() {

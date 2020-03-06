@@ -17,10 +17,10 @@ namespace TeleQuick.DataAcces.Business
 
         public async Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize)
         {
-            //IQueryable<InvoiceHeader> rolesQuery
             return await appContext.InvoiceDetails
                 .Include(x => x.Vehicle)
                 //.Skip(pageNumber).Take(pageSize)
+                .OrderBy(x => x.Date)
                 .ToListAsync();
         }
 
@@ -29,7 +29,8 @@ namespace TeleQuick.DataAcces.Business
             return await appContext.InvoiceDetails
               .Where(x => x.InvoiceHeaderId == id)
               .Include(x => x.Vehicle)
-              //.Skip(pageNumber).Take(pageSize)
+               //.Skip(pageNumber).Take(pageSize)
+              .OrderBy(x => x.Date)
               .ToListAsync();
         }
     }

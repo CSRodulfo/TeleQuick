@@ -41,7 +41,11 @@ export class AccountSessionsEditComponent implements OnInit {
 
   Update() {
     this.alertService.startLoadingMessage(this.resx.saveSaving);
-    this.businessService.putAccountSession(this.entityAccountSession).subscribe(role => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
+    this.businessService.putAccountSession(this.entityAccountSession).subscribe({
+      next: (role: any) => { this.saveSuccessHelper() },
+      error: (error: any) => { this.saveFailedHelper(error) },
+      complete: () => { console.log('complete') }
+    });
   }
 
   private saveSuccessHelper() {

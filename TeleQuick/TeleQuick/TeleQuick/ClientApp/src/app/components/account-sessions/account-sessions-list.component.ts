@@ -102,8 +102,11 @@ export class AccountSessionsComponent implements OnInit {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
 
-    this.businessService.getAccountSession().subscribe(results => this.onDataLoadSuccessful(results),
-      error => this.onDataLoadFailed(error));
+    this.businessService.getAccountSession().subscribe({
+      next: (results: any) => { this.onDataLoadSuccessful(results) },
+      error: (error: any) => { this.onDataLoadFailed(error) },
+      complete: () => { console.log('complete') }
+    });
   }
 
   onDataLoadSuccessful(accountSession: AccountSession[]) {

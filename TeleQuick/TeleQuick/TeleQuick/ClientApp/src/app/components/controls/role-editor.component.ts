@@ -55,9 +55,17 @@ export class RoleEditorComponent {
     this.roleEdit.permissions = this.getSelectedPermissions();
 
     if (this.isNewRole) {
-      this.accountService.newRole(this.roleEdit).subscribe(role => this.saveSuccessHelper(role), error => this.saveFailedHelper(error));
-    } else {
-      this.accountService.updateRole(this.roleEdit).subscribe(response => this.saveSuccessHelper(), error => this.saveFailedHelper(error));
+      this.accountService.newRole(this.roleEdit).subscribe({
+        next: (role: Role) => { this.saveSuccessHelper(role) },
+        error: (error: any) => { this.saveFailedHelper(error) },
+        complete: () => { console.log('complete') }
+      });
+    }else {
+      this.accountService.updateRole(this.roleEdit).subscribe({
+        next: (role: any) => { this.saveSuccessHelper() },
+        error: (error: any) => { this.saveFailedHelper(error) },
+        complete: () => { console.log('complete') }
+      });
     }
   }
 

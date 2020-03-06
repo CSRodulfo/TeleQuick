@@ -69,8 +69,8 @@ export class CustomersComponent implements OnInit {
     this.columns = [
       { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
       { prop: 'date', name: 'Fecha', width: 100, cellTemplate: this.dateTemplate },
-      { prop: 'subTotal', name: 'Subtotal', width: 100, cellTemplate: this.currencyTemplate },
-      { prop: 'ivaIns', name: 'Iva', width: 100, cellTemplate: this.currencyTemplate },
+      { prop: 'subtotal', name: 'Subtotal', width: 100, cellTemplate: this.currencyTemplate },
+      { prop: 'ivains', name: 'Iva', width: 100, cellTemplate: this.currencyTemplate },
       { prop: 'total', name: 'Total', width: 100, cellTemplate: this.currencyTemplate },
       { prop: 'concessionaryName', name: 'Concesionaria', width: 100 },
     ];

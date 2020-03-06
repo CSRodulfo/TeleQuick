@@ -81,9 +81,9 @@ export class RegistrationListComponent implements OnInit {
     this.loadingIndicator = true;
 
     this.businessService.getInvoiceDetail().subscribe({
-      next: (results: any) => { this.onDataLoadSuccessful(results); },
-      error: (error: any) => { this.onDataLoadFailed(error); },
-      complete: () => { console.log('complete'); }
+      next: (results: any) => { this.onDataLoadSuccessful(results) },
+      error: (error: any) => { this.onDataLoadFailed(error) },
+      complete: () => { console.log('complete') }
     });
   }
 
