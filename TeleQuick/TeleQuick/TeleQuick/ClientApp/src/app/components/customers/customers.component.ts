@@ -77,17 +77,17 @@ export class CustomersComponent implements OnInit {
 
     this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
     this.loadData();
+
   }
 
   ngAfterViewInit() {
-
 
   }
 
   loadData() {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
-    console.log('Activate Loading');
+
     this.businessService.getInvoice().subscribe(results => this.onDataLoadSuccessful(results),
       error => this.onDataLoadFailed(error));
   }
@@ -120,7 +120,7 @@ export class CustomersComponent implements OnInit {
     return true;
   }
 
-  onSelect( obj ) {
-    this.gridRegistration.loadData2(obj.selected[0]);
+  onSelect(selected) {
+    this.gridRegistration.loadData2(selected.selected[0]);
   }
 }
