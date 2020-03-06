@@ -104,8 +104,6 @@ export class VehiclesManagementComponent implements OnInit {
     this.alertService.stopLoadingMessage();
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
 
-
-
     vehicles.forEach((user, index, vehicles) => {
       (user as any).index = index + 1;
     });

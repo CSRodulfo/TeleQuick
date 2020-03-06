@@ -120,7 +120,7 @@ export class CustomersComponent implements OnInit {
     return true;
   }
 
-  onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
+  onSelect( obj ) {
+    this.gridRegistration.loadData2(obj.selected[0]);
   }
 }

@@ -28,8 +28,6 @@ export class RegistrationsComponent implements OnInit {
   @ViewChild('gridRegistration', { static: true })
   gridRegistration: RegistrationListComponent;
 
-
-
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
     private businessService: BusinessService, private resx: GlobalResources) {
   }
@@ -39,10 +37,13 @@ export class RegistrationsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-
   }
 
   onSearchChanged(value: string) {
     this.gridRegistration.onSearchChanged(value);
+  }
+
+  onActivate( selected ) {
+    this.gridRegistration.loadData2(selected[0]);
   }
 }

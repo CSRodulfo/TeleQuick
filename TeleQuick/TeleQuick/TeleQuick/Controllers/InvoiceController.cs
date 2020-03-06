@@ -32,12 +32,12 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetById(int id)
         {
-            InvoiceDetail invoice = await _invoiceService.GetById(id);
+             IEnumerable<InvoiceDetail> invoice = await _invoiceService.GetByHeaderId(id);
 
             if (invoice == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<InvoiceDetailViewModel>(invoice));
+            return Ok(_mapper.Map<IEnumerable<InvoiceDetailViewModel>>(invoice));
         }
 
         // GET: api/values

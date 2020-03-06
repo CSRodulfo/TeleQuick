@@ -78,6 +78,10 @@ export class BusinessService {
     return this.businessEndpoint.getInvoiceDetailEndpoint<InvoiceDetail[]>(page, pageSize);
   }
 
+  getInvoiceDetailByHeader(idHeader?: number ) {
+    return this.businessEndpoint.getInvoiceDetailByHeaderIdEndpoint<InvoiceDetail[]>(idHeader);
+  }
+
   getProcess() {
     return this.businessEndpoint.getProcessEndpoint();
   }

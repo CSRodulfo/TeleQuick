@@ -24,6 +24,7 @@ export class BusinessEndpoint extends EndpointBase {
   private readonly _accountSessionUrl: string = '/api/accountSession/accountSession';
   private readonly _accountSessionValidateUrl: string = '/api/accountSession/ValidateConection';
   private readonly _invoiceUrl: string = '/api/Invoice/Invoice';
+  private readonly _invoiceDetailUrl: string = '/api/Invoice/InvoiceDetail';
   private readonly _processUrl: string = '/api/Process/Process';
   private readonly _registrationUrl: string = '/api/Registration/Invoice';
 
@@ -33,6 +34,7 @@ export class BusinessEndpoint extends EndpointBase {
   get accountSessionUrl() { return this.configurations.baseUrl + this._accountSessionUrl; }
   get accountSessionValidateUrl() { return this.configurations.baseUrl + this._accountSessionValidateUrl; }
   get invoiceUrl() { return this.configurations.baseUrl + this._invoiceUrl; }
+  get invoiceDetailUrl() { return this.configurations.baseUrl + this._invoiceDetailUrl; }
   get processUrl() { return this.configurations.baseUrl + this._processUrl; }
   get registrationUrl() { return this.configurations.baseUrl + this._registrationUrl; }
 
@@ -146,6 +148,15 @@ export class BusinessEndpoint extends EndpointBase {
 
   getInvoiceDetailEndpoint<T>(page?: number, pageSize?: number): Observable<T> {
     const endpointUrl = page && pageSize ? `${this.invoiceUrl}/${page}/${pageSize}` : this.registrationUrl;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getInvoiceDetailEndpoint());
+      }));
+  }
+
+  getInvoiceDetailByHeaderIdEndpoint<T>(idHeader?: number ): Observable<T> {
+    const endpointUrl = idHeader ? `${this.invoiceDetailUrl}/${idHeader}` : this.invoiceDetailUrl;
 
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {

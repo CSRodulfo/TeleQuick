@@ -8,6 +8,7 @@ import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
 import { InvoiceDetail } from '../../models/invoice-detail.model';
 import { GlobalResources } from '../../services/globalResources';
+import { InvoiceHeader } from '../../models/invoice-header.model';
 
 @Component({
   selector: 'registration-list',
@@ -20,8 +21,6 @@ export class RegistrationListComponent implements OnInit {
   rowsCache: InvoiceDetail[] = [];
   loadingIndicator: boolean;
   force: any = 'force';
-  selected: any[] = [];
-  selectionType: any = 'single';
 
   messagesCustom = {
     emptyMessage: 'Sin datos para mostrar',
@@ -85,6 +84,14 @@ export class RegistrationListComponent implements OnInit {
       error => this.onDataLoadFailed(error));
   }
 
+  loadData2(invoiceHeader : InvoiceHeader  ) {
+    this.alertService.startLoadingMessage();
+    this.loadingIndicator = true;
+    console.log('Activate Loading');
+    this.businessService.getInvoiceDetailByHeader(invoiceHeader.id).subscribe(results => this.onDataLoadSuccessful(results),
+      error => this.onDataLoadFailed(error));
+  }
+
   onDataLoadSuccessful(invoice: InvoiceDetail[]) {
     this.alertService.stopLoadingMessage();
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
@@ -107,10 +114,6 @@ export class RegistrationListComponent implements OnInit {
 
   onSearchChanged(value: string) {
     this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.vehicleRegistration));
-  }
-
-  onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
   }
 
 }

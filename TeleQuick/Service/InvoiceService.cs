@@ -31,9 +31,9 @@ namespace TeleQuick.Service
           
         }
 
-        public Task<InvoiceDetail> GetById(int id)
+        public Task<IEnumerable<InvoiceDetail>> GetByHeaderId(int id)
         {
-            return _invoiceDetailRepository.GetById(id);
+            return _invoiceDetailRepository.GetByHeaderId(id);
         }
     }
 }
