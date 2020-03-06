@@ -79,15 +79,18 @@ export class RegistrationListComponent implements OnInit {
   loadData() {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
-    console.log('Activate Loading');
-    this.businessService.getInvoiceDetail().subscribe(results => this.onDataLoadSuccessful(results),
-      error => this.onDataLoadFailed(error));
+
+    this.businessService.getInvoiceDetail().subscribe({
+      next: (results: any) => { this.onDataLoadSuccessful(results); },
+      error: (error: any) => { this.onDataLoadFailed(error); },
+      complete: () => { console.log('complete'); }
+    });
   }
 
-  loadData2(invoiceHeader : InvoiceHeader  ) {
+  loadData2(invoiceHeader: InvoiceHeader) {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
-    console.log('Activate Loading');
+
     this.businessService.getInvoiceDetailByHeader(invoiceHeader.id).subscribe(results => this.onDataLoadSuccessful(results),
       error => this.onDataLoadFailed(error));
   }
