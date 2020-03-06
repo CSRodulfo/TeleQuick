@@ -42,11 +42,11 @@
         <div class="col-sm-4">
             <select id="homePage" [(ngModel)]="configurations.homeUrl" #homePageSelector="bootstrap-select" bootstrapSelect class="selectpicker form-control">
                 <option data-icon="fa fa-tachometer" data-subtext="(Default)" value="/">{{'preferences.Dashboard' | translate}}</option>
-                <option *ngIf="canViewInvoices" data-icon="fa fa-handshake-o" value="/invoices">{{'preferences.Invoices' | translate}}</option>
-                <option *ngIf="canViewRegistrations" data-icon="fa fa-handshake-o" value="/registrations">{{'preferences.Registrations' | translate}}</option>
-                <option *ngIf="canViewAccountSessions" data-icon="fa fa-truck" value="/account-sessions">{{'preferences.AccountSessions' | translate}}</option>
-                <option *ngIf="canViewProcess" data-icon="fa fa-shopping-cart" value="/process">{{'preferences.Process' | translate}}</option>
-                <option *ngIf="canViewVehicles" data-icon="fa fa-shopping-cart" value="/vehicles">{{'preferences.Vehicles' | translate}}</option>
+                <option *ngIf="canViewInvoices" data-icon="fa fa-gg" value="/invoices">{{'preferences.Invoices' | translate}}</option>
+                <option *ngIf="canViewRegistrations" data-icon="fa fa-car" value="/registrations">{{'preferences.Registrations' | translate}}</option>
+                <option *ngIf="canViewAccountSessions" data-icon="fa fa-road" value="/account-sessions">{{'preferences.AccountSessions' | translate}}</option>
+                <option *ngIf="canViewProcess" data-icon="fa fa-spinner" value="/process">{{'preferences.Process' | translate}}</option>
+                <option *ngIf="canViewVehicles" data-icon="fa fa-truck" value="/vehicles">{{'preferences.Vehicles' | translate}}</option>
                 <option data-icon="fa fa-info-circle" value="/about">{{'preferences.About' | translate}}</option>
                 <option data-icon="fa fa-cog" value="/settings">{{'preferences.Settings' | translate}}</option>
             </select>
