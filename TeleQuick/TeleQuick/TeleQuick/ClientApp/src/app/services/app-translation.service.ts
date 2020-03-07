@@ -29,7 +29,7 @@ export class AppTranslationService {
   }
 
   getBrowserLanguage() {
-    return this.translate.getBrowserLang();
+    return this.translate.defaultLang != null ? this.translate.defaultLang : this.translate.getBrowserLang();
   }
 
   getCurrentLanguage() {
