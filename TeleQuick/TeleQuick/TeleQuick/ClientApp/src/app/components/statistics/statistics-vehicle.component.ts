@@ -2,8 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { Subscription, Observable, fromEvent, of, merge } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
-
-require('chart.js');
+import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'statistics-vehicle',

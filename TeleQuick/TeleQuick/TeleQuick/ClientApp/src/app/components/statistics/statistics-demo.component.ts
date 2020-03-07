@@ -4,10 +4,7 @@ import { AlertService, DialogType, MessageSeverity } from '../../services/alert.
 import { Subscription, Observable, fromEvent, of, merge } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { ChartsModule } from 'ng2-charts';
-import { ChartDataSets, ChartType, RadialChartOptions } from 'chart.js';
-
-require('chart.js');
-
+import { ChartType } from 'chart.js';
 
 
 @Component({
