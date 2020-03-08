@@ -46,7 +46,6 @@
     "handlebars": "^4.7.3",
     "https-proxy-agent": "^5.0.0",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0",
     "ng2-charts": "^2.3.0",
     "ngx-bootstrap": "^5.5.0",
     "ngx-toasta": "^1.0.3",
