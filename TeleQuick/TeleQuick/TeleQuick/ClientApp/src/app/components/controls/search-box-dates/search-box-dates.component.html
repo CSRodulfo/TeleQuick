@@ -1,23 +1,36 @@
 <div class="row control-box">
   <div class="col-lg-4">
     <div class="form-group search-box">
-      <search-box (searchChange)="onValueChangeSearch($event)" placeholder="Buscar por dominio ... " #searchInput  >
+      <search-box
+        (searchChange)="onValueChangeSearch($event)"
+        placeholder="Buscar por dominio ... "
+        #searchInput
+      >
       </search-box>
     </div>
   </div>
   <div class="col-lg-4">
     <div class="form-group search-box">
-      <search-date id="searchInputStart" (searchChange)="onValueChangeDateStart($event)" #searchInputStart
-        placeholder="Buscar desde la fecha ... ">
+      <search-date
+        id="searchInputStart"
+        (searchChange)="onValueChangeDateStart($event)"
+        #searchInputStart
+        [bsValue]="minDate"
+        placeholder="Buscar desde la fecha ... "
+      >
       </search-date>
     </div>
   </div>
 
   <div class="col-lg-4">
     <div class="form-group search-box">
-      <search-date id="searchInputEnd" (searchChange)=" onValueChangeDateEnd($event)" #searchInputEnd
-        placeholder="Buscar hasta la fecha ... ">
-      </search-date>
+      <search-date
+        id="searchInputEnd"
+        (searchChange)="onValueChangeDateEnd($event)"
+        #searchInputEnd
+        [bsValue]="maxDate"
+        placeholder="Buscar hasta la fecha ... "
+      ></search-date>
     </div>
   </div>
 </div>

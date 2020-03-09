@@ -8,22 +8,22 @@ import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from '@
 })
 export class SearchBoxDatesComponent {
 
-  @Output()
-  searchChange = new EventEmitter<modelSearch>();
-
-  @ViewChild('searchInput', { static: true })
-  searchInput: ElementRef;
-
-  @ViewChild('searchInputStart', { static: true })
-  searchInputStart: ElementRef;
-
-  @ViewChild('searchInputEnd', { static: true })
-  searchInputEnd: ElementRef;
+ public minDate: Date;
+ public maxDate: Date;
 
   inputSearch: string;
   inputDateStart: Date;
   inputDateEnd: Date;
 
+  @Output()
+  searchChange = new EventEmitter<modelSearch>();
+
+  constructor() {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.maxDate.getDate() - 120);
+    this.maxDate.setDate(this.maxDate.getDate() );
+  }
 
   onValueChangeSearch(value: string) {
     this.inputSearch = value;

@@ -1,30 +1,36 @@
 
 import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 
+
 @Component({
-    selector: 'search-date',
-    templateUrl: './search-date.component.html',
-    styleUrls: ['./search-date.component.scss']
+  selector: 'search-date',
+  templateUrl: './search-date.component.html',
+  styleUrls: ['./search-date.component.scss']
 })
 export class SearchDateComponent {
 
-    @Input()
-    placeholder = 'Buscar...';
+  @Input()
+  placeholder = 'Buscar...';
 
-    @Output()
-    searchChange = new EventEmitter<Date>();
+  @Input()
+  bsValue: Date;
 
-    @ViewChild('searchInputDate', { static: true })
-    searchInput: ElementRef;
+  @Output()
+  searchChange = new EventEmitter<Date>();
 
-
-    onValueChange(value: Date) {
-        setTimeout(() => this.searchChange.emit(value));
-    }
+  @ViewChild('searchInputDate', { static: true })
+  searchInput: ElementRef;
 
 
-    clear() {
-        this.searchInput.nativeElement.value = '';
-        this.onValueChange(this.searchInput.nativeElement.value);
-    }
+  constructor() {
+  }
+  onValueChange(value: Date) {
+    setTimeout(() => this.searchChange.emit(value));
+  }
+
+
+  clear() {
+    this.searchInput.nativeElement.value = '';
+    this.onValueChange(this.searchInput.nativeElement.value);
+  }
 }

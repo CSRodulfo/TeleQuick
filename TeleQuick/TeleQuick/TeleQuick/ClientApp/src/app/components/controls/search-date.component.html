@@ -1,8 +1,23 @@
 ﻿<div class="icon-addon addon-sm">
-  <label for="searchInputDate" title="SearchDate"><i class="fa fa-calendar left-icon search-icon"></i></label>
-  <input id="searchInputDate" #searchInputDate type="search" ngModel="" (bsValueChange)="onValueChange($event)"
-    [attr.placeholder]="placeholder" class="form-control left-icon right-icon" bsDatepicker
-    [bsConfig]="{containerClass:'theme-blue', isAnimated: true}" containerClass="theme-blue">
-  <a *ngIf="searchInputDate.value" href="javascript:;" title="Clear" (click)="clear()"
-    class="fa fa-times-circle clear-input right-icon"></a>
+  <label for="searchInputDate" title="SearchDate"
+    ><i class="fa fa-calendar left-icon search-icon"></i
+  ></label>
+  <input
+    id="searchInputDate"
+    #searchInputDate
+    type="search"
+    (bsValueChange)="onValueChange($event)"
+    [attr.placeholder]="placeholder"
+    class="form-control left-icon right-icon"
+    bsDatepicker
+    [bsConfig]="{ containerClass: 'theme-blue', isAnimated: true }"
+    [bsValue]="bsValue"
+  />
+  <a
+    *ngIf="searchInputDate.value"
+    href="javascript:;"
+    title="Clear"
+    (click)="clear()"
+    class="fa fa-times-circle clear-input right-icon"
+  ></a>
 </div>
