@@ -1,0 +1,23 @@
+<div class="row control-box">
+  <div class="col-lg-4">
+    <div class="form-group search-box">
+      <search-box (searchChange)="onValueChange($event)" placeholder="Buscar por dominio ... ">
+      </search-box>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group search-box">
+      <search-date id="searchInputStart" (searchChange)="onValueChange($event)"
+        placeholder="Buscar desde la fecha ... ">
+      </search-date>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="form-group search-box">
+      <search-date id="searchInputEnd" (searchChange)=" onValueChange($event)"
+        placeholder="Buscar hasta la fecha ... ">
+      </search-date>
+    </div>
+  </div>
+</div>

@@ -7,24 +7,16 @@
     <!---- Sample Page Content ---->
     <div>
       <div class="row control-box">
-        <div class="col-lg-4">
-          <div class="form-group search-box">
-            <search-box (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">
-            </search-box>
+        <div class="col-lg-12">
 
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group search-box">
-            <search-date (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">
-            </search-date>
-          </div>
+            <search-box-dates (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">
+            </search-box-dates>
+
         </div>
       </div>
+
+      <registration-list #gridRegistration> </registration-list>
+
+      <router-outlet></router-outlet>
     </div>
-
-    <registration-list #gridRegistration> </registration-list>
-
-    <router-outlet></router-outlet>
   </div>
-</div>
