@@ -1,6 +1,8 @@
 <div class="container">
   <header class="pageHeader">
-    <h3><i class="fa fa-car fa-lg page-caption" aria-hidden="true"></i> Facturación
+    <h3>
+      <i class="fa fa-car fa-lg page-caption" aria-hidden="true"></i>
+      Facturación
     </h3>
   </header>
   <div [@fadeInOut]>
@@ -8,10 +10,11 @@
     <div>
       <div class="row control-box">
         <div class="col-lg-12">
-
-            <search-box-dates (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">
-            </search-box-dates>
-
+          <search-box-dates
+            (searchChange)="onSearchChanged($event)"
+            placeholder="Buscar por vehiculo ... "
+          >
+          </search-box-dates>
         </div>
       </div>
 
@@ -20,3 +23,4 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+</div>
