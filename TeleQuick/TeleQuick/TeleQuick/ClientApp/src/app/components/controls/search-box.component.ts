@@ -9,7 +9,7 @@ import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from '@
 export class SearchBoxComponent {
 
     @Input()
-    placeholder = 'Search...';
+    placeholder = 'Buscar...';
 
     @Output()
     searchChange = new EventEmitter<string>();
