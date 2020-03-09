@@ -116,7 +116,7 @@ export class RegistrationListComponent implements OnInit {
   }
 
   onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.vehicleRegistration));
+   // this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.vehicleRegistration));
   }
 
 }

@@ -12,13 +12,13 @@ export class SearchDateComponent {
     placeholder = 'Buscar...';
 
     @Output()
-    searchChange = new EventEmitter<string>();
+    searchChange = new EventEmitter<Date>();
 
     @ViewChild('searchInputDate', { static: true })
     searchInput: ElementRef;
 
 
-    onValueChange(value: string) {
+    onValueChange(value: Date) {
         setTimeout(() => this.searchChange.emit(value));
     }
 
