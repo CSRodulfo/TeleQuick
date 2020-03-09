@@ -37,7 +37,6 @@
     "@swimlane/ngx-datatable": "^16.0.3",
     "angular-oauth2-oidc": "^9.0.0",
     "bootstrap": "^4.4.1",
-    "bootstrap-datepicker": "^1.9.0",
     "bootstrap-select": "^1.13.12",
     "bootstrap4-toggle": "^3.6.1",
     "bootswatch": "^4.4.1",

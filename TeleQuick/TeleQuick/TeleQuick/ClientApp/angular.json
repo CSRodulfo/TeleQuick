@@ -29,6 +29,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
@@ -37,8 +38,7 @@
               "node_modules/popper.js/dist/umd/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js",
-              "node_modules/bootstrap-select/dist/js/bootstrap-select.js",
-              "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"
+              "node_modules/bootstrap-select/dist/js/bootstrap-select.js"
             ]
           },
           "configurations": {
@@ -101,6 +101,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],

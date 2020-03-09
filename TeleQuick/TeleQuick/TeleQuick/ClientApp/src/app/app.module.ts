@@ -14,6 +14,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,6 @@ import { AutofocusDirective } from './directives/autofocus.directive';
 import { BootstrapTabDirective } from './directives/bootstrap-tab.directive';
 import { BootstrapToggleDirective } from './directives/bootstrap-toggle.directive';
 import { BootstrapSelectDirective } from './directives/bootstrap-select.directive';
-import { BootstrapDatepickerDirective } from './directives/bootstrap-datepicker.directive';
 import { GroupByPipe } from './pipes/group-by.pipe';
 
 import { AppComponent } from './components/app.component';
@@ -88,6 +88,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     AppRoutingModule,
     NgxDatatableModule,
     ChartsModule,
+    DatepickerModule.forRoot(),
     OAuthModule.forRoot(),
     ToastaModule.forRoot(),
     TooltipModule.forRoot(),
@@ -127,7 +128,6 @@ registerLocaleData(localeEsAr, 'es-Ar');
     BootstrapTabDirective,
     BootstrapToggleDirective,
     BootstrapSelectDirective,
-    BootstrapDatepickerDirective,
     GroupByPipe,
     VehicleCreateComponent,
     AccountSessionsEditComponent,
