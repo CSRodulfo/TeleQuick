@@ -1,7 +1,7 @@
 import { fadeInOut } from '../../services/animations';
 import { Component, OnInit, AfterViewInit, TemplateRef, ViewChild, Input } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { AppTranslationService } from '../../services/app-translation.service';
@@ -22,8 +22,7 @@ export class RegistrationsComponent implements OnInit {
   loadingIndicator: boolean;
   searchValue: string;
 
-  @ViewChild('dp', { static: true })
-  bootstrapDatepicker: DatepickerModule;
+
 
   @ViewChild('gridRegistration', { static: true })
   gridRegistration: RegistrationListComponent;

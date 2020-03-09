@@ -7,6 +7,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CommonModule } from "@angular/common";
 
+
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ToastaModule } from 'ngx-toasta';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -14,7 +15,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -88,7 +89,6 @@ registerLocaleData(localeEsAr, 'es-Ar');
     AppRoutingModule,
     NgxDatatableModule,
     ChartsModule,
-    DatepickerModule.forRoot(),
     OAuthModule.forRoot(),
     ToastaModule.forRoot(),
     TooltipModule.forRoot(),
@@ -97,6 +97,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

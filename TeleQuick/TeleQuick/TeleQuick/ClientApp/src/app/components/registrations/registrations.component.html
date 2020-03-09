@@ -15,10 +15,11 @@
         </div>
         <div class="col-lg-4">
           <div class="form-group search-box">
-            <div class="row">
-              <div class="col-xs-12 col-12 col-md-4 form-group">
-                <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker>
-              </div>
+            <div class="icon-addon addon-sm">
+              <label for="searchInput" title="Search"><i class="fa fa-car left-icon search-icon"></i></label>
+              <input type="text" placeholder="Fecha Desde"  bsDatepicker
+                [bsConfig]="{ isAnimated: true }" class="form-control left-icon right-icon">
+              <a href="javascript:;" title="Clear" class="fa fa-times-circle clear-input right-icon"></a>
             </div>
           </div>
         </div>
