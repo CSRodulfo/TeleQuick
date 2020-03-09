@@ -64,6 +64,7 @@ import { StatisticsVehicleComponent } from './components/statistics/statistics-v
 import { StatisticsYearComponent } from './components/statistics/statistics-year.component';
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
+import { SearchDateComponent } from './components/controls/search-date.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
 import { UserPreferencesComponent } from './components/controls/user-preferences.component';
 import { UsersManagementComponent } from './components/controls/users-management.component';
@@ -121,7 +122,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     AboutComponent,
     NotFoundComponent,
     NotificationsViewerComponent,
-    SearchBoxComponent,
+    SearchBoxComponent, SearchDateComponent,
     StatisticsDemoComponent, StatisticsVehicleComponent, StatisticsYearComponent,
     EqualValidator,
     LastElementDirective,

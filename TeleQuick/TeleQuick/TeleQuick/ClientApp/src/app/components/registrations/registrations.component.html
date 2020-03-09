@@ -9,18 +9,15 @@
       <div class="row control-box">
         <div class="col-lg-4">
           <div class="form-group search-box">
-            <search-box (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">>
+            <search-box (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">
             </search-box>
+
           </div>
         </div>
         <div class="col-lg-4">
           <div class="form-group search-box">
-            <div class="icon-addon addon-sm">
-              <label for="searchInput" title="Search"><i class="fa fa-car left-icon search-icon"></i></label>
-              <input type="text" placeholder="Fecha Desde"  bsDatepicker
-                [bsConfig]="{ isAnimated: true }" class="form-control left-icon right-icon">
-              <a href="javascript:;" title="Clear" class="fa fa-times-circle clear-input right-icon"></a>
-            </div>
+            <search-date (searchChange)="onSearchChanged($event)" placeholder="Buscar por concesionaria ... ">
+            </search-date>
           </div>
         </div>
       </div>
