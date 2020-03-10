@@ -218,6 +218,11 @@ namespace TeleQuick
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            app.UseWebSockets(new WebSocketOptions
+            {
+                KeepAliveInterval = TimeSpan.FromSeconds(120),
+            });
+
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,

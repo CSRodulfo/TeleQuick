@@ -63,7 +63,7 @@ export class ProcessComponent implements OnInit {
   connect(): void {
     const connection = new HubConnectionBuilder()
       //.configureLogging(signalR.LogLevel.Information)
-      .withUrl("https://peajes2020.azurewebsites.net/notify")
+      .withUrl("https://localhost:4200/notify")
       .build();
 
     connection.start().then(function () {
