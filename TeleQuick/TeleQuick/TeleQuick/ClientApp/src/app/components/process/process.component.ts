@@ -63,7 +63,7 @@ export class ProcessComponent implements OnInit {
   connect(): void {
     const connection = new HubConnectionBuilder()
       //.configureLogging(signalR.LogLevel.Information)
-      .withUrl("https://localhost:4200/notify")
+      .withUrl("https://localhost:44350/notify")
       .build();
 
     connection.start().then(function () {
@@ -72,9 +72,9 @@ export class ProcessComponent implements OnInit {
       return console.error(err.toString());
     });
 
-    connection.on("BroadcastMessage", (type: string, payload: string) => {
+    connection.on("SendMessageUser", (description: string, value: string) => {
       this.dynamic = this.dynamic + 10;
-      this.text = type;
+      this.text = description;
     });
   }
 

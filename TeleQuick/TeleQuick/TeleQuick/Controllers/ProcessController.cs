@@ -24,11 +24,11 @@ namespace TeleQuick.Controllers
         private readonly IMapper _mapper;
         private readonly IAccountSessionService _accountSessionService;
         private readonly ILogger _logger;
-        private CallingSideClass _hubContext;
+        private NotifyHub _hubContext;
         private ObservableCollection<string> _summary;
 
         public ProcessController(IMapper mapper, IAccountSessionService accountSessionService,
-            ILogger<AccountSessionController> logger, CallingSideClass hubContext,
+            ILogger<AccountSessionController> logger, NotifyHub hubContext,
             ObservableCollection<string> summary)
         {
             _mapper = mapper;
@@ -38,7 +38,7 @@ namespace TeleQuick.Controllers
             _summary = summary;
         }
 
-        [HttpGet("Process")]    
+        [HttpGet("Process")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200)]
         [ProducesResponseType(403)]
@@ -50,8 +50,9 @@ namespace TeleQuick.Controllers
                 //_summary.
                 _summary.CollectionChanged += async (o, e) =>
                 {
+                    var userId = Utilities.GetUserId(this.User);
                     var array = (IList<string>)o;
-                    await _hubContext.BroadcastMessage(array.Last().ToString(), ""); 
+                    await _hubContext.SendMessageUser(userId, new Message { Description = array.Last().ToString() , Value = array.Last().ToString() });
                 };
 
                 var rtn = await _accountSessionService.Process();

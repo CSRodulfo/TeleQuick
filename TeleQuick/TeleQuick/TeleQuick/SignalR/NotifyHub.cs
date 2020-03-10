@@ -3,13 +3,20 @@ using System.Threading.Tasks;
 
 namespace TeleQuick.SignalR
 {
-    public class NotifyHub : Hub<ITypedHubClient>
+    public class NotifyHub : Hub<IHubPushMethods> , IHubInvokeMethods
     {
-        public Task BroadcastMessageUser(string userId, Message message)
+        IHubContext<NotifyHub> _context;
+        public NotifyHub(IHubContext<NotifyHub> context)
         {
-            return Clients.User(userId).BroadcastMessage(message.Type, "");
+            this._context = context;
+        }
+
+        public Task SendMessageUser(string userId, Message message)
+        {
+            return _context.Clients.User(userId).SendAsync("SendMessageUser", message.Description, message.Value);
         }
 
 
     }
 }
+
