@@ -43,7 +43,7 @@ namespace TeleQuick.Controllers
         // GET: api/values
         [HttpGet("Invoice")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<InvoiceViewModel>))]
+        [ProducesResponseType(200, Type = typeof(List<InvoiceViewModel>))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Get(int pageNumber, int pageSize)
         {

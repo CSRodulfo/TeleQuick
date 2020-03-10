@@ -73,7 +73,7 @@ namespace TeleQuick.Controllers
 
 
         [HttpPut("Vehicle/{id}")]
-        [Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -99,7 +99,7 @@ namespace TeleQuick.Controllers
         }
 
         [HttpDelete("Vehicle/{id}")]
-        [Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200, Type = typeof(RoleViewModel))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

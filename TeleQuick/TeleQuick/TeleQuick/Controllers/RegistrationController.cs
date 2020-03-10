@@ -28,9 +28,9 @@ namespace TeleQuick.Controllers
             _logger = logger;
         }
 
-        [HttpGet("Invoice")]
+        [HttpGet("Invoice/{pageNumber:int}/{pageSize:int}")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<InvoiceViewModel>))]
+        [ProducesResponseType(200, Type = typeof(List<InvoiceDetailViewModel>))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Get(int pageNumber, int pageSize)
         {

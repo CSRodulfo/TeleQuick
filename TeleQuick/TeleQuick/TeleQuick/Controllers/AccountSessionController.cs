@@ -76,7 +76,7 @@ namespace TeleQuick.Controllers
 
 
         [HttpPut("AccountSession/{id}")]
-        [Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -95,7 +95,7 @@ namespace TeleQuick.Controllers
         }
 
         [HttpDelete("AccountSession/{id}")]
-        [Authorize(Authorization.Policies.ManageAllRolesPolicy)]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
