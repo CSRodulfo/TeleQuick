@@ -28,7 +28,7 @@ namespace TeleQuick.Controllers
             _logger = logger;
         }
 
-        [HttpGet("Invoice/{pageNumber:int}/{pageSize:int}")]
+        [HttpGet("Invoice")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200, Type = typeof(List<InvoiceDetailViewModel>))]
         [ProducesResponseType(404)]
