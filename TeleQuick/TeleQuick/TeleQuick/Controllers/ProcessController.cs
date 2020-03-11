@@ -36,6 +36,8 @@ namespace TeleQuick.Controllers
             _logger = logger;
             _hubContext = hubContext;
             _summary = summary;
+     
+
         }
 
         [HttpGet("Process")]
@@ -50,9 +52,19 @@ namespace TeleQuick.Controllers
                 //_summary.
                 _summary.CollectionChanged += async (o, e) =>
                 {
-                    var userId = Utilities.GetUserId(this.User);
-                    var array = (IList<string>)o;
-                    await _hubContext.SendMessageUser(userId, new Message { Description = array.Last().ToString() , Value = array.Last().ToString() });
+                    try
+                    {
+                        // await _hubContext.OnConnectedAsync();
+                        var userId = Utilities.GetUserId(this.User);
+                        var array = (IList<string>)o;
+                        await _hubContext.SendMessageUser(userId, new Message { Description = array.Last().ToString(), Value = array.Last().ToString() });
+                    }
+                    catch (Exception ex)
+                    {
+
+                        
+                    }
+                 
                 };
 
                 var rtn = await _accountSessionService.Process();
@@ -66,5 +78,6 @@ namespace TeleQuick.Controllers
                 return Ok(false);
             }
         }
+
     }
 }

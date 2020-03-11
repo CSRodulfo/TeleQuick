@@ -2,12 +2,8 @@
 
 namespace TeleQuick.SignalR
 {
-    public interface IHubPushMethods
+    public interface INotifyHub
     {
-        Task Connected(string username);
-
-        Task Disconnected(string username);
-
         Task SendMessageByUser( string description, string value);
     }
 }

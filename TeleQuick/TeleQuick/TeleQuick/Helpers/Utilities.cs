@@ -57,7 +57,7 @@ namespace TeleQuick.Helpers
 
         public static string GetUserId(ClaimsPrincipal user)
         {
-            return user.FindFirst(JwtClaimTypes.Subject)?.Value?.Trim();
+            return user.FindFirst(JwtClaimTypes.Subject)?.Value?.Trim(); 
         }
 
 
