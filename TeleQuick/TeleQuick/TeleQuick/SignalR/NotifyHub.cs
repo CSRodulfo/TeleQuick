@@ -22,11 +22,6 @@ namespace TeleQuick.SignalR
             return _hubMethods.WriteMessageAsync(userId,  message );
         }
 
-        public Task SendMessageToGroups(string userId, Message message)
-        {
-            return Clients.Group(userId).SendAsync("SendMessageUser", message.Description, message.Value);
-        }
-
         public override async Task OnConnectedAsync()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, Utilities.GetUserId(Context.User));

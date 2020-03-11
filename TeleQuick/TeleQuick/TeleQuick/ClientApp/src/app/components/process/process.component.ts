@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { fadeInOut } from "../../services/animations";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
-import { HubConnectionBuilder } from "@microsoft/signalr";
+import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import { AlertService, MessageSeverity } from "../../services/alert.service";
 import { Utilities } from "../../services/utilities";
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OAuthService } from "angular-oauth2-oidc";
 
 import { Message } from "../../models/Message";
 import { BusinessService } from "../../services/business.service";
@@ -32,13 +32,20 @@ export class ProcessComponent implements OnInit {
 
   ngOnInit(): void {
     this.dynamic = 0;
-
-    this.connect();
   }
 
   random(): void {
-    this.alertService.startLoadingMessage();
-    this.dynamic = 0;
+
+    const connection = new HubConnectionBuilder()
+    //.configureLogging(signalR.LogLevel.Information)
+    .withUrl("https://localhost:44350/notify", {
+      transport: 4,
+      accessTokenFactory: () => this.oauthService.getAccessToken()
+    })
+    .configureLogging(LogLevel.Trace)
+    .build();
+
+    this.connect(connection);
 
     this.businessService.getProcess().subscribe({
       next: (results: any) => {
@@ -48,7 +55,9 @@ export class ProcessComponent implements OnInit {
         this.onDataLoadFailed(error);
       },
       complete: () => {
+
         console.log("complete");
+        connection.stop();
       }
     });
   }
@@ -68,16 +77,9 @@ export class ProcessComponent implements OnInit {
       MessageSeverity.error,
       error
     );
-
-    this.connect();
   }
 
-  connect(): void {
-    const connection = new HubConnectionBuilder()
-      //.configureLogging(signalR.LogLevel.Information)
-      .withUrl("https://localhost:44350/notify",  { accessTokenFactory: () => this.oauthService.getAccessToken() })
-      .build();
-
+  connect(connection: any ): void {
     connection
       .start()
       .then(function() {

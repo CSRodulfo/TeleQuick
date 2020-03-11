@@ -5,6 +5,7 @@
 
 using AutoMapper;
 using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +21,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading.Tasks;
 using TeleQuick.Authorization;
 using TeleQuick.Business;
 using TeleQuick.DataAcces;
@@ -105,6 +107,23 @@ namespace TeleQuick
                     options.SupportedTokens = SupportedTokens.Jwt;
                     options.RequireHttpsMetadata = false; // Note: Set to true in production
                     options.ApiName = IdentityServerConfig.ApiName;
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+
+                            // If the request is for our hub...
+                            var path = context.HttpContext.Request.Path;
+                            if (!string.IsNullOrEmpty(accessToken) &&
+                                (path.StartsWithSegments("/notify")))
+                            {
+                                // Read the token out of the query string
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             services.AddAuthorization(options =>
@@ -200,6 +219,7 @@ namespace TeleQuick
 
             app.UseIdentityServer();
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -221,7 +241,7 @@ namespace TeleQuick
 
             app.UseWebSockets(new WebSocketOptions
             {
-                KeepAliveInterval = TimeSpan.FromSeconds(120),
+                KeepAliveInterval = TimeSpan.FromSeconds(10),
             });
 
 
