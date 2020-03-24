@@ -8,6 +8,7 @@ using TeleQuick.IService;
 using ExtensionMethods;
 using System;
 using Microsoft.Extensions.Logging;
+using TeleQuick.Business;
 
 namespace TeleQuick.Service
 {
@@ -16,11 +17,11 @@ namespace TeleQuick.Service
         private readonly IAccountSessionRepository _repository;
         private readonly IVehicleRepository _repositoryVehicle;
         private readonly IProviderService _providerService;
-        private ObservableCollection<string> _summary;
+        private ObservableCollection<Message> _summary;
         private readonly ILogger _logger;
 
         public AccountSessionService(IAccountSessionRepository repository, IProviderService providerService,
-              ObservableCollection<string> summary, ILogger<IAccountSessionService> logger, IVehicleRepository repositoryVehicle)
+              ObservableCollection<Message> summary, ILogger<IAccountSessionService> logger, IVehicleRepository repositoryVehicle)
         {
             _repository = repository;
             _providerService = providerService;
@@ -51,7 +52,7 @@ namespace TeleQuick.Service
 
         public async Task<bool> ValidateConnection(AccountSession account)
         {
-            IProviderAU provider =  _providerService.GetProviderToLogin(account);
+            IProviderAU provider = _providerService.GetProviderToLogin(account);
 
             return await provider.ValidateLogin();
         }
@@ -73,7 +74,7 @@ namespace TeleQuick.Service
                  catch (Exception ex)
                  {
                      _logger.LogError(ex, "Error en procesar");
-                     _summary.Add("Error en procesar" + item.Concessionary.Name);
+                     _summary.Add(new Message("ERROR", "Error en procesar" + item.Concessionary.Name));
                  }
              });
 

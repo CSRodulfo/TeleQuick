@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 using TeleQuick.Business.Models;
 using TeleQuick.Helpers;
 using TeleQuick.IService;
@@ -25,11 +26,11 @@ namespace TeleQuick.Controllers
         private readonly IAccountSessionService _accountSessionService;
         private readonly ILogger _logger;
         private NotifyHub _hubContext;
-        private ObservableCollection<string> _summary;
+        private ObservableCollection<Message> _summary;
 
         public ProcessController(IMapper mapper, IAccountSessionService accountSessionService,
             ILogger<AccountSessionController> logger, NotifyHub hubContext,
-            ObservableCollection<string> summary)
+            ObservableCollection<Message> summary)
         {
             _mapper = mapper;
             _accountSessionService = accountSessionService;
@@ -54,10 +55,9 @@ namespace TeleQuick.Controllers
                 {
                     try
                     {
-                        // await _hubContext.OnConnectedAsync();
                         var userId = Utilities.GetUserId(this.User);
-                        var array = (IList<string>)o;
-                        await _hubContext.SendMessageUser(userId, new Message { Description = array.Last().ToString(), Value = array.Last().ToString() });
+                        var array = (IList<Message>)o;
+                        await _hubContext.SendMessageUser(userId,  array.Last());
                     }
                     catch (Exception ex)
                     {

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 
 namespace TeleQuick.SignalR
 {
@@ -16,7 +17,7 @@ namespace TeleQuick.SignalR
 
         public Task WriteMessageAsync(string userId, Message message)
         {
-            return _hubContext.Clients.Group(userId).SendAsync("SendMessageUser", message.Description, message.Value);
+            return _hubContext.Clients.Group(userId).SendAsync("SendMessageUser", message.Concesionary + " - " + message.Description, 10);
         }
     }
 }

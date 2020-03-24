@@ -9,6 +9,7 @@ using TeleQuick.AutopistaAUSOL;
 using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using System.Collections.ObjectModel;
+using TeleQuick.Business;
 
 namespace Provider
 {
@@ -17,10 +18,10 @@ namespace Provider
         private IScrapy _scrapy;
         private ILogin _login;
         private IInvoiceFactory _invoiceHeader;
-        private ObservableCollection<string> _summary;
+        private ObservableCollection<Message> _summary;
 
         public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
-            ObservableCollection<string> summary)
+            ObservableCollection<Message> summary)
         {
             _login = new LoginAUSOL(connection, accountSession);
             _scrapy = new ScrapyAUSOL(connection);
@@ -41,30 +42,25 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
-            //try
-            //{
-            _summary.Add("Validando login de sesion AUSOL");
+            _summary.Add(new Message("AUSOL", "Validando login de sesion"));
 
             WebPage page = await _login.LoginWebPage();
 
-            _summary.Add("Login de sesion AUSOL exitoso");
+            _summary.Add(new Message("AUSOL", "Login de sesion exitoso"));
 
-            _summary.Add("Comienzo de Scrapy AUSOL");
+            _summary.Add(new Message("AUSOL", "Comienzo de Scrapy"));
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.Add("Scrapy AUSOL exitoso");
+            _summary.Add(new Message("AUSOL", "Scrapy exitoso"));
+
+            _summary.Add(new Message("AUSOL", "Comienzo Cabecera y Detalle de exitoso"));
 
             List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            return invoices;
+            _summary.Add(new Message("AUSOL", "Cabecera y Detalle de exitoso"));
 
-            //}
-            //catch (Exception)
-            //{
-            //    _summary.Add("Error en procesar AUSOL");
-            //    return new List<InvoiceHeader>();
-            //}
+            return invoices;
         }
     }
 }

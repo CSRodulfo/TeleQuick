@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Service.TeleQuick.Business;
 using System.Collections.ObjectModel;
+using TeleQuick.Business;
 using TeleQuick.Core.Autopista;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.DataAcces;
@@ -41,7 +42,7 @@ namespace TeleQuick.Boostrapper
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IInvoiceDetailRepository, InvoiceDetailRepository>();
             services.AddScoped<IInvoiceService, InvoiceService>();
-            services.AddScoped<ObservableCollection<string>>();
+            services.AddScoped<ObservableCollection<Message>>();
 
 
             // DB Creation and Seeding

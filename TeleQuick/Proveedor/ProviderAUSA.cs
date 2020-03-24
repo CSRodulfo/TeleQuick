@@ -9,6 +9,7 @@ using TeleQuick.AutopistaAUSA;
 using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using System.Collections.ObjectModel;
+using TeleQuick.Business;
 
 namespace Provider
 {
@@ -17,10 +18,10 @@ namespace Provider
         private ILogin _login;
         private IScrapy _scrapy;
         private IInvoiceFactory _invoiceHeader;
-        private ObservableCollection<string> _summary;
+        private ObservableCollection<Message> _summary;
 
         public ProviderAUSA(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
-            ObservableCollection<string> summary)
+            ObservableCollection<Message> summary)
         {
             _login = new LoginAUSA(connection, accountSession);
             _scrapy = new ScrapySixon(connection);
@@ -41,30 +42,30 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
-            //try
-            //{
-                _summary.Add("Validando login de sesion AUSA");
+            _summary.Add(new Message("AUSA", "Validando login de sesion"));
 
-                WebPage page = await _login.LoginWebPage();
+            WebPage page = await _login.LoginWebPage();
 
-                _summary.Add("Login de sesion AUSA exitoso");
+            _summary.Add(new Message("AUSA", "Login de sesion exitoso"));
 
-                _summary.Add("Comienzo de Scrapy AUSA");
+            _summary.Add(new Message("AUSA", "Comienzo de Scrapy"));
 
-                List<HeaderResponse> list = await _scrapy.Process(page);
+            List<HeaderResponse> list = await _scrapy.Process(page);
 
-                _summary.Add("Scrapy AUSA exitoso");
+            _summary.Add(new Message("AUSA", "Scrapy exitoso"));
 
-                List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
+            _summary.Add(new Message("AUSA", "Comienzo Cabecera y Detalle de exitoso"));
 
-                return invoices;
+            List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    _summary.Add("Error en procesar AUSA");
-            //    return new List<InvoiceHeader>();
-            //}
+            _summary.Add(new Message("AUSA", "Cabecera y Detalle de exitoso"));
+
+            return invoices;
+        }
+
+        public void Validando()
+        {
+
         }
     }
 }

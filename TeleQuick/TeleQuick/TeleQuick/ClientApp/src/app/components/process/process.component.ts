@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { fadeInOut } from "../../services/animations";
-import { ProgressbarModule } from "ngx-bootstrap/progressbar";
 import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import { AlertService, MessageSeverity } from "../../services/alert.service";
 import { Utilities } from "../../services/utilities";
@@ -9,6 +8,12 @@ import { OAuthService } from "angular-oauth2-oidc";
 import { Message } from "../../models/Message";
 import { BusinessService } from "../../services/business.service";
 import { GlobalResources } from "../../services/globalResources";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// RECOMMENDED
+
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 
 @Component({
   selector: "process",
@@ -21,8 +26,10 @@ export class ProcessComponent implements OnInit {
   showWarning: boolean;
   dynamic: number;
   type: any = "info";
-  text: string;
-
+  text: string = "Detalle del Procesamiento";
+  textDescription : string = "";
+  isCollapsed = false;
+  
   constructor(
     private oauthService: OAuthService,
     private alertService: AlertService,
@@ -92,6 +99,7 @@ export class ProcessComponent implements OnInit {
     connection.on("SendMessageUser", (description: string, value: string) => {
       this.dynamic = this.dynamic + 10;
       this.text = description;
+      this.textDescription += description +"\n"
     });
   }
 }

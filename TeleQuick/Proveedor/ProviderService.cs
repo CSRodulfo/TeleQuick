@@ -3,6 +3,7 @@ using Provider;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 using TeleQuick.Business.Models;
 using TeleQuick.Core.IAutopista;
 using TeleQuick.IService;
@@ -12,9 +13,9 @@ namespace Service.TeleQuick.Business
     public class ProviderService : IProviderService
     {
         private IConnectionAU _connection;
-        private ObservableCollection<string> _summary;
+        private ObservableCollection<Message> _summary;
 
-        public ProviderService(IConnectionAU connection, ObservableCollection<string> summary)
+        public ProviderService(IConnectionAU connection, ObservableCollection<Message> summary)
         {
             _connection = connection;
             _summary = summary;
@@ -51,5 +52,7 @@ namespace Service.TeleQuick.Business
         {
             return this.GetProvider(accountSession, null);
         }
+
+
     }
 }

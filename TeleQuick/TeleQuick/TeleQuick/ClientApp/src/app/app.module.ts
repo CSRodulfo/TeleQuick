@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { CommonModule } from "@angular/common";
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 import { OAuthModule, OAuthStorage } from "angular-oauth2-oidc";
 import { ToastaModule } from "ngx-toasta";
@@ -103,6 +104,7 @@ registerLocaleData(localeEsAr, "es-Ar");
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
+    CollapseModule.forRoot(),
     ProgressbarModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TranslateModule.forRoot({

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Threading.Tasks;
+using TeleQuick.Business;
 using TeleQuick.Helpers;
 
 namespace TeleQuick.SignalR
@@ -19,7 +20,7 @@ namespace TeleQuick.SignalR
 
         public Task SendMessageUser(string userId, Message message)
         {
-            return _hubMethods.WriteMessageAsync(userId,  message );
+            return _hubMethods.WriteMessageAsync(userId, message);
         }
 
         public override async Task OnConnectedAsync()
