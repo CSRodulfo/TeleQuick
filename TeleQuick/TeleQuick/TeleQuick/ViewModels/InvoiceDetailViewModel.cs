@@ -17,5 +17,6 @@ namespace TeleQuick.ViewModels
         public decimal Total { get; set; }
         public int InvoiceHeaderId { get; set; }
         public virtual string VehicleRegistration { get; set; }
+        public string ConcessionaryName { get; set; }
     }
 }

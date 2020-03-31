@@ -1,26 +1,39 @@
-<ngx-datatable class=" material colored-header sm table-hover" [loadingIndicator]="loadingIndicator" [rows]="rows"
-  [columns]="columns" [columnMode]="force" [headerHeight]="35" [footerHeight]="35" [rowHeight]="35" [limit]="10"
-  [messages]="messagesCustom">
+<ngx-datatable
+  class=" material colored-header sm table-hover"
+  [loadingIndicator]="loadingIndicator"
+  [rows]="rows"
+  [columns]="columns"
+  [columnMode]="force"
+  [headerHeight]="35"
+  [footerHeight]="35"
+  [rowHeight]="35"
+  [limit]="10"
+  [messages]="messagesCustom"
+>
 </ngx-datatable>
 
 <ng-template #indexTemplate let-value="value">
-  <strong>{{value}}</strong>
+  <strong>{{ value }}</strong>
 </ng-template>
 
 <ng-template #dateTemplate let-value="value">
-  {{value | date:'dd/MM/yyyy' }}
+  {{ value | date: "dd/MM/yyyy" }}
 </ng-template>
 
 <ng-template #hourTemplate let-value="value">
-  {{value | date:'hh:mm:ss' }}
+  {{ value | date: "hh:mm:ss" }}
 </ng-template>
 
 <ng-template #currencyTemplate let-value="value">
-  {{value | currency:'ARS':'symbol' }}
+  {{ value | currency: "ARS":"symbol" }}
 </ng-template>
 
 <ng-template #nameTemplate let-row="row" let-value="value">
   <span class="inline-label">
-    {{value}}
+    {{ value }}
   </span>
+</ng-template>
+
+<ng-template #concessionaryName let-value="value">
+  {{ value }}
 </ng-template>

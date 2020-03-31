@@ -1,7 +1,7 @@
 export class InvoiceDetail {
   // Note: Using only optional constructor properties without backing store disables typescript's type checking for the type
   constructor(id?: number, date?: Date, quantity?: number, total?: number, category?: number,
-    vehicleRegistration?: string, tollStation?: string) {
+    vehicleRegistration?: string, tollStation?: string, concessionaryName?: string) {
 
     this.id = id;
     this.date = date;
@@ -10,6 +10,7 @@ export class InvoiceDetail {
     this.category = category;
     this.total = total;
     this.vehicleRegistration = vehicleRegistration;
+    this.concessionaryName = concessionaryName;
   }
 
   public id: number;
@@ -19,4 +20,5 @@ export class InvoiceDetail {
   public category: number;
   public total: number;
   public vehicleRegistration: string;
+  public concessionaryName: string;
 }

@@ -19,6 +19,7 @@ namespace TeleQuick.DataAcces.Business
         {
             return await appContext.InvoiceDetails
                 .Include(x => x.Vehicle)
+                .Include(x => x.InvoiceHeader.Concessionary)
                 //.Skip(pageNumber).Take(pageSize)
                 .OrderBy(x => x.Date)
                 .ToListAsync();
@@ -29,7 +30,8 @@ namespace TeleQuick.DataAcces.Business
             return await appContext.InvoiceDetails
               .Where(x => x.InvoiceHeaderId == id)
               .Include(x => x.Vehicle)
-               //.Skip(pageNumber).Take(pageSize)
+              .Include(x => x.InvoiceHeader.Concessionary)
+              //.Skip(pageNumber).Take(pageSize)
               .OrderBy(x => x.Date)
               .ToListAsync();
         }

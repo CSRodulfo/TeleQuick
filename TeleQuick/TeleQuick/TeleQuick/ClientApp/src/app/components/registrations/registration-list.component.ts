@@ -1,6 +1,6 @@
 import { fadeInOut } from '../../services/animations';
 import { Component, OnInit, AfterViewInit, TemplateRef, ViewChild, Input } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { modelSearch } from '../../models/searchDate.model';
 
 import { AlertService, DialogType, MessageSeverity } from '../../services/alert.service';
 import { AppTranslationService } from '../../services/app-translation.service';
@@ -53,13 +53,16 @@ export class RegistrationListComponent implements OnInit {
   @ViewChild('actionsTemplate', { static: true })
   actionsTemplate: TemplateRef<any>;
 
+  @ViewChild('concessionaryName', { static: true })
+  concessionaryName: TemplateRef<any>;
+
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
     private businessService: BusinessService, private resx: GlobalResources) {
   }
 
   ngOnInit() {
     this.columns = [
-      { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
+      { prop: 'index', name: '#', width: 50, cellTemplate: this.indexTemplate, canAutoResize: false },
       { prop: 'date', name: 'Fecha', width: 100, cellTemplate: this.dateTemplate },
       { prop: 'date', name: 'Hora', width: 100, cellTemplate: this.hourTemplate },
       { prop: 'quantity', name: 'Cantidad', width: 50, cellTemplate: this.nameTemplate },
@@ -67,6 +70,7 @@ export class RegistrationListComponent implements OnInit {
       { prop: 'category', name: 'Categoria', width: 50 },
       { prop: 'total', name: 'Total', width: 50, cellTemplate: this.currencyTemplate },
       { prop: 'vehicleRegistration', name: 'Dominio', width: 100 },
+      { prop: 'concessionaryName', name: 'Concesionaria', width: 100, cellTemplate: this.concessionaryName },
     ];
 
     this.columns.push({ name: '', width: 200, cellTemplate: this.actionsTemplate, resizeable: false, canAutoResize: false, sortable: false, draggable: false });
@@ -115,8 +119,8 @@ export class RegistrationListComponent implements OnInit {
       MessageSeverity.error, error);
   }
 
-  onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.vehicleRegistration));
+  onSearchChanged(value: modelSearch) {
+    this.rows = this.rowsCache.filter(r =>  Utilities.searchArray(value.search, false, r.vehicleRegistration) 
+                                        && new Date(r.date) >= value.dateStart && new Date(r.date) <= value.dateEnd);
   }
-
 }

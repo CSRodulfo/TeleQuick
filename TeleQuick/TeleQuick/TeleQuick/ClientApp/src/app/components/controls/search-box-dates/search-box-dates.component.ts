@@ -1,5 +1,6 @@
 
 import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { modelSearch } from '../../../models/searchDate.model';
 
 @Component({
   selector: 'search-box-dates',
@@ -45,8 +46,4 @@ export class SearchBoxDatesComponent {
 
 }
 
-export interface modelSearch {
-  search: string,
-  dateStart: Date,
-  dateEnd: Date
-}
+

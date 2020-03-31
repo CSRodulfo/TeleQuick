@@ -4,21 +4,25 @@
       {{'pageHeader.Process' | translate}}</h3>
   </header>
   <div [@fadeInOut]>
-
-    <div class="mb-2">
-      <small>Se procesará la información de todas las concesaionarias configuradas correctamente</small>
-      <progressbar [animate]="false" [value]="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
-      <small><em>{{text}}</em></small>
+    <div>
+      <div class="mb-2">
+        <small>Se procesará la información de todas las concesaionarias configuradas correctamente</small>
+        <progressbar [animate]="false" [value]="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
+        <small><em>{{text}}</em></small>
+      </div>
+      <button type="button" class="btn btn-sm btn-primary" (click)="random()">Procesar</button>
     </div>
-    <button type="button" class="btn btn-sm btn-primary" (click)="random()">Procesar</button>
     <hr>
-    <button type="button" class="btn btn-sm btn-info" (click)="isCollapsed = !isCollapsed"
-      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
-    </button>
-    <hr>
-    <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-      <textarea name="textDescription" class="form-control" id="textDescription" rows="10"
-        [(ngModel)]="textDescription"></textarea>
+    <div>
+      <div class="mb-2">
+        <button type="button" class="btn btn-sm btn-info" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Información
+        </button>
+      </div>
+      <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+        <textarea name="textDescription" class="form-control" id="textDescription" rows="10"
+          [(ngModel)]="textDescription"></textarea>
+      </div>
     </div>
   </div>
 </div>

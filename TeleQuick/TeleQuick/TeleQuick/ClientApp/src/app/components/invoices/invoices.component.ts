@@ -8,6 +8,7 @@ import { Utilities } from '../../services/utilities';
 import { InvoiceHeader } from '../../models/invoice-header.model';
 import { GlobalResources } from '../../services/globalResources';
 import { RegistrationListComponent } from '../registrations/registration-list.component';
+import { modelSearch } from '../../models/searchDate.model';
 
 @Component({
   selector: 'invoices-list',
@@ -58,6 +59,8 @@ export class InvoicesComponent implements OnInit {
 
   @ViewChild('gridRegistration', { static: true })
   gridRegistration: RegistrationListComponent;
+
+  
 
 
   constructor(private alertService: AlertService, private translationService: AppTranslationService,
@@ -111,8 +114,9 @@ export class InvoicesComponent implements OnInit {
       MessageSeverity.error, error);
   }
 
-  onSearchChanged(value: string) {
-    this.rows = this.rowsCache.filter(r => Utilities.searchArray(value, false, r.date, r.concessionaryName));
+  onSearchChanged(value: modelSearch) {
+    this.rows = this.rowsCache.filter(r =>  Utilities.searchArray(value.search, false, r.concessionaryName) 
+                                        && new Date(r.date) >= value.dateStart && new Date(r.date) <= value.dateEnd);
   }
 
   canManageVehicles() {

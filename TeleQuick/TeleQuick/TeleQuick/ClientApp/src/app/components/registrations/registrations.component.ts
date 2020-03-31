@@ -7,7 +7,7 @@ import { AlertService, DialogType, MessageSeverity } from '../../services/alert.
 import { AppTranslationService } from '../../services/app-translation.service';
 import { BusinessService } from '../../services/business.service';
 import { Utilities } from '../../services/utilities';
-import { InvoiceDetail } from '../../models/invoice-detail.model';
+import { modelSearch } from '../../models/searchDate.model';
 import { GlobalResources } from '../../services/globalResources';
 import { RegistrationListComponent } from './registration-list.component';
 
@@ -21,8 +21,6 @@ import { RegistrationListComponent } from './registration-list.component';
 export class RegistrationsComponent implements OnInit {
   loadingIndicator: boolean;
   searchValue: string;
-
-
 
   @ViewChild('gridRegistration', { static: true })
   gridRegistration: RegistrationListComponent;
@@ -38,7 +36,7 @@ export class RegistrationsComponent implements OnInit {
   ngAfterViewInit() {
   }
 
-  onSearchChanged(value: string) {
+  onSearchChanged(value: modelSearch) {
     this.gridRegistration.onSearchChanged(value);
   }
 
