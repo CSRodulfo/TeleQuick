@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Business.Charts;
 using TeleQuick.Business.Models;
 
 namespace TeleQuick.IService
@@ -11,6 +10,7 @@ namespace TeleQuick.IService
         Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize);
         Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize);
         Task<IEnumerable<InvoiceDetail>> GetByHeaderId(int id);
-        Task<IEnumerable<InvoiceHeader>> GetChartDataByConcessionary();
+        Task<IEnumerable<ChartConcessionaries>> GetChartDataByConcessionary();
+        Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle();
     }
 }

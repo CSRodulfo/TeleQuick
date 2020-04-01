@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeleQuick.Business.Models;
+using TeleQuick.Business.Charts;
 using TeleQuick.IService;
-using TeleQuick.ViewModels;
 
 namespace TeleQuick.Controllers
 {
@@ -28,14 +27,24 @@ namespace TeleQuick.Controllers
 
 
         // GET: api/values
-        [HttpGet("Invoice")]
+        [HttpGet("ChartDataConcessionary")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        [ProducesResponseType(200, Type = typeof(List<InvoiceViewModel>))]
+        [ProducesResponseType(200, Type = typeof(List<ChartConcessionaries>))]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> Get(int pageNumber, int pageSize)
+        public async Task<IActionResult> ChartDataConcessionary()
         {
-            IEnumerable<InvoiceHeader> invoices = await _invoiceService.GetChartDataByConcessionary();
-            return Ok(_mapper.Map<IEnumerable<InvoiceViewModel>>(invoices));
+            IEnumerable<ChartConcessionaries> invoices = await _invoiceService.GetChartDataByConcessionary();
+            return Ok(invoices);
+        }
+
+        [HttpGet("ChartDataVehicle")]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(200, Type = typeof(List<ChartVehicle>))]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> ChartDataVehicle()
+        {
+            IEnumerable<ChartVehicle> invoices = await _invoiceService.GetChartDataByVehicle();
+            return Ok(invoices);
         }
     }
 }

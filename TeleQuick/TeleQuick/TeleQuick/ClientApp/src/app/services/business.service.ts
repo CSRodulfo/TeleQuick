@@ -82,6 +82,14 @@ export class BusinessService {
     return this.businessEndpoint.getProcessEndpoint();
   }
 
+  getChartDataConcessionary() {
+    return this.businessEndpoint.getChartDataConcessionary();
+  }
+
+  getChartDataVehicle() {
+    return this.businessEndpoint.getChartDataVehicle();
+  }
+
   // getUsersAndRoles(page?: number, pageSize?: number) {
   //
   //   return forkJoin(

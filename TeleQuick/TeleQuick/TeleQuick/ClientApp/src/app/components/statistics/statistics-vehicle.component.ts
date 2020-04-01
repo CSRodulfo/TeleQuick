@@ -4,6 +4,10 @@ import { Subscription, Observable, fromEvent, of, merge } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { ChartType } from 'chart.js';
 
+import { BusinessService } from "../../services/business.service";
+import { GlobalResources } from "../../services/globalResources";
+import { Utilities } from "../../services/utilities";
+
 @Component({
   selector: 'statistics-vehicle',
   templateUrl: './statistics-vehicle.component.html',
@@ -11,10 +15,12 @@ import { ChartType } from 'chart.js';
 })
 export class StatisticsVehicleComponent implements OnInit, OnDestroy {
 
-  chartData = [
-    { data: [300, 590, 120, 700, 56], label: 'Series A' }
-  ];
-  chartLabels = ['MTI797', 'KTO278', 'AB123CD', 'AR987FD', 'GGF456'];
+  Labels = [];
+  Data = [];
+
+  chartData = [{ data: this.Data, label: "Concesionaria" }];
+  chartLabels = this.Labels;
+
   chartOptions = {
     responsive: true,
     title: {
@@ -39,9 +45,11 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
   windowWidthSub: Subscription;
 
 
-  constructor(private alertService: AlertService) {
-
-  }
+  constructor(
+    private alertService: AlertService,
+    private businessService: BusinessService,
+    private resx: GlobalResources
+  ) {}
 
   ngOnInit() {
     const initialWidth$ = of(window.innerWidth);
@@ -49,6 +57,8 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
     this.windowWidth$ = merge(initialWidth$, resizedWidth$).pipe(distinctUntilChanged());
 
     this.windowWidthSub = this.windowWidth$.subscribe(width => this.chartLegend = width < 600 ? false : true);
+
+    this.loadData();
   }
 
   ngOnDestroy() {
@@ -62,6 +72,39 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
 
   chartClicked(e): void {
     console.log(e);
+  }
+
+  loadData() {
+    this.businessService.getChartDataVehicle().subscribe({
+      next: (results: any) => {
+        this.onDataLoadSuccessful(results);
+      },
+      error: (error: any) => {
+        this.onDataLoadFailed(error);
+      },
+      complete: () => {
+        console.log("complete");
+      }
+    });
+  }
+
+  onDataLoadSuccessful(invoice: any) {
+    invoice.forEach(x => {
+      this.Labels.push(x.vehicleName);
+      this.Data.push(x.total);
+    });
+  }
+
+  onDataLoadFailed(error: any) {
+    
+    this.alertService.showStickyMessage(
+      this.resx.loadError,
+      `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(
+        error
+      )}"`,
+      MessageSeverity.error,
+      error
+    );
   }
 
 }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeleQuick.Business.Charts;
 using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
 using TeleQuick.IService;
@@ -36,9 +35,14 @@ namespace TeleQuick.Service
             return _invoiceDetailRepository.GetByHeaderId(id);
         }
 
-        public Task<IEnumerable<InvoiceHeader>> GetChartDataByConcessionary()
+        public Task<IEnumerable<ChartConcessionaries>> GetChartDataByConcessionary()
         {
             return _invoiceRepository.GetChartDataByConcessionary();
+        }
+
+        public Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()
+        {
+            return _invoiceRepository.GetChartDataByVehicle();
         }
     }
 }

@@ -23,6 +23,8 @@ export class BusinessEndpoint extends EndpointBase {
   private readonly _invoiceDetailUrl: string = '/api/Invoice/InvoiceDetail';
   private readonly _processUrl: string = '/api/Process/Process';
   private readonly _registrationUrl: string = '/api/Registration/Invoice';
+  private readonly _chartDataConcessionaryUrl: string = '/api/Home/ChartDataConcessionary';
+  private readonly _chartDataVehicleUrl: string = '/api/Home/ChartDataVehicle';
 
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
@@ -33,6 +35,8 @@ export class BusinessEndpoint extends EndpointBase {
   get invoiceDetailUrl() { return this.configurations.baseUrl + this._invoiceDetailUrl; }
   get processUrl() { return this.configurations.baseUrl + this._processUrl; }
   get registrationUrl() { return this.configurations.baseUrl + this._registrationUrl; }
+  get chartDataConcessionaryUrl() { return this.configurations.baseUrl + this._chartDataConcessionaryUrl; }
+  get chartDataVehicleUrl() { return this.configurations.baseUrl + this._chartDataVehicleUrl; }
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
@@ -166,6 +170,24 @@ export class BusinessEndpoint extends EndpointBase {
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {
         return this.handleError(error, () => this.getProcessEndpoint());
+      }));
+  }
+
+  getChartDataConcessionary<T>(): Observable<T> {
+    const endpointUrl = `${this.chartDataConcessionaryUrl}`;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getChartDataConcessionary());
+      }));
+  }
+
+  getChartDataVehicle<T>(): Observable<T> {
+    const endpointUrl = `${this.chartDataVehicleUrl}`;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getChartDataVehicle());
       }));
   }
 }
