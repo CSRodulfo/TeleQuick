@@ -25,5 +25,25 @@ namespace TeleQuick.DataAcces.Business
                 .OrderByDescending(x => x.Date)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<InvoiceHeader>> GetChartDataByConcessionary()
+        {
+            var a = appContext.InvoiceHeaders
+               .GroupBy(d => d.Concessionary.Name)
+               .Select(
+                   g => new
+                   {
+                       Key = g.Key,
+                       Value = g.Sum(s => s.Total)
+                   })
+               .ToList();
+
+            return await appContext.InvoiceHeaders
+     .Include(x => x.Concessionary)
+     .Include(x => x.InvoiceDetails)
+     //.Skip(pageNumber).Take(pageSize)
+     .OrderByDescending(x => x.Date)
+     .ToListAsync();
+        }
     }
 }

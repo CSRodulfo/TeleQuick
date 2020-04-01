@@ -35,5 +35,10 @@ namespace TeleQuick.Service
         {
             return _invoiceDetailRepository.GetByHeaderId(id);
         }
+
+        public Task<IEnumerable<InvoiceHeader>> GetChartDataByConcessionary()
+        {
+            return _invoiceRepository.GetChartDataByConcessionary();
+        }
     }
 }
