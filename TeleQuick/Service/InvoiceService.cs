@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Business.Charts;
 using TeleQuick.Business.Models;
@@ -40,9 +41,12 @@ namespace TeleQuick.Service
             return _invoiceRepository.GetChartDataByConcessionary();
         }
 
-        public Task<IEnumerable<ChartYear>> GetChartDataByMonth()
+        public IEnumerable<ChartData> GetChartDataByMonth()
         {
-            return _invoiceRepository.GetChartDataByMonth();
+
+            return  _invoiceRepository.GetChartDataByMonth().Result
+            .GroupBy(x => x.Concessionary).Select(x => new ChartData { label = x.Key, data = x });
+
         }
 
         public Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()

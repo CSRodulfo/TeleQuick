@@ -49,11 +49,11 @@ namespace TeleQuick.Controllers
 
         [HttpGet("ChartDataYear")]
         [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
-        [ProducesResponseType(200, Type = typeof(List<ChartYear>))]
+        [ProducesResponseType(200, Type = typeof(List<ChartData>))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> ChartDataYear()
         {
-            IEnumerable<ChartYear> invoices = await _invoiceService.GetChartDataByMonth();
+            IEnumerable<ChartData> invoices = _invoiceService.GetChartDataByMonth();
             return Ok(invoices);
         }
     }
