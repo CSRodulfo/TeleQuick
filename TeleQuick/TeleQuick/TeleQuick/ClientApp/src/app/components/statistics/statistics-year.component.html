@@ -1,7 +1,7 @@
 <div class="row statistics-container">
   <div class="col-md-6">
     <div class="chart-container">
-      <canvas baseChart width="600" height="250"
+      <canvas baseChart width="600" height="250"  *ngIf="chartData"
               [datasets]="chartData"
               [labels]="chartLabels"
               [options]="chartOptions"

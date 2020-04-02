@@ -23,8 +23,7 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
   label = "";
 
   chartData = [
-    { data: this.Data, label: this.label }
-    //{ data: [300, 190, 600, 410, 500, 500, 400, 350, 100], label: 'AUSA' },
+    { data: [], label: "" }
     //{ data: [350, 400, 200, 410, 60, 50, 300, 550, 1000], label: 'AUSOL' },
   ];
   chartLabels = ["Ene", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago"];
@@ -115,12 +114,11 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
 
   onDataLoadSuccessful(invoice: any) {
     invoice.forEach(x => {
-      
-      var datas = [] ;
+      var datas = [];
       x.data.forEach(element => {
-        datas.push(element.total)
+        datas.push(element.total);
       });
-      this.chartData.push( { data: datas, label: x.label});
+      this.chartData.push({ data: datas, label: x.label });
     });
   }
 
