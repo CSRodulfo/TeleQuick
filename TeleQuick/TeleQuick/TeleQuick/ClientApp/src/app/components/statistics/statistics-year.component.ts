@@ -1,12 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import {
-  AlertService,
-  DialogType,
-  MessageSeverity
-} from "../../services/alert.service";
+import { AlertService, MessageSeverity } from "../../services/alert.service";
 import { Subscription, Observable, fromEvent, of, merge } from "rxjs";
 import { map, distinctUntilChanged } from "rxjs/operators";
-import { ChartType } from "chart.js";
+import { ChartType, ChartDataSets } from "chart.js";
 
 import { BusinessService } from "../../services/business.service";
 import { GlobalResources } from "../../services/globalResources";
@@ -22,10 +18,11 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
   Data = [];
   label = "";
 
-  chartData = [
+  chartData : ChartDataSets[] = [
     { data: [], label: "" }
     //{ data: [350, 400, 200, 410, 60, 50, 300, 550, 1000], label: 'AUSOL' },
   ];
+
   chartLabels = ["Ene", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago"];
   chartOptions = {
     responsive: true,
@@ -121,6 +118,8 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
       this.chartData.push({ data: datas, label: x.label });
     });
   }
+
+
 
   onDataLoadFailed(error: any) {
     this.alertService.showStickyMessage(
