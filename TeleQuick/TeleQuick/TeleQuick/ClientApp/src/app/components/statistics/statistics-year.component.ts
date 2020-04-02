@@ -18,10 +18,10 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
   Data = [];
   label = "";
 
-  chartData : ChartDataSets[] = [
-    { data: [], label: "" }
-    //{ data: [350, 400, 200, 410, 60, 50, 300, 550, 1000], label: 'AUSOL' },
-  ];
+  chartData: ChartDataSets[]; // = [
+  //{ data: [], label: "" }
+  //{ data: [350, 400, 200, 410, 60, 50, 300, 550, 1000], label: 'AUSOL' },
+  //];
 
   chartLabels = ["Ene", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago"];
   chartOptions = {
@@ -64,9 +64,12 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private businessService: BusinessService,
     private resx: GlobalResources
-  ) {}
+  ) {
+    //this.loadData();
+  }
 
   ngOnInit() {
+    this.loadData();
     const initialWidth$ = of(window.innerWidth);
     const resizedWidth$ = fromEvent(window, "resize").pipe(
       map((event: any) => event.target.innerWidth as number)
@@ -78,8 +81,6 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
     this.windowWidthSub = this.windowWidth$.subscribe(
       width => (this.chartLegend = width < 600 ? false : true)
     );
-
-    this.loadData();
   }
 
   ngOnDestroy() {
@@ -115,11 +116,14 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
       x.data.forEach(element => {
         datas.push(element.total);
       });
-      this.chartData.push({ data: datas, label: x.label });
+
+      if (this.chartData === undefined) {
+        this.chartData = [{ data: datas, label: x.label }];
+      } else {
+        this.chartData.push({ data: datas, label: x.label });
+      }
     });
   }
-
-
 
   onDataLoadFailed(error: any) {
     this.alertService.showStickyMessage(
