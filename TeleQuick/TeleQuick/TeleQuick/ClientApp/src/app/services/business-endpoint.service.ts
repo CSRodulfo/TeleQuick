@@ -25,6 +25,7 @@ export class BusinessEndpoint extends EndpointBase {
   private readonly _registrationUrl: string = '/api/Registration/Invoice';
   private readonly _chartDataConcessionaryUrl: string = '/api/Home/ChartDataConcessionary';
   private readonly _chartDataVehicleUrl: string = '/api/Home/ChartDataVehicle';
+  private readonly _chartDataYearUrl: string = '/api/Home/ChartDataYear';
 
   get usersUrl() { return this.configurations.baseUrl + this._usersUrl; }
   get userByUserNameUrl() { return this.configurations.baseUrl + this._userByUserNameUrl; }
@@ -37,6 +38,7 @@ export class BusinessEndpoint extends EndpointBase {
   get registrationUrl() { return this.configurations.baseUrl + this._registrationUrl; }
   get chartDataConcessionaryUrl() { return this.configurations.baseUrl + this._chartDataConcessionaryUrl; }
   get chartDataVehicleUrl() { return this.configurations.baseUrl + this._chartDataVehicleUrl; }
+  get chartDataYeareUrl() { return this.configurations.baseUrl + this._chartDataYearUrl; }
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
@@ -188,6 +190,15 @@ export class BusinessEndpoint extends EndpointBase {
     return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
       catchError(error => {
         return this.handleError(error, () => this.getChartDataVehicle());
+      }));
+  }
+
+  getChartDataYear<T>(): Observable<T> {
+    const endpointUrl = `${this.chartDataYeareUrl}`;
+
+    return this.http.get<T>(endpointUrl, this.requestHeaders).pipe<T>(
+      catchError(error => {
+        return this.handleError(error, () => this.getChartDataYear());
       }));
   }
 }

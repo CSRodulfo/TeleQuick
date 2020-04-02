@@ -90,6 +90,10 @@ export class BusinessService {
     return this.businessEndpoint.getChartDataVehicle();
   }
 
+  getChartDataYear() {
+    return this.businessEndpoint.getChartDataYear();
+  }
+
   // getUsersAndRoles(page?: number, pageSize?: number) {
   //
   //   return forkJoin(

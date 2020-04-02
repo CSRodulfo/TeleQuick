@@ -46,5 +46,15 @@ namespace TeleQuick.Controllers
             IEnumerable<ChartVehicle> invoices = await _invoiceService.GetChartDataByVehicle();
             return Ok(invoices);
         }
+
+        [HttpGet("ChartDataYear")]
+        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [ProducesResponseType(200, Type = typeof(List<ChartYear>))]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> ChartDataYear()
+        {
+            IEnumerable<ChartYear> invoices = await _invoiceService.GetChartDataByMonth();
+            return Ok(invoices);
+        }
     }
 }

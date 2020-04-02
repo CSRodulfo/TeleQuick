@@ -41,6 +41,21 @@ namespace TeleQuick.DataAcces.Business
                .ToListAsync();
         }
 
+        public async Task<IEnumerable<ChartYear>> GetChartDataByMonth()
+        {
+            return await appContext.InvoiceHeaders
+                .Where(x => x.Date >= System.DateTime.Now.AddMonths(-16))
+                .Select(k => new { k.Date.Year, k.Date.Month, k.Total, k.Concessionary.Name })
+                .GroupBy(x => new { x.Year, x.Month, x.Name }, (key, group) => new ChartYear
+                {
+                    Year = key.Year,
+                    Month = key.Month,
+                    Concessionary = key.Name,
+                    Total = group.Sum(k => k.Total )
+                })
+                .ToListAsync();
+        }
+
         public async Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()
         {
             return await appContext.InvoiceDetails

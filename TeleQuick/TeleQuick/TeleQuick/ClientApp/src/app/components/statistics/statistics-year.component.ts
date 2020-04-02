@@ -4,6 +4,11 @@ import { Subscription, Observable, fromEvent, of, merge } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { ChartType } from 'chart.js';
 
+import { BusinessService } from "../../services/business.service";
+import { GlobalResources } from "../../services/globalResources";
+import { Utilities } from "../../services/utilities";
+
+
 @Component({
   selector: 'statistics-year',
   templateUrl: './statistics-year.component.html',
@@ -11,7 +16,10 @@ import { ChartType } from 'chart.js';
 })
 export class StatisticsYearComponent implements OnInit, OnDestroy {
 
-  chartData = [
+  Labels = [];
+  Data = [];
+
+    chartData = [
     { data: [650, 590, 800, 810, 560, 550, 700, 850, 1100], label: 'Total' },
     { data: [300, 190, 600, 410, 500, 500, 400, 350, 100], label: 'AUSA' },
     { data: [350, 400, 200, 410, 60, 50, 300, 550, 1000], label: 'AUSOL' },
@@ -53,9 +61,11 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
   windowWidthSub: Subscription;
 
 
-  constructor(private alertService: AlertService) {
-
-  }
+  constructor(
+    private alertService: AlertService,
+    private businessService: BusinessService,
+    private resx: GlobalResources
+  ) {}
 
   ngOnInit() {
     const initialWidth$ = of(window.innerWidth);
@@ -76,6 +86,39 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
 
   chartClicked(e): void {
     console.log(e);
+  }
+
+  loadData() {
+    this.businessService.getChartDataVehicle().subscribe({
+      next: (results: any) => {
+        this.onDataLoadSuccessful(results);
+      },
+      error: (error: any) => {
+        this.onDataLoadFailed(error);
+      },
+      complete: () => {
+        console.log("complete");
+      }
+    });
+  }
+
+  onDataLoadSuccessful(invoice: any) {
+    invoice.forEach(x => {
+      this.Labels.push(x.vehicleName);
+      this.Data.push(x.total);
+    });
+  }
+
+  onDataLoadFailed(error: any) {
+    
+    this.alertService.showStickyMessage(
+      this.resx.loadError,
+      `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(
+        error
+      )}"`,
+      MessageSeverity.error,
+      error
+    );
   }
 
 }
