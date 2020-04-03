@@ -13,7 +13,7 @@ namespace TeleQuick.IDataAccess.Business
     {
         Task<IEnumerable<InvoiceHeader>> GetAll(int pageNumber, int pageSize);
         Task<IEnumerable<ChartConcessionaries>> GetChartDataByConcessionary();
-        Task<IEnumerable<ChartYear>> GetChartDataByMonth();
+        Task<IEnumerable<ChartData>> GetChartDataByMonth();
         Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle();
     }
 }

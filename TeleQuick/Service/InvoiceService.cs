@@ -41,12 +41,9 @@ namespace TeleQuick.Service
             return _invoiceRepository.GetChartDataByConcessionary();
         }
 
-        public IEnumerable<ChartData> GetChartDataByMonth()
+        public Task<IEnumerable<ChartData>> GetChartDataByMonth()
         {
-
-            return  _invoiceRepository.GetChartDataByMonth().Result
-            .GroupBy(x => x.Concessionary).Select(x => new ChartData { label = x.Key, data = x });
-
+            return _invoiceRepository.GetChartDataByMonth();
         }
 
         public Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()
