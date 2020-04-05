@@ -60,26 +60,28 @@ namespace TeleQuick.Service
 
             var months = Enumerable.Range(0, 6)
                                 .Select(startDate.AddMonths)
-                                .Select(m => m.Month);
+                                .Select(m => m.ToString("yyyyM"));
 
 
             var a = await _invoiceRepository.GetChartDataByMonth();
 
             foreach (var item in a)
             {
-                foreach (int month in months)
+                foreach (string month in months)
                 {
-                    var f = item.data.Any(x => x.Month == month);
+                    var f = item.data.Any(x => x.Year == month);
 
                     if (!f)
                     {
                         ChartYear year = new ChartYear();
                         year.Concessionary = item.label;
-                        year.Month = month;
+                        year.Month = int.Parse(month.Substring(4, month.Length - 4));
+                        year.Year = month;
                         item.data.Add(year);
                     }
 
                 }
+                item.data = item.data.OrderBy(m => m.Year).ToList();
             }
 
             return a;

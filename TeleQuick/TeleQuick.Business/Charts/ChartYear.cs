@@ -6,7 +6,7 @@ namespace TeleQuick.Business.Charts
 {
     public class ChartYear
     {
-        public int Year { get; set; }
+        public string Year { get; set; }
 
         public int Month { get; set; }
 

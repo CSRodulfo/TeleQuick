@@ -48,7 +48,7 @@ namespace TeleQuick.DataAcces.Business
                 .Select(k => new { k.Date.Year, k.Date.Month, k.Total, k.Concessionary.Name })
                 .GroupBy(x => new { x.Year, x.Month, x.Name }, (key, group) => new ChartYear
                 {
-                    Year = key.Year,
+                    Year = string.Concat(key.Year,key.Month),
                     Month = key.Month,
                     Concessionary = key.Name,
                     Total = group.Sum(k => k.Total)
