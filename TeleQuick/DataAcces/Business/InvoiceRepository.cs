@@ -54,7 +54,7 @@ namespace TeleQuick.DataAcces.Business
                     Total = group.Sum(k => k.Total)
                 }).ToList()
                 .GroupBy(x => x.Concessionary)
-                .Select(x => new ChartData { label = x.Key, data = x })
+                .Select(x => new ChartData { label = x.Key, data = x.ToList() })
                 .ToList();
         }
 

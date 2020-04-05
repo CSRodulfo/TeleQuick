@@ -23,7 +23,7 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
   //{ data: [350, 400, 200, 410, 60, 50, 300, 550, 1000], label: 'AUSOL' },
   //];
 
-  chartLabels = ["Ene", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago"];
+  chartLabels = [];
   chartOptions = {
     responsive: true,
     title: {
@@ -111,7 +111,7 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
   }
 
   onDataLoadSuccessful(invoice: any) {
-    invoice.forEach(x => {
+    invoice.chartData.forEach(x => {
       var datas = [];
       x.data.forEach(element => {
         datas.push(element.total);
@@ -123,6 +123,8 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
         this.chartData.push({ data: datas, label: x.label });
       }
     });
+
+    this.chartLabels = invoice.labels;
   }
 
   onDataLoadFailed(error: any) {

@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Business.Charts;
 using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
 using TeleQuick.IService;
+using System.Linq;
+using System.Data;
 
 namespace TeleQuick.Service
 {
@@ -28,7 +31,7 @@ namespace TeleQuick.Service
         public Task<IEnumerable<InvoiceDetail>> GetAllDetails(int pageNumber, int pageSize)
         {
             return _invoiceDetailRepository.GetAllDetails(pageNumber, pageSize);
-          
+
         }
 
         public Task<IEnumerable<InvoiceDetail>> GetByHeaderId(int id)
@@ -41,10 +44,61 @@ namespace TeleQuick.Service
             return _invoiceRepository.GetChartDataByConcessionary();
         }
 
-        public Task<IEnumerable<ChartData>> GetChartDataByMonth()
+        public async Task<Chart> GetChartData()
         {
-            return _invoiceRepository.GetChartDataByMonth();
+            Chart chart = new Chart();
+
+            chart.chartData = await this.GetChartDataByMonth();
+            chart.labels = this.GetChartMonth();
+
+            return chart;
         }
+
+        private async Task<IEnumerable<ChartData>> GetChartDataByMonth()
+        {
+            var startDate = System.DateTime.Now.AddMonths(-6);
+
+            var months = Enumerable.Range(0, 6)
+                                .Select(startDate.AddMonths)
+                                .Select(m => m.Month);
+
+
+            var a = await _invoiceRepository.GetChartDataByMonth();
+
+            foreach (var item in a)
+            {
+                foreach (int month in months)
+                {
+                    var f = item.data.Any(x => x.Month == month);
+
+                    if (!f)
+                    {
+                        ChartYear year = new ChartYear();
+                        year.Concessionary = item.label;
+                        year.Month = month;
+                        item.data.Add(year);
+                    }
+
+                }
+            }
+
+            return a;
+
+            //return _invoiceRepository.GetChartDataByMonth();
+        }
+
+        private IEnumerable<string> GetChartMonth()
+        {
+            var startDate = System.DateTime.Now.AddMonths(-6);
+
+            var months = Enumerable.Range(0, 6)
+                                .Select(startDate.AddMonths)
+                                .Select(m => System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM")))
+                                .AsEnumerable();
+
+            return months;
+        }
+
 
         public Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()
         {

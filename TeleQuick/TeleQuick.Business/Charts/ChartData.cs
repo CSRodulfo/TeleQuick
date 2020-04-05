@@ -8,6 +8,7 @@ namespace TeleQuick.Business.Charts
     {
         public string label { get; set; }
 
-        public IEnumerable<ChartYear> data { get; set; }
+        public IList<ChartYear> data { get; set; }
+
     }
 }
