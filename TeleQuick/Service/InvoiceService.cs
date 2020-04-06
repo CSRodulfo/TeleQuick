@@ -48,30 +48,30 @@ namespace TeleQuick.Service
         {
             Chart chart = new Chart();
 
-            chart.chartData = await this.GetChartDataByMonth();
+            chart.chartData = await this.GetChartDataByMonth(-6);
             chart.labels = this.GetChartMonth();
 
             return chart;
         }
 
-        private async Task<IEnumerable<ChartData>> GetChartDataByMonth()
+        private async Task<IEnumerable<ChartData>> GetChartDataByMonth(int months)
         {
-            var startDate = System.DateTime.Now.AddMonths(-6);
+            var startDate = System.DateTime.Now.AddMonths(months);
 
-            var months = Enumerable.Range(0, 6)
+            var monthss = Enumerable.Range(0, 6)
                                 .Select(startDate.AddMonths)
                                 .Select(m => m.ToString("yyyyM"));
 
 
-            var a = await _invoiceRepository.GetChartDataByMonth();
-            var b = await _invoiceRepository.GetChartDataByTotal();
+            var a = await _invoiceRepository.GetChartDataByMonth(months);
+            var b = await _invoiceRepository.GetChartDataByTotal(months);
 
             var c = b.Union(a).AsEnumerable();
 
             foreach (var item in c)
             {
                 List<ChartYear> data = new List<ChartYear>();
-                foreach (string month in months)
+                foreach (string month in monthss)
                 {
                     var f = item.data.FirstOrDefault(x => x.Year == month);
 

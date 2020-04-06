@@ -41,42 +41,6 @@ namespace TeleQuick.DataAcces.Business
                .ToListAsync();
         }
 
-        public async Task<IEnumerable<ChartData>> GetChartDataByMonth()
-        {
-            return appContext.InvoiceHeaders
-                .Where(x => x.Date >= System.DateTime.Now.AddMonths(-6))
-                .Select(k => new { k.Date.Year, k.Date.Month, k.Total, k.Concessionary.Name })
-                .GroupBy(x => new { x.Year, x.Month, x.Name }, (key, group) => new ChartYear
-                {
-                    Year = string.Concat(key.Year,key.Month),
-                    Month = key.Month,
-                    Concessionary = key.Name,
-                    Total = group.Sum(k => k.Total)
-                })
-                .ToList()
-                .GroupBy(x => x.Concessionary)
-                .Select(x => new ChartData { label = x.Key, data = x.OrderBy(m => m.Year).ToList() })
-                .ToList();
-        }
-
-        public async Task<IEnumerable<ChartData>> GetChartDataByTotal()
-        {
-            return appContext.InvoiceHeaders
-                .Where(x => x.Date >= System.DateTime.Now.AddMonths(-6))
-                .Select(k => new { k.Date.Year, k.Date.Month, k.Total })
-                .GroupBy(x => new { x.Year, x.Month }, (key, group) => new ChartYear
-                {
-                    Year = string.Concat(key.Year, key.Month),
-                    Month = key.Month,
-                    Concessionary = "Total",
-                    Total = group.Sum(k => k.Total)
-                })
-                .ToList()
-                .GroupBy(x => x.Concessionary)
-                .Select(x => new ChartData { label = x.Key, data = x.OrderBy(m => m.Year).ToList() })
-                .ToList();
-        }
-
         public async Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()
         {
             return await appContext.InvoiceDetails
@@ -89,5 +53,61 @@ namespace TeleQuick.DataAcces.Business
                   })
               .ToListAsync();
         }
+
+        public async Task<IEnumerable<ChartData>> GetChartDataByMonth(int month)
+        {
+            return await ChartDataGroup(ChartDataByMonth(month));
+        }
+
+        public async Task<IEnumerable<ChartData>> GetChartDataByTotal(int month)
+        {
+            return await ChartDataGroup(ChartDataByTotal(month));
+        }
+
+        private IList<ChartYear> ChartDataByMonth(int month)
+        {
+            return GetChartDataBase(month)
+                .Select(k => new { k.Date.Year, k.Date.Month, k.Total, k.Concessionary.Name })
+                .GroupBy(x => new { x.Year, x.Month, x.Name }, (key, group) => new ChartYear
+                {
+                    Year = string.Concat(key.Year, key.Month),
+                    Month = key.Month,
+                    Concessionary = key.Name,
+                    Total = group.Sum(k => k.Total)
+                })
+                .ToList();
+        }
+
+        public IList<ChartYear> ChartDataByTotal(int month)
+        {
+            return GetChartDataBase(month)
+                .Select(k => new { k.Date.Year, k.Date.Month, k.Total })
+                .GroupBy(x => new { x.Year, x.Month }, (key, group) => new ChartYear
+                {
+                    Year = string.Concat(key.Year, key.Month),
+                    Month = key.Month,
+                    Concessionary = "Total",
+                    Total = group.Sum(k => k.Total)
+                })
+                .ToList();
+        }
+
+        private IQueryable<InvoiceHeader> GetChartDataBase(int month)
+        {
+            return appContext.InvoiceHeaders
+                .Where(x => x.Date >= System.DateTime.Now.AddMonths(month))
+                .AsQueryable();
+        }
+
+        public async Task<IEnumerable<ChartData>> ChartDataGroup(IList<ChartYear> groupList)
+        {
+            return groupList
+                .GroupBy(x => x.Concessionary)
+                .Select(x => new ChartData { label = x.Key, data = x.OrderBy(m => m.Year).ToList() })
+                .ToList();
+        }
+
+
+
     }
 }
