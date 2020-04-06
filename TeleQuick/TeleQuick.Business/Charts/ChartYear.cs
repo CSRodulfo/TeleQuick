@@ -6,11 +6,11 @@ namespace TeleQuick.Business.Charts
 {
     public class ChartYear
     {
-        public string Year { get; set; }
+        public string IdYearMonth { get; set; }
 
         public int Month { get; set; }
 
-        public string Concessionary { get; set; }
+        public string Description { get; set; }
 
         public decimal Total { get; set; }
     }

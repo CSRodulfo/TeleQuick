@@ -51,7 +51,7 @@ namespace TeleQuick.Service
             Chart chart = new Chart();
 
             chart.chartData = await this.GetChartDataByMonth(month);
-            chart.labels = this.GetChartMonth(month).Select(m => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM"))); 
+            chart.labels = this.GetChartMonth(month).Select(m => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM")));
 
             return chart;
         }
@@ -59,23 +59,21 @@ namespace TeleQuick.Service
         private async Task<IEnumerable<ChartData>> GetChartDataByMonth(int month)
         {
             var months = GetChartMonth(month).Select(m => m.ToString("yyyyM"));
-
             var list = await _invoiceRepository.GetChartData(month);
-            
 
             foreach (var charData in list)
             {
                 List<ChartYear> data = new List<ChartYear>();
                 foreach (string date in months)
                 {
-                    var f = charData.data.FirstOrDefault(x => x.Year == date);
+                    var f = charData.data.FirstOrDefault(x => x.IdYearMonth == date);
 
                     if (f == null)
                     {
                         ChartYear year = new ChartYear();
-                        year.Concessionary = charData.label;
+                        year.Description = charData.label;
                         year.Month = int.Parse(date.Substring(4, date.Length - 4));
-                        year.Year = date;
+                        year.IdYearMonth = date;
                         data.Add(year);
                     }
                     else
@@ -89,19 +87,14 @@ namespace TeleQuick.Service
             }
 
             return list;
-
-            //return _invoiceRepository.GetChartDataByMonth();
         }
 
         private IEnumerable<DateTime> GetChartMonth(int month)
         {
             var startDate = System.DateTime.Now.AddMonths(month);
 
-            return Enumerable.Range(0, 6)
-                                .Select(startDate.AddMonths);
-                                
+            return Enumerable.Range(0, 6).Select(startDate.AddMonths);
         }
-
 
         public Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle()
         {
