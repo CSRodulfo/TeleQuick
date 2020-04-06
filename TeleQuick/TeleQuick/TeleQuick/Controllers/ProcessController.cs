@@ -50,7 +50,6 @@ namespace TeleQuick.Controllers
         {
             try
             {
-                //_summary.
                 _summary.CollectionChanged += async (o, e) =>
                 {
                     try
@@ -61,8 +60,7 @@ namespace TeleQuick.Controllers
                     }
                     catch (Exception ex)
                     {
-
-                        
+                        _logger.LogError(LoggingEvents.PROCESS, ex, "Se produjo un error en adjuntar el mensaje");
                     }
                  
                 };

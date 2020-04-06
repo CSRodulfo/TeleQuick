@@ -1,15 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using TeleQuick.Business.Charts;
 using TeleQuick.Business.Models;
 using TeleQuick.IDataAccess.Business;
 using TeleQuick.IService;
-using System.Linq;
-using System.Data;
-using System.Globalization;
-using System;
 
 namespace TeleQuick.Service
 {
@@ -66,22 +64,20 @@ namespace TeleQuick.Service
                 List<ChartYear> data = new List<ChartYear>();
                 foreach (string date in months)
                 {
-                    var f = charData.data.FirstOrDefault(x => x.IdYearMonth == date);
+                    ChartYear chartYear = charData.data.FirstOrDefault(x => x.IdYearMonth == date);
 
-                    if (f == null)
+                    if (chartYear == null)
                     {
-                        ChartYear year = new ChartYear();
-                        year.Description = charData.label;
-                        year.Month = int.Parse(date.Substring(4, date.Length - 4));
-                        year.IdYearMonth = date;
-                        data.Add(year);
+                        ChartYear chart = new ChartYear();
+                        chart.Description = charData.label;
+                        chart.Month = int.Parse(date.Substring(4, date.Length - 4));
+                        chart.IdYearMonth = date;
+                        data.Add(chart);
                     }
                     else
                     {
-                        data.Add(f);
-
+                        data.Add(chartYear);
                     }
-
                 }
                 charData.data = data;
             }

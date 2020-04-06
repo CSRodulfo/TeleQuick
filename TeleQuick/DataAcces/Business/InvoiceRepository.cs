@@ -58,8 +58,8 @@ namespace TeleQuick.DataAcces.Business
         {
             var baseData = GetChartDataBase(month);
 
-            var a = await this.ChartDataGroup(ChartDataByMonth(baseData));
-            var b = await this.ChartDataGroup(ChartDataByTotal(baseData));
+            var a = this.ChartDataGroup(ChartDataByMonth(baseData));
+            var b = this.ChartDataGroup(ChartDataByTotal(baseData));
 
             return b.Union(a).AsEnumerable();
         }
@@ -70,7 +70,7 @@ namespace TeleQuick.DataAcces.Business
                 .Select(k => new { k.Date.Year, k.Date.Month, k.Total, k.Concessionary.Name })
                 .GroupBy(x => new { x.Year, x.Month, x.Name }, (key, group) => new ChartYear
                 {
-                    IdYearMonth = string.Concat(key.Year, key.Month),
+                    IdYearMonth = string.Concat(key.Year, key.Month), // Equivale a Select(m => m.ToString("yyyyM")
                     Month = key.Month,
                     Description = key.Name,
                     Total = group.Sum(k => k.Total)
@@ -99,15 +99,12 @@ namespace TeleQuick.DataAcces.Business
                 .AsQueryable();
         }
 
-        public async Task<IEnumerable<ChartData>> ChartDataGroup(IList<ChartYear> groupList)
+        public IEnumerable<ChartData> ChartDataGroup(IList<ChartYear> groupList)
         {
             return groupList
                 .GroupBy(x => x.Description)
                 .Select(x => new ChartData { label = x.Key, data = x.OrderBy(m => m.IdYearMonth).ToList() })
                 .ToList();
         }
-
-
-
     }
 }

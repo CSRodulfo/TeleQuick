@@ -17,8 +17,6 @@
             get { return _concesionary; }
         }
 
-        private string myVar;
-
         public string Description
         {
             get { return _description; }
