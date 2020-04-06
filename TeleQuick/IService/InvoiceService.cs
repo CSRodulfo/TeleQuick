@@ -12,6 +12,6 @@ namespace TeleQuick.IService
         Task<IEnumerable<InvoiceDetail>> GetByHeaderId(int id);
         Task<IEnumerable<ChartConcessionaries>> GetChartDataByConcessionary();
         Task<IEnumerable<ChartVehicle>> GetChartDataByVehicle();
-        Task<Chart> GetChartData();
+        Task<Chart> GetChartData(int moth);
     }
 }

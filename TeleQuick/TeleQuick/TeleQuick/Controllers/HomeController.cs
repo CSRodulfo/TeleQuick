@@ -53,7 +53,7 @@ namespace TeleQuick.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> ChartDataYear()
         {
-            Chart invoices = await _invoiceService.GetChartData();
+            Chart invoices = await _invoiceService.GetChartData(-6);
             return Ok(invoices);
         }
     }

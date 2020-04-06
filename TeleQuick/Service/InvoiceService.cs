@@ -8,6 +8,8 @@ using TeleQuick.IDataAccess.Business;
 using TeleQuick.IService;
 using System.Linq;
 using System.Data;
+using System.Globalization;
+using System;
 
 namespace TeleQuick.Service
 {
@@ -44,43 +46,36 @@ namespace TeleQuick.Service
             return _invoiceRepository.GetChartDataByConcessionary();
         }
 
-        public async Task<Chart> GetChartData()
+        public async Task<Chart> GetChartData(int month)
         {
             Chart chart = new Chart();
 
-            chart.chartData = await this.GetChartDataByMonth(-6);
-            chart.labels = this.GetChartMonth();
+            chart.chartData = await this.GetChartDataByMonth(month);
+            chart.labels = this.GetChartMonth(month).Select(m => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM"))); 
 
             return chart;
         }
 
-        private async Task<IEnumerable<ChartData>> GetChartDataByMonth(int months)
+        private async Task<IEnumerable<ChartData>> GetChartDataByMonth(int month)
         {
-            var startDate = System.DateTime.Now.AddMonths(months);
+            var months = GetChartMonth(month).Select(m => m.ToString("yyyyM"));
 
-            var monthss = Enumerable.Range(0, 6)
-                                .Select(startDate.AddMonths)
-                                .Select(m => m.ToString("yyyyM"));
+            var list = await _invoiceRepository.GetChartData(month);
+            
 
-
-            var a = await _invoiceRepository.GetChartDataByMonth(months);
-            var b = await _invoiceRepository.GetChartDataByTotal(months);
-
-            var c = b.Union(a).AsEnumerable();
-
-            foreach (var item in c)
+            foreach (var charData in list)
             {
                 List<ChartYear> data = new List<ChartYear>();
-                foreach (string month in monthss)
+                foreach (string date in months)
                 {
-                    var f = item.data.FirstOrDefault(x => x.Year == month);
+                    var f = charData.data.FirstOrDefault(x => x.Year == date);
 
                     if (f == null)
                     {
                         ChartYear year = new ChartYear();
-                        year.Concessionary = item.label;
-                        year.Month = int.Parse(month.Substring(4, month.Length - 4));
-                        year.Year = month;
+                        year.Concessionary = charData.label;
+                        year.Month = int.Parse(date.Substring(4, date.Length - 4));
+                        year.Year = date;
                         data.Add(year);
                     }
                     else
@@ -90,24 +85,21 @@ namespace TeleQuick.Service
                     }
 
                 }
-                item.data = data;
+                charData.data = data;
             }
 
-            return c;
+            return list;
 
             //return _invoiceRepository.GetChartDataByMonth();
         }
 
-        private IEnumerable<string> GetChartMonth()
+        private IEnumerable<DateTime> GetChartMonth(int month)
         {
-            var startDate = System.DateTime.Now.AddMonths(-6);
+            var startDate = System.DateTime.Now.AddMonths(month);
 
-            var months = Enumerable.Range(0, 6)
-                                .Select(startDate.AddMonths)
-                                .Select(m => System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM")))
-                                .AsEnumerable();
-
-            return months;
+            return Enumerable.Range(0, 6)
+                                .Select(startDate.AddMonths);
+                                
         }
 
 
