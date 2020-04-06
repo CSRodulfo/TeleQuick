@@ -52,9 +52,28 @@ namespace TeleQuick.DataAcces.Business
                     Month = key.Month,
                     Concessionary = key.Name,
                     Total = group.Sum(k => k.Total)
-                }).ToList()
+                })
+                .ToList()
                 .GroupBy(x => x.Concessionary)
-                .Select(x => new ChartData { label = x.Key, data = x.ToList() })
+                .Select(x => new ChartData { label = x.Key, data = x.OrderBy(m => m.Year).ToList() })
+                .ToList();
+        }
+
+        public async Task<IEnumerable<ChartData>> GetChartDataByTotal()
+        {
+            return appContext.InvoiceHeaders
+                .Where(x => x.Date >= System.DateTime.Now.AddMonths(-6))
+                .Select(k => new { k.Date.Year, k.Date.Month, k.Total })
+                .GroupBy(x => new { x.Year, x.Month }, (key, group) => new ChartYear
+                {
+                    Year = string.Concat(key.Year, key.Month),
+                    Month = key.Month,
+                    Concessionary = "Total",
+                    Total = group.Sum(k => k.Total)
+                })
+                .ToList()
+                .GroupBy(x => x.Concessionary)
+                .Select(x => new ChartData { label = x.Key, data = x.OrderBy(m => m.Year).ToList() })
                 .ToList();
         }
 
