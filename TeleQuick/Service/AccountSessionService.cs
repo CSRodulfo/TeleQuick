@@ -67,9 +67,11 @@ namespace TeleQuick.Service
                  try
                  {
                      var provider = _providerService.GetProvider(item, vehicle);
-                     var list = await provider.Process();
-                     item.Concessionary.InvoiceHeaders = list;
+                     item.Concessionary.InvoiceHeaders = await provider.Process();
                      await _repository.Update(item);
+
+                     _summary.Add(new Message(item.Concessionary.Name, "Proceso finalizado correctamente"));
+
                  }
                  catch (Exception ex)
                  {

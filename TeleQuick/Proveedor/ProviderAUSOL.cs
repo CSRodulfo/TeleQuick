@@ -19,6 +19,7 @@ namespace Provider
         private ILogin _login;
         private IInvoiceFactory _invoiceHeader;
         private ObservableCollection<Message> _summary;
+        private const string Concessionary = "AUSOL";
 
         public ProviderAUSOL(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
             ObservableCollection<Message> summary)
@@ -42,23 +43,23 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
-            _summary.Add(new Message("AUSOL", "Validando login de sesion"));
+            _summary.Add(new Message(Concessionary, "Validando login de sesion"));
 
             WebPage page = await _login.LoginWebPage();
 
-            _summary.Add(new Message("AUSOL", "Login de sesion exitoso"));
+            _summary.Add(new Message(Concessionary, "Login de sesion exitoso"));
 
-            _summary.Add(new Message("AUSOL", "Comienzo de Scrapy"));
+            _summary.Add(new Message(Concessionary, "Comienzo de Scrapy"));
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.Add(new Message("AUSOL", "Scrapy exitoso"));
+            _summary.Add(new Message(Concessionary, "Scrapy exitoso"));
 
-            _summary.Add(new Message("AUSOL", "Comienzo Cabecera y Detalle de exitoso"));
+            _summary.Add(new Message(Concessionary, "Comienzo Cabecera y Detalle de exitoso"));
 
             List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            _summary.Add(new Message("AUSOL", "Cabecera y Detalle de exitoso"));
+            _summary.Add(new Message(Concessionary, "Cabecera y Detalle de exitoso"));
 
             return invoices;
         }

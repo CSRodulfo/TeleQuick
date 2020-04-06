@@ -19,6 +19,7 @@ namespace Provider
         private IScrapy _scrapy;
         private IInvoiceFactory _invoiceHeader;
         private ObservableCollection<Message> _summary;
+        private const string Concessionary = "AUSA";
 
         public ProviderAUSA(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
             ObservableCollection<Message> summary)
@@ -42,23 +43,23 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
-            _summary.Add(new Message("AUSA", "Validando login de sesion"));
+            _summary.Add(new Message(Concessionary, "Validando login de sesion"));
 
             WebPage page = await _login.LoginWebPage();
 
-            _summary.Add(new Message("AUSA", "Login de sesion exitoso"));
+            _summary.Add(new Message(Concessionary, "Login de sesion exitoso"));
 
-            _summary.Add(new Message("AUSA", "Comienzo de Scrapy"));
+            _summary.Add(new Message(Concessionary, "Comienzo de Scrapy"));
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.Add(new Message("AUSA", "Scrapy exitoso"));
+            _summary.Add(new Message(Concessionary, "Scrapy exitoso"));
 
-            _summary.Add(new Message("AUSA", "Comienzo Cabecera y Detalle de exitoso"));
+            _summary.Add(new Message(Concessionary, "Comienzo Cabecera y Detalle de exitoso"));
 
             List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            _summary.Add(new Message("AUSA", "Cabecera y Detalle de exitoso"));
+            _summary.Add(new Message(Concessionary, "Cabecera y Detalle de exitoso"));
 
             return invoices;
         }
