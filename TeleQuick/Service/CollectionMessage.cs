@@ -9,7 +9,7 @@ using TeleQuick.IService;
 
 namespace TeleQuick.Service
 {
-    public class CollectionMessage : ObservableCollection<Message> , ICollectionMessage
+    public class CollectionMessage : ObservableCollection<Message>, ICollectionMessage
     {
         //public void Add(string prop1, string prop2)
         //{
@@ -17,7 +17,7 @@ namespace TeleQuick.Service
         //}
 
         public CollectionMessage()
-            :base()
+            : base()
         {
             this.CollectionChanged += this.OnCollectionChanged;
         }
@@ -32,7 +32,5 @@ namespace TeleQuick.Service
         {
 
         }
-
-
     }
 }

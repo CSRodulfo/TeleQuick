@@ -47,20 +47,7 @@ namespace TeleQuick.Controllers
         {
             try
             {
-                _summary.CollectionChanged += async (o, e) =>
-                {
-                    var userId = Utilities.GetUserId(this.User);
-                    var array = (IEnumerable<Message>)o;
-                    try
-                    {
-                        await _hubContext.SendMessageUser(userId, array.Last());
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(LoggingEvents.HUB, ex, "Se produjo un error en adjuntar el mensaje");
-                        //await _hubContext.SendMessageUser(userId, new Message("Error", ex.Message));
-                    }
-                };
+                _summary.CollectionChanged += this.OnCollectionChanged;
 
                 var rtn = await _accountSessionService.Process();
 
@@ -71,6 +58,20 @@ namespace TeleQuick.Controllers
             {
                 _logger.LogError(LoggingEvents.HUB, ex, "Se produjo un error en procesar");
                 return Ok(false);
+            }
+        }
+
+        private async void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var userId = Utilities.GetUserId(this.User);
+            var array = (IEnumerable<Message>)sender;
+            try
+            {
+                await _hubContext.SendMessageUser(userId, array.Last());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(LoggingEvents.HUB, ex, "Se produjo un error en adjuntar el mensaje");
             }
         }
 
