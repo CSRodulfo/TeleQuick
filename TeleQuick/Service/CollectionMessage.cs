@@ -19,8 +19,20 @@ namespace TeleQuick.Service
         public CollectionMessage()
             :base()
         {
+            this.CollectionChanged += this.OnCollectionChanged;
+        }
+
+        public void AddMessage(Message message)
+        {
+            base.Add(message);
+        }
+
+
+        public void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
 
         }
+
 
     }
 }

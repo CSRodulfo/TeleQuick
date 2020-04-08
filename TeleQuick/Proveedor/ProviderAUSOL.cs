@@ -44,23 +44,23 @@ namespace Provider
 
         public async Task<List<InvoiceHeader>> Process()
         {
-            _summary.Add(new Message(Concessionary, "Validando login de sesion"));
+            _summary.AddMessage(new Message(Concessionary, "Validando login de sesion"));
 
             WebPage page = await _login.LoginWebPage();
 
-            _summary.Add(new Message(Concessionary, "Login de sesion exitoso"));
+            _summary.AddMessage(new Message(Concessionary, "Login de sesion exitoso"));
 
-            _summary.Add(new Message(Concessionary, "Comienzo de Scrapy"));
+            _summary.AddMessage(new Message(Concessionary, "Comienzo de Scrapy"));
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.Add(new Message(Concessionary, "Scrapy exitoso"));
+            _summary.AddMessage(new Message(Concessionary, "Scrapy exitoso"));
 
-            _summary.Add(new Message(Concessionary, "Comienzo Cabecera y Detalle de exitoso"));
+            _summary.AddMessage(new Message(Concessionary, "Comienzo Cabecera y Detalle de exitoso"));
 
             List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            _summary.Add(new Message(Concessionary, "Cabecera y Detalle de exitoso"));
+            _summary.AddMessage(new Message(Concessionary, "Cabecera y Detalle de exitoso"));
 
             return invoices;
         }

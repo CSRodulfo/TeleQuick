@@ -10,6 +10,6 @@ namespace TeleQuick.IService
     public interface ICollectionMessage
     {
         event NotifyCollectionChangedEventHandler CollectionChanged;
-        void Add(Message message);
+        void AddMessage(Message message);
     }
 }
