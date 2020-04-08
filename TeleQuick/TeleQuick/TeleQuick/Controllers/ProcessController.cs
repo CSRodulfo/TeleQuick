@@ -26,10 +26,10 @@ namespace TeleQuick.Controllers
         private readonly IAccountSessionService _accountSessionService;
         private readonly ILogger _logger;
         private NotifyHub _hubContext;
-        private ObservableCollection<Message> _summary;
+        private ICollectionMessage _summary;
 
         public ProcessController(IMapper mapper, IAccountSessionService accountSessionService,
-            ILogger<AccountSessionController> logger, NotifyHub hubContext, ObservableCollection<Message> summary)
+            ILogger<AccountSessionController> logger, NotifyHub hubContext, ICollectionMessage summary)
         {
             _mapper = mapper;
             _accountSessionService = accountSessionService;

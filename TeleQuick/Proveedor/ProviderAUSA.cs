@@ -10,6 +10,7 @@ using TeleQuick.Core.Autopista.Model;
 using TeleQuick.Core.IAutopista;
 using System.Collections.ObjectModel;
 using TeleQuick.Business;
+using TeleQuick.IService;
 
 namespace Provider
 {
@@ -18,11 +19,11 @@ namespace Provider
         private ILogin _login;
         private IScrapy _scrapy;
         private IInvoiceFactory _invoiceHeader;
-        private ObservableCollection<Message> _summary;
+        private ICollectionMessage _summary;
         private const string Concessionary = "AUSA";
 
         public ProviderAUSA(IConnectionAU connection, AccountSession accountSession, IEnumerable<Vehicle> vehicles,
-            ObservableCollection<Message> summary)
+            ICollectionMessage summary)
         {
             _login = new LoginAUSA(connection, accountSession);
             _scrapy = new ScrapySixon(connection);

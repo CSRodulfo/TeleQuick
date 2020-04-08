@@ -13,9 +13,9 @@ namespace Service.TeleQuick.Business
     public class ProviderService : IProviderService
     {
         private IConnectionAU _connection;
-        private ObservableCollection<Message> _summary;
+        private ICollectionMessage _summary;
 
-        public ProviderService(IConnectionAU connection, ObservableCollection<Message> summary)
+        public ProviderService(IConnectionAU connection, ICollectionMessage summary)
         {
             _connection = connection;
             _summary = summary;

@@ -42,6 +42,7 @@ namespace TeleQuick.Boostrapper
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IInvoiceDetailRepository, InvoiceDetailRepository>();
             services.AddScoped<IInvoiceService, InvoiceService>();
+            services.AddScoped<ICollectionMessage, CollectionMessage>();
             services.AddScoped<ObservableCollection<Message>>();
 
 
