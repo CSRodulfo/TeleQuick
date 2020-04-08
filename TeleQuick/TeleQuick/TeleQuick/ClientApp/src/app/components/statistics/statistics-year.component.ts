@@ -88,14 +88,6 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
     this.windowWidthSub.unsubscribe();
   }
 
-  changeChartType(type: any) {
-    this.chartType = type;
-  }
-
-  chartClicked(e): void {
-    console.log(e);
-  }
-
   loadData() {
     this.businessService.getChartDataYear().subscribe({
       next: (results: any) => {
@@ -110,8 +102,8 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDataLoadSuccessful(invoice: any) {
-    invoice.chartData.forEach(x => {
+  onDataLoadSuccessful(chartData: any) {
+    chartData.chartData.forEach(x => {
       var datas = [];
       x.data.forEach(element => {
         datas.push(element.total);
@@ -124,7 +116,7 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.chartLabels = invoice.labels;
+    this.chartLabels = chartData.labels;
   }
 
   onDataLoadFailed(error: any) {

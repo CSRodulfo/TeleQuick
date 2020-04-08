@@ -49,7 +49,7 @@ namespace TeleQuick.Service
             Chart chart = new Chart();
 
             chart.chartData = await this.GetChartDataByMonth(month);
-            chart.labels = this.GetChartMonth(month).Select(m => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM")));
+            chart.labels = this.GetChartMonth(month).Select(m => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(m.ToString("MMMM").Substring(0, 3)));
 
             return chart;
         }
@@ -70,7 +70,7 @@ namespace TeleQuick.Service
                     {
                         ChartYear chart = new ChartYear();
                         chart.Description = charData.label;
-                        chart.Month = int.Parse(date.Substring(4, date.Length - 4));
+                        chart.Month = int.Parse(date.Substring(0, 4));
                         chart.IdYearMonth = date;
                         data.Add(chart);
                     }

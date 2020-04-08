@@ -1,9 +1,11 @@
 ﻿using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 using TeleQuick.Business;
+using TeleQuick.Controllers;
 using TeleQuick.Helpers;
 
 namespace TeleQuick.SignalR
@@ -13,9 +15,9 @@ namespace TeleQuick.SignalR
     {
         private readonly HubMethods _hubMethods;
 
-        public NotifyHub(IHubContext<NotifyHub> hubContext)
+        public NotifyHub(IHubContext<NotifyHub> hubContext, ILogger<NotifyHub> logger)
         {
-            _hubMethods = new HubMethods(hubContext);
+            _hubMethods = new HubMethods(hubContext, logger);
         }
 
         public Task SendMessageUser(string userId, Message message)

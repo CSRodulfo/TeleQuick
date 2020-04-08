@@ -66,17 +66,14 @@ namespace TeleQuick.Service
              {
                  try
                  {
-                     var provider = _providerService.GetProvider(item, vehicle);
-                     item.Concessionary.InvoiceHeaders = await provider.Process();
+                     item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process();
                      await _repository.Update(item);
 
                      _summary.Add(new Message(item.Concessionary.Name, "Proceso finalizado correctamente"));
-
                  }
                  catch (Exception ex)
                  {
-                     _logger.LogError(ex, "Error en procesar");
-                     _summary.Add(new Message("ERROR", "Error en procesar" + item.Concessionary.Name));
+                     _summary.Add(new Message(item.Concessionary.Name, "Error en procesar concesionaria"));
                  }
              });
 

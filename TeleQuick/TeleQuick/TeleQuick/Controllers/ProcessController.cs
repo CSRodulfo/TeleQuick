@@ -29,16 +29,13 @@ namespace TeleQuick.Controllers
         private ObservableCollection<Message> _summary;
 
         public ProcessController(IMapper mapper, IAccountSessionService accountSessionService,
-            ILogger<AccountSessionController> logger, NotifyHub hubContext,
-            ObservableCollection<Message> summary)
+            ILogger<AccountSessionController> logger, NotifyHub hubContext, ObservableCollection<Message> summary)
         {
             _mapper = mapper;
             _accountSessionService = accountSessionService;
             _logger = logger;
             _hubContext = hubContext;
             _summary = summary;
-     
-
         }
 
         [HttpGet("Process")]
@@ -52,17 +49,17 @@ namespace TeleQuick.Controllers
             {
                 _summary.CollectionChanged += async (o, e) =>
                 {
+                    var userId = Utilities.GetUserId(this.User);
+                    var array = (IEnumerable<Message>)o;
                     try
                     {
-                        var userId = Utilities.GetUserId(this.User);
-                        var array = (IList<Message>)o;
-                        await _hubContext.SendMessageUser(userId,  array.Last());
+                        await _hubContext.SendMessageUser(userId, array.Last());
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(LoggingEvents.PROCESS, ex, "Se produjo un error en adjuntar el mensaje");
+                        _logger.LogError(LoggingEvents.HUB, ex, "Se produjo un error en adjuntar el mensaje");
+                        //await _hubContext.SendMessageUser(userId, new Message("Error", ex.Message));
                     }
-                 
                 };
 
                 var rtn = await _accountSessionService.Process();
@@ -72,7 +69,7 @@ namespace TeleQuick.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(LoggingEvents.PROCESS, ex, "Se produjo un error en el procesamiento");
+                _logger.LogError(LoggingEvents.HUB, ex, "Se produjo un error en procesar");
                 return Ok(false);
             }
         }

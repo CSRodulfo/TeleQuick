@@ -42,10 +42,8 @@ export class ProcessComponent implements OnInit {
   }
 
   random(): void {
-
     const connection = new HubConnectionBuilder()
-    //.configureLogging(signalR.LogLevel.Information)
-    .withUrl("https://localhost:44350/notify", {
+    .withUrl("/notify", {
       transport: 4,
       accessTokenFactory: () => this.oauthService.getAccessToken()
     })
@@ -96,10 +94,10 @@ export class ProcessComponent implements OnInit {
         return console.error(err.toString());
       });
 
-    connection.on("SendMessageUser", (description: string, value: string) => {
-      this.dynamic = this.dynamic + 10;
+    connection.on("SendMessageUser", (description: string, value: number) => {
+      this.dynamic = this.dynamic + value;
       this.text = description;
-      this.textDescription += description +"\n"
+      this.textDescription = description +"\n" + this.textDescription
     });
   }
 }

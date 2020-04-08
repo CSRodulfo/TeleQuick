@@ -66,14 +66,6 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
     this.windowWidthSub.unsubscribe();
   }
 
-  changeChartType(type: any) {
-    this.chartType = type;
-  }
-
-  chartClicked(e): void {
-    console.log(e);
-  }
-
   loadData() {
     this.businessService.getChartDataVehicle().subscribe({
       next: (results: any) => {
@@ -88,8 +80,8 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDataLoadSuccessful(invoice: any) {
-    invoice.forEach(x => {
+  onDataLoadSuccessful(chartData: any) {
+    chartData.forEach(x => {
       this.Labels.push(x.vehicleName);
       this.Data.push(x.total);
     });
