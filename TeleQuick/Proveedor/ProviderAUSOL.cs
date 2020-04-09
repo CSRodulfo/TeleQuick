@@ -42,9 +42,9 @@ namespace Provider
             return await this._login.LoginValidateAU();
         }
 
-        public async Task<List<InvoiceHeader>> Process()
+        public async Task<List<InvoiceHeader>> Process(MessageDictionary messages)
         {
-            _summary.AddMessage(new Message(Concessionary, "Validando login de sesion"));
+            _summary.AddMessage(messages.GetMessage(MyEnum.Logging));
 
             WebPage page = await _login.LoginWebPage();
 

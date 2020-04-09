@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeleQuick.Core.Autopista.Model;
+using TeleQuick.Business;
 
 namespace IProvider
 {
@@ -10,6 +11,6 @@ namespace IProvider
     {
         Task<bool> ValidateLogin();
 
-        Task<List<InvoiceHeader>> Process();
+        Task<List<InvoiceHeader>> Process(MessageDictionary messages);
     }
 }

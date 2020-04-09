@@ -4,6 +4,7 @@
     {
         private string _concesionary;
         private string _description;
+        private int _percentil;
 
         public Message(string concesionary, string description)
         {
@@ -20,6 +21,11 @@
         public string Description
         {
             get { return _description; }
+        }
+
+        public int Percentil
+        {
+            get { return _percentil; }
         }
 
     }

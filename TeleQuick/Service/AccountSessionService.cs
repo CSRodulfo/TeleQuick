@@ -9,6 +9,7 @@ using ExtensionMethods;
 using System;
 using Microsoft.Extensions.Logging;
 using TeleQuick.Business;
+using System.Linq;
 
 namespace TeleQuick.Service
 {
@@ -17,11 +18,11 @@ namespace TeleQuick.Service
         private readonly IAccountSessionRepository _repository;
         private readonly IVehicleRepository _repositoryVehicle;
         private readonly IProviderService _providerService;
-        private ObservableCollection<Message> _summary;
+        private ICollectionMessage _summary;
         private readonly ILogger _logger;
 
         public AccountSessionService(IAccountSessionRepository repository, IProviderService providerService,
-              ObservableCollection<Message> summary, ILogger<IAccountSessionService> logger, IVehicleRepository repositoryVehicle)
+              ICollectionMessage summary, ILogger<IAccountSessionService> logger, IVehicleRepository repositoryVehicle)
         {
             _repository = repository;
             _providerService = providerService;
@@ -61,19 +62,24 @@ namespace TeleQuick.Service
         {
             var account = await _repository.GetAllIsValid();
             var vehicle = await _repositoryVehicle.GetAll();
+            var accountCount = account.Count();
 
             await account.ForEachAsync(4, async item =>
              {
                  try
                  {
-                     item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process();
+                     MessageDictionary messages = new MessageDictionary(item.Concessionary.Name, accountCount);
+
+
+
+                     item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process(messages);
                      await _repository.Update(item);
 
-                     _summary.Add(new Message(item.Concessionary.Name, "Proceso finalizado correctamente"));
+                     _summary.AddMessage(new Message(item.Concessionary.Name, "Proceso finalizado correctamente"));
                  }
                  catch (Exception ex)
                  {
-                     _summary.Add(new Message(item.Concessionary.Name, "Error en procesar concesionaria"));
+                     _summary.AddMessage(new Message(item.Concessionary.Name, "Error en procesar concesionaria"));
                  }
              });
 

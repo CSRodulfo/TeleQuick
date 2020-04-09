@@ -11,11 +11,6 @@ namespace TeleQuick.Service
 {
     public class CollectionMessage : ObservableCollection<Message>, ICollectionMessage
     {
-        //public void Add(string prop1, string prop2)
-        //{
-        //    base.Add(new Message { Prop1 = prop1, Prop2 = prop2 });
-        //}
-
         public CollectionMessage()
             : base()
         {
@@ -27,6 +22,10 @@ namespace TeleQuick.Service
             base.Add(message);
         }
 
+        public void AddMessage(string concesionary, string description)
+        {
+            base.Add(new Message(concesionary, description));
+        }
 
         public void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
