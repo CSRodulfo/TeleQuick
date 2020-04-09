@@ -4,7 +4,7 @@
     {
         private string _concesionary;
         private string _description;
-        private int _percentil;
+        private decimal _percentil;
 
         public Message(string concesionary, string description)
         {
@@ -23,10 +23,12 @@
             get { return _description; }
         }
 
-        public int Percentil
+        public decimal Percentil
         {
             get { return _percentil; }
+            set { _percentil = value; }
         }
+
 
     }
 }

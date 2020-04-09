@@ -95,7 +95,7 @@ export class ProcessComponent implements OnInit {
       });
 
     connection.on("SendMessageUser", (description: string, value: number) => {
-      this.dynamic = this.dynamic + value;
+      this.dynamic =  value;
       this.text = description;
       this.textDescription = description +"\n" + this.textDescription
     });

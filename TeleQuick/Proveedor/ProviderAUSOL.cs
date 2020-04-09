@@ -48,19 +48,19 @@ namespace Provider
 
             WebPage page = await _login.LoginWebPage();
 
-            _summary.AddMessage(new Message(Concessionary, "Login de sesion exitoso"));
+            _summary.AddMessage(messages.GetMessage(MyEnum.Logged));
 
-            _summary.AddMessage(new Message(Concessionary, "Comienzo de Scrapy"));
+            _summary.AddMessage(messages.GetMessage(MyEnum.Scrapping));
 
             List<HeaderResponse> list = await _scrapy.Process(page);
 
-            _summary.AddMessage(new Message(Concessionary, "Scrapy exitoso"));
+            _summary.AddMessage(messages.GetMessage(MyEnum.Scrapped));
 
-            _summary.AddMessage(new Message(Concessionary, "Comienzo Cabecera y Detalle de exitoso"));
+            _summary.AddMessage(messages.GetMessage(MyEnum.Procesing));
 
             List<InvoiceHeader> invoices = await _invoiceHeader.Procees(list);
 
-            _summary.AddMessage(new Message(Concessionary, "Cabecera y Detalle de exitoso"));
+            _summary.AddMessage(messages.GetMessage(MyEnum.Procesed));
 
             return invoices;
         }

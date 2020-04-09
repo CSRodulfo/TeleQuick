@@ -70,12 +70,13 @@ namespace TeleQuick.Service
                  {
                      MessageDictionary messages = new MessageDictionary(item.Concessionary.Name, accountCount);
 
-
-
+                     _summary.AddMessage(messages.GetMessage(MyEnum.Starting));
+                     _summary.AddMessage(messages.GetMessage(MyEnum.Started));
                      item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process(messages);
-                     await _repository.Update(item);
 
-                     _summary.AddMessage(new Message(item.Concessionary.Name, "Proceso finalizado correctamente"));
+                     _summary.AddMessage(messages.GetMessage(MyEnum.Finishing));
+                     await _repository.Update(item);
+                     _summary.AddMessage(messages.GetMessage(MyEnum.Finished));
                  }
                  catch (Exception ex)
                  {

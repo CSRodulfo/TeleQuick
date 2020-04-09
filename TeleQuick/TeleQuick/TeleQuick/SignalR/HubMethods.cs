@@ -25,7 +25,7 @@ namespace TeleQuick.SignalR
             if (message != null)
             {
                 _logger.LogInformation(LoggingEvents.HUB, message.Concesionary + " - " + message.Description);
-                return _hubContext.Clients.Group(userId).SendAsync("SendMessageUser", message.Concesionary + " - " + message.Description, 10);
+                return _hubContext.Clients.Group(userId).SendAsync("SendMessageUser", message.Concesionary + " - " + message.Description, message.Percentil);
             }
             return Task.CompletedTask;
         }
