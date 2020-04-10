@@ -51,7 +51,7 @@ namespace TeleQuick.Controllers
 
                 var rtn = await _accountSessionService.Process();
 
-                return Ok();
+                return Ok(rtn);
 
             }
             catch (Exception ex)
@@ -64,10 +64,11 @@ namespace TeleQuick.Controllers
         private async void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             var userId = Utilities.GetUserId(this.User);
-            var array = (IEnumerable<Message>)sender;
+            Message message = e.NewItems[0] as Message;
+
             try
             {
-                await _hubContext.SendMessageUser(userId, array.Last());
+                await _hubContext.SendMessageUser(userId, message);
             }
             catch (Exception ex)
             {

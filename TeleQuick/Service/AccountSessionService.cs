@@ -58,7 +58,7 @@ namespace TeleQuick.Service
             return await provider.ValidateLogin();
         }
 
-        public async Task<List<AccountSession>> Process()
+        public async Task<int> Process()
         {
             var account = await _repository.GetAllIsValid();
             var vehicle = await _repositoryVehicle.GetAll();
@@ -68,13 +68,11 @@ namespace TeleQuick.Service
              {
                  try
                  {
-                     MessageDictionary messages = new MessageDictionary(item.Concessionary.Name, accountCount);
+                     MessageDictionary messages = new MessageDictionary(item.Concessionary.Name, account.Count());
 
                      _summary.AddMessage(messages.GetMessage(MyEnum.Starting));
-                     _summary.AddMessage(messages.GetMessage(MyEnum.Started));
                      item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process(messages);
 
-                     _summary.AddMessage(messages.GetMessage(MyEnum.Finishing));
                      await _repository.Update(item);
                      _summary.AddMessage(messages.GetMessage(MyEnum.Finished));
                  }
@@ -100,7 +98,7 @@ namespace TeleQuick.Service
             //    }
             //}
 
-            return account;
+            return accountCount;
         }
     }
 }

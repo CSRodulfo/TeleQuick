@@ -13,6 +13,6 @@ namespace TeleQuick.IService
         Task<int> Create(AccountSession account);
         Task<int> Update(AccountSession account);
         Task<bool> ValidateConnection(AccountSession account);
-        Task<List<AccountSession>> Process();
+        Task<int> Process();
     }
 }

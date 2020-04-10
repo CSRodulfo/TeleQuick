@@ -143,7 +143,7 @@ namespace TeleQuick.Controllers
             if (ModelState.IsValid)
             {
                 if (user == null)
-                    return BadRequest($"{nameof(user)} cannot be null");
+                    return BadRequest($"{nameof(user)} no puede ser null");
 
                 if (!string.IsNullOrWhiteSpace(user.Id) && id != user.Id)
                     return BadRequest("Conflicting user id in parameter and model data");
@@ -159,15 +159,15 @@ namespace TeleQuick.Controllers
                     if (string.IsNullOrWhiteSpace(user.CurrentPassword))
                     {
                         if (isPasswordChanged)
-                            AddError("Current password is required when changing your own password", "Password");
+                            AddError("Se requiere su contraseña actual para cambiar la contraseña", "Password");
 
                         if (isUserNameChanged)
-                            AddError("Current password is required when changing your own username", "Username");
+                            AddError("Se requiere su contraseña actual para cambiar su usuario", "Username");
                     }
                     else if (isPasswordChanged || isUserNameChanged)
                     {
                         if (!await _accountManager.CheckPasswordAsync(appUser, user.CurrentPassword))
-                            AddError("The username/password couple is invalid.");
+                            AddError("El usuario/password son invalidos");
                     }
                 }
 
@@ -221,7 +221,7 @@ namespace TeleQuick.Controllers
             if (ModelState.IsValid)
             {
                 if (patch == null)
-                    return BadRequest($"{nameof(patch)} cannot be null");
+                    return BadRequest($"{nameof(patch)} no puede ser null");
 
 
                 ApplicationUser appUser = await _accountManager.GetUserByIdAsync(id);
@@ -264,7 +264,7 @@ namespace TeleQuick.Controllers
             if (ModelState.IsValid)
             {
                 if (user == null)
-                    return BadRequest($"{nameof(user)} cannot be null");
+                    return BadRequest($"{nameof(user)} no puede ser null");
 
 
                 ApplicationUser appUser = _mapper.Map<ApplicationUser>(user);
@@ -304,7 +304,7 @@ namespace TeleQuick.Controllers
 
             var (Succeeded, Errors) = await _accountManager.DeleteUserAsync(appUser);
             if (!Succeeded)
-                throw new Exception("The following errors occurred whilst deleting user: " + string.Join(", ", Errors));
+                throw new Exception("Se produjeron los siguientes errores al eliminar el usuario: " + string.Join(", ", Errors));
 
 
             return Ok(userVM);
@@ -325,7 +325,7 @@ namespace TeleQuick.Controllers
             appUser.LockoutEnd = null;
             var (Succeeded, Errors) = await _accountManager.UpdateUserAsync(appUser);
             if (!Succeeded)
-                throw new Exception("The following errors occurred whilst unblocking user: " + string.Join(", ", Errors));
+                throw new Exception("Se produjeron los siguientes errores al desbloquear el usuario: " + string.Join(", ", Errors));
 
 
             return NoContent();
@@ -354,7 +354,7 @@ namespace TeleQuick.Controllers
 
             var (Succeeded, Errors) = await _accountManager.UpdateUserAsync(appUser);
             if (!Succeeded)
-                throw new Exception("The following errors occurred whilst updating User Configurations: " + string.Join(", ", Errors));
+                throw new Exception("Se produjeron los siguientes errores al actualizar las configuraciones de usuario: " + string.Join(", ", Errors));
 
             return NoContent();
         }
@@ -429,7 +429,7 @@ namespace TeleQuick.Controllers
             if (ModelState.IsValid)
             {
                 if (role == null)
-                    return BadRequest($"{nameof(role)} cannot be null");
+                    return BadRequest($"{nameof(role)} no puede ser null");
 
                 if (!string.IsNullOrWhiteSpace(role.Id) && id != role.Id)
                     return BadRequest("Conflicting role id in parameter and model data");
@@ -465,7 +465,7 @@ namespace TeleQuick.Controllers
             if (ModelState.IsValid)
             {
                 if (role == null)
-                    return BadRequest($"{nameof(role)} cannot be null");
+                    return BadRequest($"{nameof(role)} no puede ser null");
 
 
                 ApplicationRole appRole = _mapper.Map<ApplicationRole>(role);
@@ -497,14 +497,14 @@ namespace TeleQuick.Controllers
                 return NotFound(id);
 
             if (!await _accountManager.TestCanDeleteRoleAsync(id))
-                return BadRequest("Role cannot be deleted. Remove all users from this role and try again");
+                return BadRequest("El rol no se puede eliminar.Elimine todos los usuarios de este rol e intente nuevamente");
 
 
             RoleViewModel roleVM = await GetRoleViewModelHelper(appRole.Name);
 
             var (Succeeded, Errors) = await _accountManager.DeleteRoleAsync(appRole);
             if (!Succeeded)
-                throw new Exception("The following errors occurred whilst deleting role: " + string.Join(", ", Errors));
+                throw new Exception("Se produjeron los siguientes errores al eliminar la función: " + string.Join(", ", Errors));
 
 
             return Ok(roleVM);

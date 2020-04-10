@@ -8,18 +8,17 @@ import { OAuthService } from "angular-oauth2-oidc";
 import { Message } from "../../models/Message";
 import { BusinessService } from "../../services/business.service";
 import { GlobalResources } from "../../services/globalResources";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // RECOMMENDED
 
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-
+import { CollapseModule } from "ngx-bootstrap/collapse";
 
 @Component({
   selector: "process",
   templateUrl: "./process.component.html",
   styleUrls: ["./process.component.scss"],
-  animations: [fadeInOut]
+  animations: [fadeInOut],
 })
 export class ProcessComponent implements OnInit {
   max: number = 200;
@@ -27,9 +26,9 @@ export class ProcessComponent implements OnInit {
   dynamic: number;
   type: any = "info";
   text: string = "Detalle del Procesamiento";
-  textDescription : string = "";
+  textDescription: string = "";
   isCollapsed = false;
-  
+
   constructor(
     private oauthService: OAuthService,
     private alertService: AlertService,
@@ -43,31 +42,33 @@ export class ProcessComponent implements OnInit {
 
   random(): void {
     const connection = new HubConnectionBuilder()
-    .withUrl("/notify", {
-      transport: 4,
-      accessTokenFactory: () => this.oauthService.getAccessToken()
-    })
-    .configureLogging(LogLevel.Trace)
-    .build();
+      .withUrl("/notify", {
+        transport: 4,
+        accessTokenFactory: () => this.oauthService.getAccessToken(),
+      })
+      .configureLogging(LogLevel.Trace)
+      .build();
 
     this.connect(connection);
 
     this.businessService.getProcess().subscribe({
       next: (results: any) => {
-        this.onDataLoadSuccessful();
+        this.onDataLoadSuccessful(results);
       },
       error: (error: any) => {
         this.onDataLoadFailed(error);
       },
       complete: () => {
-
         console.log("complete");
         connection.stop();
-      }
+      },
     });
   }
 
-  onDataLoadSuccessful() {
+  onDataLoadSuccessful(vehicles: number) {
+    if (vehicles > 1) {
+      this.dynamic = 100;
+    }
     this.alertService.stopLoadingMessage();
   }
 
@@ -84,20 +85,20 @@ export class ProcessComponent implements OnInit {
     );
   }
 
-  connect(connection: any ): void {
+  connect(connection: any): void {
     connection
       .start()
-      .then(function() {
+      .then(function () {
         console.log("Connected!");
       })
-      .catch(function(err) {
+      .catch(function (err) {
         return console.error(err.toString());
       });
 
     connection.on("SendMessageUser", (description: string, value: number) => {
-      this.dynamic =  value;
+      this.dynamic = this.dynamic + value;
       this.text = description;
-      this.textDescription = description +"\n" + this.textDescription
+      this.textDescription = description + "\n" + this.textDescription;
     });
   }
 }

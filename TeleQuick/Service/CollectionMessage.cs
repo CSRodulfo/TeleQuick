@@ -14,7 +14,7 @@ namespace TeleQuick.Service
         public CollectionMessage()
             : base()
         {
-            this.CollectionChanged += this.OnCollectionChanged;
+
         }
 
         public void AddMessage(Message message)
@@ -27,9 +27,6 @@ namespace TeleQuick.Service
             base.Add(new Message(concesionary, description));
         }
 
-        public void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
