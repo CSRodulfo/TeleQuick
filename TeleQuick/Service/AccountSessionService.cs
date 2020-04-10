@@ -58,11 +58,13 @@ namespace TeleQuick.Service
             return await provider.ValidateLogin();
         }
 
-        public async Task<int> Process()
+        public async Task<List<bool>> Process()
         {
             var account = await _repository.GetAllIsValid();
             var vehicle = await _repositoryVehicle.GetAll();
             var accountCount = account.Count();
+            List<bool> succeful = new List<bool>();
+
 
             await account.ForEachAsync(4, async item =>
              {
@@ -71,13 +73,16 @@ namespace TeleQuick.Service
                      MessageDictionary messages = new MessageDictionary(item.Concessionary.Name, account.Count());
 
                      _summary.AddMessage(messages.GetMessage(MyEnum.Starting));
-                     item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process(messages);
 
-                     await _repository.Update(item);
+                     item.Concessionary.InvoiceHeaders = await _providerService.GetProvider(item, vehicle).Process(messages);
+                     var rtn = await _repository.Update(item);
+
                      _summary.AddMessage(messages.GetMessage(MyEnum.Finished));
+                     succeful.Add(rtn != 0);
                  }
                  catch (Exception ex)
                  {
+                     succeful.Add(false);
                      _summary.AddMessage(new Message(item.Concessionary.Name, "Error en procesar concesionaria"));
                  }
              });
@@ -98,7 +103,7 @@ namespace TeleQuick.Service
             //    }
             //}
 
-            return accountCount;
+            return succeful;
         }
     }
 }

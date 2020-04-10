@@ -1,4 +1,8 @@
 <div class="row statistics-container">
+  
+  <div class="col-md-12">
+    <h5 class="text-muted d-inline-block">Consumos de los ultimos 6 meses</h5>
+  </div>
   <div class="col-md-6">
     <div class="chart-container">
       <canvas baseChart width="600" height="250"  *ngIf="chartData"
@@ -22,7 +26,7 @@
         <tbody>
           <tr *ngFor="let d of chartData">
             <th>{{d && d.label.split(' ').pop()}}</th>
-            <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j]}}</td>
+            <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j].toLocaleString("es-AR", { maximumFractionDigits: 0 })}}</td>
           </tr>
         </tbody>
       </table>

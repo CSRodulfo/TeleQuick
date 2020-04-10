@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { fadeInOut } from "../../services/animations";
 import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import { AlertService, MessageSeverity } from "../../services/alert.service";
@@ -40,7 +40,8 @@ export class ProcessComponent implements OnInit {
     this.dynamic = 0;
   }
 
-  random(): void {
+  Process(): void {
+    this.dynamic = 0;
     const connection = new HubConnectionBuilder()
       .withUrl("/notify", {
         transport: 4,
@@ -65,11 +66,12 @@ export class ProcessComponent implements OnInit {
     });
   }
 
-  onDataLoadSuccessful(vehicles: number) {
-    if (vehicles > 1) {
-      this.dynamic = 100;
+  onDataLoadSuccessful(vehicles: any[]) {
+    for (var i = 0, len = vehicles.length; i < len; i++) {
+      if (vehicles[i]) {
+        this.dynamic = ((i + 1) * 100) / len;
+      }
     }
-    this.alertService.stopLoadingMessage();
   }
 
   onDataLoadFailed(error: any) {
