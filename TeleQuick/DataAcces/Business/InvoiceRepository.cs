@@ -35,8 +35,8 @@ namespace TeleQuick.DataAcces.Business
                .Select(
                    g => new ChartConcessionaries
                    {
-                       ConcessionaryName = g.Key,
-                       Total = g.Sum(s => s.Total)
+                       Labels = g.Key,
+                       Data = g.Sum(s => s.Total)
                    })
                .ToListAsync();
         }
@@ -48,8 +48,8 @@ namespace TeleQuick.DataAcces.Business
               .Select(
                   g => new ChartVehicle
                   {
-                      VehicleName = g.Key,
-                      Total = g.Sum(s => s.Total)
+                      Labels = g.Key,
+                      Data = g.Sum(s => s.Total)
                   })
               .ToListAsync();
         }

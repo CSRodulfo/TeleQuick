@@ -6,8 +6,8 @@ namespace TeleQuick.Business.Charts
 {
     public  class ChartConcessionaries
     {
-        public string ConcessionaryName{ get; set; }
+        public string Labels{ get; set; }
 
-        public decimal Total { get; set; }
+        public decimal Data { get; set; }
     }
 }

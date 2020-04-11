@@ -30,6 +30,29 @@ export class StatisticsYearComponent implements OnInit, OnDestroy {
       display: false,
       fontSize: 16,
       text: "Important Stuff"
+    },
+    scales: {
+      xAxes: [{
+        ticks: {}
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          // Return an empty string to draw the tick line but hide the tick label
+          // Return `null` or `undefined` to hide the tick line entirely
+          userCallback: function (value, index, values) {
+            return value.toLocaleString("es-AR", { style: 'currency', currency: "ARS", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+          }
+        }
+      }]
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var index = tooltipItem.index;   
+          return data.labels[index] +': '+ Number(tooltipItem.yLabel).toLocaleString("es-AR", { style: 'currency', currency: "ARS", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+      }
     }
   };
   chartColors = [

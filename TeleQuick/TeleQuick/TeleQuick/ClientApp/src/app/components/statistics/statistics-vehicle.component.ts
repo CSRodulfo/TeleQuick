@@ -7,6 +7,7 @@ import { ChartType } from 'chart.js';
 import { BusinessService } from "../../services/business.service";
 import { GlobalResources } from "../../services/globalResources";
 import { Utilities } from "../../services/utilities";
+import { ChartStaticsData } from "../../models/chart-statics.model";
 
 @Component({
   selector: 'statistics-vehicle',
@@ -18,7 +19,7 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
   Labels = [];
   Data = [];
 
-  chartData = [{ data: this.Data, label: "Concesionaria" }];
+  chartData = [{ data: this.Data, label: "Vehiculos" }];
   chartLabels = this.Labels;
 
   chartOptions = {
@@ -27,11 +28,35 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
       display: false,
       fontSize: 16,
       text: 'Important Stuff'
+    },
+    scales: {
+      xAxes: [{
+        ticks: {}
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          // Return an empty string to draw the tick line but hide the tick label
+          // Return `null` or `undefined` to hide the tick line entirely
+          userCallback: function (value, index, values) {
+            return value.toLocaleString("es-AR", { style: 'currency', currency: "ARS", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+          }
+        }
+      }]
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var index = tooltipItem.index;   
+          return data.labels[index] +': '+ Number(tooltipItem.yLabel).toLocaleString("es-AR", { style: 'currency', currency: "ARS", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+      }
     }
   };
+  
   chartColors = [
     { // something else
-     backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
       borderWidth: 2,
     }
@@ -49,7 +74,7 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private businessService: BusinessService,
     private resx: GlobalResources
-  ) {}
+  ) { }
 
   ngOnInit() {
     const initialWidth$ = of(window.innerWidth);
@@ -80,15 +105,15 @@ export class StatisticsVehicleComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDataLoadSuccessful(chartData: any) {
+  onDataLoadSuccessful(chartData: ChartStaticsData[]) {
     chartData.forEach(x => {
-      this.Labels.push(x.vehicleName);
-      this.Data.push(x.total);
+      this.Labels.push(x.labels);
+      this.Data.push(x.data);
     });
   }
 
   onDataLoadFailed(error: any) {
-    
+
     this.alertService.showStickyMessage(
       this.resx.loadError,
       `${this.resx.loadErrorDetail} ${Utilities.getHttpResponseMessages(

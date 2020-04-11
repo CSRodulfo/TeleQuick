@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import {
   AlertService,
-  DialogType,
   MessageSeverity
 } from "../../services/alert.service";
 import { Subscription, Observable, fromEvent, of, merge } from "rxjs";
@@ -10,6 +9,7 @@ import { BusinessService } from "../../services/business.service";
 import { ChartType } from "chart.js";
 import { GlobalResources } from "../../services/globalResources";
 import { Utilities } from "../../services/utilities";
+import { ChartStaticsData } from "../../models/chart-statics.model";
 
 @Component({
   selector: "statistics-demo",
@@ -29,6 +29,15 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
       display: false,
       fontSize: 16,
       text: "Important Stuff"
+    },
+    
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var index = tooltipItem.index;   
+          return  data.labels[index] +': '+ Number(data.datasets[0].data[index]).toLocaleString("es-AR", { style: 'currency', currency: "ARS", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+      }
     }
   };
   chartColors = [
@@ -93,10 +102,10 @@ export class StatisticsDemoComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDataLoadSuccessful(chartData: any) {
+  onDataLoadSuccessful(chartData: ChartStaticsData[]) {
     chartData.forEach(x => {
-      this.Labels.push(x.concessionaryName);
-      this.Data.push(x.total);
+      this.Labels.push(x.labels);
+      this.Data.push(x.data);
     });
   }
 
