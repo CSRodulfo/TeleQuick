@@ -1,1 +1,1 @@
-# PaseTeleForm
+# TeleQuick
