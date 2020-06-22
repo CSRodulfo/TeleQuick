@@ -128,7 +128,7 @@
             "PasswordMismatch": "La nueva contraseña y la contraseña de confirmación no coinciden",
             "Roles": "Roles:",
             "FullName": " Nombre completo:",
-            "RoleRequired": " Se requiere el rol",
+            "RoleRequired": " Se requiere al menos un rol",
             "PhoneNumber": "Número #:",
             "Enabled": "Habilitado",
             "Unblock": "Desbloquear",

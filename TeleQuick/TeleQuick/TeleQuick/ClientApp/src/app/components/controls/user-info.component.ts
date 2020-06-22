@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import { AlertService, MessageSeverity } from '../../services/alert.service';
+import { AppTranslationService } from '../../services/app-translation.service';
 import { AccountService } from '../../services/account.service';
 import { Utilities } from '../../services/utilities';
 import { User } from '../../models/user.model';
@@ -73,7 +74,8 @@ export class UserInfoComponent implements OnInit {
   public rolesSelector;
 
 
-  constructor(private alertService: AlertService, private accountService: AccountService) {
+  constructor(private alertService: AlertService, private translationService: AppTranslationService,
+    private accountService: AccountService) {
   }
 
   ngOnInit() {
@@ -119,7 +121,8 @@ export class UserInfoComponent implements OnInit {
 
 
   showErrorAlert(caption: string, message: string) {
-    this.alertService.showMessage(caption, message, MessageSeverity.error);
+    const gT = (key: string) => this.translationService.getTranslation(key);
+    this.alertService.showMessage(caption, gT(message), MessageSeverity.error);
   }
 
 
